@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues xmlns="http://pkp.sfu.ca">
+  <issue published="1" current="0">
+    <issue_identification>
+      <volume>1</volume>
+      <number>1</number>
+      <year>2011</year>
+      <title locale="en">Volume 1 No. 1, Januari 2011</title>
+    </issue_identification>
+    <sections>
+      <section ref="ARTICLES" seq="0" editor_restricted="0" meta_indexed="1" meta_reviewed="1" abstracts_not_required="0" abstract_word_count="0" hide_author="0">
+        <abbrev locale="en">ARTICLES</abbrev>
+        <title locale="en">Articles</title>
+      </section>
+    </sections>
+    <articles>
+      <article stage="submission" locale="en" date_submitted="2017-10-10" status="3" current_publication_id="8745">
+        <id type="internal" advice="ignore">8745</id>
+        <id type="doi" advice="update">10.20885/jeki.vol1.iss1.art1</id>
+        <publication section_ref="ARTICLES" seq="1" status="3" date_published="2017-10-10">
+          <id type="internal" advice="ignore">8745</id>
+          <title locale="en">HUBUNGAN SISTEM PENGENDALIAN MANAJEMEN DAN PRESTASI PEMBIAYAAN BAGI HASIL: RESOURCE-BASED VIEW</title>
+          <abstract locale="en">Many Islamic economics as the basic concepts of Islamic banks, but the practice shows that the financing by buying and selling more practiced. The purpose of this study is to see the impact of performance measurement system as a management control system in improving organizational learning. The process of data collected by survey respondents RB field with Sharia and Islamic branches of Islamic banking in Indonesia. By analysis of partial least square, show an interactive performance measurement system is positively associated with organizational learning. This study also found that the quantity and quality of financing for the outcome positively related to achievement of financial and non financial BPRS, but only the quality of financing are related to the achievement of financial and non financial performance of Islamic bank branches.</abstract>
+          <authors>
+            <author user_group_ref="Author" seq="1" id="1">
+              <givenname locale="en">Ataina</givenname>
+              <familyname locale="en">Hudayati</familyname>
+              <affiliation>
+                <name locale="en">Universitas Islam Indonesia, Yogyakarta</name>
+              </affiliation>
+              <email />
+            </author>
+            <author user_group_ref="Author" seq="2" id="2">
+              <givenname locale="en">Sofiah Md</givenname>
+              <familyname locale="en">Auzair</familyname>
+              <affiliation>
+                <name locale="en">Universiti Kebangsaan Malaysia</name>
+              </affiliation>
+              <email />
+            </author>
+          </authors>
+          <article_galley locale="en">
+            <name locale="en">PDF</name>
+            <seq>1</seq>
+            <remote src="https://journal.uii.ac.id/JEKI/article/view/8745/7429" />
+          </article_galley>
+          <citations locale="en">
+            <citation>Ahmed, Habib. (2002). â€œIncentive- Compatible Profit-Sharing Contract: a TheoÂ¬retical Treatmentâ€. Dalam Iqbal, M. &amp; Llewellyn.D.T. 2002. Islamic Banking and Finance: New PerÂ¬spective on Profit Sharing and Risk. UK: Edward Elgar.</citation>
+            <citation>Al-Omar, Fuad &amp; Abdel-Haq, Mohammed. (1996). Islamic Banking: Theory, Practice &amp; Challenges. Karachi: Oxford University Press.</citation>
+            <citation>Al-Qaradawi, Yusuf. (1997). Tipu Daya HalalÂ¬kan Riba. Terjemahan Nik Rahim Nik Wajis. Selangor: As-Syabab Media.</citation>
+            <citation>Bashir, Abdel-Hamid M.(1999). â€œRisk and Profitability Measures in Islamic Banks: The Case of Two Sudanese Banksâ€. Islamic Economic Studies 6(2):1-24.</citation>
+            <citation>Beaulieu, P.R. (1994). â€œCommercial Lenders</citation>
+            <citation>Berger, A.N. &amp; DeYoung, R.(1997). â€œProblem Loans and Cost Efficiency in Commercial Banks. Journal of Banking &amp; Finance 21: 849-870.</citation>
+            <citation>Besanko, D. &amp; Thakor, A.V. (1987). â€ Collateral and Rationing: Sorting Equilibria in Monopolistic and Competitive Credit Marketâ€. InterÂ¬national Economic Review 28(3): 671-</citation>
+            <citation>Bester, H. (1985). â€œScreening vs. Rationing in Credit Markets with Imperfect Informationâ€. The American Economic Review 75(4):850-855.</citation>
+            <citation>Carter, C.R. (2005). â€œPurchasing Social ResponÂ¬sibility and Firm Performance: The Key Mediating Roles of OrganizaÂ¬tional Learning and Supplier PerÂ¬formanceâ€. International Journal of Physical Distribution &amp; Logistics Management 1(35):177-194.</citation>
+            <citation>Chapra, M.U. (1985). Towards a Just MoneÂ¬tary System. Leicester: The Islamic Foundation.</citation>
+            <citation>Choudhury, Masudul Alam. (1997). Money in Islam: A Study in Islamic Political Economy. London: Routledge.</citation>
+            <citation>Duchessi, P., Shawky, H. &amp;Seagle, J.P. (1988). â€œA Knowledge-Engineered System for Commercial Loan Decisionsâ€.Financial Management, Autumn:57-65.</citation>
+            <citation>Fabi, F., Laviola, S. &amp; Reedtz, P.M. (2005). â€œThe New Capital Accord and Banks Lending Decisionâ€. Journal of FinanÂ¬cial Stability 1:501-521.</citation>
+            <citation>Foss, N.J. &amp; Klein, P.G. (2005). â€œThe Theory of The Firm and Its Critics: A StockÂ¬taking and Assessment. CORI Working Paper No. 2005-03. Available at SSRN: http://ssrn.com/abstract=695484</citation>
+            <citation>GarcÄ±Â´a-Morales, V.J. &amp; Francisco J. Llorens-Montes, F.J. (2006).â€ Antecedents and Consequences of Organizational Innovation and Organizational Learning in Entrepre-neurshipâ€. Industrial Management &amp; Data Systems 106: 21-42.</citation>
+            <citation>Grant, R.M. (1991). â€œThe Resource-Based TheÂ¬ory of Competitive Advantage: ImÂ¬plications for Strategy Formulationâ€. California Management Review 33(3): 114-135.</citation>
+            <citation>Hassan, M. Kabir. &amp; Bashir, Abdel-Hamid. (2003). â€œDeterminants of Islamic Banking Profitabilityâ€. International Seminar on Islamic Wealth Creation. University of Durham, 7th-9th July, 2003.</citation>
+            <citation>Henri, J.F. (2006). â€œManagement Control System and Strategy: A Resource-Based Perspectiveâ€. Accounting Organizations and Society 31: 529-558.</citation>
+            <citation>Hoque. Z. (2004). â€œA Contingency Model of The Association between Strategy, Environmental Uncertainty and Performance Measurement: Impact on Organizational Performanceâ€ International Business Review 13:485â€“502.</citation>
+            <citation>Hulland, J. (1999). â€œUse of Partial Least Squares in Strategic Management Research: A Review of Four Recent Studiesâ€. Strategic Management Journal, 20: 195-204.</citation>
+            <citation>Iqbal, Z. &amp; Mirakhor, A. (2002).â€ Development of Islamic Financial Institutions and Challenges a Headâ€, In Archer, S. &amp; Karim, R. (eds), Islamic, Growth and Innovation. London: Euromoney.</citation>
+            <citation>Iqbal, Z. &amp; Mirakhor, A. 2007. An Introduction to Islamic Finance: Theory and Practice. Singapore: John Wiley &amp; Sons.</citation>
+            <citation>Lewis,M.K. &amp; Algaoud, L.M. (2001). Islamic Banking. UK: Edward Elgar Publishing Limited.</citation>
+            <citation>Lin, P.W.S. &amp; Mei, A, K.C. (2006). â€œThe Internal Performance Measures of Bank Lendings: A Value- Added Approach. Benchmarking An International Journal 13(3):272-289.</citation>
+            <citation>McNamara, C., Baxter, J., Chua, W.F. (2004). â€œMaking and Managing Organizational Knowledge. Management Accounting Research, 15: 53-76.</citation>
+            <citation>Muhammad. (2005). â€œPermasalahan Agency Dalam Pembiayaan Mudarabah Pada Bank Syariah di Indonesiaâ€. International Seminar on Islamic Economics as a Solution, Medan 18-19 September: 312-337.</citation>
+            <citation>Nienhaus, V. (1983). â€œProfitability of Islamic PLS Banks Competing with Interest Banks: Problem and Prospectâ€. J. Res. Islamic Econ 1(1): 31-37.</citation>
+            <citation>Panayides, P.M. (2007). â€œThe Impact of Organizational Learning on Relationship Orientation, Logistic Service Effectiveness and Performanceâ€. Industrial Marketing Management 36:68-80.</citation>
+            <citation>Saiful Azhar Rosly &amp; Mohd Afandi Abu Bakar. (2003). â€œPerformance of Islamic and Mainstream Banks in Malaysiaâ€. International Journal of Social Economics 30(12): 1249-1265.</citation>
+            <citation>Saiful Azhar Rosly. (2005).â€ Critical Issue on Islamic Banking and Financial Marketsâ€. Dinamas Publishing, Kuala Lumpur, Malaysia.</citation>
+            <citation>Samad, Abdus &amp; Hassan, Kabir. (1999).â€ The Performance of Malaysian Islamic Bank during 1984-1997: an Exploratory Study. International Journal of Islamic Financial Service 1(3).</citation>
+            <citation>Sarker, Md. Abdul Awwal. (1999). â€œIslamic Business Contracts, Agency Problems and The Theory of Islamic Firmâ€. International Journal of Islamic Financial Services 1(2).</citation>
+            <citation>Senge, P. M. (1990). The fifth discipline: The art and practice of learning organisation. New York: Currency Doubleday.</citation>
+            <citation>Siddiqi, Muhammad Nejatullah. (1983). Issues in Islamic Banking: Selected Papers. UK: The Islamic Foundation.</citation>
+            <citation>Simons, R. (1990). â€œThe Role of Management Control Systems in Creating Competitive Advantage: New Perspectiveâ€. Accounting, Organizations and Society 15: 127-143.</citation>
+            <citation>Simons, R. (1994). How New Top Managers Use Control Systems as Levers of Strategic Renewalâ€. Strategic Management Journal 15: 169-189.</citation>
+            <citation>Simons, R. (1995). â€œControl in An Age of Empowermentâ€. Harvard Business Review 67(2):80-88.</citation>
+            <citation>Tag El-Din, Seif. I. (2003). â€œTowards an Optimal Risk Management Tool for Profit Sharing Financeâ€. International Seminar on Islamic Wealth Creation. University of Durham, 7-9 Juli, 2003.</citation>
+            <citation>Wernerfelt, B. (1984). â€œA Resource-Based View of The Firmâ€. Strategic Management Journal 5: 171-180.</citation>
+            <citation>Zimmerman, J.L. (2003). 4th ed. Accounting for decision making and control. New York: McGraw-Hill.</citation>
+          </citations>
+          <issue_identification>
+            <volume>1</volume>
+            <number>1</number>
+            <year>2011</year>
+            <title locale="en">Volume 1 No. 1, Januari 2011</title>
+          </issue_identification>
+          <pages>1-15</pages>
+        </publication>
+      </article>
+      <article stage="submission" locale="en" date_submitted="2017-10-10" status="3" current_publication_id="8746">
+        <id type="internal" advice="ignore">8746</id>
+        <id type="doi" advice="update">10.20885/jeki.vol1.iss1.art2</id>
+        <publication section_ref="ARTICLES" seq="1" status="3" date_published="2017-10-10">
+          <id type="internal" advice="ignore">8746</id>
+          <title locale="en">MODEL PEMBERDAYAAN PEREMPUAN MISKIN MELALUI PROGRAM KEUANGAN MIKRO SYARIAH BERBASIS MASYARAKAT (PROGRAM MISYKAT DPU-DT)</title>
+          <abstract locale="en">Poverty is a problem that caused the failure of economic systems. Women have great potential in helping to overcome poverty. Indonesia has great potential to optimize the social fund an independent source of Zakat, and alms infak (ZIS) through empowerment of the poor. This research is to analyze financial assistance to community-based micro-sharia (Misykat) DPU-DT in Central Java. The results showed that the program can improve that Misykat welfare poor women. Wilcoxon different test results Misykat program can increase consumption, income, profits and savings of poor women beneficiaries Misykat. Additionally, the program Misykat increasing empowerment of poor women, shoft their skill level increases based on the size of confidence, business skills, business success and the science of religion.Â</abstract>
+          <authors>
+            <author user_group_ref="Author" seq="1" id="1">
+              <givenname locale="en">Arif</givenname>
+              <familyname locale="en">Pujiyono</familyname>
+              <affiliation>
+                <name locale="en">Fakultas Ekonomi Universitas Diponegoro, Semarang</name>
+              </affiliation>
+              <email />
+            </author>
+          </authors>
+          <article_galley locale="en">
+            <name locale="en">PDF</name>
+            <seq>1</seq>
+            <remote src="https://journal.uii.ac.id/JEKI/article/view/8746/7430" />
+          </article_galley>
+          <issue_identification>
+            <volume>1</volume>
+            <number>1</number>
+            <year>2011</year>
+            <title locale="en">Volume 1 No. 1, Januari 2011</title>
+          </issue_identification>
+          <pages>17-37</pages>
+        </publication>
+      </article>
+      <article stage="submission" locale="en" date_submitted="2017-10-10" status="3" current_publication_id="8747">
+        <id type="internal" advice="ignore">8747</id>
+        <id type="doi" advice="update">10.20885/jeki.vol1.iss1.art3</id>
+        <publication section_ref="ARTICLES" seq="1" status="3" date_published="2017-10-10">
+          <id type="internal" advice="ignore">8747</id>
+          <title locale="en">HUBUNGAN ORIENTASI PENGURUS LAZ TERHADAP NILAI SOSIAL EKONOMI: PEMANFAATAN ZAKAT DENGAN KEBIJAKAN PIMPINAN</title>
+          <abstract locale="en">This research is intended to know about accountability in the relation between amil of LAZ, that is the chief of zakah distribution and the leader of LAZ. The research is conÂ­ducted at five registered lembaga amil zakat (LAZ) in Bandung. The research is descriptive explorative survey and uses quantitave approach. The data analysis uses the Pearson Product Moment correlation coefficient. All hypothesis testing of the statements result in nonzero value of the Pearson Product Moment correlation coefficient. It can be concluded primarily that orientation of LAZ amil toward socioeconomic value of zakah utilization and leader policy are highly correlated by the amount of 0,9092.</abstract>
+          <authors>
+            <author user_group_ref="Author" seq="1" id="1">
+              <givenname locale="en">Dudi Abdul</givenname>
+              <familyname locale="en">Hadi</familyname>
+              <affiliation>
+                <name locale="en">Universitas Widyatama, Bandung</name>
+              </affiliation>
+              <email />
+            </author>
+            <author user_group_ref="Author" seq="2" id="2">
+              <givenname locale="en">Yane Devi</givenname>
+              <familyname locale="en">Anna</familyname>
+              <affiliation>
+                <name locale="en">Institut Manajemen Telkom, Bandung</name>
+              </affiliation>
+              <email />
+            </author>
+          </authors>
+          <article_galley locale="en">
+            <name locale="en">PDF</name>
+            <seq>1</seq>
+            <remote src="https://journal.uii.ac.id/JEKI/article/view/8747/7431" />
+          </article_galley>
+          <citations locale="en">
+            <citation>Abdul Rahman, Abdul Rahim. (2002). â€œAn Islamic Perspective on Corporate Accountability and Moralityâ€. Gajah Mada International Journal of Business, Vol. 4 No. 1.</citation>
+            <citation>Ahmed, Ehsan. (1996). Role of Private and Public Sector in Economic Development in an Islamic Perspective. Herndorn, Virginia USA: International Institute of Islamic Thought.</citation>
+            <citation>Anang, Arief Susanto. (2002).â€ Zakat Sebagai Kebijakan Alternatif Anti kesenjangan dan Antikemiskinanâ€. Jurnal Ekonomi Syariaâ€™h Muamalah, Vol. 1 No.1</citation>
+            <citation>Baron, Robert A., &amp; Byrne, Donn. (1997). Social Psychology. Massachussets: A. Viacom Company.</citation>
+            <citation>Brieland, Donald, &amp; Costin, Lela B., &amp; Atherton Charles R.. (1975). Contemporary Social Work: An Introduction to Social Work and Social Welfare. New York: McGraw-Hill Book Company.</citation>
+            <citation>Dunn, William N. (1981).Public Policy Analysis. Englewood Cliff: Prentice Hall Inc.</citation>
+            <citation>Expat Web Site Association Jakarta, Indonesia http: // www . expat . or . id / business / socialaccountability.html</citation>
+            <citation>Friedenberg, Lisa. (1995). Psychological Testing. Design, Analysis, and Use. Massachusstes: Allyn and Bacon.</citation>
+            <citation>Gambling, Trevor, &amp; RAA Karim. (1991). Business and Accounting Ethics in Islam. London: Mansell.</citation>
+            <citation>Ghazali, Aidit, &amp; Syed Omar. (1989). Readings ini The Concept and Methodology of Islamic Economics. Malaysia: Pelanduk Publications (M) Sdn. Bhd.</citation>
+            <citation>Haniffa, Ross, (2002). â€œSocial Reporting Disclosure: An Islamic Perspectiveâ€, Indonesian Management and Accounting Research, Vol 1 No. 2.pp 128-146</citation>
+            <citation>Hertanto, Widodo dan Teten Kustiawan. (2001). Akuntansi dan Manajemen Keuangan untuk Organisasi Pengelola Zakat. Jakarta: Institut Manajemen Zakat.</citation>
+            <citation>Iwan, Triyuwono, (2000). Organisasi dan Akuntansi Syariâ€™ah. Jakarta: LP3ES.</citation>
+            <citation>Iwan, Triyuwono, &amp; Roekhudin. (2000).â€ Konsistensi Praktik Sistem Pengendalian Intern dan Akuntabilitas Pada Lazizâ€ (Studi Kasus di Lazis X Jakarta). Jurnal Riset Akuntansi Indonesia Vol. 3 No. 2.</citation>
+            <citation>Kachigan, Sam Kash. (1986). STATISTICAL ANALYSIS an interdisciplinary Introuction to Univariate and Multivariate Methods. New York: Radius Press.</citation>
+            <citation>Kahf, Monzer. (1999). â€œThe Principle of Socio Economic Justice in The Contemporary Fiqh Zakahâ€. Iqtisad Journal of Islamic Economics Vol. 1 No. 1.</citation>
+            <citation>Mitra, Zakat, LAZ Nasional BSM UMAT. Edisi Oktober-Desember 2002.</citation>
+            <citation>Mulya, E Siregar. (1999). Zakat dan Pola Konsumsi yang Islami. Buletin Ekonomi Moneter dan Perbankan, Desember.</citation>
+            <citation>Mursyidi. (2003). Akuntansi Zakat Kontemporer. Bandung: PT. Remaja Rosdakarya.</citation>
+            <citation>Newcomb, Theodore M.. (1978). Psikologi Sosial. Terjemahan: Bandung: CV. Diponegoro.</citation>
+            <citation>Newcomb, Theodore M, (1955). Social Psychology. London: Tavistock Publications Limited.</citation>
+            <citation>Sadeq, Abulhasan Muhammad. (1990). Economic Development in Islam. Selangor Darul Ehsan Malaysia: Pelanduk Publications (M) Sdn. Bhd.</citation>
+            <citation>Selaras, Rumah Zakat Indonesia, DSUQ. Edisi Juli-Agustus 2003.</citation>
+            <citation>Shaw, Martin E., &amp; Costanzo, Philip R. (1982). Theories of Social Psychology. Second Edition. McGraw-Hill, Inc.</citation>
+            <citation>Siegel, Ramanauskas-Marconi, (1989). Behavioral Accounting. USA: South Western Publishing Co.</citation>
+            <citation>Siegel, Sidney.(1997). Statistik Nonparametrik untuk Ilmu-ilmu Sosial. Jakarta: PT. Gramedia.</citation>
+            <citation>Sofyan Syafri Harahap, (2003). â€œAkuntansi Sosial Ekonomi dan Akuntansi Islam Media Riset Akuntansiâ€, Auditing dan Informasi, Vol. 3, No. 1.</citation>
+            <citation>Subino. (1987). â€œKonstruksi dan Analisis Tes. Suatu Pengantar kepada Teori Tes dan Pengukuran. Proyek Pengembangan Lembaga Pendidikan Tenaga Kependidikanâ€. Direktorat Jenderal Pendidikan Tinggi. Departemen Pendidikan dan Kebudayaan. Jakarta.</citation>
+            <citation>Sugiono. (2001). Statistika Nonparametris untuk Penelitian. Bandung: CV. Alfabeta.</citation>
+            <citation>Suharsimi Arikunto. (1998). Prosedur Penelitian. Suatu Pendekatan Praktek. Jakarta: PT. RINEKA CIPTA.</citation>
+            <citation>Wikipedia Encyclopedia, wikipedia.org/wiki/Accountability. 2006</citation>
+            <citation>Zakat. Buletin Dompet Peduli Ummat, Pesantren Daarut Tauhid. Edisi: 02/TH-I Dzulhijjah 1422 H.</citation>
+          </citations>
+          <issue_identification>
+            <volume>1</volume>
+            <number>1</number>
+            <year>2011</year>
+            <title locale="en">Volume 1 No. 1, Januari 2011</title>
+          </issue_identification>
+          <pages>39-60</pages>
+        </publication>
+      </article>
+      <article stage="submission" locale="en" date_submitted="2011-01-01" status="3" current_publication_id="8748">
+        <id type="internal" advice="ignore">8748</id>
+        <id type="doi" advice="update">10.20885/jeki.vol1.iss1.art4</id>
+        <publication section_ref="ARTICLES" seq="1" status="3" date_published="2011-01-01">
+          <id type="internal" advice="ignore">8748</id>
+          <title locale="en">MENUJU TEORI AKUNTANSI SYARIAH BARU</title>
+          <abstract locale="en">The purpose of this article is to develop shariate accounting theory called the New Islamic Accounting Theory (NIAT), constructed from simultaneous universalities of Islamic soul (Tauhid) and localities of Indonesian uniqueness (Moslem business activity). This methodology used is Extended Integrated Islamic Hyperstructuralism (EXIST)-revisited, based on purification (tazkiyah) that would take synergy of empirical and normative values. The result is, first, normative accounting values have Tauhid values. Second, the values from Indonesian Moslem is about unified tradition works (maâ€™isyah) to realize livelihood (rizq) and discover wealth (maal) that should be blessing of God (barakah). Third, synergy consequences from normative-empirical values compose the structure of shariate accounting theory that have unique accounting objectives and technological forms of shariate financial statements.</abstract>
+          <authors>
+            <author user_group_ref="Author" seq="1" id="1">
+              <givenname locale="en">Aji Dedi</givenname>
+              <familyname locale="en">Mulawarman</familyname>
+              <affiliation>
+                <name locale="en">Fakultas Ekonomi Universitas Brawijaya, Malang</name>
+              </affiliation>
+              <email />
+            </author>
+            <author user_group_ref="Author" seq="2" id="2">
+              <givenname locale="en">Iwan</givenname>
+              <familyname locale="en">Triyuwono</familyname>
+              <affiliation>
+                <name locale="en">Fakultas Ekonomi Universitas Brawijaya, Malang</name>
+              </affiliation>
+              <email />
+            </author>
+            <author user_group_ref="Author" seq="3" id="3">
+              <givenname locale="en">Gugus</givenname>
+              <familyname locale="en">Irianto</familyname>
+              <affiliation>
+                <name locale="en">Fakultas Ekonomi Universitas</name>
+              </affiliation>
+              <email />
+            </author>
+            <author user_group_ref="Author" seq="4" id="4">
+              <givenname locale="en">Unti</givenname>
+              <familyname locale="en">Ludigdo</familyname>
+              <affiliation>
+                <name locale="en">Fakultas Ekonomi Universitas Brawijaya</name>
+              </affiliation>
+              <email />
+            </author>
+          </authors>
+          <article_galley locale="en">
+            <name locale="en">PDF</name>
+            <seq>1</seq>
+            <remote src="https://journal.uii.ac.id/JEKI/article/view/8748/7432" />
+          </article_galley>
+          <citations locale="en">
+            <citation>AAOIFI. (1998). Accounting and Auditing Standards: For Islamic Financial Institutions. Bahrain.</citation>
+            <citation>Al Attas. (1981). Islam dan Sekularisme. Bandung: Penerbit Pustaka.</citation>
+            <citation>Al-Faruqi, Ismail Raji. (1995). Islamisasi Pengetahuan. Terjemahan. Bandung: Penerbit Pustaka.</citation>
+            <citation>Al-Qosim, Abdul Malik. (2006). Bagaimana Para Salaf Mencari Nafkah. Terjemahan. Solo: Penerbit Al Qawam.</citation>
+            <citation>Bablily, Mahmud Muhammad. (1990). Etika Bisnis: Suatu Kajian Konsep Perekonomian Menurut Al Qurâ€™an dan As Sunnah. Terjemahan. Solo: Ramadhani.</citation>
+            <citation>Bahreisy, Salim. (1986). Tarjamah Riadhus Shalihin Jilid I. Bandung: PT. Al Maâ€™arif.</citation>
+            <citation>Baydoun, Nabil., and Roger Willett. (1994). Islamic Accounting Theory. The AAANZ Annual Conference.</citation>
+            <citation>Baydoun, N., and R. Willett. (2000). Islamic Corporate Report. ABACUS. 36 (1): 71-90.</citation>
+            <citation>Bourdieu, P. (1977). Outline of A Theory of Practice. Cambridge University Press.</citation>
+            <citation>Bourdieu, P, LJD. Wacquant. (1992). An Invitation to Reflective Sociology. The University of Chicago Press.</citation>
+            <citation>Chambers, RJ. (1975). Accounting for Inflation. Exposure Draft. Australia: University of Sydney.</citation>
+            <citation>Dawwabah, Asyraf Muhammad. (2006). Meneladani Keunggulan Bisnis Rasulullah: Membumikan Kembali Semangat Etika Bisnis Rasulullah. Terjemahan. Pustaka Nuun. Semarang</citation>
+            <citation>Gambling, Trevor and Rifaat AA Karim. (1991). Business and Accounting Ethics in Islam. London: Mansell.</citation>
+            <citation>Glautier, M. and Underdown, B. (1992). Accounting Theory and Practice. 4th ed. Pitman Publishing.</citation>
+            <citation>Harahap, Sofyan S. (2002). Teori Akuntansi. Edisi Revisi. Jakarta: Rajawali Press.</citation>
+            <citation>Hameed, Shahul and Rizal Yaya. (2003). â€œThe Future of Islamic Corporate Reporting: Lessons from Alternative Western Accounting Reportâ€. International conference on quality financial reporting and corporate governance. kuala lumpur. http://www.iiu.edu.my</citation>
+            <citation>Hamka. (1984). Islam: Revolusi Ideologi dan Keadilan Sosial. Jakarta: PT. Pustaka Panjimas.</citation>
+            <citation>Huda, Nor. (2007). Sejarah Intelektual Islam di Indonesia. Yogyakarta: Ar-Ruz Media.</citation>
+            <citation>Ibn Khaldun. (2000). Muqaddimah. Jakarta: Penerbit Firdaus.</citation>
+            <citation>Ibrahim, Abdullah Lam bin. (2005). Fiqh Finansial: Referensi Lengkap Kaum Hartawan dan Calon Hartawan Muslim untuk Mengelola Hartanya Agar Menjadi Berkah. Solo: Era Intermedia.</citation>
+            <citation>Irianto, Gugus. (2003). â€œSkandal Korporasi dan Akuntanâ€. Lintasan Ekonomi. LPPI-FE Unibraw. Vol. XX (2) Juli pp 104-114.</citation>
+            <citation>Irianto, Gugus. (2006). â€œPrivatisasi BUMN di Indonesia: Pilihan atau Keniscayaan? Telaah dari Perspektif PEA. Proceeding The 2nd Postgraduate Consortium on Accounting 2006. Malang: Brawijaya University. June, 14-15.</citation>
+            <citation>Karim, Adiwarman Azwar. (2004). Sejarah Pemikiran Ekonomi Islam. Edisi Kedua. Jakarta: Penerbit Rajawali.</citation>
+            <citation>Kuntowijoyo. (1999). Budaya dan Masyarakat. Edisi Revisi Sampul. Jogjakarta:Tiara Wacana.</citation>
+            <citation>Kuntowijoyo. (2004). Islam sebagai Ilmu: Epistemologi, Metodologi dan Etika. Bandung: Teraju.</citation>
+            <citation>Mahar, Cheelen., Richard Harker, Chris Wilkes. (2005). â€œPosisi Teoritis Dasarâ€. Dalam (Habitus x Modal) + Ranah = Praktik: Pengantar Paling Komprehensif kepada Pemikiran Pierre Bourdieu. Terjemahan. Jogjakarta: Jalasutra.</citation>
+            <citation>Majid, Abdul Munâ€™im. (1997). Sejarah Kebudayaan Islam. Bandung: Pustaka.</citation>
+            <citation>Mahzar, Armahedi. (2004). Revolusi Integralisme Islam: Merumuskan Paradigma Sains dan Teknologi Islami. Bandung: Mizan.</citation>
+            <citation>Masâ€™udi, Masdar F. (1995). Meletakkan Kembali Maslahat sebagai Acuan Syariâ€™ah. Jurnal Ilmu dan Kebudayaan Ulumul Qurâ€™an. No. 3. Vol. VI. h. 94-99.</citation>
+            <citation>Mulawarman, Aji Dedi. (2006). Menyibak Akuntansi Syariâ€™ah: Rekonstruksi Teknologi Akuntansi Syariâ€™ah Dari Wacana Ke Aksi. Jogjakarta: Kreasi Wacana.</citation>
+            <citation>Mulawarman, Aji Dedi. (2007). Menggagas Neraca Syariâ€™ah Berbasis Maal: Kontekstualisasi â€œKekayaan Altruistik Islamiâ€. The 1st Accounting Conference. FE-UI Depok. 7-9 Nopember.</citation>
+            <citation>Mulawarman, Aji Dedi. (2007). â€œMenggagas Laporan Keuangan Syariâ€™ah Berbasis Trilogi Maâ€™isyah-Rizq-Maalâ€. Simposium Nasional Ekonomi Islam 3. Unpad. Bandung. 14-15 Nopember.</citation>
+            <citation>Mulawarman, Aji Dedi. (2008).â€ Pendidikan Akuntansi Berbasis Cinta: Lepas dari Hegemoni Korporasi Menuju Pendidikan yang Memberdayakan dan Konsepsi Pembelajaran yang Melampauiâ€. Ekuitas. Vol 12, No. 2. p 142-158</citation>
+            <citation>Mulawarman, Aji Dedi.(2009). Akuntansi Syariah: Konsep, Teori dan Laporan Keuangan. Jakarta: Epublishing.</citation>
+            <citation>Muslehuddin, M. (2004). Sistem Perbankan dalam Islam. Jakarta: Rineka Cipta.</citation>
+            <citation>Rahman, Fazlur. (1965). Islamic Methodology in History. Karachi: Central Institute of Islamic Research.</citation>
+            <citation>Rahman, Fazlur. (1995). â€œIslam and The Problem of Economic Justiceâ€. Journal of Islamic Economics. 1 (1) pp. 14-58. Malaysia: International Islamic University.</citation>
+            <citation>Rahman, Fazlur. 1987. Islam Modern: Tantangan Pembaruan Islam. Terjemahan. Jogyakarta: Shalahuddin Press.</citation>
+            <citation>Rahman, Fazlur. (2000). Islam dan Modernitas: Tentang Transformasi Intelektual. Bandung: Pustaka.</citation>
+            <citation>Rahman, Fazlur. (2003). Islam. Terjemahan. Pustaka. Bandung</citation>
+            <citation>Riduwan, Akhmad. (2006). â€œPemikiran Dekonstruksi Terhadap Konsep Akuntansi Akrualâ€. Makalah Seminar Akuntansi Himpunan Mahasiswa Jurusan Akuntansi STIESIA. Surabaya. Oktober.</citation>
+            <citation>Shihab, Quraish. (2005). Tafsir Al Misbah: Pesan, Kesan dan Keserasian Al Qurâ€™an. Volume 1. Jakarta: Lentera Hati.</citation>
+            <citation>Slamet, M. (2001). Enterprise Theory dalam Konstruksi Akuntansi Syariah (studi teoritis pada konsep akuntansi syariah). Skripsi, Malang FE UB.</citation>
+            <citation>Sulaiman, Maliah. (2001). Testing a Model of Islamic Corporate Financial Reports: Some Experimental Evidence. IIUM Journal of Economics and Management 9 (2) pp. 115-39</citation>
+            <citation>Sulaiman, Maliah bt. and Radziah Abdul Latiff. (2003). Corporate Reporting for Islamic Banks: Between Idealism and Pragmatism. International Islamic Banking Conference 2003 â€“ Conference Proceedings. September, 9-10. Prato, Italy.</citation>
+            <citation>Suwardjono. (2003). Akuntansi Pengantar Bagian 1: Proses Penciptaan Data Pendekatan Sistem. Edisi Ketiga. Yogyakarta: BPFE.</citation>
+            <citation>Syafei, Ade Wirman, MI Sigit Pramono dan Sartini Wardiwiyono. (2004). â€œThe Level of Islamic Banks Annual Reports Shariah Conformance: a Comparative Study of Islamic Bank in Indonesia and Malaysiaâ€. Simponas Sistem Ekonomi Islam II. PPBEU Unibraw, Malang. h. 203-220</citation>
+            <citation>Triyuwono, Iwan. (2002). â€œKonsep dasar Teori Akuntansi Syariâ€™ahâ€. Seminar Shariâ€™ah Accounting Event 2002. KiAMI-FSI Senat Mahasiswa FEUI. 29 Oktober.</citation>
+            <citation>Triyuwono, Iwan. (2006). Akuntansi Syariâ€™ah: Perspektif, Metodologi dan Teori. Jakarta: Rajawali Press.</citation>
+            <citation>Triyuwono, Iwan. (2007). â€œMenggagas Sing Liyan Untuk Formulasi Nilai Tambah Syariâ€™ahâ€. Simposium Nasional Akuntansi X. Makassar: Unhas .26-28 Juli.</citation>
+            <citation>Vogel, Frank E., Samuel L. Hayes.(1998). Islamic Law and Finance. Kluwer Law International.</citation>
+            <citation>Wainwright, Steven P. (2000). For Bourdieu in Realist Social Science. Cambridge Realist Workshop 10th Anniversary Reunion Conference. Cambridge, May.</citation>
+            <citation>Wibowo, Rachmat Adhi. (2007). â€œKerja Sebagai Perwujudan Ibadah. Kajian Malam Ahad Mushalla Al-Aminâ€. Seonso, Daegu, Korea. 11 Agustus. Download internet http://www.alaminkorea.com</citation>
+            <citation>Wolk, I., JR. Francis, MG. Tearney. (1989). Accounting Theory: A Conceptual and Institutional Approach. Second Edition. Boston: PWS-KENT Publishing Company.</citation>
+          </citations>
+          <issue_identification>
+            <volume>1</volume>
+            <number>1</number>
+            <year>2011</year>
+            <title locale="en">Volume 1 No. 1, Januari 2011</title>
+          </issue_identification>
+          <pages>61-78</pages>
+        </publication>
+      </article>
+      <article stage="submission" locale="en" date_submitted="2011-01-01" status="3" current_publication_id="8749">
+        <id type="internal" advice="ignore">8749</id>
+        <id type="doi" advice="update">10.20885/jeki.vol1.iss1.art5</id>
+        <publication section_ref="ARTICLES" seq="1" status="3" date_published="2011-01-01">
+          <id type="internal" advice="ignore">8749</id>
+          <title locale="en">MENGGAGAS KONSEP PENERAPAN SHARIAH COMPLIANCE AUDIT: SEBUAH UPAYA PENCAPAIAN ISLAMIC CORPORATE GOVERNANCE</title>
+          <abstract locale="en">This research is aimed to give solution over the imbalance that happened between the practices that shariah business entities actually do and those that should be done. This research will formulate an ideal concept regarding shariah compliance audit which involves independent party outside the company structureâ€”the independent party suggested in this research is Certified Shariah Public Accountant (APSB)â€”who will assess the fairness of shariah business entity practices in accordance with Indonesian Generally Accepted Principals of Shariah Business Practices (PPBSBUI). Then hopefully there would be no more public deception upon â€œshariahâ€ label on shariah business entities and the islamic corporate governance on shariah business entities will be accomplished as well.</abstract>
+          <authors>
+            <author user_group_ref="Author" seq="1" id="1">
+              <givenname locale="en">N. Iman</givenname>
+              <familyname locale="en">Prakosa</familyname>
+              <affiliation>
+                <name locale="en">Fakultas Ekonomika dan Bisnis,  Universitas Gadjah Mada, Yogyakarta</name>
+              </affiliation>
+              <email />
+            </author>
+            <author user_group_ref="Author" seq="2" id="2">
+              <givenname locale="en">Lutfi</givenname>
+              <familyname locale="en">Zuchri</familyname>
+              <affiliation>
+                <name locale="en">Fakultas Ekonomika dan Bisnis,  Universitas Gadjah Mada, Yogyakarta</name>
+              </affiliation>
+              <email />
+            </author>
+          </authors>
+          <article_galley locale="en">
+            <name locale="en">PDF</name>
+            <seq>1</seq>
+            <remote src="https://journal.uii.ac.id/JEKI/article/view/8749/7433" />
+          </article_galley>
+          <citations locale="en">
+            <citation>Afifudin, Muhammad. (2007) â€œSistem Murabahahâ€, Asy-Syariah, Vol. III/No.29, Yogyakarta.</citation>
+            <citation>Al-â€˜Utsaimin, Muhammad bin Sholeh. (2007) Al-Ushul min </citation>
+            <citation>Bank Indonesia. (2000) Ringkasan Pokok-pokok Hasil Penelitian â€œPotensi, Preferensi dan Perilaku Masyarakat Terhadap Bank Syariah di Pulau Jawaâ€, Direktorat Penelitian dan Pengaturan Perbankan, Bank Indonesia, Jakarta</citation>
+            <citation>Chapra, M. Umer dan H. Ahmed. (2002) Corporate Governance in Islamic Financial Institutions, IDB Ocassional Paper No. 6, Jeddah: IRTI</citation>
+            <citation>Grais, W and Pellegrini M. (2006) Corporate Governance and Shariah Compliance in Institutions OfferiSng Islamic Financial Services, World Bank.</citation>
+            <citation>Ilyas, Nasirwan. (2004) Seputar Isu Corporate Governance dalam Bank Syariah, Jakarta: Bank Indonesia.</citation>
+            <citation>Khallaf, Abdul Wahhab. (1994) Ilmu Ushul Fiqh, Semarang: Dina Utama.</citation>
+            <citation>Prakosa, N. Iman. (2009), Permasalahan Mental Accounting dan Kepatuhan terhadap Syariah Islam dalam Pengambilan Keputusan Pendanaan Eksternal: Sebuah Eksperimen tentang Islamic Mental Accounting, Skripsi, Yogyakarta: Fakultas Ekonomika dan Bisnis Universitas Gadjah Mada</citation>
+            <citation>Ramdhani, Abdul Malik bin Ahmad. (2004) Sittu Durror, Yogyakarta: Media Hidayat.</citation>
+            <citation>Saidi, Zaim. (2003a) â€˜Contradictio in Terminis: Kritik Atas Perbankan Syariahâ€™, Jurnal Ekonomi Syariah MUAMALAH, Vol. 2, Oktober, hlm. 53-65.</citation>
+            <citation>Saidi, Zaim dan Imran N. Hosein. (2003b) Tidak Islamnya Bank Islam: Kritik Atas Perbankan Syariah, Jakarta: Pustaka Adina.</citation>
+            <citation>Suwardjono. (1992) â€œKerangka Kerja Prinsip Akuntansi Berterima Umum Indonesiaâ€, Gagasan Pengembangan Profesi dan Pendidikan Akuntansi di Indonesia: Kumpulan Artikel, Yogyakarta: BPFE.</citation>
+            <citation>_______. (2006) Teori Akuntansi: Perekayasaan Pelaporan Keuangan, Edisi Ketiga, Yogyakarta: BPFE.</citation>
+          </citations>
+          <issue_identification>
+            <volume>1</volume>
+            <number>1</number>
+            <year>2011</year>
+            <title locale="en">Volume 1 No. 1, Januari 2011</title>
+          </issue_identification>
+          <pages>79-87</pages>
+        </publication>
+      </article>
+    </articles>
+  </issue>
+</issues>

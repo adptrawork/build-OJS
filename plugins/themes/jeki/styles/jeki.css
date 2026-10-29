@@ -1,0 +1,64 @@
+/* JEKI theme — tokens only. Layout menyusul di atas theme default. */
+
+:root {
+  --jeki-colour-ink: #111418;
+  --jeki-colour-ink-soft: #4a525c;
+  --jeki-colour-accent: #14532d;
+  --jeki-colour-accent-soft: #dcfce7;
+  --jeki-colour-surface: #ffffff;
+  --jeki-colour-surface-alt: #f6f7f8;
+  --jeki-colour-border: #d7dbe0;
+
+  --jeki-font-body: "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --jeki-font-heading: "Noto Serif", Georgia, serif;
+
+  --jeki-space-1: 0.25rem;
+  --jeki-space-2: 0.5rem;
+  --jeki-space-3: 0.75rem;
+  --jeki-space-4: 1rem;
+  --jeki-space-6: 1.5rem;
+  --jeki-space-8: 2rem;
+  --jeki-space-12: 3rem;
+
+  --jeki-radius: 4px;
+  --jeki-measure: 68ch;
+}
+
+/* Slot debug: aktif hanya dengan ?slots=1 (lihat JekiThemePlugin). */
+body.jeki-slots [data-slot] {
+  outline: 1px dashed var(--jeki-colour-accent);
+  outline-offset: 2px;
+  position: relative;
+}
+
+body.jeki-slots [data-slot]::before {
+  content: attr(data-slot);
+  position: absolute;
+  top: -0.65rem;
+  left: 0;
+  font: 600 10px/1 var(--jeki-font-body);
+  background: var(--jeki-colour-accent);
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 2px;
+  z-index: 20;
+}
+
+/* --- Layout homepage JEKI --- */
+.jeki-home { max-width: 1100px; margin: 0 auto; padding: var(--jeki-space-6) var(--jeki-space-4); }
+.jeki-hero { display: grid; grid-template-columns: 1fr 280px; gap: var(--jeki-space-8); align-items: start; margin-bottom: var(--jeki-space-12); }
+.jeki-hero h1 { font-family: var(--jeki-font-heading); margin: 0 0 var(--jeki-space-2); }
+.jeki-hero__tagline { color: var(--jeki-colour-ink-soft); max-width: var(--jeki-measure); }
+.jeki-hero__cta { display: flex; gap: var(--jeki-space-2); margin-top: var(--jeki-space-4); flex-wrap: wrap; }
+.jeki-btn { display: inline-block; padding: var(--jeki-space-2) var(--jeki-space-4); border: 1px solid var(--jeki-colour-border); border-radius: var(--jeki-radius); text-decoration: none; color: var(--jeki-colour-ink); }
+.jeki-btn--primary { background: var(--jeki-colour-accent); color: #fff; border-color: var(--jeki-colour-accent); }
+.jeki-hero__issue img { max-width: 100%; border-radius: var(--jeki-radius); }
+.jeki-eyebrow { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--jeki-colour-ink-soft); }
+.jeki-issue-id { font-weight: 600; }
+.jeki-about, .jeki-current-issue, .jeki-latest { margin-bottom: var(--jeki-space-8); }
+.jeki-latest__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--jeki-space-4); }
+.jeki-card { border: 1px solid var(--jeki-colour-border); border-radius: var(--jeki-radius); padding: var(--jeki-space-4); }
+.jeki-card h3 { font-size: 1rem; margin: 0; }
+.jeki-sidebar { margin-top: var(--jeki-space-8); padding-top: var(--jeki-space-4); border-top: 1px solid var(--jeki-colour-border); }
+.jeki-empty { color: var(--jeki-colour-ink-soft); font-style: italic; }
+@media (max-width: 760px) { .jeki-hero { grid-template-columns: 1fr; } }
