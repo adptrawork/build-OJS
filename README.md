@@ -50,6 +50,17 @@ ddev exec php /var/www/html/scripts/register-plugins.php
 
 ---
 
+## 📦 Paket Plugin Siap Unggah (Web UI Upload)
+
+Arsip tema dan plugin siap unggah melalui dashboard OJS (**Settings** → **Website** → **Plugins** → **Upload A New Plugin**) tersedia di direktori `dist/`:
+
+- `dist/akdisi-theme.tar.gz` & `dist/akdisi-theme.zip` — Tema Akdisi
+- `dist/akdisi-seo.tar.gz` & `dist/akdisi-seo.zip` — Plugin SEO Akdisi
+
+Jalankan `./scripts/package.sh` kapan saja untuk memperbarui berkas arsip setelah mengedit template.
+
+---
+
 ## 📖 Dokumentasi Lengkap
 
 Panduan mendalam yang mencakup:

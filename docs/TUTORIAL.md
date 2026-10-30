@@ -13,11 +13,12 @@ Semua arsitektur, tautan URL, kredensial, panduan alur kerja editorial, cara mem
 3. [Panduan Langkah-demi-Langkah: Membangun OJS dari Nol](#3-panduan-langkah-demi-langkah-membangun-ojs-dari-nol)
 4. [Anatomi Desain Tema Akdisi (Maroon / Burgundy)](#4-anatomi-desain-tema-akdisi-maroon--burgundy)
 5. [Fitur SEO & Metadata Akademik (Plugin akdisiSeo)](#5-fitur-seo--metadata-akademik-plugin-akdisiseo)
-6. [Panduan Praktek Mandiri: Import Artikel & Terbitan (Native XML)](#6-panduan-praktek-mandiri-import-artikel--terbitan-native-xml)
-7. [Panduan Penggunaan OJS untuk Editor & Pengelola Jurnal](#7-panduan-penggunaan-ojs-untuk-editor--pengelola-jurnal)
-8. [Pengelolaan Halaman Statis & Menu Navigasi](#8-pengelolaan-halaman-statis--menu-navigasi)
-9. [Pengelolaan Blok Kustom (Custom Blocks)](#9-pengelolaan-blok-kustom-custom-blocks)
-10. [Operasional, Pemeliharaan & Troubleshooting](#10-operasional-pemeliharaan--troubleshooting)
+6. [Paket Distribusi Plugin & Cara Unggah via Web Dashboard (Settings > Website > Plugins)](#6-paket-distribusi-plugin--cara-unggah-via-web-dashboard-settings--website--plugins)
+7. [Panduan Praktek Mandiri: Import Artikel & Terbitan (Native XML)](#7-panduan-praktek-mandiri-import-artikel--terbitan-native-xml)
+8. [Panduan Penggunaan OJS untuk Editor & Pengelola Jurnal](#8-panduan-penggunaan-ojs-untuk-editor--pengelola-jurnal)
+9. [Pengelolaan Halaman Statis & Menu Navigasi](#9-pengelolaan-halaman-statis--menu-navigasi)
+10. [Pengelolaan Blok Kustom (Custom Blocks)](#10-pengelolaan-blok-kustom-custom-blocks)
+11. [Operasional, Pemeliharaan & Troubleshooting](#11-operasional-pemeliharaan--troubleshooting)
 
 ---
 
@@ -222,7 +223,56 @@ Plugin `plugins/generic/akdisiSeo/` berfungsi otomatis di latar belakang untuk m
 
 ---
 
-## 6. Panduan Praktek Mandiri: Import Artikel & Terbitan (Native XML)
+## 6. Paket Distribusi Plugin & Cara Unggah via Web Dashboard (Settings > Website > Plugins)
+
+Selain menghubungkan folder tema dan plugin via symlink pengembang, seluruh kode tema dan plugin Akdisi juga telah dipaketkan menjadi arsip siap pasang di folder `dist/`.
+
+### Daftar Berkas Paket Distribusi (`dist/`)
+
+| Berkas Paket | Format | Tipe Plugin | Deskripsi |
+|---|---|---|---|
+| `dist/akdisi-theme.tar.gz` | `.tar.gz` (Standar Resmi PKP) | `plugins.themes` | Tema Maroon Akdisi lengkap dengan seluruh blok komponen beranda |
+| `dist/akdisi-theme.zip` | `.zip` | `plugins.themes` | Versi kompresi ZIP untuk sistem yang membutuhkan .zip |
+| `dist/akdisi-seo.tar.gz` | `.tar.gz` (Standar Resmi PKP) | `plugins.generic` | Plugin SEO (Sitemap XML, JSON-LD, Open Graph, Canonical) |
+| `dist/akdisi-seo.zip` | `.zip` | `plugins.generic` | Versi kompresi ZIP untuk sistem yang membutuhkan .zip |
+
+> **Format Resmi PKP**: OJS secara resmi mewajibkan arsip plugin berbentuk `.tar.gz`. Jika mengunggah via dashboard web OJS, utamakan memilih berkas `.tar.gz`.
+
+---
+
+### Cara Unggah & Pasang Plugin via Dashboard OJS (GUI):
+
+1. Login ke akun admin: `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/login` (`admin` / `akdisi-admin`).
+2. Di sidebar kiri, buka **Settings** → **Website** → **Plugins**.
+3. Di pojok kanan atas daftar plugin, klik tombol biru **Upload A New Plugin**.
+4. Pada kotak dialog yang muncul:
+   - Klik **Upload File** / **Pilih Berkas**.
+   - Pilih berkas `dist/akdisi-theme.tar.gz` (atau `dist/akdisi-seo.tar.gz`).
+   - Klik tombol **Save** (Simpan).
+5. OJS akan otomatis:
+   - Mengekstrak isi paket ke folder `plugins/themes/akdisi` (atau `plugins/generic/akdisiSeo`).
+   - Mendaftarkan entri versi plugin ke database `versions`.
+   - Menampilkan notifikasi sukses pemasangan.
+6. **Mengaktifkan Tema**:
+   - Masuk ke **Settings** → **Website** → **Appearance**.
+   - Pada bagian **Theme**, pilih **Akdisi Theme**.
+   - Klik **Save** di bagian bawah halaman.
+7. **Mengaktifkan Plugin SEO**:
+   - Buka **Settings** → **Website** → **Plugins** → **Installed Plugins**.
+   - Cari **Akdisi SEO Plugin** di kategori *Generic Plugins*, lalu centang kotak **Enable**.
+
+---
+
+### Cara Memaketkan Ulang (Re-package) Berkas:
+Jika Anda telah mengubah template `.tpl`, CSS, atau kode PHP di folder `plugins/`, Anda dapat memperbarui seluruh berkas di folder `dist/` hanya dengan satu perintah:
+
+```bash
+./scripts/package.sh
+```
+
+---
+
+## 7. Panduan Praktek Mandiri: Import Artikel & Terbitan (Native XML)
 
 Dalam repositori ini, telah disiapkan sampel file XML valid:
 `import/xml/issue-937.xml` (berisi 1 Issue *Vol. 1 No. 1, Januari 2011* lengkap dengan 5 artikel, daftar pustaka, afiliasi penulis, dan tautan unduhan PDF).
@@ -265,7 +315,7 @@ Untuk merasakan alur kerja pengguna non-teknis:
 
 ---
 
-## 7. Panduan Penggunaan OJS untuk Editor & Pengelola Jurnal
+## 8. Panduan Penggunaan OJS untuk Editor & Pengelola Jurnal
 
 OJS mengimplementasikan alur kerja penerbitan ilmiah berstandar peer-review dalam 4 tahapan utama:
 
@@ -341,7 +391,7 @@ OJS mengimplementasikan alur kerja penerbitan ilmiah berstandar peer-review dala
 
 ---
 
-## 8. Pengelolaan Halaman Statis & Menu Navigasi
+## 9. Pengelolaan Halaman Statis & Menu Navigasi
 
 Jurnal Akdisi telah dibekali dengan **20 rute halaman statis** penting sesuai kriteria akreditasi SINTA & DOAJ:
 
@@ -378,7 +428,7 @@ submission-preparation, loa, faq
 
 ---
 
-## 9. Pengelolaan Blok Kustom (Custom Blocks)
+## 10. Pengelolaan Blok Kustom (Custom Blocks)
 
 Tema Akdisi membaca data komponen dinamis beranda langsung dari tabel `journal_settings` dengan konteks `journal_id=1`.
 
@@ -403,7 +453,7 @@ ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
 
 ---
 
-## 10. Operasional, Pemeliharaan & Troubleshooting
+## 11. Operasional, Pemeliharaan & Troubleshooting
 
 ### Ringkasan Perintah CLI Cepat (Daily Commands)
 

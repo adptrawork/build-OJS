@@ -3,6 +3,8 @@
 ## 2026-10-31 (sesi 5 — reset ke nol, pemisahan plugin/tema kustom & panduan import)
 
 ### Added
+- `scripts/package.sh`: Skrip pemaket otomatis seluruh tema dan plugin ke dalam arsip `.tar.gz` (standar PKP) dan `.zip` di folder `dist/` untuk instalasi via web dashboard (Settings > Website > Plugins > Upload A New Plugin).
+- `dist/akdisi-theme.tar.gz`, `dist/akdisi-theme.zip`, `dist/akdisi-seo.tar.gz`, `dist/akdisi-seo.zip`: Paket distribusi terverifikasi valid terhadap `PluginHelper::installPlugin`.
 - `scripts/reset.sh`: Pipeline 1-perintah untuk reset total instance OJS ke kondisi awal bersih (0 issue, 0 submission) siap untuk praktek import manual.
 - Komponen `floatingActions.tpl` (S-HOME-15) untuk quick actions (WhatsApp link via custom setting `akdisiContactUrl` + back to top).
 - Penyesuaian `scripts/create-journal.php`: menggunakan facade `Repo::section()` (standar OJS 3.5) menggantikan deprecated SectionDAO.
