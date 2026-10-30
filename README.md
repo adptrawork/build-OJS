@@ -38,26 +38,32 @@ Kode kustom disimpan **terpisah di luar folder core OJS upstream** (`ojs/` diaba
 # 1. Reset total OJS ke kondisi awal bersih (0 artikel, 0 terbitan)
 ./scripts/reset.sh
 
-# 2. Praktek import manual artikel/issue (CLI)
+# 2. Update instan tema & plugin kustom (sinkronisasi file, DB & cache tanpa re-upload)
+./scripts/reload-plugins.sh
+
+# 3. Paketkan ulang arsip & naikkan versi build untuk upgrade via Web UI
+./scripts/package.sh --bump
+
+# 4. Praktek import manual artikel/issue (CLI)
 ddev exec bash -c 'cd /var/www/html/ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml AKDISI --user_name admin'
 
-# 3. Bersihkan cache template OJS
+# 5. Bersihkan cache template OJS
 ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
-
-# 4. Registrasi plugin kustom ke tabel versions
-ddev exec php /var/www/html/scripts/register-plugins.php
 ```
 
 ---
 
-## 📦 Paket Plugin Siap Unggah (Web UI Upload)
+## 📦 Paket Plugin & Pola Update (Web UI Upload)
 
-Arsip tema dan plugin siap unggah melalui dashboard OJS (**Settings** → **Website** → **Plugins** → **Upload A New Plugin**) tersedia di direktori `dist/`:
+Arsip tema dan plugin siap dipasang tersedia di direktori `dist/`:
 
 - `dist/akdisi-theme.tar.gz` & `dist/akdisi-theme.zip` — Tema Akdisi
 - `dist/akdisi-seo.tar.gz` & `dist/akdisi-seo.zip` — Plugin SEO Akdisi
 
-Jalankan `./scripts/package.sh` kapan saja untuk memperbarui berkas arsip setelah mengedit template.
+### 🔄 Pola Update yang Didukung:
+1. **Update via Web UI (OJS Production)**: Jalankan `./scripts/package.sh --bump` untuk menaikkan versi, lalu masuk ke **Installed Plugins** → klik plugin → klik tombol **Upgrade** (OJS mewajibkan versi baru lebih tinggi daripada versi lama).
+2. **Update Instan via CLI (Local Development)**: Jalankan `./scripts/reload-plugins.sh`. Kode kustom langsung aktif tanpa perlu upload ulang.
+3. **Reset Total**: Jalankan `./scripts/reset.sh` jika ingin mengulang dari titik nol.
 
 ---
 

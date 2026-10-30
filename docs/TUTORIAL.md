@@ -14,11 +14,12 @@ Semua arsitektur, tautan URL, kredensial, panduan alur kerja editorial, cara mem
 4. [Anatomi Desain Tema Akdisi (Maroon / Burgundy)](#4-anatomi-desain-tema-akdisi-maroon--burgundy)
 5. [Fitur SEO & Metadata Akademik (Plugin akdisiSeo)](#5-fitur-seo--metadata-akademik-plugin-akdisiseo)
 6. [Paket Distribusi Plugin & Cara Unggah via Web Dashboard (Settings > Website > Plugins)](#6-paket-distribusi-plugin--cara-unggah-via-web-dashboard-settings--website--plugins)
-7. [Panduan Praktek Mandiri: Import Artikel & Terbitan (Native XML)](#7-panduan-praktek-mandiri-import-artikel--terbitan-native-xml)
-8. [Panduan Penggunaan OJS untuk Editor & Pengelola Jurnal](#8-panduan-penggunaan-ojs-untuk-editor--pengelola-jurnal)
-9. [Pengelolaan Halaman Statis & Menu Navigasi](#9-pengelolaan-halaman-statis--menu-navigasi)
-10. [Pengelolaan Blok Kustom (Custom Blocks)](#10-pengelolaan-blok-kustom-custom-blocks)
-11. [Operasional, Pemeliharaan & Troubleshooting](#11-operasional-pemeliharaan--troubleshooting)
+7. [Pola & Cara Mengupdate Plugin/Tema yang Pernah Diunggah](#7-pola--cara-mengupdate-plugintema-yang-pernah-diunggah)
+8. [Panduan Praktek Mandiri: Import Artikel & Terbitan (Native XML)](#8-panduan-praktek-mandiri-import-artikel--terbitan-native-xml)
+9. [Panduan Penggunaan OJS untuk Editor & Pengelola Jurnal](#9-panduan-penggunaan-ojs-untuk-editor--pengelola-jurnal)
+10. [Pengelolaan Halaman Statis & Menu Navigasi](#10-pengelolaan-halaman-statis--menu-navigasi)
+11. [Pengelolaan Blok Kustom (Custom Blocks)](#11-pengelolaan-blok-kustom-custom-blocks)
+12. [Operasional, Pemeliharaan & Troubleshooting](#12-operasional-pemeliharaan--troubleshooting)
 
 ---
 
@@ -264,15 +265,86 @@ Selain menghubungkan folder tema dan plugin via symlink pengembang, seluruh kode
 ---
 
 ### Cara Memaketkan Ulang (Re-package) Berkas:
-Jika Anda telah mengubah template `.tpl`, CSS, atau kode PHP di folder `plugins/`, Anda dapat memperbarui seluruh berkas di folder `dist/` hanya dengan satu perintah:
+Jika Anda telah mengubah template `.tpl`, CSS, atau kode PHP di folder `plugins/`, Anda dapat memperbarui seluruh berkas di folder `dist/` dengan:
 
 ```bash
+# Buat paket dengan versi yang ada saat ini
 ./scripts/package.sh
+
+# ATAU: Buat paket sekaligus menaikkan versi (misal: 0.1.0.0 -> 0.1.0.1) agar OJS menerima Upgrade
+./scripts/package.sh --bump
 ```
 
 ---
 
-## 7. Panduan Praktek Mandiri: Import Artikel & Terbitan (Native XML)
+## 7. Pola & Cara Mengupdate Plugin/Tema yang Pernah Diunggah
+
+Salah satu kendala umum di OJS adalah ketika Anda sudah pernah mengunggah sebuah plugin, lalu ingin mengunggah versi perbaikannya. Jika Anda mengklik **Upload A New Plugin** kembali, OJS akan menolak dengan pesan kesalahan:
+> *"The plugin is already installed"* atau *"A newer version of this plugin is already installed"*.
+
+Berikut adalah **3 pola update yang benar** agar proses pembaruan berjalan mulus tanpa hambatan:
+
+---
+
+### POLA 1: Update via Web UI (Alur Upgrade Resmi OJS)
+
+Gunakan alur ini jika Anda mengelola OJS produksi melalui browser tanpa akses terminal langsung:
+
+1. **Naikkan Versi Paket Terlebih Dahulu**:
+   Di komputer Anda, jalankan perintah ini sebelum mengunggah:
+   ```bash
+   ./scripts/package.sh --bump
+   ```
+   *Skrip ini otomatis menaikkan nomor versi di `version.xml` (contoh: dari `0.1.0.0` menjadi `0.1.0.1`) dan memperbarui berkas di folder `dist/`.*
+   > **Aturan OJS**: OJS mewajibkan versi berkas baru **secara ketat lebih tinggi** daripada versi yang sudah tersimpan di database. Jika versinya sama, OJS akan menolak proses upgrade.
+
+2. **Gunakan Tombol "Upgrade", BUKAN "Upload A New Plugin"**:
+   - Login ke admin OJS.
+   - Buka **Settings** → **Website** → **Plugins**.
+   - Masuk ke tab **Installed Plugins**.
+   - Cari plugin yang ingin diperbarui:
+     * Untuk Tema: Buka kategori **Theme Plugins** → cari **Akdisi Theme**.
+     * Untuk SEO: Buka kategori **Generic Plugins** → cari **Akdisi SEO Plugin**.
+   - Klik **tanda segitiga biru / expand** di samping nama plugin tersebut.
+   - Klik tombol **Upgrade** (di samping opsi delete/disable).
+   - Unggah berkas `.tar.gz` yang baru (misal `dist/akdisi-theme.tar.gz`).
+   - Klik **Save**.
+3. OJS akan otomatis menimpa file lama dengan file baru, memperbarui nomor versi di database, dan memunculkan notifikasi sukses!
+
+---
+
+### POLA 2: Update Instan via CLI (Sangat Cepat — Mode Pengembang / Lokal)
+
+Jika Anda bekerja di lingkungan DDEV lokal di mana folder `plugins/themes/akdisi` terhubung via symlink ke dalam OJS:
+
+**Anda tidak perlu memaketkan `.tar.gz` ataupun mengunggah lewat browser!**
+
+Setiap perubahan yang Anda simpan pada file template `.tpl`, CSS, JavaScript, atau PHP di folder `plugins/` sebenarnya sudah langsung berada di dalam OJS. Anda hanya perlu membersihkan cache dan menyinkronkan database dengan menjalankan:
+
+```bash
+./scripts/reload-plugins.sh
+```
+
+Skrip ini otomatis:
+1. Memastikan symlink aktif dan utuh.
+2. Membaca dan mendaftarkan versi terbaru ke tabel `versions`.
+3. Memastikan status plugin tetap aktif (`enabled = 1`).
+4. Membersihkan seluruh cache template Smarty (`cache/t_compile`).
+
+---
+
+### POLA 3: Reset Total ke Kondisi Awal (Clean Slate)
+
+Jika terjadi konflik berat atau Anda ingin menguji coba seluruh alur instalasi dari titik nol:
+
+```bash
+./scripts/reset.sh
+```
+Skrip ini akan mengembalikan instance OJS ke kondisi bersih (0 artikel, 0 issue) dengan tema dan plugin Akdisi terpasang rapi.
+
+---
+
+## 8. Panduan Praktek Mandiri: Import Artikel & Terbitan (Native XML)
 
 Dalam repositori ini, telah disiapkan sampel file XML valid:
 `import/xml/issue-937.xml` (berisi 1 Issue *Vol. 1 No. 1, Januari 2011* lengkap dengan 5 artikel, daftar pustaka, afiliasi penulis, dan tautan unduhan PDF).
@@ -315,7 +387,7 @@ Untuk merasakan alur kerja pengguna non-teknis:
 
 ---
 
-## 8. Panduan Penggunaan OJS untuk Editor & Pengelola Jurnal
+## 9. Panduan Penggunaan OJS untuk Editor & Pengelola Jurnal
 
 OJS mengimplementasikan alur kerja penerbitan ilmiah berstandar peer-review dalam 4 tahapan utama:
 
@@ -391,7 +463,7 @@ OJS mengimplementasikan alur kerja penerbitan ilmiah berstandar peer-review dala
 
 ---
 
-## 9. Pengelolaan Halaman Statis & Menu Navigasi
+## 10. Pengelolaan Halaman Statis & Menu Navigasi
 
 Jurnal Akdisi telah dibekali dengan **20 rute halaman statis** penting sesuai kriteria akreditasi SINTA & DOAJ:
 
@@ -428,7 +500,7 @@ submission-preparation, loa, faq
 
 ---
 
-## 10. Pengelolaan Blok Kustom (Custom Blocks)
+## 11. Pengelolaan Blok Kustom (Custom Blocks)
 
 Tema Akdisi membaca data komponen dinamis beranda langsung dari tabel `journal_settings` dengan konteks `journal_id=1`.
 
@@ -453,7 +525,7 @@ ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
 
 ---
 
-## 11. Operasional, Pemeliharaan & Troubleshooting
+## 12. Operasional, Pemeliharaan & Troubleshooting
 
 ### Ringkasan Perintah CLI Cepat (Daily Commands)
 
