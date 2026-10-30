@@ -1,6 +1,6 @@
 # Template override
 
-Daftar file theme `default` yang di-override theme `jeki`. Setiap upgrade OJS
+Daftar file theme `default` yang di-override theme `akdisi`. Setiap upgrade OJS
 (patch 3.5.x) wajib memeriksa file di daftar ini terhadap versi baru.
 
 | File override | Alasan | Terakhir dicek |

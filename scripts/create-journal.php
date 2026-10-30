@@ -3,8 +3,8 @@
 /**
  * @file scripts/create-journal.php
  *
- * Membuat context jurnal JEKI di instance OJS. Dijalankan sekali setelah
- * tools/install.php. Idempotent: kalau path JEKI sudah ada, keluar dengan
+ * Membuat context jurnal AKDISI di instance OJS. Dijalankan sekali setelah
+ * tools/install.php. Idempotent: kalau path AKDISI sudah ada, keluar dengan
  * pesan, bukan error.
  *
  * Pakai:
@@ -20,9 +20,9 @@ use PKP\db\DAORegistry;
 $request = Application::get()->getRequest();
 
 $journalDao = DAORegistry::getDAO('JournalDAO');
-$existing = $journalDao->getByPath('JEKI');
+$existing = $journalDao->getByPath('AKDISI');
 if ($existing) {
-    fwrite(STDOUT, "Jurnal JEKI sudah ada (id {$existing->getId()}). Tidak ada perubahan.\n");
+    fwrite(STDOUT, "Jurnal AKDISI sudah ada (id {$existing->getId()}). Tidak ada perubahan.\n");
     exit(0);
 }
 
@@ -38,11 +38,15 @@ $request->setRouter(new \PKP\core\PKPPageRouter());
 
 $journal = new Journal();
 $journal->setData('name', [
-    'en' => 'Journal of Economics and Financial Studies',
-    'id' => 'Jurnal Ekonomi dan Keuangan Indonesia',
+    'en' => 'Akdisi',
+    'id' => 'Akdisi',
 ]);
-$journal->setData('path', 'JEKI');
-$journal->setData('urlPath', 'JEKI');
+$journal->setData('description', [
+    'en' => 'Mitra digital untuk bisnis yang ingin tumbuh',
+    'id' => 'Mitra digital untuk bisnis yang ingin tumbuh',
+]);
+$journal->setData('path', 'AKDISI');
+$journal->setData('urlPath', 'AKDISI');
 $journal->setData('primaryLocale', 'en');
 $journal->setData('supportedLocales', ['en', 'id']);
 $journal->setData('enabled', true);
@@ -52,18 +56,25 @@ app()->get('context')->add($journal, $request);
 
 fwrite(STDOUT, "Jurnal dibuat: id {$journal->getId()} path {$journal->getPath()}\n");
 
-// Konvensi Native XML importer (termasuk setup lama): section_ref pada
-// publication harus sama dengan abbrev section. Default OJS membuat
-// 'Articles' dengan abbrev 'ART' gagal match; lakukan standardisasi jadi
-// 'Articles'. Idempotent — aman setiap kali dijalankan.
-$sectionDao = DAORegistry::getDAO('SectionDAO');
-$sections = $sectionDao->getByJournalId($journal->getId());
+// Konvensi Native XML importer: section_ref pada publication harus sama
+// dengan abbrev section. Default OJS membuat 'Articles' dengan abbrev 'ART';
+// lakukan standardisasi jadi 'ARTICLES'.
+$sections = \APP\facades\Repo::section()
+    ->getCollector()
+    ->filterByContextIds([$journal->getId()])
+    ->getMany();
+
 foreach ($sections as $section) {
-    $desired = strtoupper(trim((string) $section->getTitle('en')));
+    $title = (string) ($section->getTitle('en') ?: $section->getLocalizedTitle());
+    $desired = strtoupper(trim($title));
     $desired = preg_replace('/\s+/', '_', $desired);
-    if ($desired && $section->getAbbrev() !== $desired) {
-        $section->setAbbrev($desired);
-        $sectionDao->updateObject($section);
-        fwrite(STDOUT, "Abbrev disesuaikan: {$section->getTitle('en')} -> {$desired}\n");
+    if ($desired) {
+        \APP\facades\Repo::section()->edit($section, [
+            'abbrev' => [
+                'en' => $desired,
+                'id' => $desired,
+            ],
+        ]);
+        fwrite(STDOUT, "Abbrev disesuaikan: {$title} -> {$desired}\n");
     }
 }

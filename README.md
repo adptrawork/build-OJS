@@ -1,26 +1,63 @@
-# Impor Native XML
+# Akdisi OJS 3.5 Development & Theme Workspace
 
-Hasil konverter `import/to_native_xml.py`.
+Repositori ini mengelola sistem jurnal ilmiah **Akdisi** berbasis **Open Journal Systems (OJS) 3.5.0-5** dengan arsitektur pemisahan kode kustom (Clean Separation Pattern) di lingkungan **DDEV** (PHP 8.3, MariaDB 11.8).
 
-## Cara pakai
-1. `./scripts/setup.sh` — tarik OJS 3.5.0-5 (skip unduhan dataset ROR dev).
-2. `./scripts/install.sh` — instal non-interaktif (admin `admin/jeki-admin`),
-   fix `allowed_hosts`, create journal JEKI, symlink theme/plugin, register.
-3. Import data demo: `ddev exec bash -c 'cd ojs && php tools/importExport.php
-   NativeImportExportPlugin import ../import/xml/issue-937.xml JEKI --user_name admin'`.
-4. Aktifkan tema: `ddev mysql db -e "UPDATE journal_settings SET setting_value='classic'
-   WHERE journal_id=1 AND setting_name='themePluginPath';"` (classic sudah terpasang dari
-   pkp/classic v1_1_3-2).
-5. Cara CLI impor detail:
-   ```
-   ddev exec -j bash -c 'cd ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml JEKI --user_name admin'
-   ```
-   Root `<issue>` membawa `<sections>`-nya sendiri → tanpa param `issue_id/section_id`.
+---
 
-## Asumsi & batasan
-- Satu file XML per issue (issue-N.xml).
-- Galley diimpor sebagai remote (URL lama); unduh PDF manual bila perlu.
-- Referensi diimpor sebagai citation mentah (string), bukan DOI terstruktur.
-- ORCID/afiliasi penulis: afiliasi masuk; ORCID tidak didukung Native XML.
-- ID artikel baru ditentukan OJS saat impor; pemetaan URL lama->baru ada di urls.csv (kolom new_url = PENDING, isi manual setelah impor).
-- Validasi: `xmllint --schema ojs/plugins/importexport/native/native.xsd file.xml`.
+## 📌 Ringkasan Cepat & Kredensial
+
+| Layanan / Halaman | URL Akses | Keterangan |
+|---|---|---|
+| **Beranda Jurnal (EN)** | [https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en](https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en) | Halaman beranda utama |
+| **Login Admin** | [https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/login](https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/login) | **User:** `admin` \| **Pass:** `akdisi-admin` |
+| **Debug Slot Layout** | [https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en?slots=1](https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en?slots=1) | Visualisasi slot modular S-HOME-XX |
+| **Sitemap XML** | [https://jeki-ojs.ddev.site:8443/index.php/AKDISI/sitemap.xml](https://jeki-ojs.ddev.site:8443/index.php/AKDISI/sitemap.xml) | Peta situs XML SEO |
+| **Mailhog (Web Inbox)** | [https://jeki-ojs.ddev.site:8026](https://jeki-ojs.ddev.site:8026) | Monitoring pengiriman email OJS |
+
+---
+
+## 🏗️ Arsitektur Pemisahan Kode
+
+Kode kustom disimpan **terpisah di luar folder core OJS upstream** (`ojs/` diabaikan oleh `.gitignore`):
+
+```
+/mnt/DiskD/Projects/ojs/
+├── plugins/themes/akdisi/    <-- Tema Akdisi (Maroon / Burgundy, struktur modular blok)
+├── plugins/generic/akdisiSeo/<-- Plugin SEO (Sitemap XML, Canonical, OG Tags, JSON-LD)
+├── ojs/                      <-- Core OJS 3.5 upstream PKP (terhubung via symlink)
+├── scripts/                  <-- Skrip build, reset, registrasi, dan seed database
+├── import/xml/               <-- Sampel file Native XML untuk latihan import mandiri
+└── docs/TUTORIAL.md          <-- Master documentation (panduan build, operasional & import)
+```
+
+---
+
+## 🚀 Perintah Cepat
+
+```bash
+# 1. Reset total OJS ke kondisi awal bersih (0 artikel, 0 terbitan)
+./scripts/reset.sh
+
+# 2. Praktek import manual artikel/issue (CLI)
+ddev exec bash -c 'cd /var/www/html/ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml AKDISI --user_name admin'
+
+# 3. Bersihkan cache template OJS
+ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
+
+# 4. Registrasi plugin kustom ke tabel versions
+ddev exec php /var/www/html/scripts/register-plugins.php
+```
+
+---
+
+## 📖 Dokumentasi Lengkap
+
+Panduan mendalam yang mencakup:
+- Langkah demi langkah membangun OJS dari nol sampai jadi
+- Alur kerja editorial (Submission, Review, Copyediting, Production)
+- Cara membuat dan menerbitkan issue baru
+- Panduan import artikel manual (CLI & GUI)
+- Konfigurasi 20 halaman statis dan menu navigasi
+- Manajemen blok kustom dan troubleshooting
+
+Dapat dibaca secara lengkap di berkas: **[docs/TUTORIAL.md](docs/TUTORIAL.md)**.

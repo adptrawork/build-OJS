@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "ojs-expert": {
+      "source": "global-prog/ojs-claude-skill",
+      "sourceType": "github",
+      "skillPath": "ojs-expert/SKILL.md",
+      "computedHash": "c81a38d344cbc3f81503390b68992419c46b91e8ded9c7c747355401783ebf2a"
+    }
+  }
+}
