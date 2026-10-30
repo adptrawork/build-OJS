@@ -111,51 +111,126 @@ Repositori ini menerapkan **Clean Separation Pattern**:
 
 ## 3. Panduan Langkah-demi-Langkah: Membangun OJS dari Nol
 
-Berikut cara membangun seluruh sistem ini dari awal pada mesin baru atau workstation lain:
+Anda dapat memilih salah satu dari **dua jalur** untuk membangun OJS:
+- **Jalur A (Otomatis Cepat — 2 Menit Selesai)**: Menggunakan skrip otomatis yang sudah disiapkan. Sangat cocok jika Anda ingin langsung praktek.
+- **Jalur B (Manual Murni Langkah-demi-Langkah)**: Membangun dan mengonfigurasi setiap tahap dengan tangan sendiri untuk memahami cara kerja sistem OJS secara mendalam.
 
-### Langkah 1: Persiapan Prasyarat Lingkungan
-Pastikan workstation memiliki:
-- [Docker](https://docs.docker.com/engine/install/) & Docker Compose
-- [DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) (v1.23 atau lebih baru)
-- Git & cURL
+---
 
-### Langkah 2: Clone Repositori Proyek
+### JALUR A: Membangun Otomatis via Skrip (Rekomendasi Cepat)
+
+1. **Persiapan Prasyarat Lingkungan**:
+   Pastikan komputer Anda telah terpasang Docker & DDEV (v1.23+).
+2. **Clone Repositori**:
+   ```bash
+   git clone https://github.com/adptrawork/build-OJS.git /mnt/DiskD/Projects/ojs
+   cd /mnt/DiskD/Projects/ojs
+   ```
+3. **Jalankan Kontainer DDEV**:
+   ```bash
+   ddev start
+   ```
+4. **Unduh Core OJS 3.5 Resmi**:
+   ```bash
+   ./scripts/setup.sh
+   ```
+   *Skrip mengunduh rilis resmi PKP OJS 3.5.0-5, mengekstrak ke `ojs/`, dan membuat folder upload privat.*
+5. **Jalankan Instalasi Bersih**:
+   ```bash
+   ./scripts/reset.sh
+   ```
+   *Skrip otomatis menginisialisasi database, menginstal OJS, membuat Jurnal Akdisi, menyambungkan symlink tema dan plugin, menginjeksi static pages & custom blocks, lalu membersihkan cache.*
+6. Selesai! Buka `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en`.
+
+---
+
+### JALUR B: Membangun Manual Murni Langkah-demi-Langkah (Deep Dive)
+
+Jika Anda ingin memahami detail di balik layar atau menginstal OJS pada server VPS Ubuntu / cPanel secara manual:
+
+#### Langkah B1: Setup DDEV & Lingkungan PHP/DB
+Jika Anda ingin membuat konfigurasi DDEV dari nol tanpa file bawaan:
 ```bash
-git clone https://github.com/adptrawork/build-OJS.git /mnt/DiskD/Projects/ojs
-cd /mnt/DiskD/Projects/ojs
-```
-
-### Langkah 3: Menjalankan Lingkungan DDEV
-Konfigurasi DDEV sudah disiapkan di `.ddev/config.yaml` dengan docroot `ojs`. Jalankan:
-```bash
+ddev config --project-name=jeki-ojs --project-type=php --docroot=ojs --php-version=8.3 --database=mariadb:11.8
 ddev start
 ```
 
-### Langkah 4: Mengunduh Core OJS 3.5 Resmi Upstream
-Jalankan skrip pembantu untuk mengunduh rilis resmi PKP OJS 3.5.0-5:
-```bash
-./scripts/setup.sh
-```
-*Skrip ini akan mengunduh tarball OJS resmi, mengekstraknya ke direktori `ojs/`, membuat folder penyimpanan privat `ojs/files`, dan menerapkan patch lewati unduhan dataset ROR (agar instalasi lokal selesai dalam hitungan detik).*
+#### Langkah B2: Unduh dan Ekstrak Core OJS
+1. Unduh tarball resmi OJS 3.5.0-5 dari situs Public Knowledge Project:
+   ```bash
+   curl -fsSL -o ojs.tar.gz https://pkp.sfu.ca/ojs/download/ojs-3.5.0-5.tar.gz
+   tar -xzf ojs.tar.gz
+   mv ojs-3.5.0-5 ojs
+   rm ojs.tar.gz
+   ```
+2. Buat direktori penyimpanan berkas privat (`files_dir`):
+   OJS mewajibkan folder berkas unggahan naskah berada di folder yang aman dan memiliki hak akses tulis:
+   ```bash
+   mkdir -p ojs/files ojs/public ojs/cache
+   chmod -R 777 ojs/files ojs/public ojs/cache ojs/config.inc.php 2>/dev/null || true
+   ```
 
-### Langkah 5: Reset & Instalasi Bersih Otomatis
-Jalankan skrip reset sekali perintah:
+#### Langkah B3: Instalasi OJS melalui Web Wizard atau CLI
+Anda dapat menginstal melalui browser di alamat `https://jeki-ojs.ddev.site:8443/index.php/index/install` ATAU menggunakan baris perintah CLI:
 ```bash
-./scripts/reset.sh
+# Menjalankan installer OJS non-interaktif
+printf 'en\nid\n\n/var/www/html/ojs/files\nadmin\nakdisi-admin\nakdisi-admin\nadmin@akdisi.my.id\nmysqli\ndb\ndb\ndb\ndb\njeki-ojs.ddev.site/index.php/AKDISI/oai\nn\ny\n' \
+    | ddev exec -j php ojs/tools/install.php
 ```
-*Proses ini akan:*
-1. Mengosongkan dan membuat ulang database `db`.
-2. Menghapus file sisa cache dan upload sebelumnya.
-3. Menjalankan OJS installer non-interaktif via CLI.
-4. Memperbaiki daftar `allowed_hosts = ["jeki-ojs.ddev.site"]` di `config.inc.php`.
-5. Menjalankan `scripts/create-journal.php` untuk membuat Jurnal Akdisi.
-6. Membangun symlink folder kustom `plugins/themes/akdisi` dan `plugins/generic/akdisiSeo` ke dalam `ojs/plugins/`.
-7. Mendaftarkan versi plugin ke tabel `versions`.
-8. Mengaktifkan tema `akdisi` dan plugin `akdisiseoplugin` di database.
-9. Memuat data awal 20 static pages dan custom blocks.
-10. Membersihkan cache template Smarty.
 
-Selesai! Jurnal Akdisi langsung aktif dan siap diakses di browser.
+#### Langkah B4: Mengonfigurasi `config.inc.php` (Krusial di OJS 3.5)
+Di OJS 3.4 dan 3.5, PKP menambahkan proteksi ketat Host Header Injection. Buka berkas `ojs/config.inc.php` dan pastikan pengaturan berikut terisi:
+```ini
+; Daftar host domain yang diizinkan mengakses OJS (mencegah error 400 Bad Request)
+allowed_hosts = ["jeki-ojs.ddev.site"]
+
+; URL dasar jurnal
+base_url = "https://jeki-ojs.ddev.site:8443"
+
+; Pengaturan folder file privat
+files_dir = "/var/www/html/ojs/files"
+```
+
+#### Langkah B5: Membuat Context Jurnal Pertama (Akdisi)
+Jalankan skrip pembantu atau buat melalui dashboard admin OJS:
+- **Via CLI**:
+  ```bash
+  ddev exec php /var/www/html/scripts/create-journal.php
+  ```
+- **Via Dashboard**: Login ke `https://jeki-ojs.ddev.site:8443/index.php/index/login` sebagai `admin`. Buka menu **Administration** → **Hosted Journals** → **Create Journal**. Isi Nama: `Akdisi`, Path: `AKDISI`, Primary Locale: `English`.
+
+#### Langkah B6: Memasang Tema Kustom Akdisi & Plugin SEO
+Hubungkan folder tema dan plugin kustom dari root repository ke dalam OJS:
+```bash
+# Buat symlink
+ln -sfn ../../../plugins/themes/akdisi ojs/plugins/themes/akdisi
+ln -sfn ../../../plugins/generic/akdisiSeo ojs/plugins/generic/akdisiSeo
+
+# Daftarkan versi plugin ke tabel versions di database
+ddev exec php /var/www/html/scripts/register-plugins.php
+```
+
+#### Langkah B7: Mengaktifkan Tema & Plugin di Database
+Jalankan query SQL untuk mengaktifkan tema `akdisi` sebagai tema aktif jurnal:
+```bash
+ddev mysql -uroot -proot -e "
+  UPDATE journal_settings SET setting_value='akdisi' WHERE setting_name='themePluginPath' AND journal_id=1;
+  INSERT INTO plugin_settings (plugin_name, context_id, setting_name, setting_value, setting_type)
+    VALUES ('akdisithemeplugin', 1, 'enabled', '1', 'bool'),
+           ('akdisiseoplugin', 1, 'enabled', '1', 'bool')
+    ON DUPLICATE KEY UPDATE setting_value='1';
+"
+```
+
+#### Langkah B8: Mengisi Halaman Statis & Custom Blocks
+Injeksi data awal 20 halaman statis dan data custom blocks:
+```bash
+ddev mysql -uroot -proot db < scripts/static-pages.sql
+ddev mysql -uroot -proot db < scripts/akdisi-custom-blocks.sql
+ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
+```
+
+Instalasi manual selesai! Anda telah berhasil membangun OJS 3.5 dari nol lengkap dengan tema dan plugin kustom.
 
 ---
 
