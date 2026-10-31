@@ -21,3 +21,4 @@ templates/*.tar.gz
 
 # Backup lokal (DB & config) — tidak di-commit
 /backups/
+*.zip
