@@ -39,7 +39,7 @@
 					</div>
 					<div class="text-white-50 small mb-3 fst-italic jilp-footer-desc">
 						{$currentJournal->getLocalizedDescription()|strip_tags|truncate:240|escape}
-						<a class="jilp-footer-readmore" href="{url page="about"}">Read More &raquo;</a>
+						<a class="jilp-footer-readmore" href="{url page="about"}">{translate key="plugins.themes.journalEditorial.footer.readMore"} &raquo;</a>
 					</div>
 					<div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
 						{if $currentJournal->getData('issn')}
@@ -58,37 +58,37 @@
 				</div>
 
 				<div class="col-6 col-md-4 col-lg-2 mb-4 mb-lg-0">
-					<h4 class="jilp-footer-title">Quick Links</h4>
+					<h4 class="jilp-footer-title">{translate key="plugins.themes.journalEditorial.footer.quickLinks"}</h4>
 					<ul class="jilp-footer-links list-unstyled">
-						<li><a href="{url page="about" op="editorialTeam"}">Editorial Team</a></li>
-						<li><a href="{url page="announcement"}">Announcements</a></li>
-						<li><a href="{url page="issue" op="current"}">Current Issue</a></li>
-						<li><a href="{url page="issue" op="archive"}">Archives</a></li>
+						<li><a href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.footer.editorialTeam"}</a></li>
+						<li><a href="{url page="announcement"}">{translate key="plugins.themes.journalEditorial.footer.announcements"}</a></li>
+						<li><a href="{url page="issue" op="current"}">{translate key="plugins.themes.journalEditorial.footer.currentIssue"}</a></li>
+						<li><a href="{url page="issue" op="archive"}">{translate key="plugins.themes.journalEditorial.footer.archives"}</a></li>
 					</ul>
 				</div>
 
 				<div class="col-6 col-md-4 col-lg-2 mb-4 mb-lg-0">
-					<h4 class="jilp-footer-title">About</h4>
+					<h4 class="jilp-footer-title">{translate key="plugins.themes.journalEditorial.footer.about"}</h4>
 					<ul class="jilp-footer-links list-unstyled">
-						<li><a href="{url page="about"}">About the Journal</a></li>
-						<li><a href="{url page="about" op="editorialTeam"}">Editorial Team</a></li>
-						<li><a href="{url page="about" op="privacy"}">Privacy Statement</a></li>
-						<li><a href="{url page="about" op="contact"}">Contact</a></li>
+						<li><a href="{url page="about"}">{translate key="plugins.themes.journalEditorial.footer.aboutJournal"}</a></li>
+						<li><a href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.footer.editorialTeam"}</a></li>
+						<li><a href="{url page="about" op="privacy"}">{translate key="plugins.themes.journalEditorial.footer.privacy"}</a></li>
+						<li><a href="{url page="about" op="contact"}">{translate key="plugins.themes.journalEditorial.footer.contact"}</a></li>
 					</ul>
 				</div>
 
 				<div class="col-12 col-md-4 col-lg-2 mb-4 mb-lg-0">
-					<h4 class="jilp-footer-title">For Authors</h4>
+					<h4 class="jilp-footer-title">{translate key="plugins.themes.journalEditorial.footer.forAuthors"}</h4>
 					<ul class="jilp-footer-links list-unstyled">
-						<li><a href="{url page="about" op="submissions"}">Author Guidelines</a></li>
-						<li><a href="{url page="submission" op="submit"}">Submit Manuscript</a></li>
-						<li><a href="{url page="about" op="submissions"}">Publication Ethics</a></li>
-						<li><a href="{url page="about"}">Open Access</a></li>
+						<li><a href="{url page="about" op="submissions"}">{translate key="plugins.themes.journalEditorial.footer.guidelines"}</a></li>
+						<li><a href="{url page="submission" op="submit"}">{translate key="plugins.themes.journalEditorial.footer.submit"}</a></li>
+						<li><a href="{url page="about" op="submissions"}">{translate key="plugins.themes.journalEditorial.footer.ethics"}</a></li>
+						<li><a href="{url page="about"}">{translate key="plugins.themes.journalEditorial.footer.openAccess"}</a></li>
 					</ul>
 				</div>
 
 				<div class="col-12 col-lg-3 mb-4 mb-lg-0">
-					<h4 class="jilp-footer-title">Contact &amp; Editorial Office</h4>
+					<h4 class="jilp-footer-title">{translate key="plugins.themes.journalEditorial.footer.contactOffice"}</h4>
 					<div class="text-white-50 small mb-3 jilp-footer-contact">
 						{if $currentJournal->getData('contactName')}
 							<p class="mb-2">
@@ -107,7 +107,7 @@
 						{if $currentJournal->getData('supportEmail')}
 							<p class="mb-3">
 								<i class="bi bi-headset me-2 text-primary"></i>
-								Support:
+								{translate key="plugins.themes.journalEditorial.footer.support"}:
 								<a class="text-white-50 text-decoration-none" href="mailto:{$currentJournal->getData('supportEmail')|escape}">
 									{$currentJournal->getData('supportEmail')|escape}
 								</a>
@@ -136,10 +136,10 @@
 
 			<div class="jilp-footer-copyright d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start gap-3 mt-4 pt-4 border-top border-secondary">
 				<p class="mb-0">
-					&copy; {$smarty.now|date_format:"%Y"} {$currentJournal->getLocalizedName()|escape}. All rights reserved. Powered by Open Journal Systems.
+					&copy; {$smarty.now|date_format:"Y"} {$currentJournal->getLocalizedName()|escape}. {translate key="plugins.themes.journalEditorial.footer.rights"}
 				</p>
 				<p class="mb-0 text-white-50 small">
-					Theme <span class="text-primary fw-bold">Journal Editorial</span>
+					{translate key="plugins.themes.journalEditorial.footer.theme"} <span class="text-primary fw-bold">Journal Editorial</span>
 					&bull; Bootstrap 5.3.3
 				</p>
 			</div>

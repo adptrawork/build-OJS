@@ -13,3 +13,285 @@ msgstr "Journal Editorial Theme"
 
 msgid "plugins.themes.journalEditorial.description"
 msgstr "JILP-style Bootstrap 5 academic homepage theme for OJS 3.5."
+
+msgid "plugins.themes.journalEditorial.toggleTheme"
+msgstr "Toggle Dark/Light Mode"
+
+msgid "plugins.themes.journalEditorial.toggleNav"
+msgstr "Toggle navigation"
+
+msgid "plugins.themes.journalEditorial.readMore"
+msgstr "Read more"
+
+msgid "plugins.themes.journalEditorial.hero.currentIssue"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.hero.openAccess"
+msgstr "Open Access"
+
+msgid "plugins.themes.journalEditorial.hero.peerReviewed"
+msgstr "Peer Reviewed"
+
+msgid "plugins.themes.journalEditorial.hero.readMore"
+msgstr "Read more"
+
+msgid "plugins.themes.journalEditorial.hero.submit"
+msgstr "Submit Your Research"
+
+msgid "plugins.themes.journalEditorial.hero.exploreIssue"
+msgstr "Explore Current Issue"
+
+msgid "plugins.themes.journalEditorial.stats.articles"
+msgstr "Published Articles"
+
+msgid "plugins.themes.journalEditorial.stats.authors"
+msgstr "Contributing Authors"
+
+msgid "plugins.themes.journalEditorial.stats.reviewers"
+msgstr "Active Reviewers"
+
+msgid "plugins.themes.journalEditorial.stats.issues"
+msgstr "Published Issues"
+
+msgid "plugins.themes.journalEditorial.picks.title"
+msgstr "Editor's Pick"
+
+msgid "plugins.themes.journalEditorial.picks.desc"
+msgstr "Hand-picked groundbreaking research and high-impact publications curated by our Editorial Board"
+
+msgid "plugins.themes.journalEditorial.picks.viewAll"
+msgstr "View All Issues"
+
+msgid "plugins.themes.journalEditorial.picks.tag1"
+msgstr "# Editor's Choice"
+
+msgid "plugins.themes.journalEditorial.picks.tag2"
+msgstr "# Featured Article"
+
+msgid "plugins.themes.journalEditorial.picks.tag3"
+msgstr "# Top Cited"
+
+msgid "plugins.themes.journalEditorial.picks.tag4"
+msgstr "# Recommended"
+
+msgid "plugins.themes.journalEditorial.article.category"
+msgstr "Research Article"
+
+msgid "plugins.themes.journalEditorial.article.unknownAuthor"
+msgstr "Unknown author"
+
+msgid "plugins.themes.journalEditorial.article.pages"
+msgstr "pp."
+
+msgid "plugins.themes.journalEditorial.issue.view"
+msgstr "View Issue"
+
+msgid "plugins.themes.journalEditorial.tabs.latest"
+msgstr "Latest Articles"
+
+msgid "plugins.themes.journalEditorial.tabs.viewed"
+msgstr "Most Viewed"
+
+msgid "plugins.themes.journalEditorial.tabs.cited"
+msgstr "Most Cited"
+
+msgid "plugins.themes.journalEditorial.tabs.issues"
+msgstr "Journal Issues"
+
+msgid "plugins.themes.journalEditorial.tabs.announcements"
+msgstr "Announcements"
+
+msgid "plugins.themes.journalEditorial.tabs.about"
+msgstr "About Journal"
+
+msgid "plugins.themes.journalEditorial.tabs.editorial"
+msgstr "Editorial &amp; Indexing"
+
+msgid "plugins.themes.journalEditorial.tabs.viewAllArticles"
+msgstr "View All Articles"
+
+msgid "plugins.themes.journalEditorial.tabs.fullArchive"
+msgstr "Full Archive"
+
+msgid "plugins.themes.journalEditorial.tabs.emptyArticles"
+msgstr "No published articles yet. New research will appear here after publication."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyViews"
+msgstr "View statistics will appear once articles receive readers."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyCitations"
+msgstr "Citation metrics will appear as articles are cited."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyIssues"
+msgstr "No issues have been published yet."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyAnnouncements"
+msgstr "No announcements have been posted yet."
+
+msgid "plugins.themes.journalEditorial.about.title"
+msgstr "About the Journal"
+
+msgid "plugins.themes.journalEditorial.about.empty"
+msgstr "Journal description has not been added yet."
+
+msgid "plugins.themes.journalEditorial.about.focusScope"
+msgstr "Focus &amp; Scope"
+
+msgid "plugins.themes.journalEditorial.identity.title"
+msgstr "Journal Identity"
+
+msgid "plugins.themes.journalEditorial.identity.name"
+msgstr "Journal Name"
+
+msgid "plugins.themes.journalEditorial.identity.contact"
+msgstr "Contact"
+
+msgid "plugins.themes.journalEditorial.identity.email"
+msgstr "Email"
+
+msgid "plugins.themes.journalEditorial.editorial.title"
+msgstr "Editorial Leadership"
+
+msgid "plugins.themes.journalEditorial.editorial.desc"
+msgstr "Meet the editorial team behind {$journalName}."
+
+msgid "plugins.themes.journalEditorial.editorial.viewTeam"
+msgstr "View Editorial Team"
+
+msgid "plugins.themes.journalEditorial.indexing.compactTitle"
+msgstr "Indexed &amp; Abstracted In"
+
+msgid "plugins.themes.journalEditorial.indexing.title"
+msgstr "Indexed and Abstracted In"
+
+msgid "plugins.themes.journalEditorial.indexing.desc"
+msgstr "Our publications are systematically harvested by global scientific databases and repositories."
+
+msgid "plugins.themes.journalEditorial.authors.title"
+msgstr "For Authors &amp; Researchers"
+
+msgid "plugins.themes.journalEditorial.authors.desc"
+msgstr "Everything you need to prepare, submit, and publish your research."
+
+msgid "plugins.themes.journalEditorial.authors.submitTitle"
+msgstr "Submit Your Research"
+
+msgid "plugins.themes.journalEditorial.authors.submitDesc"
+msgstr "Start a new submission and join our community of scholars."
+
+msgid "plugins.themes.journalEditorial.authors.teamTitle"
+msgstr "Editorial Team"
+
+msgid "plugins.themes.journalEditorial.authors.teamDesc"
+msgstr "Meet the editors and reviewers guiding the journal."
+
+msgid "plugins.themes.journalEditorial.authors.guidelinesTitle"
+msgstr "Author Guidelines"
+
+msgid "plugins.themes.journalEditorial.authors.guidelinesDesc"
+msgstr "Read the formatting, scope, and submission requirements."
+
+msgid "plugins.themes.journalEditorial.authors.searchTitle"
+msgstr "Search Articles"
+
+msgid "plugins.themes.journalEditorial.authors.searchDesc"
+msgstr "Find research by title, author, keyword, or DOI."
+
+msgid "plugins.themes.journalEditorial.authors.archiveTitle"
+msgstr "Explore Archives"
+
+msgid "plugins.themes.journalEditorial.authors.archiveDesc"
+msgstr "Browse every published issue and article."
+
+msgid "plugins.themes.journalEditorial.authors.privacyTitle"
+msgstr "Privacy Statement"
+
+msgid "plugins.themes.journalEditorial.authors.privacyDesc"
+msgstr "Learn how we protect author and reader data."
+
+msgid "plugins.themes.journalEditorial.why.title"
+msgstr "Why Publish With Us"
+
+msgid "plugins.themes.journalEditorial.why.desc"
+msgstr "A rigorous, open, and author-friendly publishing experience."
+
+msgid "plugins.themes.journalEditorial.why.oaTitle"
+msgstr "Open Access"
+
+msgid "plugins.themes.journalEditorial.why.oaDesc"
+msgstr "Free to read and download for everyone, worldwide."
+
+msgid "plugins.themes.journalEditorial.why.refereedTitle"
+msgstr "Refereed"
+
+msgid "plugins.themes.journalEditorial.why.refereedDesc"
+msgstr "Rigorous double-blind peer review by subject experts."
+
+msgid "plugins.themes.journalEditorial.why.indexedTitle"
+msgstr "Indexed"
+
+msgid "plugins.themes.journalEditorial.why.indexedDesc"
+msgstr "Discoverable through major scholarly databases."
+
+msgid "plugins.themes.journalEditorial.why.fastTitle"
+msgstr "Fast Track"
+
+msgid "plugins.themes.journalEditorial.why.fastDesc"
+msgstr "Efficient editorial handling and timely publication."
+
+msgid "plugins.themes.journalEditorial.footer.quickLinks"
+msgstr "Quick Links"
+
+msgid "plugins.themes.journalEditorial.footer.about"
+msgstr "About"
+
+msgid "plugins.themes.journalEditorial.footer.aboutJournal"
+msgstr "About the Journal"
+
+msgid "plugins.themes.journalEditorial.footer.editorialTeam"
+msgstr "Editorial Team"
+
+msgid "plugins.themes.journalEditorial.footer.announcements"
+msgstr "Announcements"
+
+msgid "plugins.themes.journalEditorial.footer.currentIssue"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.footer.archives"
+msgstr "Archives"
+
+msgid "plugins.themes.journalEditorial.footer.privacy"
+msgstr "Privacy Statement"
+
+msgid "plugins.themes.journalEditorial.footer.contact"
+msgstr "Contact"
+
+msgid "plugins.themes.journalEditorial.footer.forAuthors"
+msgstr "For Authors"
+
+msgid "plugins.themes.journalEditorial.footer.guidelines"
+msgstr "Author Guidelines"
+
+msgid "plugins.themes.journalEditorial.footer.submit"
+msgstr "Submit Manuscript"
+
+msgid "plugins.themes.journalEditorial.footer.ethics"
+msgstr "Publication Ethics"
+
+msgid "plugins.themes.journalEditorial.footer.openAccess"
+msgstr "Open Access"
+
+msgid "plugins.themes.journalEditorial.footer.contactOffice"
+msgstr "Contact &amp; Editorial Office"
+
+msgid "plugins.themes.journalEditorial.footer.support"
+msgstr "Support"
+
+msgid "plugins.themes.journalEditorial.footer.readMore"
+msgstr "Read More"
+
+msgid "plugins.themes.journalEditorial.footer.rights"
+msgstr "All rights reserved. Powered by Open Journal Systems."
+
+msgid "plugins.themes.journalEditorial.footer.theme"
+msgstr "Theme"

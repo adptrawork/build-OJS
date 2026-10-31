@@ -17,7 +17,7 @@
 			<p class="jilp-issue-date"><i class="bi bi-calendar3 me-1"></i> {$issue->date|date_format:$dateFormatShort}</p>
 		{/if}
 		<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-auto" href="{url page="issue" op="view" path=$issue->id}">
-			View Issue <i class="bi bi-arrow-right ms-1"></i>
+			{translate key="plugins.themes.journalEditorial.issue.view"} <i class="bi bi-arrow-right ms-1"></i>
 		</a>
 	</div>
 </article>

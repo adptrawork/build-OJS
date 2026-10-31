@@ -34,10 +34,10 @@
 			</a>
 
 			<div class="jilp-mobile-toggles d-lg-none">
-				<button class="jilp-theme-toggle" type="button" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+				<button class="jilp-theme-toggle" type="button" title="{translate key="plugins.themes.journalEditorial.toggleTheme"}" aria-label="{translate key="plugins.themes.journalEditorial.toggleTheme"}">
 					<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon"></i>
 				</button>
-				<button class="navbar-toggler border-0 shadow-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#jilpNavMenu" aria-controls="jilpNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler border-0 shadow-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#jilpNavMenu" aria-controls="jilpNavMenu" aria-expanded="false" aria-label="{translate key="plugins.themes.journalEditorial.toggleNav"}">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 			</div>

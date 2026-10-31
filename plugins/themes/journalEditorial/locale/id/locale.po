@@ -12,4 +12,286 @@ msgid "plugins.themes.journalEditorial.name"
 msgstr "Tema Journal Editorial"
 
 msgid "plugins.themes.journalEditorial.description"
-msgstr "Tema beranda editorial terinspirasi JILP untuk OJS 3.5."
+msgstr "Tema beranda akademik bergaya JILP dengan Bootstrap 5 untuk OJS 3.5."
+
+msgid "plugins.themes.journalEditorial.toggleTheme"
+msgstr "Ganti Mode Gelap/Terang"
+
+msgid "plugins.themes.journalEditorial.toggleNav"
+msgstr "Buka menu navigasi"
+
+msgid "plugins.themes.journalEditorial.readMore"
+msgstr "Baca selengkapnya"
+
+msgid "plugins.themes.journalEditorial.hero.currentIssue"
+msgstr "Terbitan Terkini"
+
+msgid "plugins.themes.journalEditorial.hero.openAccess"
+msgstr "Akses Terbuka"
+
+msgid "plugins.themes.journalEditorial.hero.peerReviewed"
+msgstr "Ditelaah Sejawat"
+
+msgid "plugins.themes.journalEditorial.hero.readMore"
+msgstr "Baca selengkapnya"
+
+msgid "plugins.themes.journalEditorial.hero.submit"
+msgstr "Kirimkan Riset Anda"
+
+msgid "plugins.themes.journalEditorial.hero.exploreIssue"
+msgstr "Jelajahi Terbitan Terkini"
+
+msgid "plugins.themes.journalEditorial.stats.articles"
+msgstr "Artikel Terbit"
+
+msgid "plugins.themes.journalEditorial.stats.authors"
+msgstr "Penulis Berkontribusi"
+
+msgid "plugins.themes.journalEditorial.stats.reviewers"
+msgstr "Penelaah Aktif"
+
+msgid "plugins.themes.journalEditorial.stats.issues"
+msgstr "Terbitan Diterbitkan"
+
+msgid "plugins.themes.journalEditorial.picks.title"
+msgstr "Pilihan Editor"
+
+msgid "plugins.themes.journalEditorial.picks.desc"
+msgstr "Riset terobosan dan publikasi berdampak tinggi pilihan Dewan Editor kami"
+
+msgid "plugins.themes.journalEditorial.picks.viewAll"
+msgstr "Lihat Semua Terbitan"
+
+msgid "plugins.themes.journalEditorial.picks.tag1"
+msgstr "# Pilihan Editor"
+
+msgid "plugins.themes.journalEditorial.picks.tag2"
+msgstr "# Artikel Unggulan"
+
+msgid "plugins.themes.journalEditorial.picks.tag3"
+msgstr "# Paling Disitasi"
+
+msgid "plugins.themes.journalEditorial.picks.tag4"
+msgstr "# Rekomendasi"
+
+msgid "plugins.themes.journalEditorial.article.category"
+msgstr "Artikel Penelitian"
+
+msgid "plugins.themes.journalEditorial.article.unknownAuthor"
+msgstr "Penulis tidak diketahui"
+
+msgid "plugins.themes.journalEditorial.article.pages"
+msgstr "hlm."
+
+msgid "plugins.themes.journalEditorial.issue.view"
+msgstr "Lihat Terbitan"
+
+msgid "plugins.themes.journalEditorial.tabs.latest"
+msgstr "Artikel Terbaru"
+
+msgid "plugins.themes.journalEditorial.tabs.viewed"
+msgstr "Paling Dibaca"
+
+msgid "plugins.themes.journalEditorial.tabs.cited"
+msgstr "Paling Disitasi"
+
+msgid "plugins.themes.journalEditorial.tabs.issues"
+msgstr "Terbitan Jurnal"
+
+msgid "plugins.themes.journalEditorial.tabs.announcements"
+msgstr "Pengumuman"
+
+msgid "plugins.themes.journalEditorial.tabs.about"
+msgstr "Tentang Jurnal"
+
+msgid "plugins.themes.journalEditorial.tabs.editorial"
+msgstr "Editorial &amp; Indeksasi"
+
+msgid "plugins.themes.journalEditorial.tabs.viewAllArticles"
+msgstr "Lihat Semua Artikel"
+
+msgid "plugins.themes.journalEditorial.tabs.fullArchive"
+msgstr "Arsip Lengkap"
+
+msgid "plugins.themes.journalEditorial.tabs.emptyArticles"
+msgstr "Belum ada artikel terbit. Riset baru akan tampil di sini setelah diterbitkan."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyViews"
+msgstr "Statistik baca akan muncul setelah artikel dibaca."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyCitations"
+msgstr "Metrik sitasi akan muncul ketika artikel disitasi."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyIssues"
+msgstr "Belum ada terbitan yang diterbitkan."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyAnnouncements"
+msgstr "Belum ada pengumuman."
+
+msgid "plugins.themes.journalEditorial.about.title"
+msgstr "Tentang Jurnal"
+
+msgid "plugins.themes.journalEditorial.about.empty"
+msgstr "Deskripsi jurnal belum ditambahkan."
+
+msgid "plugins.themes.journalEditorial.about.focusScope"
+msgstr "Fokus &amp; Ruang Lingkup"
+
+msgid "plugins.themes.journalEditorial.identity.title"
+msgstr "Identitas Jurnal"
+
+msgid "plugins.themes.journalEditorial.identity.name"
+msgstr "Nama Jurnal"
+
+msgid "plugins.themes.journalEditorial.identity.contact"
+msgstr "Kontak"
+
+msgid "plugins.themes.journalEditorial.identity.email"
+msgstr "Email"
+
+msgid "plugins.themes.journalEditorial.editorial.title"
+msgstr "Pimpinan Redaksi"
+
+msgid "plugins.themes.journalEditorial.editorial.desc"
+msgstr "Kenali tim editorial di balik {$journalName}."
+
+msgid "plugins.themes.journalEditorial.editorial.viewTeam"
+msgstr "Lihat Tim Editorial"
+
+msgid "plugins.themes.journalEditorial.indexing.compactTitle"
+msgstr "Terindeks &amp; Terabstraksi di"
+
+msgid "plugins.themes.journalEditorial.indexing.title"
+msgstr "Terindeks dan Terabstraksi di"
+
+msgid "plugins.themes.journalEditorial.indexing.desc"
+msgstr "Publikasi kami dihimpun secara sistematis oleh basis data dan repositori ilmiah global."
+
+msgid "plugins.themes.journalEditorial.authors.title"
+msgstr "Untuk Penulis &amp; Peneliti"
+
+msgid "plugins.themes.journalEditorial.authors.desc"
+msgstr "Semua yang Anda butuhkan untuk menyiapkan, mengirim, dan menerbitkan riset."
+
+msgid "plugins.themes.journalEditorial.authors.submitTitle"
+msgstr "Kirimkan Riset Anda"
+
+msgid "plugins.themes.journalEditorial.authors.submitDesc"
+msgstr "Mulai pengiriman baru dan bergabung dengan komunitas akademik kami."
+
+msgid "plugins.themes.journalEditorial.authors.teamTitle"
+msgstr "Tim Editorial"
+
+msgid "plugins.themes.journalEditorial.authors.teamDesc"
+msgstr "Kenali editor dan penelaah yang mengawal jurnal."
+
+msgid "plugins.themes.journalEditorial.authors.guidelinesTitle"
+msgstr "Panduan Penulis"
+
+msgid "plugins.themes.journalEditorial.authors.guidelinesDesc"
+msgstr "Baca ketentuan format, ruang lingkup, dan pengiriman naskah."
+
+msgid "plugins.themes.journalEditorial.authors.searchTitle"
+msgstr "Cari Artikel"
+
+msgid "plugins.themes.journalEditorial.authors.searchDesc"
+msgstr "Temukan riset berdasarkan judul, penulis, kata kunci, atau DOI."
+
+msgid "plugins.themes.journalEditorial.authors.archiveTitle"
+msgstr "Jelajahi Arsip"
+
+msgid "plugins.themes.journalEditorial.authors.archiveDesc"
+msgstr "Telusuri seluruh terbitan dan artikel yang telah diterbitkan."
+
+msgid "plugins.themes.journalEditorial.authors.privacyTitle"
+msgstr "Pernyataan Privasi"
+
+msgid "plugins.themes.journalEditorial.authors.privacyDesc"
+msgstr "Pelajari bagaimana kami melindungi data penulis dan pembaca."
+
+msgid "plugins.themes.journalEditorial.why.title"
+msgstr "Mengapa Menerbitkan di Sini"
+
+msgid "plugins.themes.journalEditorial.why.desc"
+msgstr "Pengalaman penerbitan yang ketat, terbuka, dan ramah penulis."
+
+msgid "plugins.themes.journalEditorial.why.oaTitle"
+msgstr "Akses Terbuka"
+
+msgid "plugins.themes.journalEditorial.why.oaDesc"
+msgstr "Gratis dibaca dan diunduh siapa pun, di mana pun."
+
+msgid "plugins.themes.journalEditorial.why.refereedTitle"
+msgstr "Ditelaah Sejawat"
+
+msgid "plugins.themes.journalEditorial.why.refereedDesc"
+msgstr "Penelaahan sejawat double-blind yang ketat oleh ahli bidang."
+
+msgid "plugins.themes.journalEditorial.why.indexedTitle"
+msgstr "Terindeks"
+
+msgid "plugins.themes.journalEditorial.why.indexedDesc"
+msgstr "Dapat ditemukan melalui basis data ilmiah utama."
+
+msgid "plugins.themes.journalEditorial.why.fastTitle"
+msgstr "Proses Cepat"
+
+msgid "plugins.themes.journalEditorial.why.fastDesc"
+msgstr "Penanganan editorial efisien dan penerbitan tepat waktu."
+
+msgid "plugins.themes.journalEditorial.footer.quickLinks"
+msgstr "Tautan Cepat"
+
+msgid "plugins.themes.journalEditorial.footer.about"
+msgstr "Tentang"
+
+msgid "plugins.themes.journalEditorial.footer.aboutJournal"
+msgstr "Tentang Jurnal"
+
+msgid "plugins.themes.journalEditorial.footer.editorialTeam"
+msgstr "Tim Editorial"
+
+msgid "plugins.themes.journalEditorial.footer.announcements"
+msgstr "Pengumuman"
+
+msgid "plugins.themes.journalEditorial.footer.currentIssue"
+msgstr "Terbitan Terkini"
+
+msgid "plugins.themes.journalEditorial.footer.archives"
+msgstr "Arsip"
+
+msgid "plugins.themes.journalEditorial.footer.privacy"
+msgstr "Pernyataan Privasi"
+
+msgid "plugins.themes.journalEditorial.footer.contact"
+msgstr "Kontak"
+
+msgid "plugins.themes.journalEditorial.footer.forAuthors"
+msgstr "Untuk Penulis"
+
+msgid "plugins.themes.journalEditorial.footer.guidelines"
+msgstr "Panduan Penulis"
+
+msgid "plugins.themes.journalEditorial.footer.submit"
+msgstr "Kirim Naskah"
+
+msgid "plugins.themes.journalEditorial.footer.ethics"
+msgstr "Etika Publikasi"
+
+msgid "plugins.themes.journalEditorial.footer.openAccess"
+msgstr "Akses Terbuka"
+
+msgid "plugins.themes.journalEditorial.footer.contactOffice"
+msgstr "Kontak &amp; Kantor Redaksi"
+
+msgid "plugins.themes.journalEditorial.footer.support"
+msgstr "Dukungan"
+
+msgid "plugins.themes.journalEditorial.footer.readMore"
+msgstr "Selengkapnya"
+
+msgid "plugins.themes.journalEditorial.footer.rights"
+msgstr "Seluruh hak cipta dilindungi. Ditenagai Open Journal Systems."
+
+msgid "plugins.themes.journalEditorial.footer.theme"
+msgstr "Tema"

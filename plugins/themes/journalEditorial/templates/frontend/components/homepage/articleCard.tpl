@@ -6,7 +6,7 @@
 <article class="jilp-article-card h-100">
 	<div class="jilp-article-header">
 		<div class="jilp-article-icon shadow-sm"><i class="bi bi-journal-text"></i></div>
-		<span class="jilp-article-category">{$article->section|default:"Research Article"|escape}</span>
+		<span class="jilp-article-category">{if $article->section}{$article->section|escape}{else}{translate key="plugins.themes.journalEditorial.article.category"}{/if}</span>
 	</div>
 
 	<h3 class="jilp-article-title">
@@ -15,7 +15,7 @@
 
 	<div class="jilp-article-authors">
 		<i class="bi bi-person-fill me-1"></i>
-		{$article->authors|escape|default:"Unknown author"}
+		{if $article->authors}{$article->authors|escape}{else}{translate key="plugins.themes.journalEditorial.article.unknownAuthor"}{/if}
 	</div>
 
 	<div class="jilp-article-badges">
@@ -34,7 +34,7 @@
 	<div class="jilp-article-footer">
 		<span class="jilp-article-meta">
 			{if $article->date}<i class="bi bi-calendar3 me-1"></i>{$article->date|date_format:$dateFormatShort}{/if}
-			{if $article->pages}<span class="ms-2">pp. {$article->pages|escape}</span>{/if}
+			{if $article->pages}<span class="ms-2">{translate key="plugins.themes.journalEditorial.article.pages"} {$article->pages|escape}</span>{/if}
 		</span>
 		<a class="jilp-pdf-link" href="{url page="article" op="view" path=$article->id}">
 			<i class="bi bi-file-earmark-pdf me-1"></i> PDF

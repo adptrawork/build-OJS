@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-10-31 (sesi 8 — lokalisasi penuh tema journalEditorial EN/ID)
+
+### Changed
+- Seluruh teks antarmuka tema dipindah dari hardcoded English ke
+  `{translate key="plugins.themes.journalEditorial.*"}` (94 penggantian di
+  9 template: header, footer, hero, statistics, editorPicks, articleCard,
+  issueCard, indexing, authorResources, whyPublish, tabs).
+- `locale/en/locale.po` & `locale/id/locale.po` dibuat (97 entri masing-masing),
+  jadi bahasa mengikuti `currentLocale` saat pembaca mengganti bahasa, bukan
+  dipaksa Indonesia.
+- `articleCard.tpl` memakai `{if $article->section}` / `{if $article->authors}`
+  agar fallback terjemahan tetap jalan (`default:` tidak bisa membungkus tag
+  `{translate}`).
+- Footer: label "Editorial Team" pada kolom Tentang ikut diterjemahkan
+  (sebelumnya terlewat karena hanya kemunculan pertama yang diganti).
+
+### Fixed
+- Footer menampilkan `© %2026` — Smarty `date_format` memakai format `date()`
+  (bukan `strftime`), jadi `"%Y"` menghasilkan `%2026`; diganti `"Y"`.
+
+### Verified
+- `/index.php/AKDISI/id` = "Pilihan Editor", "Terbitan Terkini", "Untuk Penulis
+  & Peneliti", "Mengapa Menerbitkan di Sini", footer "Tautan Cepat / Tentang /
+  Untuk Penulis / Kontak & Kantor Redaksi", "© 2026 Akdisi. Seluruh hak cipta
+  dilindungi."
+- `/index.php/AKDISI/en` tetap menampilkan versi Inggris ("Editor's Pick",
+  "Current Issue", "No announcements", "All rights reserved").
+- Screenshot 1440px kedua locale + footer: tidak ada key mentah
+  (`plugins.themes.journalEditorial.*`) yang bocor ke HTML.
+- `dist/journalEditorial-theme.{tar.gz,zip}` dibangun ulang dengan
+  `./scripts/package.sh --bump` (release 0.1.1.2) dan berisi kedua `locale.po`.
+
 ## 2026-10-31 (sesi 7 — tema journalEditorial bergaya JILP / Zenith Pro)
 
 ### Added

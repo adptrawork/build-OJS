@@ -26,7 +26,7 @@
 					<div class="jilp-hero-cover-card">
 						{if $issue && $issue->getLocalizedCoverImageUrl()}
 							<span class="jilp-hero-cover-badge">
-								<i class="bi bi-stars me-1"></i> Current Issue
+								<i class="bi bi-stars me-1"></i> {translate key="plugins.themes.journalEditorial.hero.currentIssue"}
 							</span>
 						{/if}
 						{if $issue && $issue->getLocalizedCoverImageUrl()}
@@ -50,13 +50,13 @@
 						<div class="col-6 col-md-auto">
 							<div class="jilp-hero-badge jilp-hero-badge--primary">
 								<i class="bi bi-shield-check mb-1"></i>
-								<span class="fw-bold">Open Access</span>
+								<span class="fw-bold">{translate key="plugins.themes.journalEditorial.hero.openAccess"}</span>
 							</div>
 						</div>
 						<div class="col-6 col-md-auto">
 							<div class="jilp-hero-badge">
 								<i class="bi bi-check-circle mb-1"></i>
-								<span class="fw-bold">Peer Reviewed</span>
+								<span class="fw-bold">{translate key="plugins.themes.journalEditorial.hero.peerReviewed"}</span>
 							</div>
 						</div>
 						{if $currentJournal->getData('onlineIssn')}
@@ -80,7 +80,7 @@
 					<div class="jilp-hero-description text-white-50 mb-0">
 						{if $currentJournal->getLocalizedDescription()}
 							{$currentJournal->getLocalizedDescription()|strip_tags|truncate:420|escape}
-							<a class="text-primary fw-bold text-decoration-none" href="{url page="about"}">Read more</a>
+							<a class="text-primary fw-bold text-decoration-none" href="{url page="about"}">{translate key="plugins.themes.journalEditorial.hero.readMore"}</a>
 						{else}
 							{$currentJournal->getLocalizedName()|escape} publishes peer-reviewed research in an open-access format.
 						{/if}
@@ -89,10 +89,10 @@
 
 				<div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
 					<a class="btn jilp-btn-hero-primary text-decoration-none px-4 py-3" href="{url page="submission" op="submit"}">
-						<i class="bi bi-send-fill me-2"></i> Submit Your Research
+						<i class="bi bi-send-fill me-2"></i> {translate key="plugins.themes.journalEditorial.hero.submit"}
 					</a>
 					<a class="btn jilp-btn-hero-glass text-decoration-none px-4 py-3" href="#current-issue-section">
-						<i class="bi bi-compass me-2"></i> Explore Current Issue
+						<i class="bi bi-compass me-2"></i> {translate key="plugins.themes.journalEditorial.hero.exploreIssue"}
 					</a>
 				</div>
 			</div>

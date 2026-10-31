@@ -5,11 +5,11 @@
 <section class="container py-4 mb-5" id="current-issue-section">
 	<div class="jilp-section-title-header">
 		<div>
-			<h2 class="jilp-section-title">Editor's Pick</h2>
-			<p class="text-muted mb-0 mt-2">Hand-picked groundbreaking research and high-impact publications curated by our Editorial Board</p>
+			<h2 class="jilp-section-title">{translate key="plugins.themes.journalEditorial.picks.title"}</h2>
+			<p class="text-muted mb-0 mt-2">{translate key="plugins.themes.journalEditorial.picks.desc"}</p>
 		</div>
 		<a class="btn btn-outline-primary rounded-pill px-4 fw-bold" href="{url page="issue" op="archive"}">
-			View All Issues <i class="bi bi-arrow-right ms-1"></i>
+			{translate key="plugins.themes.journalEditorial.picks.viewAll"} <i class="bi bi-arrow-right ms-1"></i>
 		</a>
 	</div>
 
@@ -21,10 +21,10 @@
 					<a class="jilp-highlight-card jilp-highlight-card-{$pickIndex+1}" href="{url page="article" op="view" path=$article->id}">
 						<span class="jilp-highlight-watermark">{$jilpLetters[$pickIndex]|default:$jilpAcronym|substr:0:1}</span>
 						<span class="jilp-highlight-tag">
-							{if $pickIndex == 0}# Editor's Choice
-							{elseif $pickIndex == 1}# Featured Article
-							{elseif $pickIndex == 2}# Top Cited
-							{else}# Recommended{/if}
+							{if $pickIndex == 0}{translate key="plugins.themes.journalEditorial.picks.tag1"}
+							{elseif $pickIndex == 1}{translate key="plugins.themes.journalEditorial.picks.tag2"}
+							{elseif $pickIndex == 2}{translate key="plugins.themes.journalEditorial.picks.tag3"}
+							{else}{translate key="plugins.themes.journalEditorial.picks.tag4"}{/if}
 						</span>
 						<h3 class="jilp-highlight-title">{$article->title|escape}</h3>
 						<div class="jilp-highlight-meta">
