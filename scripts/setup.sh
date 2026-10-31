@@ -22,6 +22,11 @@ mv "$TMP/ojs-${OJS_VERSION}" "$ROOT/ojs"
 mkdir -p "$ROOT/ojs/files"
 chmod 777 "$ROOT/ojs/files"
 
+# Hapus theme legacy yang tidak kompatibel dengan OJS 3.5 (academicFree, sanguline, immersion).
+for theme in academicFree sanguline immersion; do
+    rm -rf "$ROOT/ojs/plugins/themes/$theme"
+done
+
 # Patch: lewati unduhan dataset ROR saat instalasi (~40 MB, >100k baris).
 # Demo tidak memakai afiliasi ROR; hapus patch ini kalau butuh registry ROR.
 python3 - "$ROOT/ojs/lib/pkp/classes/install/Installer.php" <<'PY'

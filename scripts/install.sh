@@ -24,6 +24,11 @@ ddev exec -j chmod 777 /var/www/html/ojs/config.inc.php /var/www/html/ojs/cache 
 
 ddev exec -j php /var/www/html/scripts/create-journal.php || true
 
+# Hapus theme legacy yang tidak kompatibel dengan OJS 3.5.
+for theme in academicFree sanguline immersion; do
+    rm -rf "$ROOT/ojs/plugins/themes/$theme"
+done
+
 # Symlink theme & plugin milik project (di folder plugins/) ke dalam ojs/.
 rm -f "$ROOT/ojs/plugins/themes/jeki" "$ROOT/ojs/plugins/generic/jekiSeo"
 ln -sfn ../../../plugins/themes/akdisi "$ROOT/ojs/plugins/themes/akdisi"
@@ -32,13 +37,15 @@ ln -sfn ../../../plugins/themes/journalEditorial "$ROOT/ojs/plugins/themes/journ
 
 ddev exec -j php /var/www/html/scripts/register-plugins.php >/dev/null 2>&1 || true
 
-# Aktifkan theme akdisi & plugin akdisiSeo di context 1.
+# Aktifkan theme journalEditorial & plugin akdisiSeo di context 1.
 ddev mysql -uroot -proot -e "
-  UPDATE journal_settings SET setting_value='akdisi' WHERE setting_name='themePluginPath' AND journal_id=1;
+  UPDATE journal_settings SET setting_value='journalEditorial' WHERE setting_name='themePluginPath' AND journal_id=1;
   INSERT INTO plugin_settings (plugin_name, context_id, setting_name, setting_value, setting_type)
     VALUES ('akdisithemeplugin', 1, 'enabled', '1', 'bool'),
            ('akdisithemeplugin', NULL, 'enabled', '1', 'bool'),
-           ('akdisiseoplugin', 1, 'enabled', '1', 'bool')
+           ('akdisiseoplugin', 1, 'enabled', '1', 'bool'),
+           ('journaleditorialthemeplugin', 1, 'enabled', '1', 'bool'),
+           ('journaleditorialthemeplugin', NULL, 'enabled', '1', 'bool')
     ON DUPLICATE KEY UPDATE setting_value='1';
 " 2>/dev/null || true
 

@@ -15,6 +15,14 @@ rm -rf "$ROOT/ojs/files"/* "$ROOT/ojs/cache"/* "$ROOT/ojs/public"/* 2>/dev/null 
 mkdir -p "$ROOT/ojs/files" "$ROOT/ojs/cache" "$ROOT/ojs/public"
 chmod -R 777 "$ROOT/ojs/files" "$ROOT/ojs/cache" "$ROOT/ojs/public" 2>/dev/null || true
 
+echo "=== 2b. Hapus theme legacy yang tidak kompatibel dengan OJS 3.5 ==="
+for theme in academicFree sanguline immersion; do
+    if [ -d "$ROOT/ojs/plugins/themes/$theme" ]; then
+        rm -rf "$ROOT/ojs/plugins/themes/$theme"
+        echo "  removed: $theme"
+    fi
+done
+
 echo "=== 3. Set config installed = Off ==="
 sed -i 's|^installed = .*|installed = Off|' "$ROOT/ojs/config.inc.php"
 
