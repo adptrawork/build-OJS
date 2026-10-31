@@ -3,7 +3,22 @@
  * Loaded after Bootstrap and the parent Default Theme.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+/* Self-hosted variable fonts (latin) — no external requests */
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url('fonts/inter-latin.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Outfit';
+	font-style: normal;
+	font-weight: 400 800;
+	font-display: swap;
+	src: url('fonts/outfit-latin.woff2') format('woff2');
+}
 
 :root {
 	--jilp-primary: #ec4899;
@@ -66,12 +81,19 @@ body {
 	overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6,
-.jilp-section-title,
-.jilp-hero-title,
-.jilp-highlight-title,
-.jilp-quick-link-title,
-.jilp-why-title,
+/* Default theme sets font-family on `.pkp_structure_main h1..h3`; match that
+   specificity so these Outfit rules (loaded later) win. */
+.pkp_structure_main h1,
+.pkp_structure_main h2,
+.pkp_structure_main h3,
+.pkp_structure_main h4,
+.pkp_structure_main h5,
+.pkp_structure_main h6,
+.pkp_structure_main .jilp-section-title,
+.pkp_structure_main .jilp-hero-title,
+.pkp_structure_main .jilp-highlight-title,
+.pkp_structure_main .jilp-quick-link-title,
+.pkp_structure_main .jilp-why-title,
 .jilp-footer-title {
 	font-family: 'Outfit', sans-serif;
 	font-weight: 700;
@@ -974,7 +996,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	background: #ffffff;
 	border-top: 1px solid #e2e8f0;
 	border-bottom: 1px solid #e2e8f0;
-	margin: 5rem 0;
+	margin: 5rem 0 0;
 }
 
 .jilp-indexing-grid {
