@@ -23,10 +23,18 @@
 				{$pageFooter}
 			</div>
 		{/if}
-		<p>&copy; {$smarty.now|date_format:"%Y"} {$currentJournal->getLocalizedName()|escape}. All rights reserved.</p>
+		<div style="display:flex;align-items:center;justify-content:center;gap:var(--je-space-sm);margin-bottom:var(--je-space-md);">
+			<span class="material-symbols-outlined" style="color:var(--je-primary);">lock_open</span>
+			<span>Creative Commons Attribution 4.0 International (CC BY 4.0)</span>
+		</div>
+		<p>Authors retain copyright and grant the journal right of first publication under open licensing.</p>
 		{if $currentJournal->getData('issn')}
-			<p>ISSN: {$currentJournal->getData('issn')|escape}</p>
+			<p>p-ISSN: {$currentJournal->getData('issn')|escape}</p>
 		{/if}
+		{if $currentJournal->getData('onlineIssn')}
+			<p>e-ISSN: {$currentJournal->getData('onlineIssn')|escape}</p>
+		{/if}
+		<p>&copy; {$smarty.now|date_format:"%Y"} {$currentJournal->getLocalizedName()|escape}. All rights reserved.</p>
 	</div>
 </div>
 

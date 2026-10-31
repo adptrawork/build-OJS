@@ -1,7 +1,7 @@
 {**
  * @file plugins/themes/journalEditorial/templates/frontend/pages/indexJournal.tpl
  *
- * Homepage Jurnal Editorial (JILP-inspired). Struktur modular.
+ * Homepage Jurnal Editorial (Stitch-inspired). Struktur modular.
  *}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
 
@@ -13,16 +13,16 @@
 	{* Statistics strip *}
 	{include file="frontend/components/homepage/statistics.tpl"}
 
-	{* Editor's Pick *}
-	{include file="frontend/components/homepage/editorPicks.tpl"}
-
-	{* Latest Articles *}
+	{* Latest Research Articles *}
 	{include file="frontend/components/homepage/latestArticles.tpl"}
 
-	{* Current Issue + Archive *}
+	{* Transparent Editorial & Publication Flow *}
+	{include file="frontend/components/homepage/publicationFlow.tpl"}
+
+	{* Current Issue *}
 	{include file="frontend/components/homepage/currentIssue.tpl"}
 
-	{* Announcements / News *}
+	{* Announcements *}
 	{include file="frontend/components/homepage/announcements.tpl"}
 
 	{* Journal Identity & Specifications *}
@@ -33,9 +33,6 @@
 
 	{* For Authors / CTA *}
 	{include file="frontend/components/homepage/authorResources.tpl"}
-
-	{* Why Publish Here *}
-	{include file="frontend/components/homepage/whyPublish.tpl"}
 
 </div>
 

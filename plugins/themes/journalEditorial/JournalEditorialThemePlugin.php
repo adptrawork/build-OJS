@@ -65,9 +65,17 @@ class JournalEditorialThemePlugin extends ThemePlugin
             ->filterByContextIds([$contextId])
             ->getCount();
 
+        $custom = $this->fetchCustomSettings($contextId, $locale);
+        $manual = [];
+        if (isset($custom['jeStats']) && is_string($custom['jeStats'])) {
+            $manual = json_decode($custom['jeStats'], true) ?: [];
+        }
+
         $templateMgr->assign('jeStats', (object) [
             'articles' => $totalArticles,
             'issues' => $totalIssues,
+            'avgReviewDays' => $manual['avgReviewDays'] ?? 42,
+            'acceptanceRate' => $manual['acceptanceRate'] ?? 28,
         ]);
 
         // Artikel terbaru (6 publikasi terakhir)
@@ -115,7 +123,7 @@ class JournalEditorialThemePlugin extends ThemePlugin
     {
         $rows = DB::table('journal_settings')
             ->where('journal_id', $contextId)
-            ->whereIn('setting_name', ['jeIndexers', 'jeFocusScope', 'jeEditorialTeam', 'jeContactUrl'])
+            ->whereIn('setting_name', ['jeIndexers', 'jeFocusScope', 'jeEditorialTeam', 'jeContactUrl', 'jeStats'])
             ->get(['setting_name', 'locale', 'setting_value']);
 
         $settings = [];
