@@ -57,9 +57,10 @@ PY
 }
 
 THEME_VER=$(bump_file "$ROOT/plugins/themes/akdisi/version.xml")
+JE_VER=$(bump_file "$ROOT/plugins/themes/journalEditorial/version.xml")
 SEO_VER=$(bump_file "$ROOT/plugins/generic/akdisiSeo/version.xml")
 
-echo "=== Packaging Akdisi Theme (v${THEME_VER}) & Akdisi SEO (v${SEO_VER}) ==="
+echo "=== Packaging Akdisi Theme (v${THEME_VER}), Journal Editorial (v${JE_VER}) & Akdisi SEO (v${SEO_VER}) ==="
 
 rm -rf "$DIST"
 mkdir -p "$DIST"
@@ -72,6 +73,15 @@ cp -r "$ROOT/plugins/themes/akdisi"/* "$TMP_THEME/akdisi/"
 tar -czf "$DIST/akdisi-theme.tar.gz" -C "$TMP_THEME" akdisi
 (cd "$TMP_THEME" && zip -rq "$DIST/akdisi-theme.zip" akdisi)
 rm -rf "$TMP_THEME"
+
+# 1b. Package Journal Editorial Theme
+TMP_JE=$(mktemp -d /tmp/opencode/pack-je.XXXXXX)
+mkdir -p "$TMP_JE/journalEditorial"
+cp -r "$ROOT/plugins/themes/journalEditorial"/* "$TMP_JE/journalEditorial/"
+
+tar -czf "$DIST/journalEditorial-theme.tar.gz" -C "$TMP_JE" journalEditorial
+(cd "$TMP_JE" && zip -rq "$DIST/journalEditorial-theme.zip" journalEditorial)
+rm -rf "$TMP_JE"
 
 # 2. Package SEO Plugin
 TMP_SEO=$(mktemp -d /tmp/opencode/pack-seo.XXXXXX)

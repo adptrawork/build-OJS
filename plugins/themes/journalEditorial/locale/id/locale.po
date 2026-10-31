@@ -1,0 +1,15 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugins.themes.journalEditorial\n"
+"POT-Creation-Date: 2026-10-31\n"
+"PO-Revision-Date: 2026-10-31\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.themes.journalEditorial.name"
+msgstr "Tema Journal Editorial"
+
+msgid "plugins.themes.journalEditorial.description"
+msgstr "Tema beranda editorial terinspirasi JILP untuk OJS 3.5."

@@ -28,6 +28,7 @@ ddev exec -j php /var/www/html/scripts/create-journal.php || true
 rm -f "$ROOT/ojs/plugins/themes/jeki" "$ROOT/ojs/plugins/generic/jekiSeo"
 ln -sfn ../../../plugins/themes/akdisi "$ROOT/ojs/plugins/themes/akdisi"
 ln -sfn ../../../plugins/generic/akdisiSeo "$ROOT/ojs/plugins/generic/akdisiSeo"
+ln -sfn ../../../plugins/themes/journalEditorial "$ROOT/ojs/plugins/themes/journalEditorial"
 
 ddev exec -j php /var/www/html/scripts/register-plugins.php >/dev/null 2>&1 || true
 

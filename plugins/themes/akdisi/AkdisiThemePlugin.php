@@ -36,8 +36,8 @@ class AkdisiThemePlugin extends ThemePlugin
 
     public function init()
     {
-        error_log('AKDISI THEME: init called');
-        $this->setParent('default');
+        // Nama plugin = strtolower(nama kelas tanpa namespace) — lihat LazyLoadPlugin::getName()
+        $this->setParent('defaultthemeplugin');
         $this->addStyle('akdisi', 'styles/akdisi.css');
         $this->addScript('akdisi-slots', 'js/slots.js');
         Hook::add('TemplateManager::display', [$this, 'assignHomepageData']);
@@ -46,16 +46,16 @@ class AkdisiThemePlugin extends ThemePlugin
     /**
      * Isi variabel template untuk seluruh block beranda.
      */
-    public function assignHomepageData(string $hookName, array $args): void
+    public function assignHomepageData(string $hookName, array $args): bool
     {
         if ($args[1] !== 'frontend/pages/indexJournal.tpl') {
-            return;
+            return false;
         }
         $templateMgr = $args[0];
         $request = Application::get()->getRequest();
         $context = $request->getContext();
         if (!$context instanceof Journal) {
-            return;
+            return false;
         }
 
         $contextId = $context->getId();
@@ -80,6 +80,7 @@ class AkdisiThemePlugin extends ThemePlugin
             'akdisiTemplateFile' => $custom['akdisiTemplateFile'] ?? null,
             'akdisiContactUrl' => $custom['akdisiContactUrl'] ?? null,
         ]);
+        return false;
     }
 
     /**

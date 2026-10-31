@@ -1,5 +1,18 @@
 /* AKDISI theme — design tokens dan layout beranda. */
 
+/* Guard font dasar — tanpa ini body jatuh ke serif Times bila parent belum termuat. */
+body {
+  font-family: var(--akdisi-font-body);
+  color: var(--akdisi-colour-ink);
+}
+
+/* Batasi ukuran logo agar tidak membesar penuh layar. */
+.pkp_site_name .is_img img,
+.navbar-header .navbar-brand img {
+  max-height: 3rem;
+  width: auto;
+}
+
 :root {
   /* Warna: satu aksen maroon/burgundy, netral absolut. */
   --akdisi-colour-ink: #1a0f12;
@@ -10,9 +23,9 @@
   --akdisi-colour-surface-alt: #faf7f8;
   --akdisi-colour-border: #e7dde0;
 
-  /* Tipografi: Geist/Satoshi idealnya di-self-host. Fallback ke system stack. */
-  --akdisi-font-body: "Geist", "Satoshi", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --akdisi-font-heading: "Geist", "Satoshi", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Tipografi: Gunakan system-ui agar tidak berpura-pura memakai Geist tanpa @font-face. */
+  --akdisi-font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --akdisi-font-heading: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --akdisi-space-1: 0.25rem;
   --akdisi-space-2: 0.5rem;

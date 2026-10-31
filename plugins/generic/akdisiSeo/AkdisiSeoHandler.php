@@ -5,7 +5,6 @@ namespace APP\plugins\generic\akdisiSeo;
 use APP\core\Application;
 use APP\facades\Repo;
 use PKP\handler\PKPHandler;
-use PKP\core\PKPRequest;
 use PKP\submission\PKPSubmission;
 use PKP\submission\Collector as SubmissionCollector;
 
@@ -15,30 +14,30 @@ class AkdisiSeoHandler extends PKPHandler
     {
         try {
             $journal = $request->getJournal();
-            $baseUrl = rtrim($request->getBaseUrl(), '/');
-            $path = $journal ? $journal->getPath() : '';
+            $path = $journal ? $journal->getPath() : null;
 
             $urls = [];
-            $urls[] = $baseUrl . ($path ? "/index.php/{$path}/en" : '');
+            // Beranda jurnal — pakai $request->url() agar restful_urls dan locale otomatis benar.
+            $urls[] = $request->url($path);
 
-            $context = $journal ?: Application::get()->getRequest()->getContext();
-            if ($context) {
-                $cfg = [$context->getId()];
+            if ($journal) {
+                $contextId = $journal->getId();
+
                 $issues = Repo::issue()->getCollector()
-                    ->filterByContextIds($cfg)
+                    ->filterByContextIds([$contextId])
                     ->filterByPublished(true)
                     ->getMany();
                 foreach ($issues as $issue) {
-                    $url = $baseUrl . "/index.php/{$path}/en/issue/view/" . $issue->getId();
-                    $urls[] = $url;
+                    $urls[] = $request->url($path, 'issue', 'view', [$issue->getId()]);
                 }
+
                 $subs = Repo::submission()->getCollector()
-                    ->filterByContextIds($cfg)
+                    ->filterByContextIds([$contextId])
                     ->filterByStatus([PKPSubmission::STATUS_PUBLISHED])
                     ->orderBy(SubmissionCollector::ORDERBY_DATE_PUBLISHED, SubmissionCollector::ORDER_DIR_DESC)
                     ->getMany();
                 foreach ($subs as $s) {
-                    $urls[] = $baseUrl . "/index.php/{$path}/en/article/view/" . $s->getId();
+                    $urls[] = $request->url($path, 'article', 'view', [$s->getId()]);
                 }
             }
 

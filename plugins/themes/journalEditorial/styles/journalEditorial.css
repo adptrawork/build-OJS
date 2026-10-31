@@ -1,0 +1,236 @@
+/* Journal Editorial theme — design tokens & layout (JILP-inspired). */
+
+:root {
+  /* Warna */
+  --je-primary: #18324b;
+  --je-accent: #267c78;
+  --je-text: #25313b;
+  --je-muted: #667482;
+  --je-surface: #ffffff;
+  --je-surface-soft: #f4f7f9;
+  --je-border: #e2e8ed;
+
+  /* Tipografi */
+  --je-font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --je-font-heading: "Georgia", "Times New Roman", serif;
+
+  /* Spacing & radius */
+  --je-radius: 10px;
+  --je-container: 1180px;
+  --je-space-1: 0.25rem;
+  --je-space-2: 0.5rem;
+  --je-space-3: 0.75rem;
+  --je-space-4: 1rem;
+  --je-space-6: 1.5rem;
+  --je-space-8: 2rem;
+  --je-space-12: 3rem;
+  --je-space-16: 4rem;
+}
+
+/* Guard dasar */
+body {
+  font-family: var(--je-font-body);
+  color: var(--je-text);
+  line-height: 1.6;
+}
+
+/* Batasi logo */
+.pkp_site_name .is_img img,
+.navbar-header .navbar-brand img {
+  max-height: 3rem;
+  width: auto;
+}
+
+/* Container */
+.je-container {
+  max-width: var(--je-container);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Hero */
+.je-hero {
+  background: var(--je-surface-soft);
+  padding: var(--je-space-16) 0;
+  border-bottom: 1px solid var(--je-border);
+}
+.je-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--je-space-8);
+}
+@media (min-width: 768px) {
+  .je-hero__inner { grid-template-columns: 2fr 1fr; }
+}
+.je-hero__title {
+  font-family: var(--je-font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--je-primary);
+  margin: 0 0 var(--je-space-3);
+  line-height: 1.15;
+}
+.je-hero__desc {
+  font-size: 1.05rem;
+  color: var(--je-muted);
+  margin: 0 0 var(--je-space-6);
+  max-width: 60ch;
+}
+.je-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--je-space-3);
+}
+.je-btn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--je-radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.je-btn--primary { background: var(--je-primary); color: #fff; }
+.je-btn--primary:hover { opacity: 0.9; color: #fff; }
+.je-btn--outline { border: 1px solid var(--je-primary); color: var(--je-primary); }
+.je-btn--outline:hover { background: var(--je-primary); color: #fff; }
+
+/* Statistics strip */
+.je-stats {
+  background: var(--je-primary);
+  color: #fff;
+  padding: var(--je-space-6) 0;
+}
+.je-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--je-space-4);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .je-stats__grid { grid-template-columns: repeat(4, 1fr); }
+}
+.je-stats__item strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.je-stats__item span { font-size: 0.85rem; opacity: 0.85; }
+
+/* Section base */
+.je-section {
+  padding: var(--je-space-12) 0;
+  border-bottom: 1px solid var(--je-border);
+}
+.je-section__title {
+  font-family: var(--je-font-heading);
+  font-size: 1.5rem;
+  color: var(--je-primary);
+  margin: 0 0 var(--je-space-6);
+}
+
+/* Article cards */
+.je-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--je-space-6);
+}
+@media (min-width: 768px) { .je-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .je-cards { grid-template-columns: repeat(3, 1fr); } }
+.je-card {
+  background: var(--je-surface);
+  border: 1px solid var(--je-border);
+  border-radius: var(--je-radius);
+  padding: var(--je-space-6);
+  transition: box-shadow 0.15s;
+}
+.je-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.je-card__title {
+  font-family: var(--je-font-heading);
+  font-size: 1.1rem;
+  margin: 0 0 var(--je-space-2);
+  line-height: 1.3;
+}
+.je-card__title a { color: var(--je-primary); text-decoration: none; }
+.je-card__title a:hover { text-decoration: underline; }
+.je-card__meta { font-size: 0.85rem; color: var(--je-muted); margin-bottom: var(--je-space-3); }
+.je-card__abstract { font-size: 0.9rem; color: var(--je-text); line-height: 1.5; }
+
+/* Current issue */
+.je-current-issue {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--je-space-6);
+}
+@media (min-width: 768px) { .je-current-issue { grid-template-columns: 1fr 2fr; } }
+.je-cover img {
+  width: 100%;
+  max-width: 240px;
+  border-radius: var(--je-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.je-issue__title {
+  font-family: var(--je-font-heading);
+  font-size: 1.25rem;
+  color: var(--je-primary);
+  margin: 0 0 var(--je-space-3);
+}
+
+/* Announcements */
+.je-announcement {
+  background: var(--je-surface-soft);
+  border-left: 4px solid var(--je-accent);
+  padding: var(--je-space-4);
+  margin-bottom: var(--je-space-3);
+  border-radius: var(--je-radius);
+}
+.je-announcement__title { font-weight: 600; margin: 0 0 var(--je-space-1); color: var(--je-primary); }
+.je-announcement__date { font-size: 0.8rem; color: var(--je-muted); }
+
+/* Journal identity */
+.je-identity {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--je-space-4);
+}
+@media (min-width: 768px) { .je-identity { grid-template-columns: repeat(2, 1fr); } }
+.je-identity__item {
+  display: flex;
+  gap: var(--je-space-3);
+  padding: var(--je-space-3);
+  border-bottom: 1px solid var(--je-border);
+}
+.je-identity__label { font-weight: 600; color: var(--je-primary); min-width: 120px; }
+
+/* Indexing */
+.je-indexing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--je-space-4);
+  align-items: center;
+}
+.je-indexing img { max-height: 2.5rem; width: auto; filter: grayscale(0.3); transition: filter 0.15s; }
+.je-indexing img:hover { filter: grayscale(0); }
+
+/* Author CTA */
+.je-cta {
+  background: var(--je-primary);
+  color: #fff;
+  text-align: center;
+  padding: var(--je-space-12) 0;
+}
+.je-cta h2 { color: #fff; margin: 0 0 var(--je-space-3); }
+.je-cta p { opacity: 0.85; margin: 0 0 var(--je-space-6); }
+
+/* Footer */
+.je-footer {
+  background: var(--je-surface-soft);
+  padding: var(--je-space-8) 0;
+  border-top: 1px solid var(--je-border);
+  font-size: 0.9rem;
+  color: var(--je-muted);
+}
+
+/* Responsive guard */
+@media (max-width: 360px) {
+  .je-container { padding: 0 0.75rem; }
+  .je-stats__grid { grid-template-columns: 1fr; }
+}

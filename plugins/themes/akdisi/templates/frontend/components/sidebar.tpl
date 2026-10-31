@@ -10,14 +10,14 @@
 		{if $akdisiFocusScope}
 			<section class="akdisi-sidebar__block" data-slot="S-HOME-09">
 				<h3>Focus &amp; Scope</h3>
-				<div class="akdisi-sidebar__body">{$akdisiFocusScope}</div>
+				<div class="akdisi-sidebar__body">{$akdisiFocusScope|strip_unsafe_html}</div>
 			</section>
 		{/if}
 
 		{if $akdisiEditorialTeam}
 			<section class="akdisi-sidebar__block" data-slot="S-HOME-10">
 				<h3>Editorial Team</h3>
-				<div class="akdisi-sidebar__body">{$akdisiEditorialTeam}</div>
+				<div class="akdisi-sidebar__body">{$akdisiEditorialTeam|strip_unsafe_html}</div>
 			</section>
 		{/if}
 

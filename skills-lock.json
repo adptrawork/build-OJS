@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "ojs-expert/SKILL.md",
       "computedHash": "c81a38d344cbc3f81503390b68992419c46b91e8ded9c7c747355401783ebf2a"
+    },
+    "reverse-engineer-anything": {
+      "source": "morluto/rea",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/reverse-engineer-anything/SKILL.md",
+      "computedHash": "60fe2a48037e66bc23b20cc30c44f612eab82f5c904a6a2b9ed617242c46d9a1"
     }
   }
 }

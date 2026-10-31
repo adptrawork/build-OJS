@@ -171,3 +171,18 @@
 ### Notes
 - Instalasi OJS memakai `allowed_hosts = ["akdisi-ojs.ddev.site"]`.
 - Dataset ROR (~40 MB) dilewati di dev; aktifkan lagi untuk produksi.
+
+## 2026-10-31 (sesi 6 — tema journalEditorial JILP-inspired)
+
+### Added
+- Theme `journalEditorial`: child theme baru berbasis Default Theme dengan homepage modular ala JILP:
+  hero, statistics strip, Editor's Pick, Latest Articles, Current Issue, Announcements,
+  Journal Identity, Indexing, For Authors, Why Publish Here.
+- Design tokens: primary #18324b, accent #267c78, container 1180px, radius 10px.
+- Template partials di `templates/frontend/components/homepage/`.
+- Paket distribusi `dist/journalEditorial-theme.tar.gz` dan `.zip`.
+
+### Fixed
+- Bug aktivasi tema: `setParent('defaultthemeplugin')` (bukan 'default') agar CSS/JS/template parent termuat.
+- Bug plugin name mismatch: `journaleditorialthemeplugin` (satu 't') agar match dengan `LOWER(product_class_name)`.
+- Smarty object access: gunakan `->` bukan `.` untuk stdClass di template.

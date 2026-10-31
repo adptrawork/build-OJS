@@ -5,7 +5,7 @@ Dokumen ini adalah **buku panduan induk (master guide)** untuk membangun, mengon
 Semua arsitektur, tautan URL, kredensial, panduan alur kerja editorial, cara membangun dari awal, hingga praktek import mandiri dijelaskan secara mendetail di sini.
 
 ---
-
+[r]()
 ## DAFTAR ISI
 
 1. [Informasi Server, URL & Kredensial Akun](#1-informasi-server-url--kredensial-akun)
