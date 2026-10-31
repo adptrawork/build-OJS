@@ -65,6 +65,14 @@ class JournalEditorialThemePlugin extends ThemePlugin
         $templateMgr->assign('jilpArticles', $this->getArticles($contextId, $locale, 9));
         $templateMgr->assign('jilpIssues', $this->getIssues($contextId, $locale, 6));
         $templateMgr->assign('jilpStats', $this->getStats($contextId));
+        $templateMgr->assign(
+            'announcements',
+            \PKP\announcement\Announcement::withContextIds([$contextId])
+                ->withActiveByDate()
+                ->orderBy(\PKP\announcement\Announcement::CREATED_AT, 'desc')
+                ->limit(3)
+                ->get()
+        );
 
         $acronym = preg_replace('/[^A-Za-z]/', '', $context->getLocalizedName());
         $acronym = strtoupper(substr($acronym, 0, 4));

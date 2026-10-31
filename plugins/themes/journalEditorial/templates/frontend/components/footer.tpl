@@ -21,15 +21,13 @@
 		<footer class="container-fluid px-3 px-sm-4 px-lg-5" style="max-width:1440px;">
 			<div class="row gx-4 gx-xl-5 gy-4 justify-content-between">
 				<div class="col-12 col-lg-3 mb-4 mb-lg-0">
-					<div class="text-center mb-2">
-						<a class="d-inline-block" href="{url page="index"}">
-							{if $displayPageHeaderLogo}
+					{if $displayPageHeaderLogo}
+						<div class="text-center mb-2">
+							<a class="d-inline-block" href="{url page="index"}">
 								<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="{$displayPageHeaderLogo.altText|escape|default:$applicationName}" style="max-height:65px;max-width:100%;object-fit:contain;" />
-							{else}
-								<span class="text-white fw-bold fs-5">{$currentJournal->getLocalizedName()|escape}</span>
-							{/if}
-						</a>
-					</div>
+							</a>
+						</div>
+					{/if}
 					<div class="text-center mb-3">
 						<a class="text-white text-decoration-none" href="{url page="index"}">
 							<h3 class="h5 text-white fw-bold mb-0 lh-base" style="font-size:1.15rem;letter-spacing:-.2px;">

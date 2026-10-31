@@ -79,10 +79,39 @@
 		</div>
 	</header>
 
+	{* JILP/Zenith-style inner page banner: breadcrumb + page title.
+	   Rendered from the header so every core page (archive, about, search,
+	   auth, announcement, …) gets it without template overrides. Article
+	   pages show the breadcrumb only; their title lives in article_details. *}
+	{capture assign="jilpBannerCrumb"}
+		{if $requestedPage == 'article'}{translate key="article.article"}{else}{$pageTitleTranslated|strip_unsafe_html}{/if}
+	{/capture}
+	{assign var="jilpHasBanner" value=false}
+	{if $requestedPage == 'article' || ($pageTitleTranslated && $requestedPage != 'index')}
+		{assign var="jilpHasBanner" value=true}
+	{/if}
+	{if $jilpHasBanner}
+		<section class="jilp-inner-banner">
+			<div class="container">
+				<nav aria-label="{translate key="navigation.breadcrumbLabel"}">
+					<ol class="breadcrumb{if $requestedPage == 'article'} mb-0{/if}">
+						<li class="breadcrumb-item">
+							<a href="{$homeUrl}"><i class="bi bi-house-door-fill"></i> {translate key="common.homepageNavigationLabel"}</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">{$jilpBannerCrumb|trim}</li>
+					</ol>
+				</nav>
+				{if $requestedPage != 'article'}
+					<h1 class="jilp-inner-banner-title">{$jilpBannerCrumb|trim}</h1>
+				{/if}
+			</div>
+		</section>
+	{/if}
+
 	{* Wrapper for page content and sidebars *}
 	{if $isFullWidth}
 		{assign var=hasSidebar value=0}
 	{/if}
 	<div class="pkp_structure_content{if $hasSidebar} has_sidebar{/if}">
-		<div class="pkp_structure_main" role="main">
+		<div class="pkp_structure_main{if $jilpHasBanner} jilp-inner{/if}" role="main">
 			<a id="pkp_content_main"></a>

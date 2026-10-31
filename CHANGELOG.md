@@ -1,5 +1,63 @@
 # Changelog
 
+## 2026-10-31 (sesi 9 — halaman dalam tema journalEditorial + pass CSS modern)
+
+### Added
+- `header.tpl`: banner halaman dalam bergaya JILP — gradien pink + pola SVG,
+  breadcrumb `Beranda / <judul>` dan `<h1>` putih untuk semua halaman kecuali
+  beranda; halaman artikel hanya breadcrumb (judul tetap di `article_details`).
+  `pkp_structure_main` dapat class `jilp-inner` saat banner tampil.
+- `templates/frontend/objects/issue_summary.tpl` — kartu issue Bootstrap
+  (cover/fallback ikon, judul, series, tanggal `$dateFormatShort`).
+- `scripts/announcements.sql` — aktifkan `enableAnnouncements`, intro EN/ID,
+  dan 2 pengumuman dua bahasa (`descriptionShort` ikut diisi untuk ringkasan).
+- `scripts/journal-content.sql` — seed `about` (EN/ID), kontak primer &
+  dukungan, alamat, penerbit, ISSN, serta judul/kebijakan section EN/ID.
+  Keduanya dipanggil di akhir `scripts/install.sh`.
+- `JournalEditorialThemePlugin`: `$announcements` (3 pengumuman aktif terbaru)
+  di-assign di `assignHomepageData()` sehingga tab "Pengumuman" beranda terisi.
+
+### Changed
+- `journalEditorial.css`: bagian "Inner pages" baru — shell 1180px tanpa sidebar,
+  kartu putih untuk halaman prosa, tipografi prosa, form (pill pink), kartu hasil
+  pencarian, grid arsip issue, kartu pengumuman, masthead, kontak, alert, dan
+  pagination; plus override dark-mode lengkap.
+- Pass CSS modern (rujukan modern-css.com): `color-scheme` light/dark +
+  `accent-color`, `text-wrap: balance` untuk heading & `pretty` untuk paragraf,
+  properti logis (`margin-inline-*`, `border-inline-start`, `inset`,
+  `text-align: start/end`), sintaks range media query (`width < 992px`),
+  `line-clamp` standar, `:focus-visible`, `:user-invalid` untuk validasi form,
+  dan `@media (prefers-reduced-motion: reduce)`.
+- `footer.tpl`: nama jurnal tidak lagi tampil dua kali saat belum ada logo.
+- `install.sh`: `display_errors = Off` di `config.inc.php` agar deprecation/fatal
+  PHP tidak tercetak di atas markup halaman (contoh nyata: notice
+  `DublinCoreMetaPlugin.php:220` dan fatal `function.mailto.php` pada /contact).
+
+### Fixed
+- `/about`, `/about/contact`, `/about/privacy`, `/about/submissions` tidak lagi
+  kosong; kontak & ISSN tersimpan dengan locale `''` (bukan per-locale) supaya
+  `getData()` mengembalikan string, bukan array — sebelumnya memicu
+  `TypeError: htmlspecialchars(): Argument #1 must be of type string, array given`
+  di plugin googleScholar & dublinCoreMeta.
+- TOC issue: heading section tidak lagi mengambang di atas garis negatif-margin
+  bawaan theme default; diganti heading datar dengan garis bawah pink.
+- Halaman kontak: clearfix `::before/::after` theme default ikut jadi grid item
+  (menyisakan kolom kosong) dan float 50% mengecilkan kartu — direset.
+- Margin heading di `/about/submissions`: `:first-child` dibatasi ke anak
+  langsung `.page`, sehingga heading di dalam blok konten dapat jarak atas.
+- Dark mode: surface `.page` tidak lagi membungkus halaman yang di light mode
+  transparan (arsip/issue/artikel/pencarian/pengumuman); heading TOC, nomor
+  halaman, tombol galley, dan pagination kini terbaca.
+
+### Verified
+- 200 untuk `/issue/archive`, `/issue/view/1`, `/article/view/1`, `/about`,
+  `/about/contact`, `/about/privacy`, `/about/submissions`,
+  `/about/editorialMasthead`, `/announcement`, `/announcement/view/2`, `/search`,
+  `/login`, `/user/register` (ID) dan versi EN via `?setLocale=en`.
+- Screenshot desktop 1440px, mobile 390px, dan dark mode untuk arsip, issue,
+  artikel, tentang, kontak, penyerahan, pengumuman, pencarian, login, daftar.
+- `ddev logs --since 6m` bersih dari PHP Fatal/Warning/TypeError setelah seed.
+
 ## 2026-10-31 (sesi 8 — lokalisasi penuh tema journalEditorial EN/ID)
 
 ### Changed

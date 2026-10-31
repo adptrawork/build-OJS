@@ -38,6 +38,32 @@
 	--jilp-shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, .05), 0 2px 4px -1px rgba(0, 0, 0, .03);
 	--jilp-shadow-md: 0 10px 15px -3px rgba(0, 0, 0, .08), 0 4px 6px -2px rgba(0, 0, 0, .04);
 	--jilp-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, .04);
+
+	/* Native widgets (checkbox, select, scrollbar) follow the active mode */
+	color-scheme: light;
+	accent-color: var(--jilp-primary);
+}
+
+body.dark-mode {
+	color-scheme: dark;
+}
+
+/* Never let motion run for users who asked it to stop */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: .01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: .01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* Visible keyboard focus that never fights component styles */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+	outline: 2px solid var(--jilp-primary);
+	outline-offset: 2px;
 }
 
 /* Bootstrap brand overrides */
@@ -98,6 +124,7 @@ body {
 	font-family: 'Outfit', sans-serif;
 	font-weight: 700;
 	letter-spacing: -.02em;
+	text-wrap: balance;
 }
 
 /* OJS utility fixes when parent styles are present */
@@ -298,7 +325,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	display: flex;
 	align-items: center;
 	gap: .75rem;
-	margin-left: auto;
+	margin-inline-start: auto;
 }
 
 .jilp-mobile-toggles .jilp-theme-toggle {
@@ -643,6 +670,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	line-height: 1.35;
 	margin: 0;
 	display: -webkit-box;
+	line-clamp: 4;
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
@@ -724,9 +752,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 .jilp-article-card::before {
 	content: '';
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+	inset: 0 0 auto 0;
 	height: 4px;
 	background: var(--jilp-primary-gradient);
 	opacity: 0;
@@ -815,6 +841,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	line-height: 1.55;
 	margin-bottom: 1rem;
 	display: -webkit-box;
+	line-clamp: 3;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
@@ -900,7 +927,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 .jilp-announcement-card {
 	background: var(--jilp-card-bg);
 	border: 1px solid var(--jilp-card-border);
-	border-left: 4px solid var(--jilp-primary);
+	border-inline-start: 4px solid var(--jilp-primary);
 	border-radius: var(--jilp-radius);
 	padding: 1.5rem;
 	display: flex;
@@ -987,7 +1014,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 }
 
 .jilp-identity-list strong {
-	text-align: right;
+	text-align: end;
 }
 
 /* Indexing */
@@ -1149,6 +1176,794 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	margin-bottom: .5rem;
 }
 
+/* ── Inner pages (archive, issue, about, search, auth, announcements) ── */
+
+/* Page banner rendered from header.tpl */
+.jilp-inner-banner {
+	position: relative;
+	overflow: hidden;
+	background: var(--jilp-primary-gradient);
+	color: #fff;
+	padding: 3.25rem 0 3.75rem;
+}
+
+.jilp-inner-banner::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+	pointer-events: none;
+}
+
+.jilp-inner-banner .container {
+	position: relative;
+	z-index: 1;
+}
+
+.jilp-inner-banner .breadcrumb {
+	--bs-breadcrumb-divider-color: rgba(255, 255, 255, .55);
+	margin-bottom: .65rem;
+	font-size: .9rem;
+}
+
+.jilp-inner-banner .breadcrumb-item + .breadcrumb-item::before {
+	color: rgba(255, 255, 255, .55);
+}
+
+.jilp-inner-banner .breadcrumb a {
+	color: #fff;
+	text-decoration: none;
+	opacity: .82;
+}
+
+.jilp-inner-banner .breadcrumb a:hover {
+	opacity: 1;
+}
+
+.jilp-inner-banner .breadcrumb-item.active {
+	color: #fff;
+	font-weight: 600;
+}
+
+.jilp-inner-banner-title {
+	color: #fff;
+	font-size: clamp(1.5rem, 4vw, 2.1rem);
+	line-height: 1.2;
+	margin: 0;
+	text-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+
+/* Content column: full width, no side columns, no default theme borders */
+body:not(.pkp_page_index) .pkp_structure_content {
+	width: 100% !important;
+	max-width: none !important;
+	padding-top: 0 !important;
+}
+
+body:not(.pkp_page_index) .pkp_structure_sidebar {
+	display: none;
+}
+
+.pkp_structure_main.jilp-inner {
+	float: none !important;
+	width: 100% !important;
+	max-width: 1180px;
+	margin: 0 auto !important;
+	padding: 2.5rem 1rem 4rem !important;
+}
+
+.pkp_structure_main.jilp-inner::before,
+.pkp_structure_main.jilp-inner::after {
+	display: none !important;
+}
+
+/* Banner already carries the title and breadcrumb trail */
+.jilp-inner .page > h1,
+.jilp-inner .page > .cmp_breadcrumbs,
+.jilp-inner .page_issue > .cmp_breadcrumbs,
+.jilp-inner .page_article > .cmp_breadcrumbs,
+.jilp-inner .page_issue [data-slot="S-ISS-01"] {
+	display: none;
+}
+
+/* Content surface */
+.jilp-inner .page {
+	background: var(--jilp-card-bg);
+	border: 1px solid var(--jilp-card-border);
+	border-radius: var(--jilp-radius);
+	box-shadow: var(--jilp-shadow-sm);
+	padding: 2rem 2.25rem;
+}
+
+.jilp-inner .page_issue_archive,
+.jilp-inner .page_issue,
+.jilp-inner .page_article,
+.jilp-inner .page_search,
+.jilp-inner .page_announcements,
+.jilp-inner .page_announcement {
+	background: none;
+	border: 0;
+	box-shadow: none;
+	padding: 0;
+}
+
+.jilp-inner .page_login,
+.jilp-inner .page_register,
+.jilp-inner .page_lost_password,
+.jilp-inner .page_user_confirm,
+.jilp-inner .page_register_complete {
+	max-width: 580px;
+	margin: 0 auto;
+}
+
+/* Default theme caps the login form at 17em */
+.jilp-inner .page_login .login,
+.jilp-inner .page_register .cmp_form {
+	max-width: none;
+}
+
+.jilp-inner .cmp_form abbr.required,
+.jilp-inner .cmp_form .required {
+	text-decoration: none;
+	border: 0;
+	cursor: default;
+	color: var(--jilp-primary);
+}
+
+/* Prose */
+.jilp-inner .page p,
+.jilp-inner .page li {
+	line-height: 1.75;
+}
+
+.jilp-inner .page p {
+	text-wrap: pretty;
+}
+
+.jilp-inner .page h2 {
+	font-size: 1.45rem;
+	margin: 2rem 0 .85rem;
+}
+
+.jilp-inner .page h3 {
+	font-size: 1.15rem;
+	margin: 1.5rem 0 .6rem;
+}
+
+.jilp-inner .page > h2:first-child,
+.jilp-inner .page > h3:first-child {
+	margin-top: 0;
+}
+
+.jilp-inner .page a {
+	color: var(--jilp-primary);
+}
+
+.jilp-inner .page a:hover {
+	color: #db2777;
+}
+
+.jilp-inner .page img {
+	max-width: 100%;
+	height: auto;
+}
+
+.jilp-inner .page table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1.25rem 0;
+}
+
+.jilp-inner .page th,
+.jilp-inner .page td {
+	padding: .6rem .75rem;
+	border-bottom: 1px solid var(--jilp-card-border);
+	text-align: start;
+	vertical-align: top;
+}
+
+.jilp-inner .page th {
+	font-family: 'Outfit', sans-serif;
+	font-weight: 600;
+}
+
+/* Forms */
+.jilp-inner .cmp_form label,
+.jilp-inner .cmp_form .label {
+	display: block;
+	font-weight: 600;
+	font-size: .9rem;
+	margin-bottom: .35rem;
+}
+
+.jilp-inner .cmp_form .fields {
+	margin-bottom: 1.1rem;
+}
+
+.jilp-inner .cmp_form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="hidden"]),
+.jilp-inner .cmp_form select,
+.jilp-inner .cmp_form textarea {
+	display: block;
+	width: 100%;
+	max-width: none;
+	padding: .6rem .85rem;
+	font-size: .95rem;
+	font-family: inherit;
+	color: var(--jilp-text);
+	background: #fff;
+	border: 1px solid #dbe1ea;
+	border-radius: var(--jilp-radius-sm);
+	transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+/* Validation feedback only after the user has interacted (no JS needed) */
+.jilp-inner .cmp_form input:user-invalid,
+.jilp-inner .cmp_form select:user-invalid,
+.jilp-inner .cmp_form textarea:user-invalid {
+	border-color: #dc2626;
+}
+
+.jilp-inner .cmp_form input:focus,
+.jilp-inner .cmp_form select:focus,
+.jilp-inner .cmp_form textarea:focus {
+	outline: 0;
+	border-color: var(--jilp-primary);
+	box-shadow: 0 0 0 3px var(--jilp-primary-subtle);
+}
+
+.jilp-inner .cmp_form .checkbox .label,
+.jilp-inner .cmp_form .checkbox label,
+.jilp-inner .cmp_form .optin .label,
+.jilp-inner .cmp_form .optin label {
+	display: inline;
+	font-weight: 400;
+	margin: 0 0 0 .4rem;
+}
+
+.jilp-inner .cmp_form .checkbox,
+.jilp-inner .cmp_form .optin {
+	padding-bottom: .5rem !important;
+}
+
+/* Default theme draws a FontAwesome icon box inside submit buttons */
+.jilp-inner .cmp_form button.submit::after,
+.jilp-inner .cmp_form .submit button::after,
+.jilp-inner .cmp_form .buttons button::after,
+.jilp-inner .pkp_button::after {
+	content: none !important;
+	display: none !important;
+	background: none !important;
+}
+
+.jilp-inner .cmp_form .req {
+	color: var(--jilp-primary);
+	margin-inline-start: .15rem;
+}
+
+.jilp-inner .cmp_form .buttons {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.jilp-inner .cmp_form .submit {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.jilp-inner .pkp_button,
+.jilp-inner .cmp_form button[type="submit"],
+.jilp-inner .cmp_form .buttons button,
+.jilp-inner .cmp_form button.submit,
+.jilp-inner .cmp_form input[type="submit"] {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: .65rem 1.6rem;
+	font-family: inherit;
+	font-size: .95rem;
+	font-weight: 600;
+	color: #fff;
+	background: var(--jilp-primary);
+	border: 0;
+	border-radius: 999px;
+	box-shadow: 0 6px 16px rgba(236, 72, 153, .28);
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.jilp-inner .pkp_button:hover,
+.jilp-inner .cmp_form button[type="submit"]:hover,
+.jilp-inner .cmp_form .buttons button:hover,
+.jilp-inner .cmp_form button.submit:hover,
+.jilp-inner .cmp_form input[type="submit"]:hover {
+	background: #db2777;
+	color: #fff;
+}
+
+.jilp-inner .cmp_form .buttons .pkp_button,
+.jilp-inner .cmp_form .buttons a {
+	margin: 0;
+}
+
+/* Search page */
+.jilp-inner .page_search .cmp_form .search_input input {
+	padding: .85rem 1.1rem;
+	font-size: 1.05rem;
+	border-radius: 12px;
+}
+
+.jilp-inner .page_search fieldset.search_advanced {
+	margin-top: 1rem;
+	padding: 1.1rem 1.35rem;
+	background: #fff;
+	border: 1px solid var(--jilp-card-border);
+	border-radius: var(--jilp-radius-sm);
+}
+
+.jilp-inner .page_search fieldset legend {
+	padding: 0 .4rem;
+	font-size: .95rem;
+	font-weight: 600;
+	width: auto;
+}
+
+.jilp-inner .page_search .date_range {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.25rem;
+}
+
+.jilp-inner .page_search .date_range .from,
+.jilp-inner .page_search .date_range .to {
+	flex: 1 1 260px;
+}
+
+.jilp-inner .page_search .date_range select {
+	width: auto;
+	min-width: 4.5rem;
+	display: inline-block;
+	margin: 0 .35rem .35rem 0;
+}
+
+.jilp-inner .page_search .author {
+	margin-top: 1rem;
+}
+
+.jilp-inner .page_search .author input,
+.jilp-inner .page_search .author select {
+	margin-bottom: .75rem;
+}
+
+/* Search results */
+.jilp-inner .search_results {
+	display: grid;
+	gap: 1rem;
+	margin: 1.5rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.jilp-inner .search_results > li {
+	background: var(--jilp-card-bg);
+	border: 1px solid var(--jilp-card-border);
+	border-radius: var(--jilp-radius);
+	box-shadow: var(--jilp-shadow-sm);
+	padding: 1.25rem 1.5rem;
+}
+
+.jilp-inner .search_results .obj_article_summary .title {
+	font-family: 'Outfit', sans-serif;
+	font-size: 1.1rem;
+	font-weight: 600;
+	line-height: 1.35;
+	margin: 0 0 .4rem;
+}
+
+.jilp-inner .search_results .obj_article_summary .title a {
+	text-decoration: none;
+	color: var(--jilp-text);
+}
+
+.jilp-inner .search_results .obj_article_summary .title a:hover {
+	color: var(--jilp-primary);
+}
+
+.jilp-inner .search_results .obj_article_summary .meta {
+	font-size: .875rem;
+	color: var(--jilp-muted);
+}
+
+/* Issue archive grid */
+.jilp-inner .issues_archive {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: 0;
+}
+
+.jilp-inner .issues_archive > li {
+	padding: 0;
+	border: 0;
+}
+
+.jilp-issue-summary {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: var(--jilp-card-bg);
+	border: 1px solid var(--jilp-card-border);
+	border-radius: var(--jilp-radius);
+	overflow: hidden;
+	box-shadow: var(--jilp-shadow-sm);
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.jilp-issue-summary:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--jilp-shadow-md);
+}
+
+.jilp-issue-summary .cover {
+	display: block;
+	background: #eef2f7;
+}
+
+.jilp-issue-summary .cover img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 3 / 4;
+	object-fit: cover;
+}
+
+.jilp-issue-summary .cover-fallback {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 3 / 4;
+	color: var(--jilp-primary);
+	font-size: 2.5rem;
+}
+
+.jilp-issue-summary .body {
+	display: flex;
+	flex-direction: column;
+	gap: .4rem;
+	padding: 1.1rem 1.25rem 1.25rem;
+	border-top: 1px solid var(--jilp-card-border);
+}
+
+.jilp-issue-summary h2 {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.35;
+}
+
+.jilp-issue-summary .title {
+	color: var(--jilp-text);
+	text-decoration: none;
+}
+
+.jilp-issue-summary .title:hover {
+	color: var(--jilp-primary);
+}
+
+.jilp-issue-summary .series,
+.jilp-issue-summary .date {
+	font-size: .85rem;
+	color: var(--jilp-muted);
+}
+
+/* Issue table of contents: default theme floats section headings on a
+   negative-margin divider; replace with a flat, full-width heading. */
+.jilp-inner .obj_issue_toc .section,
+.jilp-inner .obj_issue_toc .galleys {
+	position: static;
+	margin: 2.5rem 0 0;
+	padding: 0;
+}
+
+.jilp-inner .obj_issue_toc .section::before,
+.jilp-inner .obj_issue_toc .galleys::before {
+	content: none;
+}
+
+.jilp-inner .obj_issue_toc .section > h2,
+.jilp-inner .obj_issue_toc .section > h3 {
+	display: block;
+	position: static;
+	left: auto;
+	margin: 0 0 1.25rem;
+	padding: 0 0 .6rem;
+	background: none;
+	border-bottom: 2px solid var(--jilp-primary);
+	font-size: 1.05rem;
+	font-weight: 700;
+	line-height: 1.4;
+	color: var(--jilp-text);
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}
+
+.jilp-inner .obj_issue_toc .articles > li {
+	margin: 0;
+	padding: 1.25rem 0;
+	border-bottom: 1px solid var(--jilp-card-border);
+}
+
+.jilp-inner .obj_issue_toc .articles > li:last-child {
+	border-bottom: 0;
+}
+
+/* Announcements */
+.jilp-inner .cmp_announcements {
+	margin: 2rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.jilp-inner .cmp_announcements > li {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.jilp-inner .obj_announcement_summary {
+	background: var(--jilp-card-bg);
+	border: 1px solid var(--jilp-card-border);
+	border-radius: var(--jilp-radius);
+	box-shadow: var(--jilp-shadow-sm);
+	padding: 1.5rem;
+	margin-bottom: 1.25rem;
+}
+
+.jilp-inner .obj_announcement_summary .title {
+	font-size: 1.15rem;
+	margin: 0 0 .35rem;
+}
+
+.jilp-inner .obj_announcement_summary .date {
+	font-size: .85rem;
+	color: var(--jilp-muted);
+}
+
+.jilp-inner .obj_announcement_summary .read_more {
+	font-weight: 600;
+}
+
+/* Editorial masthead / author lists */
+.jilp-inner .user_listing {
+	display: grid;
+	gap: .75rem;
+	margin: 1rem 0 2rem;
+	padding: 0;
+	list-style: none;
+}
+
+.jilp-inner .user_listing > li {
+	background: #f8fafc;
+	border: 1px solid var(--jilp-card-border);
+	border-radius: var(--jilp-radius-sm);
+	padding: .85rem 1.15rem;
+}
+
+.jilp-inner .user_listing .name {
+	font-weight: 600;
+}
+
+.jilp-inner .user_listing .affiliation,
+.jilp-inner .user_listing .date_start {
+	display: block;
+	font-size: .85rem;
+	color: var(--jilp-muted);
+}
+
+/* Contact page */
+.jilp-inner .contact_section {
+	display: grid;
+	gap: 1.25rem;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	align-items: start;
+	margin-top: 1.5rem;
+}
+
+/* Clearfix pseudo-elements from the parent theme would become grid items */
+.jilp-inner .contact_section::before,
+.jilp-inner .contact_section::after {
+	content: none;
+	display: none;
+}
+
+.jilp-inner .contact_section .address {
+	grid-column: 1 / -1;
+	font-size: .95rem;
+	line-height: 1.7;
+	color: var(--jilp-muted);
+}
+
+.jilp-inner .contact_section .contact {
+	float: none;
+	width: auto;
+	background: #f8fafc;
+	border: 1px solid var(--jilp-card-border);
+	border-radius: var(--jilp-radius-sm);
+	padding: 1.25rem 1.35rem;
+}
+
+.jilp-inner .contact_section .contact.primary {
+	padding-inline-end: 1.35rem;
+}
+
+.jilp-inner .contact_section .contact.support {
+	margin-top: 0;
+}
+
+.jilp-inner .contact_section .contact h2 {
+	margin-top: 0;
+	font-size: 1.1rem;
+}
+
+.jilp-inner .contact_section .label {
+	font-weight: 600;
+	font-size: .85rem;
+	color: var(--jilp-muted);
+	display: block;
+}
+
+/* Notifications, pagination */
+.jilp-inner .cmp_notification {
+	margin: 1.25rem 0;
+	padding: 1rem 1.25rem;
+	background: #eff6ff;
+	border: 1px solid #bfdbfe;
+	border-inline-start: 4px solid #3b82f6;
+	border-radius: var(--jilp-radius-sm);
+	color: #1e3a8a;
+}
+
+.jilp-inner .cmp_notification.error {
+	background: #fef2f2;
+	border-color: #fecaca;
+	border-inline-start-color: #ef4444;
+	color: #991b1b;
+}
+
+.jilp-inner .cmp_notification.success {
+	background: #f0fdf4;
+	border-color: #bbf7d0;
+	border-inline-start-color: #22c55e;
+	color: #166534;
+}
+
+.jilp-inner .pkp_form_error,
+.jilp-inner .pkp_form_error_list {
+	color: #b91c1c;
+	font-size: .875rem;
+}
+
+.jilp-inner .cmp_pagination {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 2.5rem;
+	font-size: .9rem;
+	color: var(--jilp-muted);
+}
+
+.jilp-inner .cmp_pagination a {
+	display: inline-flex;
+	align-items: center;
+	gap: .4rem;
+	padding: .5rem 1.1rem;
+	border: 1px solid var(--jilp-card-border);
+	border-radius: 999px;
+	background: var(--jilp-card-bg);
+	color: var(--jilp-text);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.jilp-inner .cmp_pagination a:hover {
+	background: var(--jilp-primary);
+	border-color: var(--jilp-primary);
+	color: #fff;
+}
+
+/* Dark mode */
+body.dark-mode:not(.pkp_page_index) {
+	background: #0b1120;
+}
+
+body.dark-mode .jilp-inner .page:not(.page_issue_archive, .page_issue, .page_article, .page_search, .page_announcements, .page_announcement),
+body.dark-mode .jilp-issue-summary,
+body.dark-mode .jilp-inner .search_results > li,
+body.dark-mode .jilp-inner .obj_announcement_summary {
+	background: #0f172a;
+	border-color: rgba(255, 255, 255, .1);
+}
+
+body.dark-mode .jilp-inner .page p,
+body.dark-mode .jilp-inner .page li,
+body.dark-mode .jilp-issue-summary .title,
+body.dark-mode .jilp-inner .search_results .obj_article_summary .title a {
+	color: #e2e8f0;
+}
+
+body.dark-mode .jilp-inner .cmp_form input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="hidden"]),
+body.dark-mode .jilp-inner .cmp_form select,
+body.dark-mode .jilp-inner .cmp_form textarea,
+body.dark-mode .jilp-inner .page_search fieldset.search_advanced {
+	background: #1e293b;
+	border-color: #334155;
+	color: #e2e8f0;
+}
+
+body.dark-mode .jilp-issue-summary .cover,
+body.dark-mode .jilp-inner .contact_section .contact,
+body.dark-mode .jilp-inner .user_listing > li {
+	background: #1e293b;
+	border-color: rgba(255, 255, 255, .08);
+}
+
+body.dark-mode .jilp-inner .cmp_notification {
+	background: #172554;
+	border-color: #1e3a8a;
+	color: #bfdbfe;
+}
+
+body.dark-mode .jilp-inner .cmp_notification.error {
+	background: #450a0a;
+	border-color: #7f1d1d;
+	color: #fecaca;
+}
+
+body.dark-mode .jilp-inner .cmp_notification.success {
+	background: #052e16;
+	border-color: #14532d;
+	color: #bbf7d0;
+}
+
+body.dark-mode .jilp-inner .cmp_pagination {
+	color: #94a3b8;
+}
+
+body.dark-mode .jilp-inner .cmp_pagination a {
+	background: #0f172a;
+	border-color: rgba(255, 255, 255, .12);
+	color: #e2e8f0;
+}
+
+body.dark-mode .jilp-inner .obj_issue_toc .section > h2,
+body.dark-mode .jilp-inner .obj_issue_toc .section > h3 {
+	color: #f1f5f9;
+}
+
+body.dark-mode .jilp-inner .obj_issue_toc .articles > li {
+	border-bottom-color: rgba(255, 255, 255, .08);
+}
+
+body.dark-mode .jilp-inner .obj_article_summary .pages,
+body.dark-mode .jilp-inner .obj_article_summary .meta,
+body.dark-mode .jilp-inner .obj_article_summary .published {
+	color: #94a3b8;
+}
+
+body.dark-mode .jilp-inner .obj_galley_link,
+body.dark-mode .jilp-inner .obj_galley_link.file {
+	background: #1e293b;
+	border-color: rgba(255, 255, 255, .14);
+	color: #f9a8d4;
+}
+
 /* Footer */
 .jilp-footer {
 	background: var(--jilp-slate);
@@ -1216,7 +2031,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	color: var(--jilp-primary) !important;
 	font-weight: 600;
 	text-decoration: none !important;
-	margin-left: .35rem;
+	margin-inline-start: .35rem;
 	font-style: normal;
 }
 
@@ -1405,12 +2220,12 @@ body.dark-mode .jilp-footer {
 }
 
 /* Responsive */
-@media (max-width: 1199.98px) {
+@media (width < 1200px) {
 	.jilp-search-input { width: 180px; }
 	.jilp-tabs .nav-link { padding: .55rem .85rem !important; font-size: .82rem; }
 }
 
-@media (max-width: 991.98px) {
+@media (width < 992px) {
 	.jilp-hero { padding: 4rem 0 5rem; }
 	.jilp-stats-card { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 	.jilp-nav { align-items: stretch; padding-top: .75rem; }
@@ -1425,18 +2240,19 @@ body.dark-mode .jilp-footer {
 		border-radius: 0;
 		background: transparent;
 		margin: 0;
-		padding: 0 0 0 1rem;
+		padding: 0;
+		padding-inline-start: 1rem;
 	}
 	.jilp-nav ul a { color: #64748b; }
 	.jilp-search-container { width: 100%; }
 	.jilp-search-input { width: 100%; }
 }
 
-@media (max-width: 767.98px) {
+@media (width < 768px) {
 	.jilp-hero { padding: 3rem 0 4rem; }
 	.jilp-hero-title { font-size: clamp(1.9rem, 7vw, 2.6rem); }
 	.jilp-hero-desc-card { padding: 1.1rem; }
-	.jilp-hero-description { text-align: left; font-size: .95rem; }
+	.jilp-hero-description { text-align: start; font-size: .95rem; }
 	.jilp-stats-bar-container { margin-top: -2rem; margin-bottom: 3rem; }
 	.jilp-stats-card { grid-template-columns: 1fr; padding: 1.25rem; gap: 1rem; }
 	.jilp-section-title { font-size: 1.75rem; }
@@ -1453,7 +2269,7 @@ body.dark-mode .jilp-footer {
 	.jilp-footer-links li { margin-bottom: .75rem; }
 }
 
-@media (max-width: 359.98px) {
+@media (width < 360px) {
 	.jilp-stats-card { grid-template-columns: 1fr; }
 	.jilp-indexing-grid,
 	.jilp-indexing-grid--compact { grid-template-columns: 1fr; }

@@ -18,6 +18,10 @@ printf 'en\nid\n\n/var/www/html/ojs/files\nadmin\nakdisi-admin\nakdisi-admin\nad
 # tulis JSON yang benar.
 sed -i 's|^allowed_hosts = .*|allowed_hosts = ["jeki-ojs.ddev.site"]|' "$ROOT/ojs/config.inc.php"
 
+# Jangan render PHP notice/deprecation/fatal ke dalam HTML pengunjung
+# (Smarty/DC meta memunculkan deprecation; fatal contact page sempat bocor).
+sed -i 's|^display_errors = On|display_errors = Off|' "$ROOT/ojs/config.inc.php"
+
 # Permission folder yang wajib writable.
 ddev exec -j chmod 777 /var/www/html/ojs/config.inc.php /var/www/html/ojs/cache \
     /var/www/html/ojs/public /var/www/html/ojs/files 2>/dev/null || true
@@ -52,6 +56,8 @@ ddev mysql -uroot -proot -e "
 # Masukkan demo custom blocks & skeleton static pages.
 ddev mysql -uroot -proot db < "$ROOT/scripts/static-pages.sql" 2>/dev/null || true
 ddev mysql -uroot -proot db < "$ROOT/scripts/akdisi-custom-blocks.sql" 2>/dev/null || true
+ddev mysql -uroot -proot db < "$ROOT/scripts/announcements.sql" 2>/dev/null || true
+ddev mysql -uroot -proot db < "$ROOT/scripts/journal-content.sql" 2>/dev/null || true
 
 # Bersihkan cache OJS.
 ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
