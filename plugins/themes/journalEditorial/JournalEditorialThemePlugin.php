@@ -4,7 +4,7 @@
  *
  * @class JournalEditorialThemePlugin
  *
- * @brief Child theme di atas Default Theme. Homepage modular ala JILP.
+ * @brief JILP-inspired editorial theme (Bootstrap 5) for OJS 3.5.
  */
 namespace APP\plugins\themes\journalEditorial;
 
@@ -14,8 +14,9 @@ use APP\journal\Journal;
 use Illuminate\Support\Facades\DB;
 use PKP\facades\Locale;
 use PKP\plugins\Hook;
-use PKP\submission\PKPSubmission;
 use PKP\plugins\ThemePlugin;
+use PKP\security\Role;
+use PKP\submission\PKPSubmission;
 
 class JournalEditorialThemePlugin extends ThemePlugin
 {
@@ -32,17 +33,25 @@ class JournalEditorialThemePlugin extends ThemePlugin
     public function init()
     {
         $this->setParent('defaultthemeplugin');
-        $this->addStyle('journalEditorial', 'styles/journalEditorial.css');
-        $this->addScript('journalEditorial-homepage', 'js/journalEditorial.js');
+
+        // Bootstrap first, then the theme override.
+        $this->addStyle('bootstrap', 'styles/bootstrap.min.css', ['priority' => -10]);
+        $this->addStyle('bootstrap-icons', 'styles/bootstrap-icons.min.css', ['priority' => -9]);
+        $this->addStyle('journalEditorial', 'styles/journalEditorial.css', ['priority' => 10]);
+
+        $this->addScript('bootstrap', 'js/bootstrap.bundle.min.js', ['priority' => -10]);
+        $this->addScript('journalEditorial-homepage', 'js/journalEditorial.js', ['priority' => 10]);
+
         Hook::add('TemplateManager::display', [$this, 'assignHomepageData']);
         $this->addMenuArea(['primary', 'user']);
     }
 
     public function assignHomepageData(string $hookName, array $args): bool
     {
-        if ($args[1] !== 'frontend/pages/indexJournal.tpl') {
+        if (($args[1] ?? null) !== 'frontend/pages/indexJournal.tpl') {
             return false;
         }
+
         $templateMgr = $args[0];
         $request = Application::get()->getRequest();
         $context = $request->getContext();
@@ -53,37 +62,36 @@ class JournalEditorialThemePlugin extends ThemePlugin
         $contextId = $context->getId();
         $locale = Locale::getLocale();
 
-        // Statistik jurnal
-        $totalArticles = Repo::submission()
-            ->getCollector()
-            ->filterByContextIds([$contextId])
-            ->filterByStatus([PKPSubmission::STATUS_PUBLISHED])
-            ->getCount();
+        $templateMgr->assign('jilpArticles', $this->getArticles($contextId, $locale, 9));
+        $templateMgr->assign('jilpIssues', $this->getIssues($contextId, $locale, 6));
+        $templateMgr->assign('jilpStats', $this->getStats($contextId));
 
-        $totalIssues = Repo::issue()
-            ->getCollector()
-            ->filterByContextIds([$contextId])
-            ->getCount();
+        $acronym = preg_replace('/[^A-Za-z]/', '', $context->getLocalizedName());
+        $acronym = strtoupper(substr($acronym, 0, 4));
+        if (strlen($acronym) < 4) {
+            $acronym = str_pad($acronym ?: 'J', 4, $acronym ?: 'J');
+        }
+        $templateMgr->assign('jilpAcronym', $acronym);
+        $templateMgr->assign('jilpLetters', str_split($acronym));
 
         $custom = $this->fetchCustomSettings($contextId, $locale);
-        $manual = [];
-        if (isset($custom['jeStats']) && is_string($custom['jeStats'])) {
-            $manual = json_decode($custom['jeStats'], true) ?: [];
-        }
-
-        $templateMgr->assign('jeStats', (object) [
-            'articles' => $totalArticles,
-            'issues' => $totalIssues,
-            'avgReviewDays' => $manual['avgReviewDays'] ?? 42,
-            'acceptanceRate' => $manual['acceptanceRate'] ?? 28,
+        $templateMgr->assign([
+            'jilpIndexers' => $this->parseIndexers($custom['jilpIndexers'] ?? null),
+            'jilpFocusScope' => $custom['jilpFocusScope'] ?? null,
+            'jilpEditorialTeam' => $custom['jilpEditorialTeam'] ?? null,
+            'jilpContactUrl' => $custom['jilpContactUrl'] ?? null,
         ]);
 
-        // Artikel terbaru (6 publikasi terakhir)
+        return false;
+    }
+
+    private function getArticles(int $contextId, string $locale, int $limit): array
+    {
         $published = Repo::submission()
             ->getCollector()
             ->filterByContextIds([$contextId])
             ->filterByStatus([PKPSubmission::STATUS_PUBLISHED])
-            ->limit(6)
+            ->limit($limit)
             ->orderBy(\PKP\submission\Collector::ORDERBY_DATE_PUBLISHED, \PKP\submission\Collector::ORDER_DIR_DESC)
             ->getMany();
 
@@ -93,37 +101,125 @@ class JournalEditorialThemePlugin extends ThemePlugin
             if (!$publication) {
                 continue;
             }
+
             $authors = [];
             foreach (($publication->getData('authors') ?: []) as $author) {
                 $authors[] = $author->getFullName(false);
             }
+
+            $issue = null;
+            $issueId = $publication->getIssueId();
+            if ($issueId) {
+                $issue = Repo::issue()->get($issueId, $contextId);
+            }
+
+            $start = $publication->getStartingPage();
+            $end = $publication->getEndingPage();
+            $pages = $start ? ($end && $end !== $start ? $start . '-' . $end : $start) : '';
+
             $articles[] = (object) [
                 'id' => $submission->getId(),
-                'title' => $publication->getLocalizedTitle(),
-                'date' => $publication->getData('datePublished'),
+                'title' => $publication->getLocalizedTitle($locale),
                 'authors' => implode(', ', $authors),
-                'abstract' => $publication->getLocalizedData('abstract'),
+                'abstract' => $publication->getLocalizedData('abstract', $locale),
+                'date' => $publication->getData('datePublished'),
+                'pages' => $pages,
+                'doi' => $publication->getStoredPubId('doi'),
+                'issueId' => $issueId,
+                'issueTitle' => $issue ? $issue->getIssueIdentification() : '',
+                'section' => $this->getSectionTitle($publication->getData('sectionId'), $contextId),
             ];
         }
-        $templateMgr->assign('jeLatestArticles', $articles);
 
-        // Custom settings
-        $custom = $this->fetchCustomSettings($contextId, $locale);
-        $templateMgr->assign([
-            'jeIndexers' => $custom['jeIndexers'] ?? null,
-            'jeFocusScope' => $custom['jeFocusScope'] ?? null,
-            'jeEditorialTeam' => $custom['jeEditorialTeam'] ?? null,
-            'jeContactUrl' => $custom['jeContactUrl'] ?? null,
-        ]);
+        return $articles;
+    }
 
-        return false;
+    private function getIssues(int $contextId, string $locale, int $limit): array
+    {
+        $issues = [];
+        $collection = Repo::issue()->getCollector()
+            ->filterByContextIds([$contextId])
+            ->limit($limit)
+            ->orderBy(\APP\issue\Collector::ORDERBY_DATE_PUBLISHED, \APP\issue\Collector::ORDER_DIR_DESC)
+            ->getMany();
+
+        foreach ($collection as $issue) {
+            $issues[] = (object) [
+                'id' => $issue->getId(),
+                'title' => $issue->getIssueIdentification(),
+                'date' => $issue->getDatePublished(),
+                'cover' => $issue->getLocalizedCoverImageUrl(),
+                'volume' => $issue->getVolume(),
+                'number' => $issue->getNumber(),
+                'year' => $issue->getYear(),
+            ];
+        }
+
+        return $issues;
+    }
+
+    private function getStats(int $contextId): object
+    {
+        $articles = Repo::submission()->getCollector()
+            ->filterByContextIds([$contextId])
+            ->filterByStatus([PKPSubmission::STATUS_PUBLISHED])
+            ->getCount();
+
+        $issues = Repo::issue()->getCollector()
+            ->filterByContextIds([$contextId])
+            ->getCount();
+
+        $authorNames = [];
+        foreach (Repo::submission()->getCollector()
+            ->filterByContextIds([$contextId])
+            ->filterByStatus([PKPSubmission::STATUS_PUBLISHED])
+            ->getMany() as $submission) {
+            foreach (($submission->getCurrentPublication()?->getData('authors') ?: []) as $author) {
+                $authorNames[$author->getFullName(false)] = true;
+            }
+        }
+        $authors = count($authorNames);
+
+        $reviewers = Repo::user()->getCollector()
+            ->filterByContextIds([$contextId])
+            ->filterByRoleIds([Role::ROLE_ID_REVIEWER])
+            ->getCount();
+
+        return (object) [
+            'articles' => $articles,
+            'issues' => $issues,
+            'authors' => $authors,
+            'reviewers' => $reviewers,
+        ];
+    }
+
+    private function getSectionTitle(?int $sectionId, int $contextId): string
+    {
+        if (!$sectionId) {
+            return '';
+        }
+        $section = Repo::section()->get($sectionId, $contextId);
+        return $section ? $section->getLocalizedTitle() : '';
+    }
+
+    private function parseIndexers(?string $value): array
+    {
+        $default = ['SINTA', 'Garuda', 'Crossref', 'Google Scholar', 'DOAJ', 'BASE', 'Dimensions', 'OpenAIRE', 'Scilit', 'WorldCat', 'Neliti', 'Moraref'];
+        if (!$value) {
+            return $default;
+        }
+        $decoded = json_decode($value, true);
+        if (is_array($decoded)) {
+            return array_values(array_filter($decoded));
+        }
+        return array_values(array_filter(array_map('trim', explode(',', $value))));
     }
 
     private function fetchCustomSettings(int $contextId, string $locale): array
     {
         $rows = DB::table('journal_settings')
             ->where('journal_id', $contextId)
-            ->whereIn('setting_name', ['jeIndexers', 'jeFocusScope', 'jeEditorialTeam', 'jeContactUrl', 'jeStats'])
+            ->whereIn('setting_name', ['jilpIndexers', 'jilpFocusScope', 'jilpEditorialTeam', 'jilpContactUrl'])
             ->get(['setting_name', 'locale', 'setting_value']);
 
         $settings = [];
@@ -133,6 +229,7 @@ class JournalEditorialThemePlugin extends ThemePlugin
                 $settings[$name] = $row->setting_value;
             }
         }
+
         return $settings;
     }
 }

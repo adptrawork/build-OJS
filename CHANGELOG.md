@@ -1,5 +1,48 @@
 # Changelog
 
+## 2026-10-31 (sesi 7 — tema journalEditorial bergaya JILP / Zenith Pro)
+
+### Added
+- Theme `journalEditorial` ditulis ulang mengikuti referensi JILP
+  (`e-journal.sastra-unes.com/index.php/JILP`): Bootstrap 5.3.3 + Bootstrap
+  Icons di-host lokal di dalam tema, hero gelap dengan cover issue, stat strip
+  melayang, kartu Editor's Pick, area tab (Latest / Most Viewed / Most Cited /
+  Issues / Announcements / About / Editorial & Indexing), grid indexing,
+  quick links penulis, kartu Why Publish, dan footer 5 kolom.
+- `templates/frontend/components/header.tpl` & `footer.tpl` — shell Bootstrap
+  (navbar sticky, search, toggle dark mode, footer lengkap).
+- Partial homepage: `articleCard.tpl`, `issueCard.tpl`, `tabs.tpl`,
+  `hero.tpl`, `statistics.tpl`, `editorPicks.tpl`, `indexing.tpl`,
+  `authorResources.tpl`, `whyPublish.tpl`.
+- `js/journalEditorial.js` — toggle dark mode (localStorage). Tanpa dependensi.
+- Token warna pink `#ec4899`, font Outfit (heading) + Inter (body),
+  dark mode penuh.
+
+### Changed
+- `JournalEditorialThemePlugin` memakai collector `Repo` (submission, issue,
+  section, user) untuk artikel, issue, statistik, dan nama penulis;
+  custom setting `jilpIndexers` / `jilpFocusScope` / `jilpEditorialTeam` /
+  `jilpContactUrl` dibaca dari `journal_settings`.
+- Statistik keempat memakai jumlah issue terbit (bukan angka "hari rata-rata"
+  yang hardcoded); jumlah penulis dihitung dari author publication terbit.
+- Tanggal di kartu memakai `$dateFormatShort` bawaan OJS (sebelumnya
+  `date_format:"%Y-%m-%d"` menghasilkan `%2017-%10-%10`).
+
+### Removed
+- Template sisa design Stitch/maroon yang tidak terpakai: `aboutJournal`,
+  `backToTop`, `floatingActions`, `currentIssue`, `indexers`,
+  `latestBySection`, `publicationTimeline`, `sidebar`, `statsStrip`,
+  `homepage/{announcements,currentIssue,journalIdentity,latestArticles,publicationFlow}`.
+
+### Verified
+- `./scripts/reset.sh` bersih lalu import ulang `import/xml/issue-937.xml`
+  (5 artikel + 1 issue); homepage, artikel, issue, archive, dan sitemap 200.
+- Screenshot desktop 1440px, mobile 390px, dan dark mode: hero, stat strip,
+  4 kartu Editor's Pick, 5 kartu artikel, tab, indexing, quick links, footer
+  tampil tanpa error.
+- `?slots` tidak lagi dipakai; tidak ada request ke domain eksternal
+  (font Google sudah tidak dipakai, Bootstrap lokal).
+
 ## 2026-10-31 (sesi 5 — reset ke nol, pemisahan plugin/tema kustom & panduan import)
 
 ### Added

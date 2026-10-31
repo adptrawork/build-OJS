@@ -1,45 +1,35 @@
 {**
  * @file plugins/themes/journalEditorial/templates/frontend/components/homepage/statistics.tpl
  *}
-<section class="je-stats" aria-label="Journal statistics">
-	<div class="je-container">
-		<div class="je-stats__grid">
-			<div class="je-stat">
-				<div class="je-stat__icon">
-					<span class="material-symbols-outlined">timer</span>
-				</div>
-				<div>
-					<div class="je-stat__number">{$jeStats->avgReviewDays|default:42}</div>
-					<div class="je-stat__label">Avg. Review Time (days)</div>
-				</div>
+<div class="container jilp-stats-bar-container">
+	<div class="jilp-stats-card">
+		<div class="jilp-stat-item">
+			<div class="jilp-stat-icon shadow-sm"><i class="bi bi-file-earmark-text"></i></div>
+			<div>
+				<div class="jilp-stat-number">{$jilpStats->articles|default:0}{if $jilpStats->articles}+{/if}</div>
+				<div class="jilp-stat-label">Published Articles</div>
 			</div>
-			<div class="je-stat">
-				<div class="je-stat__icon">
-					<span class="material-symbols-outlined">verified</span>
-				</div>
-				<div>
-					<div class="je-stat__number">{$jeStats->acceptanceRate|default:28}%</div>
-					<div class="je-stat__label">Acceptance Rate</div>
-				</div>
+		</div>
+		<div class="jilp-stat-item">
+			<div class="jilp-stat-icon shadow-sm"><i class="bi bi-people-fill"></i></div>
+			<div>
+				<div class="jilp-stat-number">{$jilpStats->authors|default:0}{if $jilpStats->authors}+{/if}</div>
+				<div class="jilp-stat-label">Contributing Authors</div>
 			</div>
-			<div class="je-stat">
-				<div class="je-stat__icon">
-					<span class="material-symbols-outlined">menu_book</span>
-				</div>
-				<div>
-					<div class="je-stat__number">{$jeStats->issues|default:0}</div>
-					<div class="je-stat__label">Issues Published</div>
-				</div>
+		</div>
+		<div class="jilp-stat-item">
+			<div class="jilp-stat-icon shadow-sm"><i class="bi bi-award-fill"></i></div>
+			<div>
+				<div class="jilp-stat-number">{$jilpStats->reviewers|default:0}{if $jilpStats->reviewers}+{/if}</div>
+				<div class="jilp-stat-label">Active Reviewers</div>
 			</div>
-			<div class="je-stat">
-				<div class="je-stat__icon">
-					<span class="material-symbols-outlined">article</span>
-				</div>
-				<div>
-					<div class="je-stat__number">{$jeStats->articles|default:0}</div>
-					<div class="je-stat__label">Published Articles</div>
-				</div>
+		</div>
+		<div class="jilp-stat-item">
+			<div class="jilp-stat-icon shadow-sm"><i class="bi bi-journals"></i></div>
+			<div>
+				<div class="jilp-stat-number">{$jilpStats->issues|default:0}{if $jilpStats->issues}+{/if}</div>
+				<div class="jilp-stat-label">Published Issues</div>
 			</div>
 		</div>
 	</div>
-</section>
+</div>

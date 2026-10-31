@@ -12,4 +12,4 @@ msgid "plugins.themes.journalEditorial.name"
 msgstr "Journal Editorial Theme"
 
 msgid "plugins.themes.journalEditorial.description"
-msgstr "JILP-inspired editorial homepage theme for OJS 3.5."
+msgstr "JILP-style Bootstrap 5 academic homepage theme for OJS 3.5."

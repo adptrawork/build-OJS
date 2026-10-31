@@ -1,38 +1,28 @@
 {**
  * @file plugins/themes/journalEditorial/templates/frontend/pages/indexJournal.tpl
  *
- * Homepage Jurnal Editorial (Stitch-inspired). Struktur modular.
+ * JILP-inspired homepage. Full-width, Bootstrap 5 based.
  *}
+{assign var="isFullWidth" value=true}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
 
-<div class="page_index_journal je-home">
+<div class="page_index_journal jilp-home" id="main-content">
 
-	{* Hero / Journal Introduction *}
 	{include file="frontend/components/homepage/hero.tpl"}
-
-	{* Statistics strip *}
 	{include file="frontend/components/homepage/statistics.tpl"}
-
-	{* Latest Research Articles *}
-	{include file="frontend/components/homepage/latestArticles.tpl"}
-
-	{* Transparent Editorial & Publication Flow *}
-	{include file="frontend/components/homepage/publicationFlow.tpl"}
-
-	{* Current Issue *}
-	{include file="frontend/components/homepage/currentIssue.tpl"}
-
-	{* Announcements *}
-	{include file="frontend/components/homepage/announcements.tpl"}
-
-	{* Journal Identity & Specifications *}
-	{include file="frontend/components/homepage/journalIdentity.tpl"}
-
-	{* Indexing & Abstracting *}
+	{include file="frontend/components/homepage/editorPicks.tpl"}
+	{include file="frontend/components/homepage/tabs.tpl"}
 	{include file="frontend/components/homepage/indexing.tpl"}
-
-	{* For Authors / CTA *}
 	{include file="frontend/components/homepage/authorResources.tpl"}
+	{include file="frontend/components/homepage/whyPublish.tpl"}
+
+	{if $additionalHomeContent}
+		<section class="container py-4 mb-5">
+			<div class="jilp-additional-content">
+				{$additionalHomeContent}
+			</div>
+		</section>
+	{/if}
 
 </div>
 

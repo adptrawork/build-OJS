@@ -1,21 +1,40 @@
 {**
  * @file plugins/themes/journalEditorial/templates/frontend/components/homepage/whyPublish.tpl
  *}
-<section class="je-section" aria-labelledby="je-why-title">
-	<div class="je-container">
-		<h2 id="je-why-title" class="je-section__title">Why Publish Here</h2>
-		<div class="je-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
-			<div class="je-card">
-				<h3 class="je-card__title">Open Access</h3>
-				<p class="je-card__abstract">Free to read and download for everyone, worldwide.</p>
+<section class="jilp-whypublish-section">
+	<div class="container">
+		<div class="text-center mb-4">
+			<h2 class="jilp-section-title d-inline-block">Why Publish With Us</h2>
+			<p class="text-muted mt-3 mb-0">A rigorous, open, and author-friendly publishing experience.</p>
+		</div>
+		<div class="row g-4">
+			<div class="col-lg-3 col-md-6">
+				<div class="jilp-why-card h-100">
+					<div class="jilp-why-icon"><i class="bi bi-unlock-fill"></i></div>
+					<h3 class="jilp-why-title">Open Access</h3>
+					<p class="jilp-why-desc">Free to read and download for everyone, worldwide.</p>
+				</div>
 			</div>
-			<div class="je-card">
-				<h3 class="je-card__title">Peer Review</h3>
-				<p class="je-card__abstract">Rigorous double-blind peer review by experts.</p>
+			<div class="col-lg-3 col-md-6">
+				<div class="jilp-why-card h-100">
+					<div class="jilp-why-icon"><i class="bi bi-patch-check-fill"></i></div>
+					<h3 class="jilp-why-title">Refereed</h3>
+					<p class="jilp-why-desc">Rigorous double-blind peer review by subject experts.</p>
+				</div>
 			</div>
-			<div class="je-card">
-				<h3 class="je-card__title">DOI &amp; Preservation</h3>
-				<p class="je-card__abstract">Persistent identifiers and long-term archiving.</p>
+			<div class="col-lg-3 col-md-6">
+				<div class="jilp-why-card h-100">
+					<div class="jilp-why-icon"><i class="bi bi-globe2"></i></div>
+					<h3 class="jilp-why-title">Indexed</h3>
+					<p class="jilp-why-desc">Discoverable through major scholarly databases.</p>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="jilp-why-card h-100">
+					<div class="jilp-why-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+					<h3 class="jilp-why-title">Fast Track</h3>
+					<p class="jilp-why-desc">Efficient editorial handling and timely publication.</p>
+				</div>
 			</div>
 		</div>
 	</div>
