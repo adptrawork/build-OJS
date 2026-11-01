@@ -290,8 +290,14 @@ msgstr "Tentang"
 msgid "plugins.themes.journalEditorial.footer.aboutJournal"
 msgstr "Tentang Jurnal"
 
+msgid "plugins.themes.journalEditorial.footer.focusScope"
+msgstr "Fokus dan Ruang Lingkup"
+
 msgid "plugins.themes.journalEditorial.footer.editorialTeam"
 msgstr "Tim Editorial"
+
+msgid "plugins.themes.journalEditorial.footer.indexing"
+msgstr "Pengindeksan"
 
 msgid "plugins.themes.journalEditorial.footer.announcements"
 msgstr "Pengumuman"
@@ -313,6 +319,9 @@ msgstr "Untuk Penulis"
 
 msgid "plugins.themes.journalEditorial.footer.guidelines"
 msgstr "Panduan Penulis"
+
+msgid "plugins.themes.journalEditorial.footer.fees"
+msgstr "Biaya Penulis"
 
 msgid "plugins.themes.journalEditorial.footer.submit"
 msgstr "Kirim Naskah"

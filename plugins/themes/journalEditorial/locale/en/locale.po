@@ -290,8 +290,14 @@ msgstr "About"
 msgid "plugins.themes.journalEditorial.footer.aboutJournal"
 msgstr "About the Journal"
 
+msgid "plugins.themes.journalEditorial.footer.focusScope"
+msgstr "Focus and Scope"
+
 msgid "plugins.themes.journalEditorial.footer.editorialTeam"
 msgstr "Editorial Team"
+
+msgid "plugins.themes.journalEditorial.footer.indexing"
+msgstr "Indexing"
 
 msgid "plugins.themes.journalEditorial.footer.announcements"
 msgstr "Announcements"
@@ -313,6 +319,9 @@ msgstr "For Authors"
 
 msgid "plugins.themes.journalEditorial.footer.guidelines"
 msgstr "Author Guidelines"
+
+msgid "plugins.themes.journalEditorial.footer.fees"
+msgstr "Author Fees"
 
 msgid "plugins.themes.journalEditorial.footer.submit"
 msgstr "Submit Manuscript"

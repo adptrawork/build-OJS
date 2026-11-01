@@ -62,19 +62,22 @@
 					<h4 class="jilp-footer-title">{translate key="plugins.themes.journalEditorial.footer.about"}</h4>
 					<ul class="jilp-footer-links">
 						<li><a href="{url page="about"}">{translate key="plugins.themes.journalEditorial.footer.aboutJournal"}</a></li>
+						<li><a href="{url page="focus-and-scope"}">{translate key="plugins.themes.journalEditorial.footer.focusScope"}</a></li>
 						<li><a href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.footer.editorialTeam"}</a></li>
+						<li><a href="{url page="indexing"}">{translate key="plugins.themes.journalEditorial.footer.indexing"}</a></li>
 						<li><a href="{url page="about" op="privacy"}">{translate key="plugins.themes.journalEditorial.footer.privacy"}</a></li>
-						<li><a href="{url page="about" op="contact"}">{translate key="plugins.themes.journalEditorial.footer.contact"}</a></li>
+						<li><a href="{url page="contact-us"}">{translate key="plugins.themes.journalEditorial.footer.contact"}</a></li>
 					</ul>
 				</div>
 
 				<div class="jilp-footer-col">
 					<h4 class="jilp-footer-title">{translate key="plugins.themes.journalEditorial.footer.forAuthors"}</h4>
 					<ul class="jilp-footer-links">
-						<li><a href="{url page="about" op="submissions"}">{translate key="plugins.themes.journalEditorial.footer.guidelines"}</a></li>
+						<li><a href="{url page="author-guidelines"}">{translate key="plugins.themes.journalEditorial.footer.guidelines"}</a></li>
+						<li><a href="{url page="author-fees"}">{translate key="plugins.themes.journalEditorial.footer.fees"}</a></li>
 						<li><a href="{url page="submission" op="submit"}">{translate key="plugins.themes.journalEditorial.footer.submit"}</a></li>
-						<li><a href="{url page="about" op="submissions"}">{translate key="plugins.themes.journalEditorial.footer.ethics"}</a></li>
-						<li><a href="{url page="about"}">{translate key="plugins.themes.journalEditorial.footer.openAccess"}</a></li>
+						<li><a href="{url page="publication-ethics"}">{translate key="plugins.themes.journalEditorial.footer.ethics"}</a></li>
+						<li><a href="{url page="open-access-statement"}">{translate key="plugins.themes.journalEditorial.footer.openAccess"}</a></li>
 					</ul>
 				</div>
 			</div>
