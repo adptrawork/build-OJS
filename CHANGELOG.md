@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-11-01 (sesi 12 — h1 konsisten, a11y 100, CLS 0, pembersihan hardcoded URL)
+
+### Added
+- Override template `issueArchive.tpl`, `search.tpl`, `announcements.tpl` di tema (hapus `<h1>` kosong/duplikat).
+- CSS override dropdown hover/focus: hapus garis biru (`border-color: #006798`) dari `.pkp_nav_list ul a`, background hover transparan.
+- `scripts/fix-hardcoded-urls.sql` (seed pembersihan domain/brand).
+
+### Changed
+- Header banner h1 kini render juga di halaman issue (identifikasi issue sebagai judul tunggal).
+- Hero `min-height: 520px` + stats bar `transform` (bukan `margin-top`) untuk CLS 0.
+- Kontras: hero button teks gelap, `.jilp-article-category` & badge subtle → `#b91c1c`, footer ISSN label teks gelap.
+- Link "Read more" → "About the journal"/"View full announcement" (Lighthouse link-text).
+- Meta description + theme-color di `headerHead.tpl`; skip link target `#jilpNavMenu`.
+- Semua hardcoded URL/domain/brand (jeki-ojs.ddev.site, AKDISI, akdisi.my.id) di scripts, plugin, template, docs dibersihkan → dinamis/relatif (JRDC, jrdc.my.id).
+- Journal settings (name, contactEmail, supportEmail, publisherInstitution, dll.) diperbarui ke JRDC.
+
+### Fixed
+- Halaman issue/archive/announcement/search: h1 ganda (2) atau kosong (0) → tepat 1.
+- `color-contrast` dan `skip-link` Lighthouse → 100/100 a11y.
+- `meta-description` dan `link-text` → SEO 100.
+
+### Verified
+- Lighthouse: Performance 94, Accessibility 100, Best Practices 100, SEO 100, CLS 0, LCP 2.5s.
+- 20 halaman statis × EN/ID → 200; home, artikel, issue → 200; logs bersih.
+- Paket `dist/journalEditorial-theme.{tar.gz,zip}` dibangun ulang (0.1.1.5).
+- Merge `dev` → `main` selesai; working tree clean.
+
 ## 2026-11-01 (sesi 11 — halaman statis + sinkronisasi plugin staticPages resmi)
 
 ### Added
