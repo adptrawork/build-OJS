@@ -10,6 +10,8 @@
 <head>
 	<meta charset="{$defaultCharset|escape}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#fff2e8" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
 	<title>
 		{$pageTitleTranslated|strip_tags}
 		{if $requestedPage|escape|default:"index" != 'index' && $currentContext && $currentContext->getLocalizedName()}

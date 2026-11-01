@@ -34,7 +34,7 @@
 
 			<div class="jilp-mobile-toggles d-lg-none">
 				<button class="jilp-theme-toggle" type="button" title="{translate key="plugins.themes.journalEditorial.toggleTheme"}" aria-label="{translate key="plugins.themes.journalEditorial.toggleTheme"}">
-					<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon"></i>
+					<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon" aria-hidden="true"></i>
 				</button>
 				<button class="navbar-toggler border-0 shadow-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#jilpNavMenu" aria-controls="jilpNavMenu" aria-expanded="false" aria-label="{translate key="plugins.themes.journalEditorial.toggleNav"}">
 					<span class="navbar-toggler-icon"></span>
@@ -48,17 +48,17 @@
 				{$primaryMenu}
 
 				<div class="d-flex align-items-center gap-3 ms-auto mt-3 mt-lg-0">
-					{if $currentContext && $requestedPage !== 'search'}
+					{if $currentContext && $jilpPage !== 'search'}
 						<form action="{url page="search" op="search"}" method="get" class="jilp-search-container" role="search">
 							<input type="text" name="query" class="form-control jilp-search-input shadow-sm" placeholder="{translate key="common.search"|escape}" aria-label="{translate key="common.search"|escape}" />
 							<button class="jilp-search-btn shadow-sm" type="submit" title="{translate key="common.search"|escape}">
-								<i class="bi bi-search"></i>
+								<i class="bi bi-search" aria-hidden="true"></i>
 							</button>
 						</form>
 					{/if}
 
 					<button class="jilp-theme-toggle d-none d-lg-flex" type="button" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
-						<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon"></i>
+						<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon" aria-hidden="true"></i>
 					</button>
 
 					{if $isUserLoggedIn}
@@ -66,10 +66,10 @@
 					{else}
 						<div class="d-flex gap-2">
 							<a class="btn jilp-btn-login" href="{url page="login"}">
-								<i class="bi bi-box-arrow-in-right me-1"></i> {translate key="user.login"}
+								<i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i> {translate key="user.login"}
 							</a>
 							<a class="btn jilp-btn-register" href="{url page="user" op="register"}">
-								<i class="bi bi-person-plus me-1"></i> {translate key="user.register"}
+								<i class="bi bi-person-plus me-1" aria-hidden="true"></i> {translate key="user.register"}
 							</a>
 						</div>
 					{/if}
@@ -95,7 +95,7 @@
 				<nav aria-label="{translate key="navigation.breadcrumbLabel"}">
 					<ol class="jilp-breadcrumb">
 						<li>
-							<a href="{$homeUrl}"><i class="bi bi-house-door-fill"></i> {translate key="common.homepageNavigationLabel"}</a>
+							<a href="{$homeUrl}"><i class="bi bi-house-door-fill" aria-hidden="true"></i> {translate key="common.homepageNavigationLabel"}</a>
 						</li>
 						{if $jilpPage == 'issue' || $jilpPage == 'article'}
 							<li>
