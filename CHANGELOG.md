@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-11-02 (sesi 16 — seed tim editorial + perbaiki tautan Tim Editorial)
+
+### Added
+- Script `scripts/seed-editorial-team.php` untuk mengisi tim editorial JRDC dengan 5 peran akademis (Editor-in-Chief, Managing Editor, Section Editor, Copy Editor, Layout/Production Editor) beserta nama, afiliasi, dan password bcrypt acak. Idempotent: user/assignment yang sudah ada dilewati.
+
+### Changed
+- Grup user default `journal editor`, `journal manager`, `section editor`, `copyeditor`, dan `production editor` di context `jrdc` diaktifkan flag masthead dan di-rename ke peran tim editorial (EN/ID).
+- Seluruh tautan "Tim Editorial" / "Editorial Team" di tema `journalEditorial` diarahkan ke route OJS 3.5 yang benar: `about/editorialMasthead` (menggantikan `about/editorialTeam` yang sudah tidak ada di OJS 3.5). File yang diperbaiki: `footer.tpl`, `authorResources.tpl`.
+
+### Fixed
+- Halaman `/about/editorialMasthead` kosong karena belum ada user dengan peran editorial; kini menampilkan daftar nama, afiliasi, dan peran.
+
+### Verified
+- `/index.php/jrdc/id/about/editorialMasthead` → 200, menampilkan 5 peran: Editor Manajemen, Editor-in-Chief, Editor Tata Letak/Produksi, Editor Bagian, Copy Editor dengan nama dan afiliasi.
+- Footer & quick link beranda kini mengarah ke `/about/editorialMasthead`.
+
+## 2026-11-02 (sesi 15 — current issue kosong di beranda)
+
+### Added
+- Template `templates/frontend/components/homepage/currentIssue.tpl` untuk menampilkan terbitan terkini sebagai kartu dengan slot cover image yang bisa di-upload admin.
+- Locale keys `plugins.themes.journalEditorial.currentIssue.*` (EN/ID).
+- Script idempotent `scripts/set-current-issue.php` untuk publish issue (mengisi `date_published`) dan menjadikannya `currentIssueId` jurnal `jrdc`.
+
+### Changed
+- `JournalEditorialThemePlugin::assignHomepageData()` kini memastikan variabel `$issue` tersedia: bila OJS belum meng-assign current issue, fallback ke issue terbaru yang sudah dipublish.
+- `templates/frontend/pages/indexJournal.tpl` memanggil `currentIssue.tpl` setelah hero.
+
+### Fixed
+- Section "Terbitan Terkini" / "Current Issue" di beranda kosong karena `currentIssueId` belum di-set setelah import; kini Vol. 1 No. 1 (2011) menjadi current issue.
+
+### Verified
+- `/index.php/jrdc/id/` menampilkan section "Terbitan Terkini" dengan judul issue dan tautan ke `/issue/view/1`.
+- `/index.php/jrdc?id=index&setLocale=en` menampilkan section "Current Issue" dengan versi bahasa Inggris.
+
 ## 2026-11-01 (sesi 14 — perbaiki URL Kirim Naskah / Submit)
 
 ### Fixed

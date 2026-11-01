@@ -19,6 +19,9 @@ templates/*.tar.gz
 *.bak
 .DS_Store
 
+# Direktori konfigurasi lokal AI agent
+.claude/
+
 # Backup lokal (DB & config) — tidak di-commit
 /backups/
 *.zip

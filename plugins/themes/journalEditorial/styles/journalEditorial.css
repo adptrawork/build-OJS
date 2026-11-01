@@ -1810,6 +1810,53 @@ body:not(.pkp_page_index) .pkp_structure_sidebar {
 	margin-top: .5rem;
 }
 
+/* Static contact page cards */
+.jilp-contact-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+	margin: 1.25rem 0 2rem;
+}
+
+@media (width < 768px) {
+	.jilp-contact-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.jilp-contact-card {
+	background: var(--jilp-surface);
+	border: 1px solid var(--jilp-card-border);
+	border-radius: var(--jilp-radius-sm);
+	padding: 1.25rem;
+	text-align: center;
+}
+
+.jilp-contact-card i {
+	font-size: 1.6rem;
+	color: var(--jilp-primary);
+	margin-bottom: .5rem;
+	display: inline-block;
+}
+
+.jilp-contact-card h3 {
+	font-size: 1rem;
+	font-weight: 700;
+	margin: 0 0 .25rem;
+	color: var(--jilp-text);
+}
+
+.jilp-contact-card p {
+	margin: 0;
+	font-size: .9rem;
+	color: var(--jilp-muted);
+}
+
+.jilp-contact-card p + p {
+	margin-top: .25rem;
+	font-size: .82rem;
+}
+
 .jilp-inner .page a {
 	color: var(--jilp-link);
 	text-underline-offset: 2px;

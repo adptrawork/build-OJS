@@ -359,6 +359,18 @@ msgstr "Download or view the PDF"
 msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
 msgstr "Current Issue"
 
+msgid "plugins.themes.journalEditorial.currentIssue.uploadCover"
+msgstr "Upload a cover image in issue settings"
+
+msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
+msgstr "View Current Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.archive"
+msgstr "Browse Archives"
+
+msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
+msgstr "Current Issue"
+
 msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
 msgstr "View Issue"
 

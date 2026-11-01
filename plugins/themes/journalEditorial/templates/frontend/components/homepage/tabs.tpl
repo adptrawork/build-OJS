@@ -168,7 +168,7 @@
 						{else}
 							<p class="text-muted">{translate key="plugins.themes.journalEditorial.editorial.desc" journalName=$currentJournal->getLocalizedName()|escape}</p>
 						{/if}
-						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialMasthead"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
 					</div>
 				</div>
 			</div>
@@ -184,7 +184,7 @@
 						{else}
 							<p class="text-muted">{translate key="plugins.themes.journalEditorial.editorial.desc" journalName=$currentJournal->getLocalizedName()|escape}</p>
 						{/if}
-						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialMasthead"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-5">

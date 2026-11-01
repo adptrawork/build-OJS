@@ -51,7 +51,7 @@
 				<div class="jilp-footer-col">
 					<h4 class="jilp-footer-title">{translate key="plugins.themes.journalEditorial.footer.quickLinks"}</h4>
 					<ul class="jilp-footer-links">
-						<li><a href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.footer.editorialTeam"}</a></li>
+						<li><a href="{url page="about" op="editorialMasthead"}">{translate key="plugins.themes.journalEditorial.footer.editorialTeam"}</a></li>
 						<li><a href="{url page="announcement"}">{translate key="plugins.themes.journalEditorial.footer.announcements"}</a></li>
 						<li><a href="{url page="issue" op="current"}">{translate key="plugins.themes.journalEditorial.footer.currentIssue"}</a></li>
 						<li><a href="{url page="issue" op="archive"}">{translate key="plugins.themes.journalEditorial.footer.archives"}</a></li>
@@ -63,7 +63,7 @@
 					<ul class="jilp-footer-links">
 						<li><a href="{url page="about"}">{translate key="plugins.themes.journalEditorial.footer.aboutJournal"}</a></li>
 						<li><a href="{url page="focus-and-scope"}">{translate key="plugins.themes.journalEditorial.footer.focusScope"}</a></li>
-						<li><a href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.footer.editorialTeam"}</a></li>
+						<li><a href="{url page="about" op="editorialMasthead"}">{translate key="plugins.themes.journalEditorial.footer.editorialTeam"}</a></li>
 						<li><a href="{url page="indexing"}">{translate key="plugins.themes.journalEditorial.footer.indexing"}</a></li>
 						<li><a href="{url page="about" op="privacy"}">{translate key="plugins.themes.journalEditorial.footer.privacy"}</a></li>
 						<li><a href="{url page="contact-us"}">{translate key="plugins.themes.journalEditorial.footer.contact"}</a></li>
