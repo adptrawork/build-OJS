@@ -2,7 +2,7 @@
  * @file plugins/themes/journalEditorial/templates/frontend/components/homepage/editorPicks.tpl
  *}
 {if $jilpArticles && $jilpArticles|@count > 0}
-<section class="container py-4 mb-5" id="current-issue-section">
+<section class="container py-4 mb-5" id="editor-picks-section">
 	<div class="jilp-section-title-header">
 		<div>
 			<h2 class="jilp-section-title">{translate key="plugins.themes.journalEditorial.picks.title"}</h2>

@@ -13,6 +13,10 @@
 	{assign var="heroCover" value="$publicFilesDir/$homepageImage.uploadName"}
 	{assign var="heroCoverTitle" value=$homepageImage.altText|default:$currentJournal->getLocalizedName()}
 {/if}
+{assign var="heroLogo" value=""}
+{if $displayPageHeaderLogo}
+	{assign var="heroLogo" value="$publicFilesDir/$displayPageHeaderLogo.uploadName"}
+{/if}
 
 <section class="jilp-hero{if !$homepageImage} jilp-hero--plain{/if}"
 	{if $homepageImage}
@@ -20,25 +24,6 @@
 	{/if}>
 	<div class="container position-relative z-2">
 		<div class="row align-items-center gy-5">
-
-			{if $heroCover}
-				<div class="col-lg-5 jilp-hero-cover-wrapper">
-					<div class="jilp-hero-cover-card">
-						{if $issue && $issue->getLocalizedCoverImageUrl()}
-							<span class="jilp-hero-cover-badge">
-								<i class="bi bi-stars me-1"></i> {translate key="plugins.themes.journalEditorial.hero.currentIssue"}
-							</span>
-						{/if}
-						{if $issue && $issue->getLocalizedCoverImageUrl()}
-							<a href="{url page="issue" op="view" path=$issue->getId()}" title="{$heroCoverTitle|escape}">
-						{/if}
-							<img class="img-fluid" src="{$heroCover|escape:"url"}" alt="{$heroCoverTitle|escape}" />
-						{if $issue && $issue->getLocalizedCoverImageUrl()}
-							</a>
-						{/if}
-					</div>
-				</div>
-			{/if}
 
 			<div class="col-lg-7">
 				<p class="jilp-hero-eyebrow">{translate key="plugins.themes.journalEditorial.hero.eyebrow"}</p>
@@ -98,24 +83,27 @@
 				</div>
 			</div>
 
-			{if !$heroCover}
-				<div class="col-lg-4 offset-lg-1 d-none d-lg-block">
-					<dl class="jilp-hero-facts">
-						{if $currentJournal->getData('onlineIssn')}
-							<div><dt>e-ISSN</dt><dd>{$currentJournal->getData('onlineIssn')|escape}</dd></div>
+			<div class="col-lg-5 d-none d-lg-block">
+				<div class="jilp-hero-visual" aria-hidden="true">
+					<div class="jilp-cover-stack">
+						{if $heroCover}
+							<img class="jilp-cover jilp-cover-1" src="{$heroCover|escape:"url"}" alt="" loading="eager" />
 						{/if}
-						{if $currentJournal->getData('printIssn')}
-							<div><dt>p-ISSN</dt><dd>{$currentJournal->getData('printIssn')|escape}</dd></div>
+						{if $heroLogo}
+							<img class="jilp-cover jilp-cover-2" src="{$heroLogo|escape:"url"}" alt="" loading="eager" />
+						{elseif $heroCover}
+							<div class="jilp-cover jilp-cover-2 jilp-cover-fallback"><i class="bi bi-journal-bookmark-fill"></i></div>
 						{/if}
-						{if $currentJournal->getData('publisherInstitution')}
-							<div><dt>{translate key="plugins.themes.journalEditorial.hero.publisher"}</dt><dd>{$currentJournal->getData('publisherInstitution')|escape}</dd></div>
+						{if $heroCover}
+							<div class="jilp-cover jilp-cover-3 jilp-cover-fallback"><i class="bi bi-book"></i></div>
+						{elseif $heroLogo}
+							<div class="jilp-cover jilp-cover-3 jilp-cover-fallback"><i class="bi bi-journal-bookmark-fill"></i></div>
 						{/if}
-						{if $currentJournal->getData('contactEmail')}
-							<div><dt>{translate key="plugins.themes.journalEditorial.hero.contact"}</dt><dd><a href="mailto:{$currentJournal->getData('contactEmail')|escape}">{$currentJournal->getData('contactEmail')|escape}</a></dd></div>
-						{/if}
-					</dl>
+					</div>
+					<div class="jilp-hero-chip jilp-hero-chip-a"><i class="bi bi-unlock-fill"></i> {translate key="plugins.themes.journalEditorial.hero.openAccess"}</div>
+					<div class="jilp-hero-chip jilp-hero-chip-b"><i class="bi bi-people-fill"></i> {translate key="plugins.themes.journalEditorial.hero.peerReviewed"}</div>
 				</div>
-			{/if}
+			</div>
 		</div>
 	</div>
 </section>

@@ -355,3 +355,15 @@ msgstr "Your browser does not support embedded PDFs."
 
 msgid "plugins.themes.journalEditorial.pdf.download"
 msgstr "Download or view the PDF"
+
+msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
+msgstr "View Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.archive"
+msgstr "Browse Archive"
+
+msgid "plugins.themes.journalEditorial.currentIssue.uploadCover"
+msgstr "Upload cover image in the issue settings"

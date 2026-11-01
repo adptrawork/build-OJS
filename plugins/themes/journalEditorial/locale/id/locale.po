@@ -355,3 +355,15 @@ msgstr "Browser Anda tidak mendukung pratinjau PDF langsung."
 
 msgid "plugins.themes.journalEditorial.pdf.download"
 msgstr "Unduh atau lihat PDF"
+
+msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
+msgstr "Terbitan Terkini"
+
+msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
+msgstr "Lihat Terbitan"
+
+msgid "plugins.themes.journalEditorial.currentIssue.archive"
+msgstr "Jelajahi Arsip"
+
+msgid "plugins.themes.journalEditorial.currentIssue.uploadCover"
+msgstr "Unggah gambar sampul di pengaturan terbitan"
