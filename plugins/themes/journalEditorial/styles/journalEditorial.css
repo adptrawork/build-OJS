@@ -145,6 +145,18 @@ body {
 }
 
 /* OJS utility fixes when parent styles are present */
+/* Override OJS core dropdown item hover/focus: remove blue left border accent */
+.pkp_nav_list ul a:hover,
+.pkp_nav_list ul a:focus,
+.jilp-nav ul a:hover,
+.jilp-nav ul a:focus {
+	border-color: transparent;
+	border-left-color: transparent;
+	border-inline-start-color: transparent;
+	background-color: transparent;
+	color: var(--jilp-link);
+	outline: 0;
+}
 .cmp_skip_to_content a {
 	position: absolute;
 	inset-inline-start: -2000px;
@@ -420,7 +432,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	background-position: center !important;
 	background-repeat: no-repeat !important;
 	padding: 4.5rem 0 5rem;
-	min-height: 260px;
+	min-height: 400px;
 	overflow: hidden;
 	color: #ffffff;
 }
@@ -633,7 +645,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 
 /* Stats */
 .jilp-stats-bar-container {
-	margin-top: -3.5rem;
+	transform: translateY(-3.5rem);
 	position: relative;
 	z-index: 10;
 	margin-bottom: 4.5rem;
