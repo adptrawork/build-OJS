@@ -1,6 +1,6 @@
 # Panduan Lengkap: Membangun, Mengoperasikan & Mengembangkan OJS 3.5 dari Nol dengan Tema & Plugin Akdisi
 
-Dokumen ini adalah **buku panduan induk (master guide)** untuk membangun, mengonfigurasi, mengoperasikan, dan mengembangkan sistem jurnal ilmiah berbasis **Open Journal Systems (OJS) 3.5.0-5** dengan identitas **Akdisi** (`https://akdisi.my.id/`).
+Dokumen ini adalah **buku panduan induk (master guide)** untuk membangun, mengonfigurasi, mengoperasikan, dan mengembangkan sistem jurnal ilmiah berbasis **Open Journal Systems (OJS) 3.5.0-5** dengan identitas **Akdisi** (`https://jrdc.my.id/`).
 
 Semua arsitektur, tautan URL, kredensial, panduan alur kerja editorial, cara membangun dari awal, hingga praktek import mandiri dijelaskan secara mendetail di sini.
 
@@ -29,19 +29,19 @@ Semua arsitektur, tautan URL, kredensial, panduan alur kerja editorial, cara mem
 - **Web Server**: Nginx-FPM (PHP 8.3)
 - **Database Server**: MariaDB 11.8
 - **OJS Core Version**: 3.5.0-5 (Official Release PKP)
-- **Base Domain**: `https://jeki-ojs.ddev.site:8443`
+- **Base Domain**: `https://your-domain.example:8443`
 
 ### Daftar URL Lengkap
 
 | Layanan / Halaman | URL Akses | Keterangan |
 |---|---|---|
-| **Beranda Jurnal (EN)** | `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en` | Bahasa Inggris (Primary Locale) |
-| **Beranda Jurnal (ID)** | `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/id` | Bahasa Indonesia |
-| **Login Dashboard Admin** | `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/login` | Portal masuk staf editorial |
-| **Debug Slot Visual** | `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en?slots=1` | Menampilkan penanda batas komponen S-HOME-XX |
-| **Sitemap XML** | `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/sitemap.xml` | Peta situs XML dinamis untuk crawler Google Scholar / Bing |
-| **OAI-PMH Endpoint** | `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/oai` | Protokol pemanenan metadata (OAI 2.0) |
-| **Email Inbox (Mailhog)**| `https://jeki-ojs.ddev.site:8026` | Monitoring email kiriman OJS saat penugasan reviewer/notifikasi |
+| **Beranda Jurnal (EN)** | `https://your-domain.example:8443/index.php/JRDC/en` | Bahasa Inggris (Primary Locale) |
+| **Beranda Jurnal (ID)** | `https://your-domain.example:8443/index.php/JRDC/id` | Bahasa Indonesia |
+| **Login Dashboard Admin** | `https://your-domain.example:8443/index.php/JRDC/en/login` | Portal masuk staf editorial |
+| **Debug Slot Visual** | `https://your-domain.example:8443/index.php/JRDC/en?slots=1` | Menampilkan penanda batas komponen S-HOME-XX |
+| **Sitemap XML** | `https://your-domain.example:8443/index.php/JRDC/sitemap.xml` | Peta situs XML dinamis untuk crawler Google Scholar / Bing |
+| **OAI-PMH Endpoint** | `https://your-domain.example:8443/index.php/JRDC/oai` | Protokol pemanenan metadata (OAI 2.0) |
+| **Email Inbox (Mailhog)**| `https://your-domain.example:8026` | Monitoring email kiriman OJS saat penugasan reviewer/notifikasi |
 | **phpMyAdmin** | Akses via perintah terminal: `ddev phpmyadmin` | GUI Manajemen database MySQL di browser |
 
 ### Kredensial Akun Pengelola
@@ -50,7 +50,7 @@ Semua arsitektur, tautan URL, kredensial, panduan alur kerja editorial, cara mem
 |---|---|
 | **Username** | `admin` |
 | **Password** | `akdisi-admin` |
-| **Email** | `admin@akdisi.my.id` |
+| **Email** | `admin@jrdc.my.id` |
 | **Hak Akses (Roles)** | Site Administrator, Journal Manager, Editor, Production Editor, Reviewer, Author |
 
 > **Catatan Keamanan**: Untuk lingkungan produksi (live production server), segera ubah password akun admin melalui menu **Profile** → **Change Password** dan atur secret salt di file `config.inc.php`.
@@ -94,7 +94,7 @@ Repositori ini menerapkan **Clean Separation Pattern**:
 │   ├── setup.sh                       # Download & ekstraksi OJS 3.5 resmi
 │   ├── install.sh                     # Instalasi non-interaktif
 │   ├── reset.sh                       # Reset instan ke state 0 (bersih)
-│   ├── create-journal.php             # Bootstrap context jurnal AKDISI via Facade OJS 3.5
+│   ├── create-journal.php             # Bootstrap context jurnal JRDC via Facade OJS 3.5
 │   ├── register-plugins.php           # Injeksi plugin ke DB versions
 │   ├── static-pages.sql               # 20 halaman statis standar akreditasi
 │   └── akdisi-custom-blocks.sql       # Data dummy pengindeks, stats, tim editorial
@@ -140,7 +140,7 @@ Anda dapat memilih salah satu dari **dua jalur** untuk membangun OJS:
    ./scripts/reset.sh
    ```
    *Skrip otomatis menginisialisasi database, menginstal OJS, membuat Jurnal Akdisi, menyambungkan symlink tema dan plugin, menginjeksi static pages & custom blocks, lalu membersihkan cache.*
-6. Selesai! Buka `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en`.
+6. Selesai! Buka `https://your-domain.example:8443/index.php/JRDC/en`.
 
 ---
 
@@ -151,7 +151,7 @@ Jika Anda ingin memahami detail di balik layar atau menginstal OJS pada server V
 #### Langkah B1: Setup DDEV & Lingkungan PHP/DB
 Jika Anda ingin membuat konfigurasi DDEV dari nol tanpa file bawaan:
 ```bash
-ddev config --project-name=jeki-ojs --project-type=php --docroot=ojs --php-version=8.3 --database=mariadb:11.8
+ddev config --project-name=your-project --project-type=php --docroot=ojs --php-version=8.3 --database=mariadb:11.8
 ddev start
 ```
 
@@ -171,10 +171,10 @@ ddev start
    ```
 
 #### Langkah B3: Instalasi OJS melalui Web Wizard atau CLI
-Anda dapat menginstal melalui browser di alamat `https://jeki-ojs.ddev.site:8443/index.php/index/install` ATAU menggunakan baris perintah CLI:
+Anda dapat menginstal melalui browser di alamat `https://your-domain.example:8443/index.php/index/install` ATAU menggunakan baris perintah CLI:
 ```bash
 # Menjalankan installer OJS non-interaktif
-printf 'en\nid\n\n/var/www/html/ojs/files\nadmin\nakdisi-admin\nakdisi-admin\nadmin@akdisi.my.id\nmysqli\ndb\ndb\ndb\ndb\njeki-ojs.ddev.site/index.php/AKDISI/oai\nn\ny\n' \
+printf 'en\nid\n\n/var/www/html/ojs/files\nadmin\nakdisi-admin\nakdisi-admin\nadmin@jrdc.my.id\nmysqli\ndb\ndb\ndb\ndb\nyour-domain.example/index.php/JRDC/oai\nn\ny\n' \
     | ddev exec -j php ojs/tools/install.php
 ```
 
@@ -182,10 +182,10 @@ printf 'en\nid\n\n/var/www/html/ojs/files\nadmin\nakdisi-admin\nakdisi-admin\nad
 Di OJS 3.4 dan 3.5, PKP menambahkan proteksi ketat Host Header Injection. Buka berkas `ojs/config.inc.php` dan pastikan pengaturan berikut terisi:
 ```ini
 ; Daftar host domain yang diizinkan mengakses OJS (mencegah error 400 Bad Request)
-allowed_hosts = ["jeki-ojs.ddev.site"]
+allowed_hosts = ["your-domain.example"]
 
 ; URL dasar jurnal
-base_url = "https://jeki-ojs.ddev.site:8443"
+base_url = "https://your-domain.example:8443"
 
 ; Pengaturan folder file privat
 files_dir = "/var/www/html/ojs/files"
@@ -197,7 +197,7 @@ Jalankan skrip pembantu atau buat melalui dashboard admin OJS:
   ```bash
   ddev exec php /var/www/html/scripts/create-journal.php
   ```
-- **Via Dashboard**: Login ke `https://jeki-ojs.ddev.site:8443/index.php/index/login` sebagai `admin`. Buka menu **Administration** → **Hosted Journals** → **Create Journal**. Isi Nama: `Akdisi`, Path: `AKDISI`, Primary Locale: `English`.
+- **Via Dashboard**: Login ke `https://your-domain.example:8443/index.php/index/login` sebagai `admin`. Buka menu **Administration** → **Hosted Journals** → **Create Journal**. Isi Nama: `Akdisi`, Path: `JRDC`, Primary Locale: `English`.
 
 #### Langkah B6: Memasang Tema Kustom Akdisi & Plugin SEO
 Hubungkan folder tema dan plugin kustom dari root repository ke dalam OJS:
@@ -286,7 +286,7 @@ templates/frontend/components/
 Plugin `plugins/generic/akdisiSeo/` berfungsi otomatis di latar belakang untuk memastikan jurnal memenuhi standar indeksasi mesin pencari ilmiah:
 
 1. **Peta Situs Dinamis (`/sitemap.xml`)**:
-   Dapat diakses di `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/sitemap.xml`. Menghasilkan XML sitemap standar yang memuat URL beranda, setiap nomor terbitan (issues), dan seluruh artikel aktif yang diterbitkan.
+   Dapat diakses di `https://your-domain.example:8443/index.php/JRDC/sitemap.xml`. Menghasilkan XML sitemap standar yang memuat URL beranda, setiap nomor terbitan (issues), dan seluruh artikel aktif yang diterbitkan.
 2. **Penghapusan Meta Generator**:
    Menghapus tag `<meta name="generator" content="Open Journal Systems ...">` bawaan PKP agar versi sistem tidak terekspos ke publik demi keamanan.
 3. **Canonical URLs & Open Graph Tags**:
@@ -318,7 +318,7 @@ Selain menghubungkan folder tema dan plugin via symlink pengembang, seluruh kode
 
 ### Cara Unggah & Pasang Plugin via Dashboard OJS (GUI):
 
-1. Login ke akun admin: `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/login` (`admin` / `akdisi-admin`).
+1. Login ke akun admin: `https://your-domain.example:8443/index.php/JRDC/en/login` (`admin` / `akdisi-admin`).
 2. Di sidebar kiri, buka **Settings** → **Website** → **Plugins**.
 3. Di pojok kanan atas daftar plugin, klik tombol biru **Upload A New Plugin**.
 4. Pada kotak dialog yang muncul:
@@ -435,13 +435,13 @@ Cara ini paling cepat, tidak memiliki risiko batas waktu browser (timeout), dan 
    ```
 2. Jalankan perintah import melalui DDEV:
    ```bash
-   ddev exec bash -c 'cd /var/www/html/ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml AKDISI --user_name admin'
+   ddev exec bash -c 'cd /var/www/html/ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml JRDC --user_name admin'
    ```
 3. Bersihkan cache template OJS:
    ```bash
    ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
    ```
-4. Buka beranda `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en`. Artikel dan terbitan langsung muncul!
+4. Buka beranda `https://your-domain.example:8443/index.php/JRDC/en`. Artikel dan terbitan langsung muncul!
 
 ---
 
@@ -449,7 +449,7 @@ Cara ini paling cepat, tidak memiliki risiko batas waktu browser (timeout), dan 
 Untuk merasakan alur kerja pengguna non-teknis:
 
 1. Buka browser dan login ke:
-   `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/login`
+   `https://your-domain.example:8443/index.php/JRDC/en/login`
    - User: `admin` | Pass: `akdisi-admin`
 2. Di menu samping kiri, klik **Tools** → **Import/Export**.
 3. Klik **Native XML Plugin**.
@@ -557,7 +557,7 @@ submission-preparation, loa, faq
 4. Klik tombol panah expand di samping nama halaman, lalu klik **Edit**.
 5. Gunakan editor visual TinyMCE untuk memasukkan teks pedoman, menyisipkan tabel, atau menambahkan gambar.
 6. Klik **Save**. Halaman langsung terbarui di alamat URL publiknya:
-   `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/author-guidelines`
+   `https://your-domain.example:8443/index.php/JRDC/en/author-guidelines`
 
 ---
 
@@ -586,7 +586,7 @@ Tema Akdisi membaca data komponen dinamis beranda langsung dari tabel `journal_s
 | `akdisiIndexers` | **S-HOME-06** (Lembaga Pengindeks) | Teks HTML | `<a href="https://scholar.google.com"><img src="..." alt="Google Scholar"/></a>` |
 | `akdisiFocusScope` | **S-HOME-09** (Focus & Scope Sidebar)| Teks HTML | `<p>Jurnal Akdisi fokus pada riset sistem informasi dan transformasi bisnis...</p>` |
 | `akdisiEditorialTeam` | **S-HOME-10** (Dewan Editor Sidebar) | Teks HTML | `<ul class="akdisi-editor-list"><li><strong>Editor in Chief:</strong> Dr. ...</li></ul>` |
-| `akdisiTemplateFile` | **S-HOME-11** (Download Template) | URL String | `https://jeki-ojs.ddev.site:8443/public/journals/1/template.docx` |
+| `akdisiTemplateFile` | **S-HOME-11** (Download Template) | URL String | `https://your-domain.example:8443/public/journals/1/template.docx` |
 | `akdisiStats` | **S-HOME-12** (Strip Statistik) | Format JSON | `{"avgReviewDays":42,"acceptanceRate":28}` |
 | `akdisiContactUrl` | **S-HOME-15** (Floating Contact WhatsApp)| URL String | `https://wa.me/6281234567890` |
 
@@ -612,7 +612,7 @@ ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
 ./scripts/reset.sh
 
 # 3. Lakukan import data Native XML latihan
-ddev exec bash -c 'cd /var/www/html/ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml AKDISI --user_name admin'
+ddev exec bash -c 'cd /var/www/html/ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml JRDC --user_name admin'
 
 # 4. Registrasi ulang versi plugin kustom ke tabel versions OJS
 ddev exec php /var/www/html/scripts/register-plugins.php
@@ -643,7 +643,7 @@ ddev exec tail -n 30 /var/log/php-fpm.log
 - **Penyebab**: Domain host yang Anda akses belum terdaftar pada array `allowed_hosts` di `config.inc.php`.
 - **Solusi**: Periksa baris `allowed_hosts` pada file `ojs/config.inc.php` dan pastikan domain Anda terdaftar:
   ```ini
-  allowed_hosts = ["jeki-ojs.ddev.site"]
+  allowed_hosts = ["your-domain.example"]
   ```
 
 #### 3. Slot Komponen Beranda Tertentu Tidak Tampil

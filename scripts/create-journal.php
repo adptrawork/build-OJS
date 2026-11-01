@@ -3,8 +3,8 @@
 /**
  * @file scripts/create-journal.php
  *
- * Membuat context jurnal AKDISI di instance OJS. Dijalankan sekali setelah
- * tools/install.php. Idempotent: kalau path AKDISI sudah ada, keluar dengan
+ * Membuat context jurnal JRDC di instance OJS. Dijalankan sekali setelah
+ * tools/install.php. Idempotent: kalau path JRDC sudah ada, keluar dengan
  * pesan, bukan error.
  *
  * Pakai:
@@ -20,9 +20,9 @@ use PKP\db\DAORegistry;
 $request = Application::get()->getRequest();
 
 $journalDao = DAORegistry::getDAO('JournalDAO');
-$existing = $journalDao->getByPath('AKDISI');
+$existing = $journalDao->getByPath('jrdc');
 if ($existing) {
-    fwrite(STDOUT, "Jurnal AKDISI sudah ada (id {$existing->getId()}). Tidak ada perubahan.\n");
+    fwrite(STDOUT, "Jurnal jrdc sudah ada (id {$existing->getId()}). Tidak ada perubahan.\n");
     exit(0);
 }
 
@@ -38,15 +38,15 @@ $request->setRouter(new \PKP\core\PKPPageRouter());
 
 $journal = new Journal();
 $journal->setData('name', [
-    'en' => 'Akdisi',
-    'id' => 'Akdisi',
+    'en' => 'JRDC',
+    'id' => 'JRDC',
 ]);
 $journal->setData('description', [
     'en' => 'Mitra digital untuk bisnis yang ingin tumbuh',
     'id' => 'Mitra digital untuk bisnis yang ingin tumbuh',
 ]);
-$journal->setData('path', 'AKDISI');
-$journal->setData('urlPath', 'AKDISI');
+$journal->setData('path', 'jrdc');
+$journal->setData('urlPath', 'jrdc');
 $journal->setData('primaryLocale', 'en');
 $journal->setData('supportedLocales', ['en', 'id']);
 $journal->setData('enabled', true);

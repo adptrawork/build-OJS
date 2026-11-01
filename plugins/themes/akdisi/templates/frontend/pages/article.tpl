@@ -1,5 +1,5 @@
 {**
- * Override theme AKDISI. Slot S-ART-01..10 mengikuti PRD §4.2.
+ * Override theme JRDC. Slot S-ART-01..10 mengikuti PRD §4.2.
  * Markup inti diwarisi dari default (article_details.tpl); slot ditandai
  * lewat atribut data-slot pada pembungkus utama.
  *}

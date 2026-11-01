@@ -1,7 +1,7 @@
 {**
  * @file plugins/themes/akdisi/templates/frontend/components/headerHead.tpl
  *
- * Override theme AKDISI untuk <head>:
+ * Override theme JRDC untuk <head>:
  *   - canonical URL
  *   - Open Graph + Twitter Card
  *   - JSON-LD diinject lewat AkdisiSeoPlugin::addHeader

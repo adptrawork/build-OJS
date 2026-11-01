@@ -2,7 +2,7 @@
 # Reset OJS ke kondisi awal bersih ("mulai dari nol").
 # - Drop & buat ulang database MariaDB
 # - Bersihkan folder upload files/, public/, cache/
-# - Jalankan pipeline instalasi bersih & buat journal AKDISI
+# - Jalankan pipeline instalasi bersih & buat journal JRDC
 # - Symlink plugin & theme kustom dari luar folder ojs/
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

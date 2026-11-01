@@ -2,7 +2,7 @@
  * @file plugins/themes/akdisi/templates/frontend/components/currentIssue.tpl
  *
  * Table of contents issue terkini (S-HOME-08).
- * Memakai issue_toc bawaan OJS dengan wrapper styling AKDISI.
+ * Memakai issue_toc bawaan OJS dengan wrapper styling JRDC.
  *}
 {if $issue}
 	<section class="akdisi-current-issue" data-slot="S-HOME-08" aria-labelledby="akdisi-current-issue-heading">

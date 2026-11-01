@@ -1,7 +1,7 @@
 {**
  * @file plugins/themes/akdisi/templates/frontend/components/hero.tpl
  *
- * Hero block untuk beranda AKDISI (S-HOME-02, S-HOME-03, S-HOME-04).
+ * Hero block untuk beranda JRDC (S-HOME-02, S-HOME-03, S-HOME-04).
  * Layout asimetris: teks di kiri, sampul issue terkini di kanan.
  *}
 <header class="akdisi-hero" data-slot="S-HOME-02">
