@@ -129,7 +129,7 @@
 										<p class="jilp-announcement-date"><i class="bi bi-calendar3 me-1" aria-hidden="true"></i> {$announcement->datePosted|date_format:$dateFormatShort}</p>
 									{/if}
 									<p class="jilp-announcement-desc">{$announcement->getLocalizedData('descriptionShort')|strip_tags|truncate:160|escape}</p>
-									<a class="jilp-announcement-link" href="{url page="announcement" op="view" path=$announcement->id}">{translate key="plugins.themes.journalEditorial.readMore"} <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+									<a class="jilp-announcement-link" href="{url page="announcement" op="view" path=$announcement->id}" aria-label="{translate key="plugins.themes.journalEditorial.readMore"}: {$announcement->title|escape}">{translate key="plugins.themes.journalEditorial.readMore"} <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
 								</article>
 							</div>
 						{/if}

@@ -81,7 +81,7 @@
 					<div class="jilp-hero-description text-white-50 mb-0">
 						{if $currentJournal->getLocalizedDescription()}
 							{$currentJournal->getLocalizedDescription()|strip_tags|truncate:420|escape}
-							<a class="jilp-hero-readmore" href="{url page="about"}">{translate key="plugins.themes.journalEditorial.hero.readMore"}</a>
+							<a class="jilp-hero-readmore" href="{url page="about"}" aria-label="{translate key="plugins.themes.journalEditorial.hero.readMore"} about {$currentJournal->getLocalizedName()|escape}">{translate key="plugins.themes.journalEditorial.hero.readMore"}</a>
 						{else}
 							{translate key="plugins.themes.journalEditorial.hero.fallbackDesc" journalName=$currentJournal->getLocalizedName()|escape}
 						{/if}
