@@ -420,6 +420,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	background-position: center !important;
 	background-repeat: no-repeat !important;
 	padding: 4.5rem 0 5rem;
+	min-height: 260px;
 	overflow: hidden;
 	color: #ffffff;
 }
@@ -2394,7 +2395,7 @@ body.dark-mode .jilp-inner .obj_galley_link.file {
 
 .jilp-footer-issn-label {
 	background: var(--jilp-primary);
-	color: #ffffff;
+	color: #1a1a1a;
 	font-weight: 700;
 	padding: 3px 8px;
 	display: flex;
