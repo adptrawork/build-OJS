@@ -74,8 +74,7 @@
 					<h4 class="jilp-footer-title">{translate key="plugins.themes.journalEditorial.footer.forAuthors"}</h4>
 					<ul class="jilp-footer-links">
 						<li><a href="{url page="author-guidelines"}">{translate key="plugins.themes.journalEditorial.footer.guidelines"}</a></li>
-						<li><a href="{url page="author-fees"}">{translate key="plugins.themes.journalEditorial.footer.fees"}</a></li>
-						<li><a href="{url page="submission" op="submit"}">{translate key="plugins.themes.journalEditorial.footer.submit"}</a></li>
+						<li><a href="{url page="submission"}">{translate key="plugins.themes.journalEditorial.footer.submit"}</a></li>
 						<li><a href="{url page="publication-ethics"}">{translate key="plugins.themes.journalEditorial.footer.ethics"}</a></li>
 						<li><a href="{url page="open-access-statement"}">{translate key="plugins.themes.journalEditorial.footer.openAccess"}</a></li>
 					</ul>

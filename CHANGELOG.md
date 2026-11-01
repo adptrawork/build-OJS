@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-11-01 (sesi 14 — perbaiki URL Kirim Naskah / Submit)
+
+### Fixed
+- Semua tautan "Kirim Naskah" / "Submit" di tema `journalEditorial` kini mengarah ke `{url page="submission"}` (route OJS 3.5 yang benar untuk memulai submission wizard baru).
+- File yang diperbaiki: `hero.tpl`, `authorResources.tpl`, `footer.tpl` (sebelumnya salah memakai `op="submit"` yang memunculkan 404).
+
+### Verified
+- Homepage `/index.php/jrdc` (ID & EN) merender href `/index.php/jrdc/submission` pada tombol hero, quick link, dan footer.
+- Tautan valid saat pengguna belum login (OJS mengarahkan ke halaman login terlebih dahulu).
+
+## 2026-11-01 (sesi 13 — hapus link Author Fees dari footer)
+
+### Removed
+- Tautan "Author Fees" / "Biaya Penulis" dan locale key `plugins.themes.journalEditorial.footer.fees` (EN/ID) dihapus dari footer tema `journalEditorial`.
+
+### Verified
+- Footer tidak lagi menampilkan link biaya penulis di locale EN maupun ID.
+
 ## 2026-11-01 (sesi 12 — h1 konsisten, a11y 100, CLS 0, pembersihan hardcoded URL)
 
 ### Added

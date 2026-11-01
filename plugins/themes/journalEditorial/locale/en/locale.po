@@ -320,9 +320,6 @@ msgstr "For Authors"
 msgid "plugins.themes.journalEditorial.footer.guidelines"
 msgstr "Author Guidelines"
 
-msgid "plugins.themes.journalEditorial.footer.fees"
-msgstr "Author Fees"
-
 msgid "plugins.themes.journalEditorial.footer.submit"
 msgstr "Submit Manuscript"
 

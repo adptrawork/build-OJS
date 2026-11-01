@@ -89,7 +89,7 @@
 				</div>
 
 				<div class="d-flex flex-wrap justify-content-start gap-3 mb-0">
-					<a class="btn jilp-btn-hero-primary text-decoration-none px-4 py-3" href="{url page="submission" op="submit"}">
+					<a class="btn jilp-btn-hero-primary text-decoration-none px-4 py-3" href="{url page="submission"}">
 						<i class="bi bi-send-fill me-2"></i> {translate key="plugins.themes.journalEditorial.hero.submit"}
 					</a>
 					<a class="btn jilp-btn-hero-glass text-decoration-none px-4 py-3" href="#current-issue-section">

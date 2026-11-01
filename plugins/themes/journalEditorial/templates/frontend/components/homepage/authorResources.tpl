@@ -12,7 +12,7 @@
 
 	<ul class="jilp-link-list">
 		<li>
-			<a href="{url page="submission" op="submit"}">
+			<a href="{url page="submission"}">
 				<i class="bi bi-send jilp-link-icon" aria-hidden="true"></i>
 				<span class="jilp-link-body">
 					<span class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.submitTitle"}</span>

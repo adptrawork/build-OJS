@@ -320,9 +320,6 @@ msgstr "Untuk Penulis"
 msgid "plugins.themes.journalEditorial.footer.guidelines"
 msgstr "Panduan Penulis"
 
-msgid "plugins.themes.journalEditorial.footer.fees"
-msgstr "Biaya Penulis"
-
 msgid "plugins.themes.journalEditorial.footer.submit"
 msgstr "Kirim Naskah"
 

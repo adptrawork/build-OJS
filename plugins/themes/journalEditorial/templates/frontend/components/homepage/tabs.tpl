@@ -126,7 +126,7 @@
 										<a href="{url page="announcement" op="view" path=$announcement->id}">{$announcement->getLocalizedData('title')|escape}</a>
 									</h3>
 									{if $announcement->datePosted}
-										<p class="jilp-announcement-date"><i class="bi bi-calendar3 me-1" aria-hidden="true"></i> {$announcement->datePosted|date_format:$dateFormatShort}</p>
+										<p class="jilp-announcement-date">{$announcement->datePosted|date_format:$dateFormatShort}</p>
 									{/if}
 									<p class="jilp-announcement-desc">{$announcement->getLocalizedData('descriptionShort')|strip_tags|truncate:160|escape}</p>
 									<a class="jilp-announcement-link" href="{url page="announcement" op="view" path=$announcement->id}" aria-label="View full announcement: {$announcement->getLocalizedData('title')|escape}">View full announcement <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
