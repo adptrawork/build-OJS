@@ -8,6 +8,7 @@
 	{if !$displayPageHeaderLogo}
 		{assign var="showingLogo" value=false}
 	{/if}
+	{assign var="jilpPage" value=$requestedPage|default:"index"}
 {/strip}
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
@@ -21,9 +22,7 @@
 		{include file="frontend/components/skipLinks.tpl"}
 
 		<div class="container-fluid px-4 px-xl-5">
-			{capture assign="homeUrl"}
-				{url page="index" router=PKP\core\PKPApplication::ROUTE_PAGE}
-			{/capture}
+			{capture assign="homeUrl"}{strip}{url page="index"}{/strip}{/capture}
 
 			<a class="navbar-brand d-flex align-items-center gap-2" href="{$homeUrl}">
 				{if $displayPageHeaderLogo}
@@ -35,7 +34,7 @@
 
 			<div class="jilp-mobile-toggles d-lg-none">
 				<button class="jilp-theme-toggle" type="button" title="{translate key="plugins.themes.journalEditorial.toggleTheme"}" aria-label="{translate key="plugins.themes.journalEditorial.toggleTheme"}">
-					<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon"></i>
+					<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon" aria-hidden="true"></i>
 				</button>
 				<button class="navbar-toggler border-0 shadow-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#jilpNavMenu" aria-controls="jilpNavMenu" aria-expanded="false" aria-label="{translate key="plugins.themes.journalEditorial.toggleNav"}">
 					<span class="navbar-toggler-icon"></span>
@@ -49,17 +48,17 @@
 				{$primaryMenu}
 
 				<div class="d-flex align-items-center gap-3 ms-auto mt-3 mt-lg-0">
-					{if $currentContext && $requestedPage !== 'search'}
+					{if $currentContext && $jilpPage !== 'search'}
 						<form action="{url page="search" op="search"}" method="get" class="jilp-search-container" role="search">
 							<input type="text" name="query" class="form-control jilp-search-input shadow-sm" placeholder="{translate key="common.search"|escape}" aria-label="{translate key="common.search"|escape}" />
 							<button class="jilp-search-btn shadow-sm" type="submit" title="{translate key="common.search"|escape}">
-								<i class="bi bi-search"></i>
+								<i class="bi bi-search" aria-hidden="true"></i>
 							</button>
 						</form>
 					{/if}
 
 					<button class="jilp-theme-toggle d-none d-lg-flex" type="button" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
-						<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon"></i>
+						<i class="bi bi-moon-stars-fill jilp-theme-toggle-icon" aria-hidden="true"></i>
 					</button>
 
 					{if $isUserLoggedIn}
@@ -67,10 +66,10 @@
 					{else}
 						<div class="d-flex gap-2">
 							<a class="btn jilp-btn-login" href="{url page="login"}">
-								<i class="bi bi-box-arrow-in-right me-1"></i> {translate key="user.login"}
+								<i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i> {translate key="user.login"}
 							</a>
 							<a class="btn jilp-btn-register" href="{url page="user" op="register"}">
-								<i class="bi bi-person-plus me-1"></i> {translate key="user.register"}
+								<i class="bi bi-person-plus me-1" aria-hidden="true"></i> {translate key="user.register"}
 							</a>
 						</div>
 					{/if}
@@ -84,24 +83,34 @@
 	   auth, announcement, …) gets it without template overrides. Article
 	   pages show the breadcrumb only; their title lives in article_details. *}
 	{capture assign="jilpBannerCrumb"}
-		{if $requestedPage == 'article'}{translate key="article.article"}{else}{$pageTitleTranslated|strip_unsafe_html}{/if}
+		{if $jilpPage == 'article'}{translate key="article.article"}{elseif $jilpPage == 'issue' && $issue}{$issue->getIssueIdentification()|escape}{else}{$pageTitleTranslated|strip_unsafe_html}{/if}
 	{/capture}
 	{assign var="jilpHasBanner" value=false}
-	{if $requestedPage == 'article' || ($pageTitleTranslated && $requestedPage != 'index')}
+	{if $jilpPage == 'article' || $jilpPage == 'issue' || ($pageTitleTranslated && $jilpPage != 'index')}
 		{assign var="jilpHasBanner" value=true}
 	{/if}
 	{if $jilpHasBanner}
 		<section class="jilp-inner-banner">
 			<div class="container">
 				<nav aria-label="{translate key="navigation.breadcrumbLabel"}">
-					<ol class="breadcrumb{if $requestedPage == 'article'} mb-0{/if}">
-						<li class="breadcrumb-item">
-							<a href="{$homeUrl}"><i class="bi bi-house-door-fill"></i> {translate key="common.homepageNavigationLabel"}</a>
+					<ol class="jilp-breadcrumb">
+						<li>
+							<a href="{$homeUrl}"><i class="bi bi-house-door-fill" aria-hidden="true"></i> {translate key="common.homepageNavigationLabel"}</a>
 						</li>
-						<li class="breadcrumb-item active" aria-current="page">{$jilpBannerCrumb|trim}</li>
+						{if $jilpPage == 'issue' || $jilpPage == 'article'}
+							<li>
+								<a href="{url page="issue" op="archive"}">{translate key="navigation.archives"}</a>
+							</li>
+						{/if}
+						{if $jilpPage == 'article' && $issue}
+							<li>
+								<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">{$issue->getIssueIdentification()|escape}</a>
+							</li>
+						{/if}
+						<li class="active" aria-current="page">{$jilpBannerCrumb|trim}</li>
 					</ol>
 				</nav>
-				{if $requestedPage != 'article'}
+				{if $jilpPage != 'article' && !($jilpPage == 'issue' && $requestedOp == 'view')}
 					<h1 class="jilp-inner-banner-title">{$jilpBannerCrumb|trim}</h1>
 				{/if}
 			</div>

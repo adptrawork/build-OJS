@@ -1,5 +1,58 @@
 # Changelog
 
+## 2026-11-01 (sesi 11 — halaman statis + sinkronisasi plugin staticPages resmi)
+
+### Added
+- Plugin resmi `staticPages` (namespaced, dari OJS 3.5.0-5) disinkronkan ke `plugins/generic/staticPages` + symlink, menggantikan copy lama non-namespaced yang tidak bisa di-instantiate.
+- `content.tpl` plugin dioverride agar konsisten dengan tema journalEditorial (banner breadcrumb + `.jilp-prose`).
+- Konten 20 halaman statis diisi EN/ID standar akademik (COPE/OASPA/DOAJ-aligned) untuk JRDC (Ekonomi & Bisnis): about, focus-and-scope, author-guidelines, submission-preparation, publication-ethics, peer-review-process, open-access-statement, copyright-and-license, plagiarism-policy, indexing, archive-policy, author-fees, contact-us, generative-ai, privacy-policy, editorial-team, reviewer, reviewer-guide, loa, faq.
+- Footer: tautan ke focus-and-scope, indexing, author-fees; kunci locale baru `footer.focusScope`, `footer.indexing`, `footer.fees` (EN/ID).
+- `scripts/gen_static_content.py` + `scripts/static-content.sql` (seed konten).
+
+### Fixed
+- Plugin `staticPages` tidak aktif karena copy lama non-namespaced; kini memakai versi resmi 3.5 (lazy_load=0).
+- Cache Laravel stale menyebabkan `getSetting('enabled')` mengembalikan null — dibersihkan.
+- Nginx rewrite `/sitemap.xml` dari `JEKI` → `jrdc` (sitemap 200).
+- Enable `citationStyleLanguage` dan `customBlockManager` (PRD §5); disable `jatsTemplate`, `htmlArticleGalley`, `lensGalley` (PRD §5 OFF).
+
+### Verified
+- 40 URL statis (20 halaman × EN/ID) → 200.
+- `/sitemap.xml` → 200.
+- Home, artikel, issue → 200; logs bersih.
+
+## 2026-11-01 (sesi 10 — palet kustom, breadcrumb seragam, PDF embed, konten JRDC)
+
+### Added
+- Palet kustom `#ff5f00` / `#d9302c` / `#eaa23f` diterapkan ke seluruh CSS tema (variabel, tombol, hero, badge, footer, dark mode).
+- `article_pdf_embed.tpl` — iframe PDF langsung di halaman artikel (`/article/view/{id}/{galley}`).
+- 5 PDF lokal dilampirkan ke galley (sumber jurnal UII) agar embed berfungsi offline.
+- Tombol "baca selengkapnya" hero (`.jilp-hero-readmore`) dan kelas `.jilp-pdf-section`.
+
+### Changed
+- Banner breadcrumb seragam: `header.tpl` menampilkan satu breadcrumb untuk semua halaman dalam; breadcrumb ganda (`cmp_breadcrumbs`) disembunyikan.
+- Breadcrumb artikel: Beranda / Arsip / Issue / Artikel; issue: Beranda / Arsip / Issue; judul banner disembunyikan di artikel & issue.
+- "Why Publish With Us" diubah ke `jilp-features-grid` (2 kolom) ala modern-css.com.
+- Footer ditulis ulang sebagai grid (brand + 3 kolom tautan) + baris copyright/kredit.
+- Tab "Tentang" memakai data dinamis: `$jilpAbout` (journal `about`), `$jilpFocusScope`, `$jilpEditorialTeam`, `$jilpIndexers`, `$jilpContactUrl` dari pengaturan jurnal/admin.
+- Plugin membaca pengaturan `akdisiFocusScope`, `akdisiEditorialTeam`, `akdisiContactUrl`, `akdisiIndexers` (fallback ke `jilp*` custom) dan `about`.
+- Konten JRDC (Ekonomi & Bisnis) disimpan di `journal_settings.about` (EN/ID), scope & komitmen editorial di `akdisiFocusScope`/`akdisiEditorialTeam`.
+- Hero fallback memakai `jilp.hero.fallbackDesc`; tautan "baca selengkapnya" memakai `.jilp-hero-readmore`.
+- `parseIndexers()` mendukung HTML legacy (strip tags) selain JSON/koma.
+- `allowed_hosts` tetap `["your-domain.example"]`.
+
+### Fixed
+- Banner inner tidak lagi muncul di beranda (bug `$requestedPage` kosong → diperlakukan sebagai `index`).
+- Duplikasi breadcrumb di arsip/issue/tentang/pencarian disembunyikan.
+- Tautan PDF galley kini menunjuk ke file lokal (sebelumnya remote URL artikel sumber).
+- Deprecation `PKP\core\PKPApplication::ROUTE_PAGE` di template dihapus (drop `router=`).
+- `about` page tidak lagi kosong; konten diambil dari pengaturan jurnal.
+
+### Verified
+- 200 untuk `/`, `/issue/archive`, `/issue/view/1`, `/article/view/1..5`, `/about`, `/announcement`, `/search`, `/login`, `/user/register` (ID & EN).
+- PDF iframe muncul di `/article/view/2` (`jilp-pdf-section`).
+- `ddev logs` bebas dari PHP Fatal/Warning (hanya deprecation yang sudah dibersihkan).
+- Paket `dist/journalEditorial-theme.{tar.gz,zip}` dibangun ulang (release 0.1.1.4).
+
 ## 2026-10-31 (sesi 9 — halaman dalam tema journalEditorial + pass CSS modern)
 
 ### Added
@@ -79,11 +132,11 @@
   (bukan `strftime`), jadi `"%Y"` menghasilkan `%2026`; diganti `"Y"`.
 
 ### Verified
-- `/index.php/AKDISI/id` = "Pilihan Editor", "Terbitan Terkini", "Untuk Penulis
+- `/index.php/JRDC/id` = "Pilihan Editor", "Terbitan Terkini", "Untuk Penulis
   & Peneliti", "Mengapa Menerbitkan di Sini", footer "Tautan Cepat / Tentang /
   Untuk Penulis / Kontak & Kantor Redaksi", "© 2026 Akdisi. Seluruh hak cipta
   dilindungi."
-- `/index.php/AKDISI/en` tetap menampilkan versi Inggris ("Editor's Pick",
+- `/index.php/JRDC/en` tetap menampilkan versi Inggris ("Editor's Pick",
   "Current Issue", "No announcements", "All rights reserved").
 - Screenshot 1440px kedua locale + footer: tidak ada key mentah
   (`plugins.themes.journalEditorial.*`) yang bocor ke HTML.
@@ -144,14 +197,14 @@
 - Penyesuaian `scripts/create-journal.php`: menggunakan facade `Repo::section()` (standar OJS 3.5) menggantikan deprecated SectionDAO.
 
 ### Changed
-- Rebranding menyeluruh dari JEKI ke **Akdisi** (`https://akdisi.my.id/`): tema `akdisi`, plugin `akdisiSeo`, context path `AKDISI`, admin `admin / akdisi-admin`.
+- Rebranding menyeluruh dari JEKI ke **Akdisi** (`https://jrdc.my.id/`): tema `akdisi`, plugin `akdisiSeo`, context path `JRDC`, admin `admin / akdisi-admin`.
 - Pemisahan bersih kode kustom: seluruh preset tema (`plugins/themes/akdisi/`) dan generic plugin (`plugins/generic/akdisiSeo/`) tersimpan terpisah di luar folder core OJS (`ojs/`) dan dihubungkan via symlink yang otomatis diregister.
 - Palette tema diperbarui ke warna **Maroon / Burgundy** (`#af2e4d`) dengan efek hero typewriter CSS murni.
 - `docs/TUTORIAL.md` & `README.md` ditulis ulang dengan panduan lengkap: arsitektur pemisahan, cara reset ke nol, praktek import manual (CLI & GUI) menggunakan `import/xml/issue-937.xml`, serta manipulasi custom blocks dan static pages.
 
 ### Verified
 - `./scripts/reset.sh` tereksekusi mulus tanpa error: DB bersih, 0 submission, 0 issue.
-- Beranda `https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en` status 200, tema `akdisi` aktif dengan CSS maroon dan 14 blok slot utuh.
+- Beranda `https://your-domain.example:8443/index.php/JRDC/en` status 200, tema `akdisi` aktif dengan CSS maroon dan 14 blok slot utuh.
 - Symlink `ojs/plugins/themes/akdisi` dan `ojs/plugins/generic/akdisiSeo` valid.
 - Kredensial login admin `admin` / `akdisi-admin` aktif.
 
@@ -204,7 +257,7 @@
   `setup.sh`, `create-journal.php`, `register-plugins.php`, dan script baru
   `install.sh` (pipeline instal non-interaktif, idempotent).
 - DB di-drop dan diinstal bersih: OJS 3.5.0-5, admin `admin / akdisi-admin`,
-  base_url + `allowed_hosts = ["akdisi-ojs.ddev.site"]`.
+  base_url + `allowed_hosts = ["your-domain.example"]`.
 - **Tema klasik dipasang** (official theme PKP). OJS 3.5 fresh TIDAK membawa
   theme classic (3.4/3.3 tarball juga tidak) → tarik release resmi
   `pkp/classic v1_1_3-2` untuk OJS 3.5, taruh di `ojs/plugins/themes/classic`,
@@ -231,12 +284,12 @@
   generic plugin kalau kamu harus melakukan best practice SEO.
 
 ### Notes
-- Login admin: `https://akdisi-ojs.ddev.site:8443/index.php/AKDISI/en/login`
+- Login admin: `https://your-domain.example:8443/index.php/JRDC/en/login`
   (`admin` / `akdisi-admin`) — rootless Docker memeberkan port `:8443`.
 - Sanguline install dari sesi sebelumnya ikut terhapus bersama `ojs/`;
   zip sumber di `tasks/` juga sudah tidak ada di disk.
 - Import pipeline: `ddev exec bash -c 'cd ojs && php tools/importExport.php
-  NativeImportExportPlugin import ../import/xml/issue-937.xml AKDISI --user_name admin'`.
+  NativeImportExportPlugin import ../import/xml/issue-937.xml JRDC --user_name admin'`.
 
 ## 2026-10-29 (sesi 2)
 
@@ -267,7 +320,7 @@
   `ScholarlyArticle`; sitemap 200; `?slots=1` 200 dengan slot marker utuh.
 
 ### Changed
-- Referensi demo beralih PERMINTAAN USER: full scrape journal.uii.ac.id/AKDISI
+- Referensi demo beralih PERMINTAAN USER: full scrape journal.uii.ac.id/JRDC
   (199 artikel) DIBATALKAN tengah jalan; demo memakai data lokal
   `articles.json` (5 artikel, issue 937) yang sudah tercache. `sample.json`
   rencana lama tidak pernah ada di disk → dipakai `articles.json`.
@@ -302,7 +355,7 @@
 - `scripts/setup.sh` — patch skip unduhan dataset ROR saat instalasi dev.
 
 ### Notes
-- Instalasi OJS memakai `allowed_hosts = ["akdisi-ojs.ddev.site"]`.
+- Instalasi OJS memakai `allowed_hosts = ["your-domain.example"]`.
 - Dataset ROR (~40 MB) dilewati di dev; aktifkan lagi untuk produksi.
 
 ## 2026-10-31 (sesi 6 — tema journalEditorial JILP-inspired)

@@ -5,7 +5,7 @@
  *
  * @class AkdisiSeoPlugin
  *
- * @brief SEO plugin untuk AKDISI: sitemap XML + data SEO + JSON-LD.
+ * @brief SEO plugin untuk JRDC: sitemap XML + data SEO + JSON-LD.
  *   Canonical/OG dirender oleh theme akdisi lewat headerHead.tpl.
  */
 
@@ -22,12 +22,12 @@ class AkdisiSeoPlugin extends GenericPlugin
 {
     public function getDisplayName()
     {
-        return 'AKDISI SEO';
+        return 'JRDC SEO';
     }
 
     public function getDescription()
     {
-        return 'Sitemap XML, canonical data, dan JSON-LD untuk demo AKDISI.';
+        return 'Sitemap XML, canonical data, dan JSON-LD untuk demo JRDC.';
     }
 
     public function register($category, $path, $mainContextId = null)
@@ -59,7 +59,7 @@ class AkdisiSeoPlugin extends GenericPlugin
             }
             return false;
         } catch (\Throwable $e) {
-            error_log('AKDISI SEO callback: ' . get_class($e) . ': ' . $e->getMessage());
+            error_log('JRDC SEO callback: ' . get_class($e) . ': ' . $e->getMessage());
             return false;
         }
     }
@@ -106,7 +106,7 @@ class AkdisiSeoPlugin extends GenericPlugin
                 }
             }
         } catch (\Throwable $e) {
-            error_log('AKDISI SEO inject: ' . $e->getMessage());
+            error_log('JRDC SEO inject: ' . $e->getMessage());
         }
     }
 
@@ -154,7 +154,7 @@ class AkdisiSeoPlugin extends GenericPlugin
             }
             return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } catch (\Throwable $e) {
-            error_log('AKDISI SEO buildArticleJsonLd: ' . $e->getMessage());
+            error_log('JRDC SEO buildArticleJsonLd: ' . $e->getMessage());
             return null;
         }
     }
@@ -177,7 +177,7 @@ class AkdisiSeoPlugin extends GenericPlugin
             }
             return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } catch (\Throwable $e) {
-            error_log('AKDISI SEO buildPeriodicalJsonLd: ' . $e->getMessage());
+            error_log('JRDC SEO buildPeriodicalJsonLd: ' . $e->getMessage());
             return null;
         }
     }

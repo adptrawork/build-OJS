@@ -13,28 +13,29 @@
 		</a>
 	</div>
 
-	<div class="row g-4">
+	<div class="jilp-picks">
 		{foreach from=$jilpArticles item=article name=picks}
 			{if $smarty.foreach.picks.index < 4}
 				{assign var="pickIndex" value=$smarty.foreach.picks.index}
-				<div class="col-md-6 col-lg-3">
-					<a class="jilp-highlight-card jilp-highlight-card-{$pickIndex+1}" href="{url page="article" op="view" path=$article->id}">
-						<span class="jilp-highlight-watermark">{$jilpLetters[$pickIndex]|default:$jilpAcronym|substr:0:1}</span>
-						<span class="jilp-highlight-tag">
-							{if $pickIndex == 0}{translate key="plugins.themes.journalEditorial.picks.tag1"}
-							{elseif $pickIndex == 1}{translate key="plugins.themes.journalEditorial.picks.tag2"}
-							{elseif $pickIndex == 2}{translate key="plugins.themes.journalEditorial.picks.tag3"}
-							{else}{translate key="plugins.themes.journalEditorial.picks.tag4"}{/if}
+				<a class="jilp-pick jilp-highlight-card" href="{url page="article" op="view" path=$article->id}">
+					<span class="jilp-highlight-watermark">{$jilpLetters[$pickIndex]|default:$jilpAcronym|substr:0:1}</span>
+					<span class="jilp-highlight-tag">
+						{if $pickIndex == 0}{translate key="plugins.themes.journalEditorial.picks.tag1"}
+						{elseif $pickIndex == 1}{translate key="plugins.themes.journalEditorial.picks.tag2"}
+						{elseif $pickIndex == 2}{translate key="plugins.themes.journalEditorial.picks.tag3"}
+						{else}{translate key="plugins.themes.journalEditorial.picks.tag4"}{/if}
+					</span>
+					<h3 class="jilp-highlight-title">{$article->title|escape}</h3>
+					{if $pickIndex == 0 && $article->abstract}
+						<p class="jilp-highlight-abstract">{$article->abstract|strip_tags|truncate:230|escape}</p>
+					{/if}
+					<div class="jilp-highlight-meta">
+						<span class="text-truncate" style="max-width:150px;">
+							<i class="bi bi-person-fill me-1"></i> {$article->authors|escape}
 						</span>
-						<h3 class="jilp-highlight-title">{$article->title|escape}</h3>
-						<div class="jilp-highlight-meta">
-							<span class="text-truncate" style="max-width:150px;">
-								<i class="bi bi-person-fill me-1"></i> {$article->authors|escape}
-							</span>
-							<span class="badge bg-white text-dark rounded-pill px-3 py-1 fw-bold">PDF</span>
-						</div>
-					</a>
-				</div>
+						<span class="badge bg-white text-dark rounded-pill px-3 py-1 fw-bold">PDF</span>
+					</div>
+				</a>
 			{/if}
 		{/foreach}
 	</div>

@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 
 BASE = "https://journal.uii.ac.id/JEKI"
 OAI = BASE + "/oai"
-UA = "jeki-ojs-import/0.1 (prototype)"
+UA = "your-project-import/0.1 (prototype)"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW = os.path.join(ROOT, "import", "raw")
 PAGES = os.path.join(RAW, "pages")

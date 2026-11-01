@@ -1,7 +1,7 @@
 {**
  * @file plugins/themes/akdisi/templates/frontend/components/footer.tpl
  *
- * Footer theme AKDISI. Menambahkan back-to-top dan wrapper slot S-HOME-14.
+ * Footer theme JRDC. Menambahkan back-to-top dan wrapper slot S-HOME-14.
  * Struktur inti diwarisi dari theme default.
  *}
 	</div><!-- pkp_structure_main -->

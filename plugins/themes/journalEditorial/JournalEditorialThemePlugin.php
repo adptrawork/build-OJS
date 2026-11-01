@@ -84,10 +84,11 @@ class JournalEditorialThemePlugin extends ThemePlugin
 
         $custom = $this->fetchCustomSettings($contextId, $locale);
         $templateMgr->assign([
-            'jilpIndexers' => $this->parseIndexers($custom['jilpIndexers'] ?? null),
-            'jilpFocusScope' => $custom['jilpFocusScope'] ?? null,
-            'jilpEditorialTeam' => $custom['jilpEditorialTeam'] ?? null,
-            'jilpContactUrl' => $custom['jilpContactUrl'] ?? null,
+            'jilpIndexers' => $this->parseIndexers($custom['jilpIndexers'] ?? $context->getLocalizedData('akdisiIndexers')),
+            'jilpFocusScope' => $custom['jilpFocusScope'] ?? $context->getLocalizedData('akdisiFocusScope'),
+            'jilpEditorialTeam' => $custom['jilpEditorialTeam'] ?? $context->getLocalizedData('akdisiEditorialTeam'),
+            'jilpContactUrl' => $custom['jilpContactUrl'] ?? $context->getLocalizedData('akdisiContactUrl'),
+            'jilpAbout' => $context->getLocalizedData('about'),
         ]);
 
         return false;
@@ -210,15 +211,23 @@ class JournalEditorialThemePlugin extends ThemePlugin
         return $section ? $section->getLocalizedTitle() : '';
     }
 
-    private function parseIndexers(?string $value): array
+    private function parseIndexers($value): array
     {
         $default = ['SINTA', 'Garuda', 'Crossref', 'Google Scholar', 'DOAJ', 'BASE', 'Dimensions', 'OpenAIRE', 'Scilit', 'WorldCat', 'Neliti', 'Moraref'];
-        if (!$value) {
+        if (is_array($value)) {
+            return array_values(array_filter($value));
+        }
+        if (!$value || !is_string($value)) {
             return $default;
         }
         $decoded = json_decode($value, true);
         if (is_array($decoded)) {
             return array_values(array_filter($decoded));
+        }
+        // If the value looks like HTML (legacy rich indexers), strip tags and split.
+        if (strip_tags($value) !== $value) {
+            $text = strip_tags($value);
+            return array_values(array_filter(array_map('trim', preg_split('/[\n,]+/', $text))));
         }
         return array_values(array_filter(array_map('trim', explode(',', $value))));
     }

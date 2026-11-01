@@ -1,7 +1,7 @@
 {**
  * @file plugins/themes/akdisi/templates/frontend/pages/indexJournal.tpl
  *
- * Override theme AKDISI. Layout beranda mengikuti PRD §7 (S-HOME-01..13).
+ * Override theme JRDC. Layout beranda mengikuti PRD §7 (S-HOME-01..13).
  * Setiap section dipecah menjadi komponen terpisah agar mudah dipelajari.
  *}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}

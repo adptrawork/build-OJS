@@ -14,7 +14,7 @@
 	{assign var="heroCoverTitle" value=$homepageImage.altText|default:$currentJournal->getLocalizedName()}
 {/if}
 
-<section class="jilp-hero shadow-lg{if !$homepageImage} jilp-hero--plain{/if}"
+<section class="jilp-hero{if !$homepageImage} jilp-hero--plain{/if}"
 	{if $homepageImage}
 		style="background-image:linear-gradient(to right, rgba(15,23,42,.95), rgba(15,23,42,.85)), url('{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}');"
 	{/if}>
@@ -40,13 +40,14 @@
 				</div>
 			{/if}
 
-			<div class="{if $heroCover}col-lg-7 text-lg-start{else}col-lg-9 mx-auto{/if} text-center">
-				<h1 class="jilp-hero-title fw-bold mb-4">
+			<div class="col-lg-7">
+				<p class="jilp-hero-eyebrow">{translate key="plugins.themes.journalEditorial.hero.eyebrow"}</p>
+				<h1 class="jilp-hero-title mb-4">
 					{$currentJournal->getLocalizedName()|escape}
 				</h1>
 
 				<div class="jilp-hero-desc-card mb-4">
-					<div class="row g-2 mb-4 justify-content-center justify-content-lg-start">
+					<div class="row g-2 mb-4 justify-content-start">
 						<div class="col-6 col-md-auto">
 							<div class="jilp-hero-badge jilp-hero-badge--primary">
 								<i class="bi bi-shield-check mb-1"></i>
@@ -80,14 +81,14 @@
 					<div class="jilp-hero-description text-white-50 mb-0">
 						{if $currentJournal->getLocalizedDescription()}
 							{$currentJournal->getLocalizedDescription()|strip_tags|truncate:420|escape}
-							<a class="text-primary fw-bold text-decoration-none" href="{url page="about"}">{translate key="plugins.themes.journalEditorial.hero.readMore"}</a>
+							<a class="jilp-hero-readmore" href="{url page="about"}" aria-label="About the journal: {$currentJournal->getLocalizedName()|escape}">About the journal <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
 						{else}
-							{$currentJournal->getLocalizedName()|escape} publishes peer-reviewed research in an open-access format.
+							{translate key="plugins.themes.journalEditorial.hero.fallbackDesc" journalName=$currentJournal->getLocalizedName()|escape}
 						{/if}
 					</div>
 				</div>
 
-				<div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+				<div class="d-flex flex-wrap justify-content-start gap-3 mb-0">
 					<a class="btn jilp-btn-hero-primary text-decoration-none px-4 py-3" href="{url page="submission" op="submit"}">
 						<i class="bi bi-send-fill me-2"></i> {translate key="plugins.themes.journalEditorial.hero.submit"}
 					</a>
@@ -96,6 +97,25 @@
 					</a>
 				</div>
 			</div>
+
+			{if !$heroCover}
+				<div class="col-lg-4 offset-lg-1 d-none d-lg-block">
+					<dl class="jilp-hero-facts">
+						{if $currentJournal->getData('onlineIssn')}
+							<div><dt>e-ISSN</dt><dd>{$currentJournal->getData('onlineIssn')|escape}</dd></div>
+						{/if}
+						{if $currentJournal->getData('printIssn')}
+							<div><dt>p-ISSN</dt><dd>{$currentJournal->getData('printIssn')|escape}</dd></div>
+						{/if}
+						{if $currentJournal->getData('publisherInstitution')}
+							<div><dt>{translate key="plugins.themes.journalEditorial.hero.publisher"}</dt><dd>{$currentJournal->getData('publisherInstitution')|escape}</dd></div>
+						{/if}
+						{if $currentJournal->getData('contactEmail')}
+							<div><dt>{translate key="plugins.themes.journalEditorial.hero.contact"}</dt><dd><a href="mailto:{$currentJournal->getData('contactEmail')|escape}">{$currentJournal->getData('contactEmail')|escape}</a></dd></div>
+						{/if}
+					</dl>
+				</div>
+			{/if}
 		</div>
 	</div>
 </section>

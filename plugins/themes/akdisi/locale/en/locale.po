@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "plugins.themes.akdisi.name"
-msgstr "AKDISI Theme"
+msgstr "JRDC Theme"
 
 msgid "plugins.themes.akdisi.description"
-msgstr "Child theme for the AKDISI journal rebuild."
+msgstr "Child theme for the JRDC journal rebuild."

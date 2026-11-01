@@ -3,8 +3,8 @@
 <version>
 	<application>akdisiSeo</application>
 	<type>plugins.generic</type>
-	<release>0.1.0.8</release>
-	<date>2026-10-31</date>
+	<release>0.1.0.16</release>
+	<date>2026-11-01</date>
 	<lazy-load>0</lazy-load>
 	<class>AkdisiSeoPlugin</class>
 </version>

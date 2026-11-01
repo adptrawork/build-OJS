@@ -1,5 +1,5 @@
 {**
- * Override theme AKDISI. Slot S-ISS-01..03 mengikuti PRD §4.3.
+ * Override theme JRDC. Slot S-ISS-01..03 mengikuti PRD §4.3.
  *}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$issueIdentification}
 

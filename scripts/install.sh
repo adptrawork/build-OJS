@@ -10,13 +10,13 @@ if grep -q "^installed = On" "$ROOT/ojs/config.inc.php"; then
 fi
 
 # Baris instalasi (non-interaktif via stdin).
-printf 'en\nid\n\n/var/www/html/ojs/files\nadmin\nakdisi-admin\nakdisi-admin\nadmin@akdisi.my.id\nmysqli\ndb\ndb\ndb\ndb\njeki-ojs.ddev.site/index.php/AKDISI/oai\nn\ny\n' \
+printf 'en\nid\n\n/var/www/html/ojs/files\nadmin\nakdisi-admin\nakdisi-admin\nadmin@jrdc.my.id\nmysqli\ndb\ndb\ndb\ndb\ndev-host.local/index.php/jrdc/oai\nn\ny\n' \
     | ddev exec -j php ojs/tools/install.php >/dev/null 2>&1 || true
 
 # Bug OJS Installer: baris allowed_hosts yang kita tulis manual semua ke-escape
 # ("[\"\"]") sehingga daftar host jadi kosong → 400 host not allowed. Kembali
 # tulis JSON yang benar.
-sed -i 's|^allowed_hosts = .*|allowed_hosts = ["jeki-ojs.ddev.site"]|' "$ROOT/ojs/config.inc.php"
+sed -i 's|^allowed_hosts = .*|allowed_hosts = ["dev-host.local"]|' "$ROOT/ojs/config.inc.php"
 
 # Jangan render PHP notice/deprecation/fatal ke dalam HTML pengunjung
 # (Smarty/DC meta memunculkan deprecation; fatal contact page sempat bocor).

@@ -1,5 +1,6 @@
 {**
  * @file plugins/themes/journalEditorial/templates/frontend/components/homepage/authorResources.tpl
+ * Ruled link list — no card boxes.
  *}
 <section class="container py-4 mb-5">
 	<div class="jilp-section-title-header">
@@ -9,48 +10,66 @@
 		</div>
 	</div>
 
-	<div class="row g-4">
-		<div class="col-lg-4 col-md-6">
-			<a class="jilp-quick-link-card h-100" href="{url page="submission" op="submit"}">
-				<div class="jilp-quick-link-icon"><i class="bi bi-send-fill"></i></div>
-				<h3 class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.submitTitle"}</h3>
-				<p class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.submitDesc"}</p>
+	<ul class="jilp-link-list">
+		<li>
+			<a href="{url page="submission" op="submit"}">
+				<i class="bi bi-send jilp-link-icon" aria-hidden="true"></i>
+				<span class="jilp-link-body">
+					<span class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.submitTitle"}</span>
+					<span class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.submitDesc"}</span>
+				</span>
+				<i class="bi bi-arrow-right jilp-link-arrow" aria-hidden="true"></i>
 			</a>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<a class="jilp-quick-link-card h-100" href="{url page="about" op="editorialTeam"}">
-				<div class="jilp-quick-link-icon"><i class="bi bi-people-fill"></i></div>
-				<h3 class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.teamTitle"}</h3>
-				<p class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.teamDesc"}</p>
+		</li>
+		<li>
+			<a href="{url page="about" op="submissions"}">
+				<i class="bi bi-file-earmark-text jilp-link-icon" aria-hidden="true"></i>
+				<span class="jilp-link-body">
+					<span class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.guidelinesTitle"}</span>
+					<span class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.guidelinesDesc"}</span>
+				</span>
+				<i class="bi bi-arrow-right jilp-link-arrow" aria-hidden="true"></i>
 			</a>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<a class="jilp-quick-link-card h-100" href="{url page="about" op="submissions"}">
-				<div class="jilp-quick-link-icon"><i class="bi bi-file-earmark-richtext"></i></div>
-				<h3 class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.guidelinesTitle"}</h3>
-				<p class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.guidelinesDesc"}</p>
+		</li>
+		<li>
+			<a href="{url page="search"}">
+				<i class="bi bi-search jilp-link-icon" aria-hidden="true"></i>
+				<span class="jilp-link-body">
+					<span class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.searchTitle"}</span>
+					<span class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.searchDesc"}</span>
+				</span>
+				<i class="bi bi-arrow-right jilp-link-arrow" aria-hidden="true"></i>
 			</a>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<a class="jilp-quick-link-card h-100" href="{url page="search"}">
-				<div class="jilp-quick-link-icon"><i class="bi bi-search"></i></div>
-				<h3 class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.searchTitle"}</h3>
-				<p class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.searchDesc"}</p>
+		</li>
+		<li>
+			<a href="{url page="issue" op="archive"}">
+				<i class="bi bi-journals jilp-link-icon" aria-hidden="true"></i>
+				<span class="jilp-link-body">
+					<span class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.archiveTitle"}</span>
+					<span class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.archiveDesc"}</span>
+				</span>
+				<i class="bi bi-arrow-right jilp-link-arrow" aria-hidden="true"></i>
 			</a>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<a class="jilp-quick-link-card h-100" href="{url page="issue" op="archive"}">
-				<div class="jilp-quick-link-icon"><i class="bi bi-collection-fill"></i></div>
-				<h3 class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.archiveTitle"}</h3>
-				<p class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.archiveDesc"}</p>
+		</li>
+		<li>
+			<a href="{url page="about" op="privacy"}">
+				<i class="bi bi-shield-check jilp-link-icon" aria-hidden="true"></i>
+				<span class="jilp-link-body">
+					<span class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.privacyTitle"}</span>
+					<span class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.privacyDesc"}</span>
+				</span>
+				<i class="bi bi-arrow-right jilp-link-arrow" aria-hidden="true"></i>
 			</a>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<a class="jilp-quick-link-card h-100" href="{url page="about" op="privacy"}">
-				<div class="jilp-quick-link-icon"><i class="bi bi-shield-lock-fill"></i></div>
-				<h3 class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.privacyTitle"}</h3>
-				<p class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.privacyDesc"}</p>
+		</li>
+		<li>
+			<a href="{url page="about" op="editorialTeam"}">
+				<i class="bi bi-people jilp-link-icon" aria-hidden="true"></i>
+				<span class="jilp-link-body">
+					<span class="jilp-quick-link-title">{translate key="plugins.themes.journalEditorial.authors.teamTitle"}</span>
+					<span class="jilp-quick-link-desc">{translate key="plugins.themes.journalEditorial.authors.teamDesc"}</span>
+				</span>
+				<i class="bi bi-arrow-right jilp-link-arrow" aria-hidden="true"></i>
 			</a>
-		</div>
-	</div>
+		</li>
+	</ul>
 </section>

@@ -8,11 +8,11 @@ Repositori ini mengelola sistem jurnal ilmiah **Akdisi** berbasis **Open Journal
 
 | Layanan / Halaman | URL Akses | Keterangan |
 |---|---|---|
-| **Beranda Jurnal (EN)** | [https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en](https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en) | Halaman beranda utama |
-| **Login Admin** | [https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/login](https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en/login) | **User:** `admin` \| **Pass:** `akdisi-admin` |
-| **Debug Slot Layout** | [https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en?slots=1](https://jeki-ojs.ddev.site:8443/index.php/AKDISI/en?slots=1) | Visualisasi slot modular S-HOME-XX |
-| **Sitemap XML** | [https://jeki-ojs.ddev.site:8443/index.php/AKDISI/sitemap.xml](https://jeki-ojs.ddev.site:8443/index.php/AKDISI/sitemap.xml) | Peta situs XML SEO |
-| **Mailhog (Web Inbox)** | [https://jeki-ojs.ddev.site:8026](https://jeki-ojs.ddev.site:8026) | Monitoring pengiriman email OJS |
+| **Beranda Jurnal (EN)** | [https://your-domain.example:8443/index.php/JRDC/en](https://your-domain.example:8443/index.php/JRDC/en) | Halaman beranda utama |
+| **Login Admin** | [https://your-domain.example:8443/index.php/JRDC/en/login](https://your-domain.example:8443/index.php/JRDC/en/login) | **User:** `admin` \| **Pass:** `akdisi-admin` |
+| **Debug Slot Layout** | [https://your-domain.example:8443/index.php/JRDC/en?slots=1](https://your-domain.example:8443/index.php/JRDC/en?slots=1) | Visualisasi slot modular S-HOME-XX |
+| **Sitemap XML** | [https://your-domain.example:8443/index.php/JRDC/sitemap.xml](https://your-domain.example:8443/index.php/JRDC/sitemap.xml) | Peta situs XML SEO |
+| **Mailhog (Web Inbox)** | [https://your-domain.example:8026](https://your-domain.example:8026) | Monitoring pengiriman email OJS |
 
 ---
 
@@ -45,7 +45,7 @@ Kode kustom disimpan **terpisah di luar folder core OJS upstream** (`ojs/` diaba
 ./scripts/package.sh --bump
 
 # 4. Praktek import manual artikel/issue (CLI)
-ddev exec bash -c 'cd /var/www/html/ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml AKDISI --user_name admin'
+ddev exec bash -c 'cd /var/www/html/ojs && php tools/importExport.php NativeImportExportPlugin import ../import/xml/issue-937.xml JRDC --user_name admin'
 
 # 5. Bersihkan cache template OJS
 ddev exec bash -c 'cd /var/www/html && rm -rf ojs/cache && mkdir -p ojs/cache'
