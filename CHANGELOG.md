@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-11-01 (sesi 11 — halaman statis + sinkronisasi plugin staticPages resmi)
+
+### Added
+- Plugin resmi `staticPages` (namespaced, dari OJS 3.5.0-5) disinkronkan ke `plugins/generic/staticPages` + symlink, menggantikan copy lama non-namespaced yang tidak bisa di-instantiate.
+- `content.tpl` plugin dioverride agar konsisten dengan tema journalEditorial (banner breadcrumb + `.jilp-prose`).
+- Konten 20 halaman statis diisi EN/ID standar akademik (COPE/OASPA/DOAJ-aligned) untuk JRDC (Ekonomi & Bisnis): about, focus-and-scope, author-guidelines, submission-preparation, publication-ethics, peer-review-process, open-access-statement, copyright-and-license, plagiarism-policy, indexing, archive-policy, author-fees, contact-us, generative-ai, privacy-policy, editorial-team, reviewer, reviewer-guide, loa, faq.
+- Footer: tautan ke focus-and-scope, indexing, author-fees; kunci locale baru `footer.focusScope`, `footer.indexing`, `footer.fees` (EN/ID).
+- `scripts/gen_static_content.py` + `scripts/static-content.sql` (seed konten).
+
+### Fixed
+- Plugin `staticPages` tidak aktif karena copy lama non-namespaced; kini memakai versi resmi 3.5 (lazy_load=0).
+- Cache Laravel stale menyebabkan `getSetting('enabled')` mengembalikan null — dibersihkan.
+- Nginx rewrite `/sitemap.xml` dari `JEKI` → `jrdc` (sitemap 200).
+- Enable `citationStyleLanguage` dan `customBlockManager` (PRD §5); disable `jatsTemplate`, `htmlArticleGalley`, `lensGalley` (PRD §5 OFF).
+
+### Verified
+- 40 URL statis (20 halaman × EN/ID) → 200.
+- `/sitemap.xml` → 200.
+- Home, artikel, issue → 200; logs bersih.
+
 ## 2026-11-01 (sesi 10 — palet kustom, breadcrumb seragam, PDF embed, konten JRDC)
 
 ### Added
