@@ -320,9 +320,6 @@ msgstr "For Authors"
 msgid "plugins.themes.journalEditorial.footer.guidelines"
 msgstr "Author Guidelines"
 
-msgid "plugins.themes.journalEditorial.footer.fees"
-msgstr "Author Fees"
-
 msgid "plugins.themes.journalEditorial.footer.submit"
 msgstr "Submit Manuscript"
 
@@ -358,3 +355,27 @@ msgstr "Your browser does not support embedded PDFs."
 
 msgid "plugins.themes.journalEditorial.pdf.download"
 msgstr "Download or view the PDF"
+
+msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.uploadCover"
+msgstr "Upload a cover image in issue settings"
+
+msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
+msgstr "View Current Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.archive"
+msgstr "Browse Archives"
+
+msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
+msgstr "View Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.archive"
+msgstr "Browse Archive"
+
+msgid "plugins.themes.journalEditorial.currentIssue.uploadCover"
+msgstr "Upload cover image in the issue settings"

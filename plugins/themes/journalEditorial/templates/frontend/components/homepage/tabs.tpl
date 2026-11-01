@@ -126,7 +126,7 @@
 										<a href="{url page="announcement" op="view" path=$announcement->id}">{$announcement->getLocalizedData('title')|escape}</a>
 									</h3>
 									{if $announcement->datePosted}
-										<p class="jilp-announcement-date"><i class="bi bi-calendar3 me-1" aria-hidden="true"></i> {$announcement->datePosted|date_format:$dateFormatShort}</p>
+										<p class="jilp-announcement-date">{$announcement->datePosted|date_format:$dateFormatShort}</p>
 									{/if}
 									<p class="jilp-announcement-desc">{$announcement->getLocalizedData('descriptionShort')|strip_tags|truncate:160|escape}</p>
 									<a class="jilp-announcement-link" href="{url page="announcement" op="view" path=$announcement->id}" aria-label="View full announcement: {$announcement->getLocalizedData('title')|escape}">View full announcement <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
@@ -168,7 +168,7 @@
 						{else}
 							<p class="text-muted">{translate key="plugins.themes.journalEditorial.editorial.desc" journalName=$currentJournal->getLocalizedName()|escape}</p>
 						{/if}
-						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialMasthead"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
 					</div>
 				</div>
 			</div>
@@ -184,7 +184,7 @@
 						{else}
 							<p class="text-muted">{translate key="plugins.themes.journalEditorial.editorial.desc" journalName=$currentJournal->getLocalizedName()|escape}</p>
 						{/if}
-						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialMasthead"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-5">

@@ -62,6 +62,26 @@ class JournalEditorialThemePlugin extends ThemePlugin
         $contextId = $context->getId();
         $locale = Locale::getLocale();
 
+        // Ensure the current issue is available for the homepage section.
+        // OJS assigns $issue only when a current issue is configured; fall back
+        // to the latest published issue so the slot never stays empty.
+        $issue = $templateMgr->getTemplateVars('issue');
+        if (!$issue instanceof \APP\issue\Issue) {
+            $issue = Repo::issue()->getCurrent($contextId);
+        }
+        if (!$issue instanceof \APP\issue\Issue) {
+            $issue = Repo::issue()->getCollector()
+                ->filterByContextIds([$contextId])
+                ->filterByPublished(true)
+                ->orderBy(\APP\issue\Collector::ORDERBY_DATE_PUBLISHED, \APP\issue\Collector::ORDER_DIR_DESC)
+                ->limit(1)
+                ->getMany()
+                ->first();
+        }
+        if ($issue instanceof \APP\issue\Issue) {
+            $templateMgr->assign('issue', $issue);
+        }
+
         $templateMgr->assign('jilpArticles', $this->getArticles($contextId, $locale, 9));
         $templateMgr->assign('jilpIssues', $this->getIssues($contextId, $locale, 6));
         $templateMgr->assign('jilpStats', $this->getStats($contextId));

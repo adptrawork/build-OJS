@@ -1,5 +1,79 @@
 # Changelog
 
+## 2026-11-02 (sesi 17 — hero visual UNAMA, kontak & privasi redesign)
+
+### Added
+- Hero section kanan bergaya UNAMA: cover stack (issue cover + logo jurnal + fallback) dengan floating chips "Open Access" dan "Peer Reviewed" (`hero.tpl` + CSS).
+- Section "Current Issue" card dengan slot cover image yang bisa di-upload admin; fallback menampilkan petunjuk upload.
+- CSS grid untuk halaman kontak (`jilp-contact-grid`) dengan 4 kartu: email redaksi, dukungan teknis, telepon/WhatsApp, dan alamat.
+- SQL `scripts/update-privacy-statement.sql` untuk mengisi `journal_settings.privacyStatement` EN/ID sesuai standar COPE / perlindungan data.
+
+### Changed
+- `scripts/gen_static_content.py` & `scripts/static-content.sql`: redesain konten `contact-us` dan `privacy-policy` dengan data website JRDC, referensi COPE, serta struktur yang lebih jelas.
+- Tautan "Tim Editorial" di `tabs.tpl` diarahkan ke `about/editorialMasthead` (konsisten dengan footer & author resources).
+
+### Fixed
+- Halaman `/about/privacy` (OJS default privacy page) kini menampilkan kebijakan privasi lengkap 9 poin, bukan teks satu paragraf.
+- Halaman `/contact-us` kini menampilkan kartu kontak lengkap dengan data email, dukungan, WhatsApp, dan alamat.
+
+### Verified
+- `/index.php/jrdc/id/` menampilkan hero visual kanan dan section "Terbitan Terkini".
+- `/index.php/jrdc/id/about/editorialMasthead` → 200 dengan 5 nama editor.
+- `/index.php/jrdc/id/about/privacy` → 200, menampilkan 9 bagian kebijakan privasi.
+- `/index.php/jrdc/id/contact-us` → 200, menampilkan 4 kartu kontak.
+
+## 2026-11-02 (sesi 16 — seed tim editorial + perbaiki tautan Tim Editorial)
+
+### Added
+- Script `scripts/seed-editorial-team.php` untuk mengisi tim editorial JRDC dengan 5 peran akademis (Editor-in-Chief, Managing Editor, Section Editor, Copy Editor, Layout/Production Editor) beserta nama, afiliasi, dan password bcrypt acak. Idempotent: user/assignment yang sudah ada dilewati.
+
+### Changed
+- Grup user default `journal editor`, `journal manager`, `section editor`, `copyeditor`, dan `production editor` di context `jrdc` diaktifkan flag masthead dan di-rename ke peran tim editorial (EN/ID).
+- Seluruh tautan "Tim Editorial" / "Editorial Team" di tema `journalEditorial` diarahkan ke route OJS 3.5 yang benar: `about/editorialMasthead` (menggantikan `about/editorialTeam` yang sudah tidak ada di OJS 3.5). File yang diperbaiki: `footer.tpl`, `authorResources.tpl`.
+
+### Fixed
+- Halaman `/about/editorialMasthead` kosong karena belum ada user dengan peran editorial; kini menampilkan daftar nama, afiliasi, dan peran.
+
+### Verified
+- `/index.php/jrdc/id/about/editorialMasthead` → 200, menampilkan 5 peran: Editor Manajemen, Editor-in-Chief, Editor Tata Letak/Produksi, Editor Bagian, Copy Editor dengan nama dan afiliasi.
+- Footer & quick link beranda kini mengarah ke `/about/editorialMasthead`.
+
+## 2026-11-02 (sesi 15 — current issue kosong di beranda)
+
+### Added
+- Template `templates/frontend/components/homepage/currentIssue.tpl` untuk menampilkan terbitan terkini sebagai kartu dengan slot cover image yang bisa di-upload admin.
+- Locale keys `plugins.themes.journalEditorial.currentIssue.*` (EN/ID).
+- Script idempotent `scripts/set-current-issue.php` untuk publish issue (mengisi `date_published`) dan menjadikannya `currentIssueId` jurnal `jrdc`.
+
+### Changed
+- `JournalEditorialThemePlugin::assignHomepageData()` kini memastikan variabel `$issue` tersedia: bila OJS belum meng-assign current issue, fallback ke issue terbaru yang sudah dipublish.
+- `templates/frontend/pages/indexJournal.tpl` memanggil `currentIssue.tpl` setelah hero.
+
+### Fixed
+- Section "Terbitan Terkini" / "Current Issue" di beranda kosong karena `currentIssueId` belum di-set setelah import; kini Vol. 1 No. 1 (2011) menjadi current issue.
+
+### Verified
+- `/index.php/jrdc/id/` menampilkan section "Terbitan Terkini" dengan judul issue dan tautan ke `/issue/view/1`.
+- `/index.php/jrdc?id=index&setLocale=en` menampilkan section "Current Issue" dengan versi bahasa Inggris.
+
+## 2026-11-01 (sesi 14 — perbaiki URL Kirim Naskah / Submit)
+
+### Fixed
+- Semua tautan "Kirim Naskah" / "Submit" di tema `journalEditorial` kini mengarah ke `{url page="submission"}` (route OJS 3.5 yang benar untuk memulai submission wizard baru).
+- File yang diperbaiki: `hero.tpl`, `authorResources.tpl`, `footer.tpl` (sebelumnya salah memakai `op="submit"` yang memunculkan 404).
+
+### Verified
+- Homepage `/index.php/jrdc` (ID & EN) merender href `/index.php/jrdc/submission` pada tombol hero, quick link, dan footer.
+- Tautan valid saat pengguna belum login (OJS mengarahkan ke halaman login terlebih dahulu).
+
+## 2026-11-01 (sesi 13 — hapus link Author Fees dari footer)
+
+### Removed
+- Tautan "Author Fees" / "Biaya Penulis" dan locale key `plugins.themes.journalEditorial.footer.fees` (EN/ID) dihapus dari footer tema `journalEditorial`.
+
+### Verified
+- Footer tidak lagi menampilkan link biaya penulis di locale EN maupun ID.
+
 ## 2026-11-01 (sesi 12 — h1 konsisten, a11y 100, CLS 0, pembersihan hardcoded URL)
 
 ### Added

@@ -403,6 +403,7 @@ OJS 3.5 ditarik dari tag resmi saat setup — tidak di-commit.
 
 ## 15. Pertanyaan terbuka
 
-1. Konten final (teks kebijakan, tim editorial, logo pengindeks) — ditunda.
+1. Konten final (teks kebijakan, tim editorial, logo pengindeks).
+   - Tim editorial: diisi via `scripts/seed-editorial-team.php` dengan 5 peran akademis dummy (Editor-in-Chief, Managing Editor, Section Editor, Copy Editor, Layout/Production Editor) agar halaman `about/editorialMasthead` dan tautan "Tim Editorial" beranda tidak kosong.
 2. Email: benar-benar dikirim (butuh SMTP) atau di-log ke file selama demo?
 3. Cakupan impor: 199 artikel penuh atau subset 40–50?
