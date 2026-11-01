@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-11-02 (sesi 17 — hero visual UNAMA, kontak & privasi redesign)
+
+### Added
+- Hero section kanan bergaya UNAMA: cover stack (issue cover + logo jurnal + fallback) dengan floating chips "Open Access" dan "Peer Reviewed" (`hero.tpl` + CSS).
+- Section "Current Issue" card dengan slot cover image yang bisa di-upload admin; fallback menampilkan petunjuk upload.
+- CSS grid untuk halaman kontak (`jilp-contact-grid`) dengan 4 kartu: email redaksi, dukungan teknis, telepon/WhatsApp, dan alamat.
+- SQL `scripts/update-privacy-statement.sql` untuk mengisi `journal_settings.privacyStatement` EN/ID sesuai standar COPE / perlindungan data.
+
+### Changed
+- `scripts/gen_static_content.py` & `scripts/static-content.sql`: redesain konten `contact-us` dan `privacy-policy` dengan data website JRDC, referensi COPE, serta struktur yang lebih jelas.
+- Tautan "Tim Editorial" di `tabs.tpl` diarahkan ke `about/editorialMasthead` (konsisten dengan footer & author resources).
+
+### Fixed
+- Halaman `/about/privacy` (OJS default privacy page) kini menampilkan kebijakan privasi lengkap 9 poin, bukan teks satu paragraf.
+- Halaman `/contact-us` kini menampilkan kartu kontak lengkap dengan data email, dukungan, WhatsApp, dan alamat.
+
+### Verified
+- `/index.php/jrdc/id/` menampilkan hero visual kanan dan section "Terbitan Terkini".
+- `/index.php/jrdc/id/about/editorialMasthead` → 200 dengan 5 nama editor.
+- `/index.php/jrdc/id/about/privacy` → 200, menampilkan 9 bagian kebijakan privasi.
+- `/index.php/jrdc/id/contact-us` → 200, menampilkan 4 kartu kontak.
+
 ## 2026-11-02 (sesi 16 — seed tim editorial + perbaiki tautan Tim Editorial)
 
 ### Added
