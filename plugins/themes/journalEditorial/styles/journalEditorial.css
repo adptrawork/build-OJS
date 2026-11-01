@@ -432,7 +432,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	background-position: center !important;
 	background-repeat: no-repeat !important;
 	padding: 4.5rem 0 5rem;
-	min-height: 400px;
+	min-height: 520px;
 	overflow: hidden;
 	color: #ffffff;
 }
@@ -649,6 +649,7 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	position: relative;
 	z-index: 10;
 	margin-bottom: 4.5rem;
+	min-height: 120px;
 }
 
 .jilp-stats-card {
