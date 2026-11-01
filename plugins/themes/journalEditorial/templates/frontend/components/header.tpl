@@ -110,7 +110,7 @@
 						<li class="active" aria-current="page">{$jilpBannerCrumb|trim}</li>
 					</ol>
 				</nav>
-				{if $jilpPage != 'article' && $jilpPage != 'issue'}
+				{if $jilpPage != 'article' && !($jilpPage == 'issue' && $requestedOp == 'view')}
 					<h1 class="jilp-inner-banner-title">{$jilpBannerCrumb|trim}</h1>
 				{/if}
 			</div>

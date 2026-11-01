@@ -1442,7 +1442,9 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 
 .jilp-breadcrumb li.active {
 	color: #fff;
-	font-weight: 500;
+	font-size: 1.05rem;
+	font-weight: 600;
+	text-wrap: balance;
 }
 
 .jilp-inner-banner-title {
