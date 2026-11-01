@@ -6,14 +6,12 @@
 {include file="frontend/components/header.tpl" pageTitleTranslated=$article->getCurrentPublication()->getLocalizedFullTitle(null, 'html')|strip_unsafe_html}
 
 <div class="page page_article" data-slot="S-ART-01">
-	{if $section}
-		{include file="frontend/components/breadcrumbs_article.tpl" currentTitle=$section->getLocalizedTitle()}
-	{else}
-		{include file="frontend/components/breadcrumbs_article.tpl" currentTitleKey="common.publication"}
-	{/if}
-
 	<div data-slot="S-ART-02">
 		{include file="frontend/objects/article_details.tpl"}
+	</div>
+
+	<div data-slot="S-ART-PDF">
+		{include file="frontend/components/article_pdf_embed.tpl"}
 	</div>
 
 	{call_hook name="Templates::Article::Footer::PageFooter"}

@@ -23,6 +23,15 @@ msgstr "Toggle navigation"
 msgid "plugins.themes.journalEditorial.readMore"
 msgstr "Read more"
 
+msgid "plugins.themes.journalEditorial.hero.publisher"
+msgstr "Publisher"
+
+msgid "plugins.themes.journalEditorial.hero.contact"
+msgstr "Contact"
+
+msgid "plugins.themes.journalEditorial.hero.eyebrow"
+msgstr "Peer-reviewed  ·  Open access"
+
 msgid "plugins.themes.journalEditorial.hero.currentIssue"
 msgstr "Current Issue"
 
@@ -34,6 +43,9 @@ msgstr "Peer Reviewed"
 
 msgid "plugins.themes.journalEditorial.hero.readMore"
 msgstr "Read more"
+
+msgid "plugins.themes.journalEditorial.hero.fallbackDesc"
+msgstr "{$journalName} publishes peer-reviewed research in economics and business through an open-access model."
 
 msgid "plugins.themes.journalEditorial.hero.submit"
 msgstr "Submit Your Research"
@@ -137,6 +149,36 @@ msgstr "Journal description has not been added yet."
 msgid "plugins.themes.journalEditorial.about.focusScope"
 msgstr "Focus &amp; Scope"
 
+msgid "plugins.themes.journalEditorial.about.jrdcIdentityTitle"
+msgstr "Who We Are"
+
+msgid "plugins.themes.journalEditorial.about.jrdcIdentity"
+msgstr "Yayasan Ratu Dirgantara Cendikiawan (JRDC) is a scientific journal publisher focused on Economics and Business. We support education, advance scientific knowledge, and disseminate research and academic thought by providing a credible publication space for academics, researchers, students, and practitioners."
+
+msgid "plugins.themes.journalEditorial.about.jrdcVisionTitle"
+msgstr "Vision"
+
+msgid "plugins.themes.journalEditorial.about.jrdcVision"
+msgstr "To become a credible scientific journal publisher that advances knowledge in Economics and Business through quality, integrity-driven, and beneficial publications for academic and professional communities."
+
+msgid "plugins.themes.journalEditorial.about.jrdcMissionTitle"
+msgstr "Mission"
+
+msgid "plugins.themes.journalEditorial.about.jrdcMission"
+msgstr "<ol><li>Advance knowledge in Economics and Business by publishing research and scientific studies.</li><li>Conduct journal publishing that prioritises article quality, editorial accuracy, and scientific publication standards.</li><li>Encourage a culture of research, writing, and scientific publication among academics, researchers, and students.</li><li>Facilitate the dissemination of research relevant to theory building, decision making, and economic and business practice.</li><li>Uphold publication ethics, academic integrity, and open access to scientific knowledge.</li></ol>"
+
+msgid "plugins.themes.journalEditorial.about.jrdcScopeTitle"
+msgstr "Focus &amp; Scope"
+
+msgid "plugins.themes.journalEditorial.about.jrdcScope"
+msgstr "JRDC's initial publishing focus is Economics and Business. The scope covers management, accounting, finance, marketing, entrepreneurship, and development economics. Studies may include theory building, empirical research, policy analysis, case studies, and the application of economic and business concepts in various contexts. The scope may expand gradually according to scholarly needs while maintaining Economics and Business as the core orientation."
+
+msgid "plugins.themes.journalEditorial.about.jrdcCommitmentTitle"
+msgstr "Editorial Commitment"
+
+msgid "plugins.themes.journalEditorial.about.jrdcCommitment"
+msgstr "JRDC is committed to responsible scholarly publishing through peer review, academic integrity, and open access. Peer review safeguards the quality and scientific merit of every published manuscript. Integrity is upheld through respect for originality, accurate citation, transparency, and the prevention of unethical publication practices. Open access ensures research findings can be used more broadly by researchers, students, practitioners, and the wider community. This commitment builds trust between authors and readers."
+
 msgid "plugins.themes.journalEditorial.identity.title"
 msgstr "Journal Identity"
 
@@ -213,31 +255,31 @@ msgid "plugins.themes.journalEditorial.why.title"
 msgstr "Why Publish With Us"
 
 msgid "plugins.themes.journalEditorial.why.desc"
-msgstr "A rigorous, open, and author-friendly publishing experience."
+msgstr "A rigorous, open, and author-friendly publishing experience in Economics and Business."
 
 msgid "plugins.themes.journalEditorial.why.oaTitle"
 msgstr "Open Access"
 
 msgid "plugins.themes.journalEditorial.why.oaDesc"
-msgstr "Free to read and download for everyone, worldwide."
+msgstr "Your article is free to read and download for researchers, students, and practitioners worldwide."
 
 msgid "plugins.themes.journalEditorial.why.refereedTitle"
-msgstr "Refereed"
+msgstr "Double-Blind Peer Review"
 
 msgid "plugins.themes.journalEditorial.why.refereedDesc"
-msgstr "Rigorous double-blind peer review by subject experts."
+msgstr "Every manuscript is evaluated through a rigorous peer-review process by subject-matter experts."
 
 msgid "plugins.themes.journalEditorial.why.indexedTitle"
-msgstr "Indexed"
+msgstr "Indexed &amp; Visible"
 
 msgid "plugins.themes.journalEditorial.why.indexedDesc"
-msgstr "Discoverable through major scholarly databases."
+msgstr "Publications are systematically harvested by scholarly databases and repositories for broad discoverability."
 
 msgid "plugins.themes.journalEditorial.why.fastTitle"
-msgstr "Fast Track"
+msgstr "Timely Process"
 
 msgid "plugins.themes.journalEditorial.why.fastDesc"
-msgstr "Efficient editorial handling and timely publication."
+msgstr "Efficient editorial handling and clear communication keep the path from submission to publication on track."
 
 msgid "plugins.themes.journalEditorial.footer.quickLinks"
 msgstr "Quick Links"
@@ -290,8 +332,20 @@ msgstr "Support"
 msgid "plugins.themes.journalEditorial.footer.readMore"
 msgstr "Read More"
 
+msgid "plugins.themes.journalEditorial.footer.jrdcDesc"
+msgstr "Yayasan Ratu Dirgantara Cendikiawan (JRDC) publishes peer-reviewed open-access journals focused on Economics and Business."
+
 msgid "plugins.themes.journalEditorial.footer.rights"
 msgstr "All rights reserved. Powered by Open Journal Systems."
 
 msgid "plugins.themes.journalEditorial.footer.theme"
 msgstr "Theme"
+
+msgid "plugins.themes.journalEditorial.pdf.title"
+msgstr "PDF"
+
+msgid "plugins.themes.journalEditorial.pdf.noEmbed"
+msgstr "Your browser does not support embedded PDFs."
+
+msgid "plugins.themes.journalEditorial.pdf.download"
+msgstr "Download or view the PDF"

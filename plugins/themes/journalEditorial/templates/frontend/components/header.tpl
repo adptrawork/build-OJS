@@ -8,6 +8,7 @@
 	{if !$displayPageHeaderLogo}
 		{assign var="showingLogo" value=false}
 	{/if}
+	{assign var="jilpPage" value=$requestedPage|default:"index"}
 {/strip}
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
@@ -21,9 +22,7 @@
 		{include file="frontend/components/skipLinks.tpl"}
 
 		<div class="container-fluid px-4 px-xl-5">
-			{capture assign="homeUrl"}
-				{url page="index" router=PKP\core\PKPApplication::ROUTE_PAGE}
-			{/capture}
+			{capture assign="homeUrl"}{strip}{url page="index"}{/strip}{/capture}
 
 			<a class="navbar-brand d-flex align-items-center gap-2" href="{$homeUrl}">
 				{if $displayPageHeaderLogo}
@@ -84,24 +83,34 @@
 	   auth, announcement, …) gets it without template overrides. Article
 	   pages show the breadcrumb only; their title lives in article_details. *}
 	{capture assign="jilpBannerCrumb"}
-		{if $requestedPage == 'article'}{translate key="article.article"}{else}{$pageTitleTranslated|strip_unsafe_html}{/if}
+		{if $jilpPage == 'article'}{translate key="article.article"}{elseif $jilpPage == 'issue' && $issue}{$issue->getIssueIdentification()|escape}{else}{$pageTitleTranslated|strip_unsafe_html}{/if}
 	{/capture}
 	{assign var="jilpHasBanner" value=false}
-	{if $requestedPage == 'article' || ($pageTitleTranslated && $requestedPage != 'index')}
+	{if $jilpPage == 'article' || $jilpPage == 'issue' || ($pageTitleTranslated && $jilpPage != 'index')}
 		{assign var="jilpHasBanner" value=true}
 	{/if}
 	{if $jilpHasBanner}
 		<section class="jilp-inner-banner">
 			<div class="container">
 				<nav aria-label="{translate key="navigation.breadcrumbLabel"}">
-					<ol class="breadcrumb{if $requestedPage == 'article'} mb-0{/if}">
-						<li class="breadcrumb-item">
+					<ol class="jilp-breadcrumb">
+						<li>
 							<a href="{$homeUrl}"><i class="bi bi-house-door-fill"></i> {translate key="common.homepageNavigationLabel"}</a>
 						</li>
-						<li class="breadcrumb-item active" aria-current="page">{$jilpBannerCrumb|trim}</li>
+						{if $jilpPage == 'issue' || $jilpPage == 'article'}
+							<li>
+								<a href="{url page="issue" op="archive"}">{translate key="navigation.archives"}</a>
+							</li>
+						{/if}
+						{if $jilpPage == 'article' && $issue}
+							<li>
+								<a href="{url page="issue" op="view" path=$issue->getBestIssueId()}">{$issue->getIssueIdentification()|escape}</a>
+							</li>
+						{/if}
+						<li class="active" aria-current="page">{$jilpBannerCrumb|trim}</li>
 					</ol>
 				</nav>
-				{if $requestedPage != 'article'}
+				{if $jilpPage != 'article' && $jilpPage != 'issue'}
 					<h1 class="jilp-inner-banner-title">{$jilpBannerCrumb|trim}</h1>
 				{/if}
 			</div>

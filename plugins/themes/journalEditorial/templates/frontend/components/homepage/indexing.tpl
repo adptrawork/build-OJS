@@ -3,13 +3,13 @@
  *}
 <section class="jilp-indexing-section" id="indexing">
 	<div class="container">
-		<div class="text-center mb-4">
-			<h2 class="jilp-section-title d-inline-block">{translate key="plugins.themes.journalEditorial.indexing.title"}</h2>
-			<p class="text-muted mt-3 mb-0">{translate key="plugins.themes.journalEditorial.indexing.desc"}</p>
+		<div class="mb-4">
+			<h2 class="jilp-section-title">{translate key="plugins.themes.journalEditorial.indexing.title"}</h2>
+			<p class="text-muted mt-3 mb-0" style="max-width: 65ch;">{translate key="plugins.themes.journalEditorial.indexing.desc"}</p>
 		</div>
 		<div class="jilp-indexing-grid">
 			{foreach from=$jilpIndexers item=indexer}
-				<div class="jilp-indexer-badge shadow-sm">{$indexer|escape}</div>
+				<div class="jilp-indexer-badge">{$indexer|escape}</div>
 			{/foreach}
 		</div>
 	</div>

@@ -23,6 +23,15 @@ msgstr "Buka menu navigasi"
 msgid "plugins.themes.journalEditorial.readMore"
 msgstr "Baca selengkapnya"
 
+msgid "plugins.themes.journalEditorial.hero.publisher"
+msgstr "Penerbit"
+
+msgid "plugins.themes.journalEditorial.hero.contact"
+msgstr "Kontak"
+
+msgid "plugins.themes.journalEditorial.hero.eyebrow"
+msgstr "Telaah sejawat  ·  Akses terbuka"
+
 msgid "plugins.themes.journalEditorial.hero.currentIssue"
 msgstr "Terbitan Terkini"
 
@@ -34,6 +43,9 @@ msgstr "Ditelaah Sejawat"
 
 msgid "plugins.themes.journalEditorial.hero.readMore"
 msgstr "Baca selengkapnya"
+
+msgid "plugins.themes.journalEditorial.hero.fallbackDesc"
+msgstr "{$journalName} menerbitkan riset telaah sejawat di bidang Ekonomi dan Bisnis melalui model akses terbuka."
 
 msgid "plugins.themes.journalEditorial.hero.submit"
 msgstr "Kirimkan Riset Anda"
@@ -137,6 +149,36 @@ msgstr "Deskripsi jurnal belum ditambahkan."
 msgid "plugins.themes.journalEditorial.about.focusScope"
 msgstr "Fokus &amp; Ruang Lingkup"
 
+msgid "plugins.themes.journalEditorial.about.jrdcIdentityTitle"
+msgstr "Siapa Kami"
+
+msgid "plugins.themes.journalEditorial.about.jrdcIdentity"
+msgstr "Yayasan Ratu Dirgantara Cendikiawan (JRDC) adalah penerbit jurnal ilmiah yang berfokus pada bidang Ekonomi dan Bisnis. Kami mendukung pengembangan pendidikan, kemajuan ilmu pengetahuan, dan penyebarluasan hasil penelitian serta pemikiran akademik dengan menyediakan ruang publikasi yang kredibel bagi akademisi, peneliti, mahasiswa, dan praktisi."
+
+msgid "plugins.themes.journalEditorial.about.jrdcVisionTitle"
+msgstr "Visi"
+
+msgid "plugins.themes.journalEditorial.about.jrdcVision"
+msgstr "Menjadi penerbit jurnal ilmiah yang kredibel dan berorientasi pada pengembangan ilmu pengetahuan di bidang Ekonomi dan Bisnis melalui publikasi yang berkualitas, berintegritas, dan bermanfaat bagi masyarakat akademik maupun praktisi."
+
+msgid "plugins.themes.journalEditorial.about.jrdcMissionTitle"
+msgstr "Misi"
+
+msgid "plugins.themes.journalEditorial.about.jrdcMission"
+msgstr "<ol><li>Mendukung pengembangan ilmu pengetahuan di bidang Ekonomi dan Bisnis melalui penerbitan hasil penelitian dan kajian ilmiah.</li><li>Menyelenggarakan penerbitan jurnal yang mengutamakan mutu artikel, ketepatan proses editorial, dan standar publikasi ilmiah.</li><li>Mendorong budaya penelitian, penulisan, dan publikasi ilmiah di kalangan akademisi, peneliti, dan mahasiswa.</li><li>Memfasilitasi penyebarluasan hasil penelitian yang relevan bagi pengembangan teori, pengambilan keputusan, dan praktik ekonomi dan bisnis.</li><li>Menjunjung tinggi etika publikasi, integritas akademik, dan keterbukaan akses terhadap pengetahuan ilmiah.</li></ol>"
+
+msgid "plugins.themes.journalEditorial.about.jrdcScopeTitle"
+msgstr "Fokus &amp; Ruang Lingkup"
+
+msgid "plugins.themes.journalEditorial.about.jrdcScope"
+msgstr "Fokus awal penerbitan jurnal JRDC adalah bidang Ekonomi dan Bisnis. Ruang lingkup kajian mencakup manajemen, akuntansi, keuangan, pemasaran, kewirausahaan, dan ekonomi pembangunan. Kajian dapat berupa pengembangan teori, penelitian empiris, analisis kebijakan, studi kasus, serta penerapan konsep ekonomi dan bisnis dalam berbagai konteks. Pengembangan ruang lingkup diarahkan secara bertahap sesuai kebutuhan keilmuan, dengan tetap mempertahankan orientasi utama pada bidang Ekonomi dan Bisnis."
+
+msgid "plugins.themes.journalEditorial.about.jrdcCommitmentTitle"
+msgstr "Komitmen Editorial"
+
+msgid "plugins.themes.journalEditorial.about.jrdcCommitment"
+msgstr "JRDC berkomitmen mendukung penerbitan ilmiah yang bertanggung jawab melalui proses telaah sejawat, integritas akademik, dan akses terbuka. Telaah sejawat menjadi bagian penting dalam menjaga kualitas dan kelayakan ilmiah naskah yang diterbitkan. Integritas akademik dijunjung melalui penghormatan terhadap orisinalitas karya, ketepatan sitasi, transparansi, serta pencegahan praktik publikasi yang tidak etis. Sementara itu, akses terbuka diupayakan agar hasil penelitian dapat dimanfaatkan secara lebih luas oleh peneliti, mahasiswa, praktisi, dan masyarakat. Komitmen tersebut menjadi landasan dalam membangun kepercayaan penulis dan pembaca terhadap publikasi yang diterbitkan."
+
 msgid "plugins.themes.journalEditorial.identity.title"
 msgstr "Identitas Jurnal"
 
@@ -213,31 +255,31 @@ msgid "plugins.themes.journalEditorial.why.title"
 msgstr "Mengapa Menerbitkan di Sini"
 
 msgid "plugins.themes.journalEditorial.why.desc"
-msgstr "Pengalaman penerbitan yang ketat, terbuka, dan ramah penulis."
+msgstr "Pengalaman penerbitan yang ketat, terbuka, dan ramah penulis di bidang Ekonomi dan Bisnis."
 
 msgid "plugins.themes.journalEditorial.why.oaTitle"
 msgstr "Akses Terbuka"
 
 msgid "plugins.themes.journalEditorial.why.oaDesc"
-msgstr "Gratis dibaca dan diunduh siapa pun, di mana pun."
+msgstr "Artikel Anda bebas dibaca dan diunduh oleh peneliti, mahasiswa, dan praktisi di seluruh dunia."
 
 msgid "plugins.themes.journalEditorial.why.refereedTitle"
-msgstr "Ditelaah Sejawat"
+msgstr "Telaah Sejawat Double-Blind"
 
 msgid "plugins.themes.journalEditorial.why.refereedDesc"
-msgstr "Penelaahan sejawat double-blind yang ketat oleh ahli bidang."
+msgstr "Setiap naskah dievaluasi melalui proses telaah sejawat yang ketat oleh ahli di bidangnya."
 
 msgid "plugins.themes.journalEditorial.why.indexedTitle"
-msgstr "Terindeks"
+msgstr "Terindeks &amp; Terlihat"
 
 msgid "plugins.themes.journalEditorial.why.indexedDesc"
-msgstr "Dapat ditemukan melalui basis data ilmiah utama."
+msgstr "Publikasi dihimpun secara sistematis oleh basis data dan repositori ilmiah untuk keterjangkauan yang luas."
 
 msgid "plugins.themes.journalEditorial.why.fastTitle"
-msgstr "Proses Cepat"
+msgstr "Proses Tepat Waktu"
 
 msgid "plugins.themes.journalEditorial.why.fastDesc"
-msgstr "Penanganan editorial efisien dan penerbitan tepat waktu."
+msgstr "Penanganan editorial yang efisien dan komunikasi yang jelas menjaga kelancaran dari pengiriman hingga penerbitan."
 
 msgid "plugins.themes.journalEditorial.footer.quickLinks"
 msgstr "Tautan Cepat"
@@ -290,8 +332,20 @@ msgstr "Dukungan"
 msgid "plugins.themes.journalEditorial.footer.readMore"
 msgstr "Selengkapnya"
 
+msgid "plugins.themes.journalEditorial.footer.jrdcDesc"
+msgstr "Yayasan Ratu Dirgantara Cendikiawan (JRDC) menerbitkan jurnal ilmiah akses terbuka yang berfokus pada bidang Ekonomi dan Bisnis."
+
 msgid "plugins.themes.journalEditorial.footer.rights"
 msgstr "Seluruh hak cipta dilindungi. Ditenagai Open Journal Systems."
 
 msgid "plugins.themes.journalEditorial.footer.theme"
 msgstr "Tema"
+
+msgid "plugins.themes.journalEditorial.pdf.title"
+msgstr "PDF"
+
+msgid "plugins.themes.journalEditorial.pdf.noEmbed"
+msgstr "Browser Anda tidak mendukung pratinjau PDF langsung."
+
+msgid "plugins.themes.journalEditorial.pdf.download"
+msgstr "Unduh atau lihat PDF"

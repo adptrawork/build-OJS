@@ -4,8 +4,8 @@
 <version>
 	<application>journalEditorial</application>
 	<type>plugins.themes</type>
-	<release>0.1.1.3</release>
-	<date>2026-10-31</date>
+	<release>0.1.1.4</release>
+	<date>2026-11-01</date>
 	<lazy-load>1</lazy-load>
 	<class>JournalEditorialThemePlugin</class>
 </version>

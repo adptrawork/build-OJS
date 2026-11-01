@@ -1,5 +1,38 @@
 # Changelog
 
+## 2026-11-01 (sesi 10 — palet kustom, breadcrumb seragam, PDF embed, konten JRDC)
+
+### Added
+- Palet kustom `#ff5f00` / `#d9302c` / `#eaa23f` diterapkan ke seluruh CSS tema (variabel, tombol, hero, badge, footer, dark mode).
+- `article_pdf_embed.tpl` — iframe PDF langsung di halaman artikel (`/article/view/{id}/{galley}`).
+- 5 PDF lokal dilampirkan ke galley (sumber jurnal UII) agar embed berfungsi offline.
+- Tombol "baca selengkapnya" hero (`.jilp-hero-readmore`) dan kelas `.jilp-pdf-section`.
+
+### Changed
+- Banner breadcrumb seragam: `header.tpl` menampilkan satu breadcrumb untuk semua halaman dalam; breadcrumb ganda (`cmp_breadcrumbs`) disembunyikan.
+- Breadcrumb artikel: Beranda / Arsip / Issue / Artikel; issue: Beranda / Arsip / Issue; judul banner disembunyikan di artikel & issue.
+- "Why Publish With Us" diubah ke `jilp-features-grid` (2 kolom) ala modern-css.com.
+- Footer ditulis ulang sebagai grid (brand + 3 kolom tautan) + baris copyright/kredit.
+- Tab "Tentang" memakai data dinamis: `$jilpAbout` (journal `about`), `$jilpFocusScope`, `$jilpEditorialTeam`, `$jilpIndexers`, `$jilpContactUrl` dari pengaturan jurnal/admin.
+- Plugin membaca pengaturan `akdisiFocusScope`, `akdisiEditorialTeam`, `akdisiContactUrl`, `akdisiIndexers` (fallback ke `jilp*` custom) dan `about`.
+- Konten JRDC (Ekonomi & Bisnis) disimpan di `journal_settings.about` (EN/ID), scope & komitmen editorial di `akdisiFocusScope`/`akdisiEditorialTeam`.
+- Hero fallback memakai `jilp.hero.fallbackDesc`; tautan "baca selengkapnya" memakai `.jilp-hero-readmore`.
+- `parseIndexers()` mendukung HTML legacy (strip tags) selain JSON/koma.
+- `allowed_hosts` tetap `["jeki-ojs.ddev.site"]`.
+
+### Fixed
+- Banner inner tidak lagi muncul di beranda (bug `$requestedPage` kosong → diperlakukan sebagai `index`).
+- Duplikasi breadcrumb di arsip/issue/tentang/pencarian disembunyikan.
+- Tautan PDF galley kini menunjuk ke file lokal (sebelumnya remote URL artikel sumber).
+- Deprecation `PKP\core\PKPApplication::ROUTE_PAGE` di template dihapus (drop `router=`).
+- `about` page tidak lagi kosong; konten diambil dari pengaturan jurnal.
+
+### Verified
+- 200 untuk `/`, `/issue/archive`, `/issue/view/1`, `/article/view/1..5`, `/about`, `/announcement`, `/search`, `/login`, `/user/register` (ID & EN).
+- PDF iframe muncul di `/article/view/2` (`jilp-pdf-section`).
+- `ddev logs` bebas dari PHP Fatal/Warning (hanya deprecation yang sudah dibersihkan).
+- Paket `dist/journalEditorial-theme.{tar.gz,zip}` dibangun ulang (release 0.1.1.4).
+
 ## 2026-10-31 (sesi 9 — halaman dalam tema journalEditorial + pass CSS modern)
 
 ### Added

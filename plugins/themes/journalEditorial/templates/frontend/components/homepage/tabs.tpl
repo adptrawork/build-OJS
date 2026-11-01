@@ -144,36 +144,31 @@
 			<div class="row g-4">
 				<div class="col-lg-7">
 					<div class="jilp-about-card h-100">
-						<h3 class="h4 fw-bold mb-3">{translate key="plugins.themes.journalEditorial.about.title"}</h3>
-						{if $currentJournal->getLocalizedDescription()}
-							<div class="text-muted">{$currentJournal->getLocalizedDescription()|strip_unsafe_html}</div>
+						{if $jilpAbout}
+							<div class="jilp-prose">{$jilpAbout|strip_unsafe_html}</div>
 						{else}
+							<h3 class="h4 fw-bold mb-3">{translate key="plugins.themes.journalEditorial.about.title"}</h3>
 							<p class="text-muted">{translate key="plugins.themes.journalEditorial.about.empty"}</p>
-						{/if}
-						{if $jilpFocusScope}
-							<h4 class="h5 fw-bold mt-4 mb-2">{translate key="plugins.themes.journalEditorial.about.focusScope"}</h4>
-							<div class="text-muted">{$jilpFocusScope|strip_unsafe_html}</div>
 						{/if}
 					</div>
 				</div>
 				<div class="col-lg-5">
+					<div class="jilp-about-card h-100 mb-4">
+						<h3 class="h4 fw-bold mb-3">{translate key="plugins.themes.journalEditorial.about.focusScope"}</h3>
+						{if $jilpFocusScope}
+							<div class="jilp-prose">{$jilpFocusScope|strip_unsafe_html}</div>
+						{else}
+							<p class="text-muted">{translate key="plugins.themes.journalEditorial.about.empty"}</p>
+						{/if}
+					</div>
 					<div class="jilp-about-card h-100">
-						<h3 class="h4 fw-bold mb-3">{translate key="plugins.themes.journalEditorial.identity.title"}</h3>
-						<ul class="jilp-identity-list list-unstyled mb-0">
-							<li><span>{translate key="plugins.themes.journalEditorial.identity.name"}</span><strong>{$currentJournal->getLocalizedName()|escape}</strong></li>
-							{if $currentJournal->getData('issn')}
-								<li><span>p-ISSN</span><strong>{$currentJournal->getData('issn')|escape}</strong></li>
-							{/if}
-							{if $currentJournal->getData('onlineIssn')}
-								<li><span>e-ISSN</span><strong>{$currentJournal->getData('onlineIssn')|escape}</strong></li>
-							{/if}
-							{if $currentJournal->getData('contactName')}
-								<li><span>{translate key="plugins.themes.journalEditorial.identity.contact"}</span><strong>{$currentJournal->getData('contactName')|escape}</strong></li>
-							{/if}
-							{if $currentJournal->getData('contactEmail')}
-								<li><span>{translate key="plugins.themes.journalEditorial.identity.email"}</span><strong><a href="mailto:{$currentJournal->getData('contactEmail')|escape}">{$currentJournal->getData('contactEmail')|escape}</a></strong></li>
-							{/if}
-						</ul>
+						<h3 class="h4 fw-bold mb-3">{translate key="plugins.themes.journalEditorial.editorial.title"}</h3>
+						{if $jilpEditorialTeam}
+							<div class="jilp-prose">{$jilpEditorialTeam|strip_unsafe_html}</div>
+						{else}
+							<p class="text-muted">{translate key="plugins.themes.journalEditorial.editorial.desc" journalName=$currentJournal->getLocalizedName()|escape}</p>
+						{/if}
+						<a class="btn btn-outline-primary rounded-pill px-4 fw-bold mt-3" href="{url page="about" op="editorialTeam"}">{translate key="plugins.themes.journalEditorial.editorial.viewTeam"} <i class="bi bi-arrow-right ms-1"></i></a>
 					</div>
 				</div>
 			</div>
@@ -185,7 +180,7 @@
 					<div class="jilp-about-card h-100">
 						<h3 class="h4 fw-bold mb-3">{translate key="plugins.themes.journalEditorial.editorial.title"}</h3>
 						{if $jilpEditorialTeam}
-							<div class="text-muted">{$jilpEditorialTeam|strip_unsafe_html}</div>
+							<div class="jilp-prose">{$jilpEditorialTeam|strip_unsafe_html}</div>
 						{else}
 							<p class="text-muted">{translate key="plugins.themes.journalEditorial.editorial.desc" journalName=$currentJournal->getLocalizedName()|escape}</p>
 						{/if}
