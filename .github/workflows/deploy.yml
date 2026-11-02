@@ -34,7 +34,7 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           protocol: ${{ steps.proto.outputs.protocol }}
           local-dir: ./plugins/themes/journalEditorial/
-          server-dir: ${{ secrets.FTP_REMOTE_PATH }}/plugins/themes/journalEditorial/
+          server-dir: ${{ secrets.FTP_REMOTE_PATH }}/
           log-level: verbose
           exclude: |
             **/.git*
