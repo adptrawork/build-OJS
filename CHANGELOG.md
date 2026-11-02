@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-02 (sesi 18 — kembalikan hero beranda ke versi sebelum UNAMA)
+
+### Changed
+- `hero.tpl` dikembalikan ke versi commit `e16e53a` (hero tanpa cover stack kanan).
+- Blok CSS hero visual UNAMA (`.jilp-hero-visual`, `.jilp-cover-stack`, `.jilp-cover*`, `.jilp-hero-chip*`) dihapus dari `journalEditorial.css`; CSS kartu "Terbitan Terkini" tetap dipertahankan.
+
+### Verified
+- Beranda `/index.php/jrdc/id/` → 200, `jilp-hero-visual` = 0, `jilp-hero-facts` = 1.
+- Section "Terbitan Terkini" (`jilp-current-issue`) masih tampil.
+
 ## 2026-11-02 (sesi 17 — hero visual UNAMA, kontak & privasi redesign)
 
 ### Added
