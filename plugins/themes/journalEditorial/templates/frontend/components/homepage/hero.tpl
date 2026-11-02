@@ -92,7 +92,7 @@
 					<a class="btn jilp-btn-hero-primary text-decoration-none px-4 py-3" href="{url page="submission"}">
 						<i class="bi bi-send-fill me-2"></i> {translate key="plugins.themes.journalEditorial.hero.submit"}
 					</a>
-					<a class="btn jilp-btn-hero-glass text-decoration-none px-4 py-3" href="#current-issue-section">
+					<a class="btn jilp-btn-hero-glass text-decoration-none px-4 py-3" href="{url page="issue" op="current"}">
 						<i class="bi bi-compass me-2"></i> {translate key="plugins.themes.journalEditorial.hero.exploreIssue"}
 					</a>
 				</div>

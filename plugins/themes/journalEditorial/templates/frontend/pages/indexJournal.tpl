@@ -9,7 +9,6 @@
 <div class="page_index_journal jilp-home" id="main-content">
 
 	{include file="frontend/components/homepage/hero.tpl"}
-	{include file="frontend/components/homepage/currentIssue.tpl"}
 	{include file="frontend/components/homepage/statistics.tpl"}
 	{include file="frontend/components/homepage/editorPicks.tpl"}
 	{include file="frontend/components/homepage/tabs.tpl"}
