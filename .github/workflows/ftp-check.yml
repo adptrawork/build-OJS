@@ -20,4 +20,4 @@ jobs:
           PROTO="ftp"
           if [ "$FTP_PORT" = "22" ]; then PROTO="sftp"; fi
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$PROTO://$FTP_SERVER" -e "set ssl:verify-certificate no; set sftp:auto-confirm yes; get config.inc.php -o /tmp/config.inc.php; bye"
-          grep -niE "locale|charset" /tmp/config.inc.php | head -20
+          sed -n '190,215p' /tmp/config.inc.php
