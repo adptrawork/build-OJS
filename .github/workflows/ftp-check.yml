@@ -19,11 +19,5 @@ jobs:
         run: |
           PROTO="ftp"
           if [ "$FTP_PORT" = "22" ]; then PROTO="sftp"; fi
-          cat > /tmp/lftp_cmds.txt <<'CMDS'
-          set ssl:verify-certificate no
-          set sftp:auto-confirm yes
-          cat config.inc.php
-          bye
-CMDS
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$PROTO://$FTP_SERVER" -f /tmp/lftp_cmds.txt > /tmp/config.inc.php
-          grep -niE "locale|charset" /tmp/config.inc.php | head -30
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$PROTO://$FTP_SERVER" -e "set ssl:verify-certificate no; set sftp:auto-confirm yes; get config.inc.php -o /tmp/config.inc.php; bye"
+          grep -niE "locale|charset" /tmp/config.inc.php | head -20
