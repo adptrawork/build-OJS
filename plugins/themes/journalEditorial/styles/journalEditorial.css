@@ -1369,7 +1369,12 @@ body:not(.pkp_page_index) .pkp_structure_content a:not([class]):hover {
 	min-width: 0;
 }
 
-.jilp-feature-title {
+/* `.pkp_structure_main h3` (default theme) sets 2.5rem/1.25rem margins, so this
+   selector must match its specificity to line the title up with the icon. */
+.pkp_structure_main .jilp-feature-title {
+	display: flex;
+	align-items: center;
+	min-height: 40px;
 	font-size: 1rem;
 	font-weight: 600;
 	margin: 0 0 .35rem;
