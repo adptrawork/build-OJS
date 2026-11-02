@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-11-02 (sesi 20 — logo & favicon tampil di halaman publik)
+
+### Added
+- Seed `pageHeaderLogoImage` dan `favicon` dari file yang sudah ada di `public/journals/1/` (logo 1024x1024, favicon 32x32 turunan logo) agar tema menampilkannya.
+
+### Changed
+- Alt text logo di header, footer, dan auth panel kini fallback ke nama jurnal (bukan "Open Journal Systems").
+- `theme-color` dark mode disesuaikan ke warm ink `#0c0906`.
+- Header/footer/auth panel kini konsisten menampilkan logo 48px/52px.
+
+### Verified
+- `/index.php/jrdc/id/` menampilkan `<img ... pageHeaderLogoImage_id.png alt="JRDC">` di header dan footer.
+- Favicon `<link rel="icon" href="...favicon_id.png">` muncul di `<head>`.
+
 ## 2026-11-02 (sesi 19 — redesign penuh halaman publik)
 
 ### Added
