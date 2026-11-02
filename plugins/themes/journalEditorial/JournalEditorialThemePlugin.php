@@ -37,7 +37,11 @@ class JournalEditorialThemePlugin extends ThemePlugin
         // Bootstrap first, then the theme override.
         $this->addStyle('bootstrap', 'styles/bootstrap.min.css', ['priority' => -10]);
         $this->addStyle('bootstrap-icons', 'styles/bootstrap-icons.min.css', ['priority' => -9]);
-        $this->addStyle('journalEditorial', 'styles/journalEditorial.css', ['priority' => 10]);
+        // Theme CSS gets a filemtime cache-buster: OJS only appends the app
+        // version, so browser caches would otherwise keep old theme CSS.
+        $themeCss = $this->getPluginPath() . '/styles/journalEditorial.css';
+        $themeCssVersion = is_file($themeCss) ? (string) filemtime($themeCss) : '0';
+        $this->addStyle('journalEditorial', 'styles/journalEditorial.css?v=' . $themeCssVersion, ['priority' => 10]);
 
         $this->addScript('bootstrap', 'js/bootstrap.bundle.min.js', ['priority' => -10]);
         $this->addScript('journalEditorial-homepage', 'js/journalEditorial.js', ['priority' => 10]);
