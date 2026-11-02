@@ -10,7 +10,7 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: List FTP root directory
+      - name: Check config locale
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
@@ -19,8 +19,4 @@ jobs:
         run: |
           PROTO="ftp"
           if [ "$FTP_PORT" = "22" ]; then PROTO="sftp"; fi
-          echo "Protocol: $PROTO"
-          echo "Server: $FTP_SERVER"
-          echo "Port: $FTP_PORT"
-          echo "--- listing ---"
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$PROTO://$FTP_SERVER" -e "set ssl:verify-certificate no; set sftp:auto-confirm yes; cat error_log | tail -n 15; bye"
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$PROTO://$FTP_SERVER" -e "set ssl:verify-certificate no; set sftp:auto-confirm yes; cat config.inc.php | grep -E '^locale|^installed_locales|^client_charset|^connection_charset' | head -20; bye"
