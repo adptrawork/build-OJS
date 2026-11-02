@@ -1,0 +1,43 @@
+name: Deploy journalEditorial theme to Jagoan Hosting
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'plugins/themes/journalEditorial/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Detect FTP/SFTP protocol from port
+        id: proto
+        run: |
+          PORT="${{ secrets.FTP_PORT }}"
+          if [ "$PORT" = "22" ]; then
+            echo "protocol=sftp" >> "$GITHUB_OUTPUT"
+          else
+            echo "protocol=ftps" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy theme via FTP/SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ${{ steps.proto.outputs.protocol }}
+          local-dir: ./plugins/themes/journalEditorial/
+          server-dir: ${{ secrets.FTP_REMOTE_PATH }}/plugins/themes/journalEditorial/
+          log-level: verbose
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
