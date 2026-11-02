@@ -23,4 +23,4 @@ jobs:
           echo "Server: $FTP_SERVER"
           echo "Port: $FTP_PORT"
           echo "--- listing ---"
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$PROTO://$FTP_SERVER" -e "set ssl:verify-certificate no; set sftp:auto-confirm yes; cat error_log | tail -n 30; bye"
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" -p "$FTP_PORT" "$PROTO://$FTP_SERVER" -e "set ssl:verify-certificate no; set sftp:auto-confirm yes; cat error_log | grep -i "journalEditorial|DefaultTheme|Locale" | tail -n 30; bye"
