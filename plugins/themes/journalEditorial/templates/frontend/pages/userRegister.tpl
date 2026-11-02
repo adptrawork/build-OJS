@@ -17,7 +17,7 @@
 	<div class="jilp-auth-brand">
 		<a class="jilp-auth-brand__home" href="{url page="index"}">
 			{if $displayPageHeaderLogo}
-				<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="{$displayPageHeaderLogo.altText|escape|default:$applicationName}" />
+				<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="{$displayPageHeaderLogo.altText|escape|default:$currentJournal->getLocalizedName()|escape}" />
 			{else}
 				{$currentJournal->getLocalizedName()|escape}
 			{/if}

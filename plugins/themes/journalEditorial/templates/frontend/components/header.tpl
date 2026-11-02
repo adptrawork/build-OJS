@@ -26,7 +26,7 @@
 
 			<a class="navbar-brand d-flex align-items-center gap-2" href="{$homeUrl}">
 				{if $displayPageHeaderLogo}
-					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="{$displayPageHeaderLogo.altText|escape|default:$applicationName}" style="max-height:48px;width:auto;" />
+					<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="{$displayPageHeaderLogo.altText|escape|default:$currentJournal->getLocalizedName()|escape}" style="max-height:48px;width:auto;" />
 				{else}
 					<span class="fw-bold">{$displayPageHeaderTitle|escape}</span>
 				{/if}

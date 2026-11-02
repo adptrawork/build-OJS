@@ -23,7 +23,7 @@
 				<div class="jilp-footer-brand">
 					{if $displayPageHeaderLogo}
 						<a class="jilp-footer-logo" href="{url page="index"}">
-							<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="{$displayPageHeaderLogo.altText|escape|default:$applicationName}" />
+							<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" alt="{$displayPageHeaderLogo.altText|escape|default:$currentJournal->getLocalizedName()|escape}" />
 						</a>
 					{/if}
 					<a class="jilp-footer-name" href="{url page="index"}">
