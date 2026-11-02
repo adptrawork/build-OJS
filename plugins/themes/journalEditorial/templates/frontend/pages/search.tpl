@@ -27,7 +27,6 @@
 
 <div class="page page_search">
 
-	{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="common.search"}
 	{capture name="searchFormUrl"}{url escape=false}{/capture}
 	{assign var=formUrlParameters value=[]}{* Prevent Smarty warning *}
 	{$smarty.capture.searchFormUrl|parse_url:$smarty.const.PHP_URL_QUERY|default:""|parse_str:$formUrlParameters}

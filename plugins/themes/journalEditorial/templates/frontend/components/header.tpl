@@ -86,7 +86,7 @@
 		{if $jilpPage == 'article'}{translate key="article.article"}{elseif $jilpPage == 'issue' && $issue}{$issue->getIssueIdentification()|escape}{else}{$pageTitleTranslated|strip_unsafe_html}{/if}
 	{/capture}
 	{assign var="jilpHasBanner" value=false}
-	{if $jilpPage == 'article' || $jilpPage == 'issue' || ($pageTitleTranslated && $jilpPage != 'index')}
+	{if $jilpPage == 'article' || $jilpPage == 'issue' || ($pageTitleTranslated && $jilpPage != 'index' && $jilpPage != 'login' && $jilpPage != 'user' && $jilpPage != 'lost_password' && $jilpPage != 'submissions' && $jilpPage != 'error' && $jilpPage != 'message')}
 		{assign var="jilpHasBanner" value=true}
 	{/if}
 	{if $jilpHasBanner}

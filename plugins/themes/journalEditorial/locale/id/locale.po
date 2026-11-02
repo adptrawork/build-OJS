@@ -44,6 +44,9 @@ msgstr "Ditelaah Sejawat"
 msgid "plugins.themes.journalEditorial.hero.readMore"
 msgstr "Baca selengkapnya"
 
+msgid "plugins.themes.journalEditorial.hero.aboutJournal"
+msgstr "Tentang jurnal"
+
 msgid "plugins.themes.journalEditorial.hero.fallbackDesc"
 msgstr "{$journalName} menerbitkan riset telaah sejawat di bidang Ekonomi dan Bisnis melalui model akses terbuka."
 
@@ -346,6 +349,9 @@ msgstr "Seluruh hak cipta dilindungi. Ditenagai Open Journal Systems."
 
 msgid "plugins.themes.journalEditorial.footer.theme"
 msgstr "Tema"
+
+msgid "plugins.themes.journalEditorial.auth.tagline"
+msgstr "Jurnal akses terbuka telaah sejawat untuk riset Ekonomi dan Bisnis."
 
 msgid "plugins.themes.journalEditorial.pdf.title"
 msgstr "PDF"
