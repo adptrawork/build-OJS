@@ -44,6 +44,9 @@ msgstr "Peer Reviewed"
 msgid "plugins.themes.journalEditorial.hero.readMore"
 msgstr "Read more"
 
+msgid "plugins.themes.journalEditorial.hero.aboutJournal"
+msgstr "About the journal"
+
 msgid "plugins.themes.journalEditorial.hero.fallbackDesc"
 msgstr "{$journalName} publishes peer-reviewed research in economics and business through an open-access model."
 
@@ -346,6 +349,9 @@ msgstr "All rights reserved. Powered by Open Journal Systems."
 
 msgid "plugins.themes.journalEditorial.footer.theme"
 msgstr "Theme"
+
+msgid "plugins.themes.journalEditorial.auth.tagline"
+msgstr "A peer-reviewed open-access journal for research in Economics and Business."
 
 msgid "plugins.themes.journalEditorial.pdf.title"
 msgstr "PDF"

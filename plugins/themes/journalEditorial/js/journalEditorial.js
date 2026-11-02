@@ -34,4 +34,5 @@
 		}
 		applyTheme(isDark);
 	});
+
 })();

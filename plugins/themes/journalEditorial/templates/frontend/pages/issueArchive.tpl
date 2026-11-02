@@ -24,14 +24,16 @@
 {include file="frontend/components/header.tpl" pageTitleTranslated=$pageTitle}
 
 <div class="page page_issue_archive">
-	{include file="frontend/components/breadcrumbs.tpl" currentTitle=$pageTitle}
 	{* No issues have been published *}
 	{if empty($issues)}
-		<p>{translate key="current.noCurrentIssueDesc"}</p>
+		<div class="jilp-empty-state">
+			<i class="bi bi-journals" aria-hidden="true"></i>
+			<p>{translate key="current.noCurrentIssueDesc"}</p>
+		</div>
 
 	{* List issues *}
 	{else}
-		<ul class="issues_archive">
+		<ul class="jilp-issue-archive-grid">
 			{foreach from=$issues item="issue"}
 				<li>
 					{include file="frontend/objects/issue_summary.tpl"}

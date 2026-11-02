@@ -16,7 +16,7 @@
 
 <section class="jilp-hero{if !$homepageImage} jilp-hero--plain{/if}"
 	{if $homepageImage}
-		style="background-image:linear-gradient(to right, rgba(15,23,42,.95), rgba(15,23,42,.85)), url('{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}');"
+		style="background-image:linear-gradient(to right, rgba(23,18,15,.95), rgba(23,18,15,.85)), url('{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}');"
 	{/if}>
 	<div class="container position-relative z-2">
 		<div class="row align-items-center gy-5">
@@ -81,7 +81,7 @@
 					<div class="jilp-hero-description text-white-50 mb-0">
 						{if $currentJournal->getLocalizedDescription()}
 							{$currentJournal->getLocalizedDescription()|strip_tags|truncate:420|escape}
-							<a class="jilp-hero-readmore" href="{url page="about"}" aria-label="About the journal: {$currentJournal->getLocalizedName()|escape}">About the journal <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+							<a class="jilp-hero-readmore" href="{url page="about"}" aria-label="{translate key="plugins.themes.journalEditorial.hero.aboutJournal" journalName=$currentJournal->getLocalizedName()|escape}">{translate key="plugins.themes.journalEditorial.hero.aboutJournal"} <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
 						{else}
 							{translate key="plugins.themes.journalEditorial.hero.fallbackDesc" journalName=$currentJournal->getLocalizedName()|escape}
 						{/if}

@@ -12,7 +12,6 @@
 {include file="frontend/components/header.tpl" pageTitle="announcement.announcements"}
 
 <div class="page page_announcements">
-	{include file="frontend/components/breadcrumbs.tpl" currentTitleKey="announcement.announcements"}
 	{include file="frontend/components/editLink.tpl" page="management" op="settings" path="announcements" anchor="announcements" sectionTitleKey="announcement.announcements"}
 
 	{$announcementsIntroduction}
