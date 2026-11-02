@@ -1481,11 +1481,12 @@ body:not(.pkp_page_index) .pkp_structure_sidebar {
 	padding: 0;
 }
 
-/* Default theme caps the login form at 17em */
-.jilp-inner .page_login .login,
-.jilp-inner .page_register .cmp_form,
-.jilp-inner .page_lost_password .cmp_form {
-	max-width: none;
+/* Default theme caps the login form at 17em — override on every auth page */
+.page_login .login,
+.page_register .cmp_form,
+.page_lost_password .cmp_form {
+	max-width: 440px;
+	width: 100%;
 }
 
 .jilp-inner .cmp_form abbr.required,
@@ -1510,9 +1511,13 @@ body:not(.pkp_page_index) .pkp_structure_sidebar {
 .jilp-inner .page > h2,
 .jilp-inner .page > h3,
 .jilp-inner .page > h4,
-.jilp-inner .page > ul,
 .jilp-inner .page > ol,
 .jilp-inner .page > blockquote {
+	max-width: 68ch;
+}
+
+/* Component lists (announcements, search results, etc.) are not prose */
+.jilp-inner .page > ul:not([class]) {
 	max-width: 68ch;
 }
 
@@ -2028,7 +2033,7 @@ body:not(.pkp_page_index) .pkp_structure_sidebar {
 /* Article detail — split reading column + sticky rail */
 .jilp-inner .obj_article_details .row {
 	display: grid;
-	grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+	grid-template-columns: minmax(0, 1fr) 200px;
 	gap: 3rem;
 	align-items: start;
 }
@@ -2285,13 +2290,25 @@ body:not(.pkp_page_index) .pkp_structure_sidebar {
 }
 
 .jilp-inner .obj_announcement_summary {
-	display: grid;
-	grid-template-columns: 80px minmax(0, 1fr);
-	gap: 1.25rem;
-	align-items: baseline;
+	display: block;
 	padding: 1.25rem .25rem;
 	transition: background-color .18s ease, padding-inline-start .18s ease;
 }
+
+/* OJS wraps date/title/summary in a single _details div */
+.jilp-inner .obj_announcement_summary_details {
+	display: grid;
+	grid-template-columns: 90px minmax(0, 1fr);
+	grid-template-areas:
+		"date title"
+		"date summary";
+	gap: .25rem 1.25rem;
+	align-items: baseline;
+}
+
+.jilp-inner .obj_announcement_summary_details .date    { grid-area: date; }
+.jilp-inner .obj_announcement_summary_details h2       { grid-area: title; }
+.jilp-inner .obj_announcement_summary_details .summary { grid-area: summary; }
 
 .jilp-inner .obj_announcement_summary:hover {
 	background: #fdfbf9;
@@ -2307,14 +2324,14 @@ body:not(.pkp_page_index) .pkp_structure_sidebar {
 	letter-spacing: .04em;
 }
 
-.jilp-inner .obj_announcement_summary .title {
+.jilp-inner .obj_announcement_summary h2 {
 	font-size: 1.05rem;
 	font-weight: 500;
 	margin: 0 0 .35rem;
 	line-height: 1.45;
 }
 
-.jilp-inner .obj_announcement_summary .title a {
+.jilp-inner .obj_announcement_summary h2 a {
 	color: var(--jilp-text);
 	text-decoration: none;
 }
@@ -2400,17 +2417,19 @@ body:not(.pkp_page_index) .pkp_structure_sidebar {
 
 /* Contact page — split asymmetric */
 .jilp-inner .page_contact {
-	display: grid;
-	grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-	gap: 3rem;
-	align-items: start;
+	display: block;
+	max-width: 760px;
 }
 
-@media (width < 992px) {
-	.jilp-inner .page_contact {
-		grid-template-columns: 1fr;
-		gap: 2rem;
-	}
+.jilp-inner .contact_section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.jilp-inner .contact_section .contact,
+.jilp-inner .contact_section .address {
+	width: 100%;
 }
 
 .jilp-inner .contact_section {
@@ -2474,14 +2493,17 @@ body:not(.pkp_page_index) .pkp_structure_sidebar {
 /* Auth split-screen: brand panel + form panel */
 .jilp-auth-split {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
 	gap: 0;
-	min-height: 70vh;
 	background: var(--jilp-card-bg);
 	border: 1px solid var(--jilp-card-border);
 	border-radius: var(--jilp-radius);
 	overflow: hidden;
 	box-shadow: var(--jilp-shadow-sm);
+}
+
+.jilp-auth-brand {
+	align-self: stretch;
 }
 
 @media (width < 992px) {

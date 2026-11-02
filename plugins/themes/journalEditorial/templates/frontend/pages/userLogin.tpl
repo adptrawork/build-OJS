@@ -34,7 +34,7 @@
 		{csrf}
 
 		{if $error}
-			<div class="pkp_form_error">
+			<div class="pkp_form_error" role="alert" tabindex="-1" id="authError">
 				{translate key=$error reason=$reason}
 			</div>
 		{/if}
@@ -114,6 +114,7 @@
 			</div>
 		</fieldset>
 	</form>
+	{if $error}{literal}<script>document.addEventListener("DOMContentLoaded",function(){var e=document.getElementById("authError");if(e)e.focus();});</script>{/literal}{/if}
 	</div><!-- .jilp-auth-form -->
 </div><!-- .page -->
 

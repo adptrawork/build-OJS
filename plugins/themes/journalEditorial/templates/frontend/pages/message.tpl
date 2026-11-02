@@ -14,7 +14,7 @@
 	<h1>
 		{translate key=$pageTitle}
 	</h1>
-	<div class="description">
+	<div class="description" role="status" aria-live="polite">
 		{if $messageTranslated}
 			{$messageTranslated}
 		{else}

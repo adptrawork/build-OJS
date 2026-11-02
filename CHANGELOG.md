@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-11-02 (sesi 21 — perbaikan split/layout & pengiriman email)
+
+### Added
+- Email transport dev diarahkan ke Mailpit: `[email] default = smtp`, `smtp = On`, `smtp_server = 127.0.0.1`, `smtp_port = 1025` (akar masalah: `/usr/sbin/sendmail` tidak ada di container).
+- Error form auth kini `role="alert"`, `tabindex="-1"`, auto-focus setelah submit gagal; pesan sukses `role="status"`.
+- Grid pengumuman: kolom tanggal 90px + konten, bukan 80px menelan seluruh `_details`.
+
+### Changed
+- Pengumuman: hapus `ul.cmp_announcements` dari aturan prosa `68ch` (`.page > ul:not([class])`).
+- Kontak: hapus kolom kanan kosong → single column 760px, blok bergaris.
+- Auth: form lepas cap `17em` (440px, width 100%); split `1fr 1.15fr`; panel `align-self: stretch`; hapus `min-height: 70vh`.
+- Artikel: rail `200px` (dari `1fr`), body tetap `68ch`.
+- Alt/aria: error auth fokus keyboard; message page `role="status"`.
+
+### Fixed
+- Login 500 akibat `{literal}` pada script focus (Smarty).
+- Pengumuman item 80×393px → 1152×95px.
+- Kontak kolom kanan ~400px kosong → 0.
+- Form login 238px → 343px.
+- Email reset password kini benar-benar terkirim ke Mailpit (subject "Konfirmasi Reset Sandi", link reset valid).
+
+### Verified
+- 11 URL publik × ID → 200.
+- Reset password end-to-end: email terkirim, link valid, halaman reset 200.
+- Dist packages rebuild (v0.1.1.17).
+
+
 ## 2026-11-02 (sesi 20 — logo & favicon tampil di halaman publik)
 
 ### Added
