@@ -248,3 +248,9 @@ For academic journals, AI systems rely heavily on third-party scholarly indexes.
 - Do not keyword-stuff — it reduces AI citation likelihood.
 - Do not gate content — AI cannot cite what it cannot read.
 - Do not block `OAI-SearchBot`, `PerplexityBot`, or `Claude-SearchBot` if you want AI citations.
+
+---
+
+## 9. Implementation Status
+
+See `docs/SEO_IMPLEMENTATION.md` for the actual code changes applied to the JRDC theme, SEO plugin, static pages, and deployment workflow. The implementation covers JSON-LD improvements, FAQPage schema, updated static page content, `llms.txt` deployment via GitHub Actions, and a `robots.txt` template.

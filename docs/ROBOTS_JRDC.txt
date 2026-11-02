@@ -1,0 +1,24 @@
+User-agent: *
+Disallow: /cache/
+Disallow: /lib/pkp/
+Disallow: /plugins/
+Disallow: /tools/
+Disallow: /index.php/jrdc/user/
+Allow: /index.php/jrdc/article/
+Allow: /index.php/jrdc/issue/
+Allow: /index.php/jrdc/about/
+Allow: /
+
+Sitemap: https://jrdc.my.id/sitemap.xml
+
+# AI search discovery crawlers
+User-agent: OAI-SearchBot
+User-agent: PerplexityBot
+User-agent: Claude-SearchBot
+User-agent: Googlebot
+Allow: /
+
+# Potential model-training crawlers (adjust as desired)
+User-agent: GPTBot
+User-agent: ClaudeBot
+Disallow: /

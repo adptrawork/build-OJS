@@ -41,3 +41,23 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/.github/**
+
+      # The llms.txt agent-discovery file lives at the site root, not inside the theme folder.
+      # Set the FTP_ROOT_PATH secret (e.g. /public_html/ or /htdocs/) to enable this step.
+      - name: Stage llms.txt for root deploy
+        run: |
+          mkdir -p llms-txt-deploy
+          cp llms.txt llms-txt-deploy/llms.txt
+
+      - name: Deploy llms.txt to site root
+        if: secrets.FTP_ROOT_PATH != ''
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          protocol: ${{ steps.proto.outputs.protocol }}
+          local-dir: ./llms-txt-deploy/
+          server-dir: ${{ secrets.FTP_ROOT_PATH }}/
+          log-level: verbose

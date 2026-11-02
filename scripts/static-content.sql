@@ -1,32 +1,56 @@
 UPDATE static_page_settings SET setting_value='About the Journal' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='about') AND setting_name='title' AND locale='en';
-UPDATE static_page_settings SET setting_value='<h2>About the Journal</h2>
-<p><strong>Journal of Economics and Business Research</strong> (JRDC) is a peer-reviewed, open-access scholarly journal published by Yayasan Ratu Dirgantara Cendikiawan (JRDC). The journal publishes original research, reviews, and short communications in Economics and Business, including management, accounting, finance, marketing, entrepreneurship, and development economics.</p>
-<p>JRDC is committed to advancing knowledge, supporting education, and disseminating research and academic thought by providing a credible publication space for academics, researchers, students, and practitioners. All articles are published under a Creative Commons Attribution 4.0 International (CC BY 4.0) license and are freely available online.</p>
-<h3>Publisher</h3>
+UPDATE static_page_settings SET setting_value='<h2>What is Jurnal Ratu Dirgantara Cendikiawan (JRDC)?</h2>
+<p>Jurnal Ratu Dirgantara Cendikiawan (JRDC) is an open-access, peer-reviewed academic journal that publishes research in economics and business. JRDC follows a double-blind peer-review process and provides free, immediate access to all published articles under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.</p>
+
+<h2>Scope</h2>
+<table>
+<thead><tr><th>Domain</th><th>Topics</th></tr></thead>
+<tbody>
+<tr><td>Economics</td><td>Macroeconomics, microeconomics, development economics, behavioral economics, Islamic economics</td></tr>
+<tr><td>Business &amp; Management</td><td>Strategic management, entrepreneurship, marketing, operations, organizational behavior</td></tr>
+<tr><td>Finance &amp; Accounting</td><td>Corporate finance, banking, capital markets, financial reporting, public sector accounting</td></tr>
+<tr><td>Social Sciences</td><td>Interdisciplinary research linking economics and business with society, policy, and sustainability</td></tr>
+</tbody>
+</table>
+
+<h2>Publisher</h2>
 <p>Yayasan Ratu Dirgantara Cendikiawan (JRDC)<br/>Indonesia</p>
-<h3>Contact</h3>
+<h2>Contact</h2>
 <p>Editorial Office: <a href="mailto:editor@jrdc.my.id">editor@jrdc.my.id</a></p>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='about') AND setting_name='content' AND locale='en';
 UPDATE static_page_settings SET setting_value='Tentang Jurnal' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='about') AND setting_name='title' AND locale='id';
-UPDATE static_page_settings SET setting_value='<h2>Tentang Jurnal</h2>
-<p><strong>Journal of Economics and Business Research</strong> (JRDC) adalah jurnal ilmiah dengan telaah sejawat (peer-reviewed) dan akses terbuka (open access) yang diterbitkan oleh Yayasan Ratu Dirgantara Cendikiawan (JRDC). Jurnal ini menerbitkan penelitian orisinal, ulasan, dan komunikasi singkat di bidang Ekonomi dan Bisnis, termasuk manajemen, akuntansi, keuangan, pemasaran, kewirausahaan, dan ekonomi pembangunan.</p>
-<p>JRDC berkomitmen mendukung pengembangan pendidikan, kemajuan ilmu pengetahuan, dan penyebarluasan hasil penelitian serta pemikiran akademik dengan menyediakan ruang publikasi yang kredibel bagi akademisi, peneliti, mahasiswa, dan praktisi. Seluruh artikel diterbitkan dengan lisensi Creative Commons Attribution 4.0 International (CC BY 4.0) dan tersedia bebas secara daring.</p>
-<h3>Penerbit</h3>
+UPDATE static_page_settings SET setting_value='<h2>Apa itu Jurnal Ratu Dirgantara Cendikiawan (JRDC)?</h2>
+<p>Jurnal Ratu Dirgantara Cendikiawan (JRDC) adalah jurnal ilmiah akses terbuka yang telah melalui telaah sejawat (peer-reviewed), menerbitkan penelitian orisinal, tinjauan sistematis, dan studi kasus di bidang ekonomi, bisnis, manajemen, keuangan, serta ilmu sosial terkait. JRDC menjadi wadah bagi akademisi, praktisi, dan pembuat kebijakan yang membutuhkan wawasan berbasis bukti tentang fenomena ekonomi dan bisnis terkini.</p>
+
+<h2>Ruang Lingkup</h2>
+<table>
+<thead><tr><th>Domain</th><th>Topik</th></tr></thead>
+<tbody>
+<tr><td>Ekonomi</td><td>Makroekonomi, mikroekonomi, ekonomi pembangunan, ekonomi perilaku, ekonomi Islam</td></tr>
+<tr><td>Bisnis &amp; Manajemen</td><td>Manajemen strategis, kewirausahaan, pemasaran, operasi, perilaku organisasi</td></tr>
+<tr><td>Keuangan &amp; Akuntansi</td><td>Keuangan perusahaan, perbankan, pasar modal, pelaporan keuangan, akuntansi sektor publik</td></tr>
+<tr><td>Ilmu Sosial</td><td>Penelitian interdisipliner yang menghubungkan ekonomi dan bisnis dengan masyarakat, kebijakan, dan keberlanjutan</td></tr>
+</tbody>
+</table>
+
+<h2>Penerbit</h2>
 <p>Yayasan Ratu Dirgantara Cendikiawan (JRDC)<br/>Indonesia</p>
-<h3>Kontak</h3>
+<h2>Kontak</h2>
 <p>Kantor Redaksi: <a href="mailto:editor@jrdc.my.id">editor@jrdc.my.id</a></p>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='about') AND setting_name='content' AND locale='id';
 UPDATE static_page_settings SET setting_value='Focus and Scope' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='focus-and-scope') AND setting_name='title' AND locale='en';
 UPDATE static_page_settings SET setting_value='<h2>Focus and Scope</h2>
-<p>The initial publishing focus of JRDC is Economics and Business. The scope covers, but is not limited to:</p>
-<ul>
-<li>Management (strategy, human resources, operations, organizational behavior)</li>
-<li>Accounting (financial, managerial, auditing, taxation)</li>
-<li>Finance (corporate finance, Islamic finance, banking, investment, fintech)</li>
-<li>Marketing (consumer behavior, digital marketing, branding)</li>
-<li>Entrepreneurship and SMEs</li>
-<li>Development economics and public policy</li>
-<li>Digital economy and business transformation</li>
-</ul>
-<p>Studies may include theory building, empirical research (quantitative/qualitative/mixed), policy analysis, case studies, and the application of economic and business concepts in various contexts. The scope may expand gradually according to scholarly needs while maintaining Economics and Business as the core orientation.</p>
+<p>JRDC publishes original research, systematic reviews, and case studies in economics, business, management, finance, and related social sciences. All submissions must align with the journal''s scope and pass double-blind peer review.</p>
+
+<h3>Scope Table</h3>
+<table>
+<thead><tr><th>Domain</th><th>Topics</th></tr></thead>
+<tbody>
+<tr><td>Economics</td><td>Macroeconomics, microeconomics, development economics, behavioral economics, Islamic economics</td></tr>
+<tr><td>Business &amp; Management</td><td>Strategic management, entrepreneurship, marketing, operations, organizational behavior</td></tr>
+<tr><td>Finance &amp; Accounting</td><td>Corporate finance, banking, capital markets, financial reporting, public sector accounting</td></tr>
+<tr><td>Social Sciences</td><td>Interdisciplinary research linking economics and business with society, policy, and sustainability</td></tr>
+</tbody>
+</table>
+
 <h3>Article Types</h3>
 <ul>
 <li>Original research articles (5,000-8,000 words)</li>
@@ -36,17 +60,19 @@ UPDATE static_page_settings SET setting_value='<h2>Focus and Scope</h2>
 </ul>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='focus-and-scope') AND setting_name='content' AND locale='en';
 UPDATE static_page_settings SET setting_value='Fokus dan Ruang Lingkup' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='focus-and-scope') AND setting_name='title' AND locale='id';
 UPDATE static_page_settings SET setting_value='<h2>Fokus dan Ruang Lingkup</h2>
-<p>Fokus awal penerbitan jurnal JRDC adalah bidang Ekonomi dan Bisnis. Ruang lingkup kajian mencakup, namun tidak terbatas pada:</p>
-<ul>
-<li>Manajemen (strategi, sumber daya manusia, operasi, perilaku organisasi)</li>
-<li>Akuntansi (keuangan, manajerial, audit, perpajakan)</li>
-<li>Keuangan (keuangan perusahaan, keuangan syariah, perbankan, investasi, fintech)</li>
-<li>Pemasaran (perilaku konsumen, pemasaran digital, branding)</li>
-<li>Kewirausahaan dan UMKM</li>
-<li>Ekonomi pembangunan dan kebijakan publik</li>
-<li>Ekonomi digital dan transformasi bisnis</li>
-</ul>
-<p>Kajian dapat berupa pengembangan teori, penelitian empiris (kuantitatif/kualitatif/campuran), analisis kebijakan, studi kasus, serta penerapan konsep ekonomi dan bisnis dalam berbagai konteks. Pengembangan ruang lingkup diarahkan secara bertahap sesuai kebutuhan keilmuan, dengan tetap mempertahankan orientasi utama pada bidang Ekonomi dan Bisnis.</p>
+<p>JRDC menerbitkan penelitian orisinal, tinjauan sistematis, dan studi kasus di bidang ekonomi, bisnis, manajemen, keuangan, serta ilmu sosial terkait. Setiap naskah harus sesuai dengan ruang lingkup jurnal dan lulus telaah sejawat buta ganda.</p>
+
+<h3>Tabel Ruang Lingkup</h3>
+<table>
+<thead><tr><th>Domain</th><th>Topik</th></tr></thead>
+<tbody>
+<tr><td>Ekonomi</td><td>Makroekonomi, mikroekonomi, ekonomi pembangunan, ekonomi perilaku, ekonomi Islam</td></tr>
+<tr><td>Bisnis &amp; Manajemen</td><td>Manajemen strategis, kewirausahaan, pemasaran, operasi, perilaku organisasi</td></tr>
+<tr><td>Keuangan &amp; Akuntansi</td><td>Keuangan perusahaan, perbankan, pasar modal, pelaporan keuangan, akuntansi sektor publik</td></tr>
+<tr><td>Ilmu Sosial</td><td>Penelitian interdisipliner yang menghubungkan ekonomi dan bisnis dengan masyarakat, kebijakan, dan keberlanjutan</td></tr>
+</tbody>
+</table>
+
 <h3>Jenis Artikel</h3>
 <ul>
 <li>Artikel penelitian orisinal (5.000-8.000 kata)</li>
@@ -85,7 +111,18 @@ UPDATE static_page_settings SET setting_value='<h2>Author Guidelines</h2>
 <h3>5. Figures and Tables</h3>
 <p>Numbered consecutively, with titles above tables and captions below figures. Submit as editable objects, not images.</p>
 <h3>6. Submission</h3>
-<p>Submit via the online submission system. Include a cover letter and suggested reviewers (optional).</p>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='author-guidelines') AND setting_name='content' AND locale='en';
+<p>Submit via the online submission system. Include a cover letter and suggested reviewers (optional).</p>
+
+<h2>How to Submit a Manuscript to JRDC</h2>
+<ol>
+<li><strong>Prepare your manuscript</strong> according to the JRDC author guidelines.</li>
+<li><strong>Register or log in</strong> to the JRDC submission system.</li>
+<li><strong>Upload your manuscript</strong> through the online submission wizard.</li>
+<li><strong>Initial screening</strong>: the editorial team checks scope, originality, and formatting.</li>
+<li><strong>Peer review</strong>: at least two independent reviewers evaluate the manuscript.</li>
+<li><strong>Revision and decision</strong>: authors revise based on reviewer comments.</li>
+<li><strong>Publication</strong>: accepted articles are copyedited, typeset, and published online.</li>
+</ol>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='author-guidelines') AND setting_name='content' AND locale='en';
 UPDATE static_page_settings SET setting_value='Panduan Penulis' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='author-guidelines') AND setting_name='title' AND locale='id';
 UPDATE static_page_settings SET setting_value='<h2>Panduan Penulis</h2>
 <h3>1. Umum</h3>
@@ -117,7 +154,18 @@ UPDATE static_page_settings SET setting_value='<h2>Panduan Penulis</h2>
 <h3>5. Gambar dan Tabel</h3>
 <p>Dinomori berurutan, judul di atas tabel dan keterangan di bawah gambar. Kirim sebagai objek yang dapat diedit, bukan gambar.</p>
 <h3>6. Penyerahan</h3>
-<p>Serahkan melalui sistem penyerahan daring. Sertakan surat pengantar dan saran reviewer (opsional).</p>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='author-guidelines') AND setting_name='content' AND locale='id';
+<p>Serahkan melalui sistem penyerahan daring. Sertakan surat pengantar dan saran reviewer (opsional).</p>
+
+<h2>Cara Menyerahkan Naskah ke JRDC</h2>
+<ol>
+<li><strong>Siapkan naskah Anda</strong> sesuai panduan penulis JRDC.</li>
+<li><strong>Daftar atau masuk</strong> ke sistem penyerahan JRDC.</li>
+<li><strong>Unggah naskah</strong> melalui wizard penyerahan daring.</li>
+<li><strong>Pemeriksaan awal</strong>: tim redaksi memeriksa ruang lingkup, orisinalitas, dan format.</li>
+<li><strong>Telaah sejawat</strong>: minimal dua reviewer independen mengevaluasi naskah.</li>
+<li><strong>Revisi dan keputusan</strong>: penulis merevisi berdasarkan komentar reviewer.</li>
+<li><strong>Publikasi</strong>: artikel yang diterima diedit, disusun, dan diterbitkan daring.</li>
+</ol>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='author-guidelines') AND setting_name='content' AND locale='id';
 UPDATE static_page_settings SET setting_value='Submission Preparation Checklist' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='submission-preparation') AND setting_name='title' AND locale='en';
 UPDATE static_page_settings SET setting_value='<h2>Submission Preparation Checklist</h2>
 <p>Before submitting, please ensure that:</p>
@@ -536,19 +584,35 @@ UPDATE static_page_settings SET setting_value='<h2>Surat Penerimaan (LoA)</h2>
 <p>Setelah diterima, penulis menerima Surat Penerimaan (LoA) yang ditandatangani oleh Penyunting Utama. LoA mengonfirmasi penerimaan artikel dan perkiraan terbit. Penulis dapat menggunakan LoA untuk keperluan institusi atau pendanaan.</p>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='loa') AND setting_name='content' AND locale='id';
 UPDATE static_page_settings SET setting_value='Frequently Asked Questions' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='faq') AND setting_name='title' AND locale='en';
 UPDATE static_page_settings SET setting_value='<h2>Frequently Asked Questions</h2>
-<dl>
-<dt>How long does review take?</dt><dd>First decision typically in 4-6 weeks.</dd>
-<dt>Is there a publication fee?</dt><dd>No. JRDC charges no APC or submission fees.</dd>
-<dt>Can I submit in Indonesian?</dt><dd>Yes, English or Indonesian are accepted.</dd>
-<dt>How do I track my submission?</dt><dd>Log in to the submission system and check your dashboard.</dd>
-<dt>What license is used?</dt><dd>CC BY 4.0.</dd>
-</dl>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='faq') AND setting_name='content' AND locale='en';
+
+<h3>Is JRDC an open-access journal?</h3>
+<p>Yes. JRDC provides immediate open access to all published articles. Readers may download, share, and reuse content under the applicable Creative Commons license.</p>
+
+<h3>What is the peer-review process at JRDC?</h3>
+<p>JRDC uses a double-blind peer-review process. Each submission is evaluated by at least two independent reviewers with expertise in the manuscript''s subject area.</p>
+
+<h3>Are there any article processing charges (APC) at JRDC?</h3>
+<p>JRDC does not charge authors any submission or article processing fees. Publication is free for all accepted manuscripts.</p>
+
+<h3>Which indexing services include JRDC?</h3>
+<p>JRDC is committed to indexing in Google Scholar, DOAJ, Crossref, and national academic repositories. Indexing status is updated on the Indexing page.</p>
+
+<h3>How long does the review process take?</h3>
+<p>The initial editorial decision is typically provided within 4–8 weeks after submission, depending on reviewer availability.</p>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='faq') AND setting_name='content' AND locale='en';
 UPDATE static_page_settings SET setting_value='Pertanyaan yang Sering Diajukan' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='faq') AND setting_name='title' AND locale='id';
 UPDATE static_page_settings SET setting_value='<h2>Pertanyaan yang Sering Diajukan</h2>
-<dl>
-<dt>Berapa lama proses telaah?</dt><dd>Keputusan pertama biasanya 4-6 minggu.</dd>
-<dt>Apakah ada biaya publikasi?</dt><dd>Tidak. JRDC tidak memungut APC atau biaya penyerahan.</dd>
-<dt>Bisakah menyerah dalam bahasa Indonesia?</dt><dd>Ya, Inggris atau Indonesia diterima.</dd>
-<dt>Bagaimana melacak penyerahan saya?</dt><dd>Masuk ke sistem penyerahan dan cek dashboard.</dd>
-<dt>Lisensi apa yang digunakan?</dt><dd>CC BY 4.0.</dd>
-</dl>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='faq') AND setting_name='content' AND locale='id';
+
+<h3>Apakah JRDC jurnal akses terbuka?</h3>
+<p>Ya. JRDC menyediakan akses terbuka langsung ke seluruh artikel yang diterbitkan. Pembaca dapat mengunduh, membagikan, dan menggunakan kembali konten sesuai lisensi Creative Commons yang berlaku.</p>
+
+<h3>Bagaimana proses telaah sejawat di JRDC?</h3>
+<p>JRDC menggunakan proses telaah sejawat buta ganda (double-blind). Setiap naskah dievaluasi oleh minimal dua reviewer independen yang memiliki keahlian di bidang naskah.</p>
+
+<h3>Apakah ada biaya pemrosesan artikel (APC) di JRDC?</h3>
+<p>JRDC tidak memungut biaya penyerahan atau biaya pemrosesan artikel dari penulis. Publikasi gratis untuk seluruh naskah yang diterima.</p>
+
+<h3>Layanan pengindeksan apa yang mencakup JRDC?</h3>
+<p>JRDC berkomitmen untuk diindeks di Google Scholar, DOAJ, Crossref, dan repositori akademik nasional. Status pengindeksan diperbarui di halaman Pengindeksan.</p>
+
+<h3>Berapa lama proses telaah berlangsung?</h3>
+<p>Keputusan editorial awal biasanya diberikan dalam 4–8 minggu setelah penyerahan, tergantung ketersediaan reviewer.</p>' WHERE static_page_id=(SELECT static_page_id FROM static_pages WHERE path='faq') AND setting_name='content' AND locale='id';

@@ -6,7 +6,7 @@
  * @class AkdisiSeoPlugin
  *
  * @brief SEO plugin untuk JRDC: sitemap XML + data SEO + JSON-LD.
- *   Canonical/OG dirender oleh theme akdisi lewat headerHead.tpl.
+ *   Canonical/OG dirender oleh theme journalEditorial lewat headerHead.tpl.
  */
 
 namespace APP\plugins\generic\akdisiSeo;
@@ -20,6 +20,11 @@ use PKP\plugins\Hook;
 
 class AkdisiSeoPlugin extends GenericPlugin
 {
+    private const JOURNAL_FULL_NAME = 'Jurnal Ratu Dirgantara Cendikiawan (JRDC)';
+    private const JOURNAL_SHORT_NAME = 'JRDC';
+    private const LICENSE_URL = 'https://creativecommons.org/licenses/by/4.0/';
+    private const ABOUT = 'Economics and Business';
+
     public function getDisplayName()
     {
         return 'JRDC SEO';
@@ -27,7 +32,7 @@ class AkdisiSeoPlugin extends GenericPlugin
 
     public function getDescription()
     {
-        return 'Sitemap XML, canonical data, dan JSON-LD untuk demo JRDC.';
+        return 'Sitemap XML, canonical data, dan JSON-LD untuk JRDC.';
     }
 
     public function register($category, $path, $mainContextId = null)
@@ -104,6 +109,15 @@ class AkdisiSeoPlugin extends GenericPlugin
                 if ($jsonLd) {
                     $templateMgr->addHeader('akdisiJsonLdPeriodical', '<script type="application/ld+json">' . $jsonLd . '</script>');
                 }
+
+                // Inject FAQPage schema on static pages that contain FAQ-style h3/p blocks.
+                $content = $templateMgr->getTemplateVars('content');
+                if ($content) {
+                    $faqJsonLd = $this->buildFaqJsonLd((string) $content);
+                    if ($faqJsonLd) {
+                        $templateMgr->addHeader('akdisiJsonLdFaq', '<script type="application/ld+json">' . $faqJsonLd . '</script>');
+                    }
+                }
             }
         } catch (\Throwable $e) {
             error_log('JRDC SEO inject: ' . $e->getMessage());
@@ -142,12 +156,32 @@ class AkdisiSeoPlugin extends GenericPlugin
                 'author' => $authors,
                 'datePublished' => $publication->getData('datePublished') ?: date('Y-m-d'),
                 'url' => Application::get()->getRequest()->url($context->getPath(), 'article', 'view', [$publication->getData('submissionId')]),
+                'isAccessibleForFree' => true,
+                'license' => $this->getLicenseUrl($context),
                 'isPartOf' => [
                     '@type' => 'Periodical',
-                    'name' => $context->getLocalizedName(),
-                    'issn' => $context->getData('issn'),
+                    'name' => self::JOURNAL_FULL_NAME,
+                    'alternateName' => self::JOURNAL_SHORT_NAME,
+                    'issn' => $context->getData('onlineIssn') ?: $context->getData('issn'),
                 ],
             ];
+
+            $printIssn = $context->getData('printIssn');
+            if ($printIssn) {
+                $data['isPartOf']['printIssn'] = $printIssn;
+            }
+
+            $pages = $publication->getData('pages');
+            if ($pages) {
+                $pageParts = array_filter(array_map('trim', preg_split('/[-–]/u', $pages)));
+                if (isset($pageParts[0])) {
+                    $data['pageStart'] = $pageParts[0];
+                }
+                if (isset($pageParts[1])) {
+                    $data['pageEnd'] = $pageParts[1];
+                }
+            }
+
             $keywords = $publication->getData('keywords', $locale) ?: [];
             if ($keywords) {
                 $data['keywords'] = implode(', ', $keywords);
@@ -165,20 +199,85 @@ class AkdisiSeoPlugin extends GenericPlugin
             $data = [
                 '@context' => 'https://schema.org',
                 '@type' => 'Periodical',
-                'name' => $context->getLocalizedName(),
+                'name' => self::JOURNAL_FULL_NAME,
+                'alternateName' => self::JOURNAL_SHORT_NAME,
                 'url' => Application::get()->getRequest()->url($context->getPath()),
+                'about' => self::ABOUT,
+                'isAccessibleForFree' => true,
+                'license' => $this->getLicenseUrl($context),
             ];
-            if ($context->getData('issn')) {
-                $data['issn'] = $context->getData('issn');
+
+            $onlineIssn = $context->getData('onlineIssn') ?: $context->getData('issn');
+            if ($onlineIssn) {
+                $data['issn'] = $onlineIssn;
             }
-            $publisherName = $context->getLocalizedData('publisherInstitution') ?: $context->getLocalizedName();
+            $printIssn = $context->getData('printIssn');
+            if ($printIssn) {
+                $data['printIssn'] = $printIssn;
+            }
+
+            $publisherName = $context->getLocalizedData('publisherInstitution') ?: self::JOURNAL_FULL_NAME;
             if ($publisherName) {
                 $data['publisher'] = ['@type' => 'Organization', 'name' => $publisherName];
             }
+
+            // Include current issue if one is published.
+            try {
+                $currentIssue = Repo::issue()->getCurrent($context->getId());
+                if ($currentIssue && $currentIssue->getDatePublished()) {
+                    $data['hasPart'] = [
+                        '@type' => 'PublicationIssue',
+                        'issueNumber' => $currentIssue->getNumber() ?: '',
+                        'volumeNumber' => $currentIssue->getVolume() ?: '',
+                    ];
+                }
+            } catch (\Throwable $e) {
+                // Ignore: current issue is optional metadata.
+            }
+
             return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } catch (\Throwable $e) {
             error_log('JRDC SEO buildPeriodicalJsonLd: ' . $e->getMessage());
             return null;
         }
+    }
+
+    private function buildFaqJsonLd(string $content): ?string
+    {
+        if (!preg_match_all('/<h3[^>]*>(.*?)<\/h3>\s*<p[^>]*>(.*?)<\/p>/is', $content, $matches, PREG_SET_ORDER)) {
+            return null;
+        }
+
+        $mainEntity = [];
+        foreach ($matches as $m) {
+            $question = trim(strip_tags($m[1]));
+            $answer = trim(strip_tags($m[2]));
+            if ($question && $answer) {
+                $mainEntity[] = [
+                    '@type' => 'Question',
+                    'name' => $question,
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $answer,
+                    ],
+                ];
+            }
+        }
+
+        if (!$mainEntity) {
+            return null;
+        }
+
+        $data = [
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => $mainEntity,
+        ];
+        return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    }
+
+    private function getLicenseUrl(Journal $context): string
+    {
+        return $context->getData('licenseUrl') ?: self::LICENSE_URL;
     }
 }
