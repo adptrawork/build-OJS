@@ -1,5 +1,36 @@
 # Changelog
 
+## 2026-11-02 (sesi 19 — redesign penuh halaman publik)
+
+### Added
+- Override template baru untuk halaman publik: `issue.tpl`, `article.tpl`, `announcement.tpl`, `editorialMasthead.tpl`, `contact.tpl`, `privacy.tpl`, `submissions.tpl`, `userLogin.tpl`, `userRegister.tpl`, `userLostPassword.tpl`, `error.tpl`, `message.tpl`.
+- Sistem `jilp-rule-list` (daftar bergaris) menggantikan tumpukan kartu di tab beranda, hasil pencarian, pengumuman, dan masthead.
+- Layout bento asimetris untuk arsip issue (`jilp-issue-archive-grid`).
+- Layout split-screen untuk auth: panel brand kiri + form kanan.
+- Utility CSS: `--jilp-rule`, `--jilp-rule-strong`, `--jilp-measure`, `.jilp-skeleton`, `.jilp-error-inline`, reveal scroll-driven.
+- Locale keys baru: `plugins.themes.journalEditorial.auth.tagline`, `plugins.themes.journalEditorial.hero.aboutJournal`.
+
+### Changed
+- Palet utama digeser ke oranye desaturasi `#e0662a` dengan netral warm stone (`#faf8f6`, `#211b17`, `#6f655c`, dll.).
+- `tabs.tpl` ditulis ulang dengan ruled lists; `articleCard.tpl` dan `issueCard.tpl` dihapus.
+- `whyPublish.tpl` menjadi zig-zag hairline blocks tanpa kartu.
+- Header banner menjadi sumber tunggal `<h1>` dan breadcrumb; breadcrumb ganda dihapus dari semua override.
+- Kontak diubah dari grid kartu 4 kolom menjadi split asimetris.
+- Masthead editorial menjadi daftar bergaris per peran.
+- Footer dan header tetap hairline dengan container max-width 1180px.
+- Dark mode disesuaikan untuk warm ink (`#17120f`, `#0c0906`).
+
+### Fixed
+- Duplikasi `<h1>` di halaman issue/article/about/contact/privacy/masthead/search/auth dihapus.
+- Tombol submit auth sekarang memakai warna tema, bukan default OJS.
+- Select dan input auth konsisten full-width.
+
+### Verified
+- 11 URL publik (ID) → 200: home, issue/archive, issue/view/1, article/view/1, search, announcement, about/editorialMasthead, about/contact, about/privacy, login, user/register.
+- Screenshot 1440px: homepage, article, issue, archive, login, register.
+- Dist packages dibangun ulang (`journalEditorial-theme.tar.gz/.zip` v0.1.1.16).
+- `dev` → `main` merged.
+
 ## 2026-11-02 (sesi 18 — kembalikan hero beranda ke versi sebelum UNAMA)
 
 ### Changed
