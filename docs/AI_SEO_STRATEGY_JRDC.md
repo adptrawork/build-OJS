@@ -4,9 +4,9 @@
 
 JRDC is an open-access, peer-reviewed academic journal focused on Economics and Business. This document defines an AI-search optimization strategy that makes JRDC discoverable and citable by AI systems (Google AI Overviews, ChatGPT, Perplexity, Claude, Gemini, Copilot) while remaining compliant with Google's "write for people, not AI" guidance.
 
-The strategy is built on three pillars:
+The strategy is built on th[]()ree pillars:
 1. **Structure** — content blocks AI can extract (definitions, FAQs, steps, comparisons).
-2. **Authority** — peer-review signals, indexing, citations, expert attribution.
+2. **Authority** — peer-review sign[]()als, indexing, citations, expert attribution.
 3. **Presence** — machine-readable files, schema markup, and third-party indexes.
 
 ---
