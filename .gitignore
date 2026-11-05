@@ -1,5 +1,5 @@
 # OJS yang tidak di-commit — ditarik dari tag resmi lewat scripts/setup.sh
-/ojs/
+/ojs*/
 /ojs-3.5.0-5/
 /ojs-*.tar.gz
 templates/*.tar.gz
@@ -26,3 +26,4 @@ templates/*.tar.gz
 /backups/
 *.zip
 files/
+ojs_old_1793816478/
