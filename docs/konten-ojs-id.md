@@ -629,7 +629,7 @@ Untuk pelaporan dugaan pelanggaran etika, tulis pada subjek `[Etika]`.
 ## 5. Homepage blocks (tema Individualize)
 
 Tema Individualize menampilkan blok beranda yang dapat diatur pada **Settings → Website →
-Appearance → Theme**.
+Appearance → Theme**. Ringkasan di bawah; nilai opsi dan teks siap pakai ada di bagian 10.
 
 | Blok | Isi |
 |---|---|
@@ -841,7 +841,225 @@ singkatan pada judul halaman kebijakan: `| JEB-JRDC`.
 
 ---
 
-## 10. Rujukan
+## 10. Kelengkapan konten tema Individualize
+
+Bagian ini melengkapi konten dengan opsi tema Individualize
+(<https://github.com/NateWr/individualizeTheme/blob/main/docs/usage.md>). Lokasi pengaturan:
+**Settings → Website → Appearance → Theme → Individualize Theme** (setelah tema diaktifkan).
+Isian tema bersifat per-jurnal dan mendukung multibahasa.
+
+### 10.1 Prasyarat plugin
+
+| Plugin | Status di OJS 3.5 | Kegunaan untuk tema |
+|---|---|---|
+| Google Fonts | belum terpasang | Memunculkan opsi Font, Titles Font, Actions Font |
+| Partner Logos | belum terpasang | Mengisi blok Partners / Sponsors |
+| Static Pages | aktif | Halaman kebijakan pada bagian 4 |
+| Crossref | aktif | DOI untuk metadata sorotan dan sitasi |
+| Google Scholar | aktif | Metadata artikel untuk pengindeks |
+| htmlArticleGalley | aktif | Diperlukan untuk fitur Article HTML Full Text |
+
+Pasang Google Fonts dan Partner Logos dari **Plugin Gallery** (Settings → Website → Plugins),
+karena tidak disertakan dalam paket inti OJS 3.5.
+
+### 10.2 Nilai opsi tema
+
+| Opsi (label Inggris) | Nilai untuk JRDC | Alasan |
+|---|---|---|
+| Header | Default | Logo kiri, menu kanan; paling aman untuk nama jurnal panjang |
+| Tagline | Riset ekonomi dan bisnis yang terbuka untuk semua. | Melengkapi logo, satu baris |
+| Homepage Image Position | Above Header | Tidak menutupi teks judul dan kontras aman |
+| Homepage Blocks | Announcement → About → Current Issue (Summary) → How to Submit → Latest Articles → Highlights → Partners | Lihat 10.4 untuk urutan dan isi |
+| Article Authors | Auto | Mengikuti jumlah penulis pada artikel |
+| Highlight Article Metadata | DOI, Keywords, Date, Published In, How to Cite | Lima-lima aktif (urutan ini) |
+| Article Stats | none atau bar | `bar` bila statistik unduhan ingin ditonjolkan |
+| Article HTML Full Text | hide sampai semua galley HTML siap | Aktifkan hanya setelah format galley memenuhi 10.8 |
+| Issue Archives | covers | Hanya bila setiap nomor punya sampul unik |
+| Color Mode | Default (simple) | Kontras otomatis terjaga |
+| Primary Color | `#143C5A` | Biru tua, teks putih di atasnya |
+| Secondary Color (accent) | `#B23A00` | Jingga gelap untuk tautan/tombol |
+| Font | Inter | Tersedia di Google Fonts |
+| Titles Font | Source Serif 4 | Kontras serif pada judul |
+| Actions Font | Inter | Konsisten pada tombol |
+| Footer Menu | aktif | Menu footer: Tentang, Etika, Kontak, Privasi |
+
+Kalau memilih **Advanced** color mode, isi juga: header background/text, page background/text,
+page link, button background/text, block background/text, footer background/text. Wajib uji
+kontras minimal 4,5:1; mode sederhana sudah menghitung kontras otomatis.
+
+### 10.3 Aset gambar
+
+| Aset | Lokasi unggah | Ukuran | Catatan |
+|---|---|---|---|
+| Logo header | Settings → Website → Appearance → Setup → Logo | 600×160 px, PNG transparan atau SVG | Teks logo harus terbaca di atas warna primary |
+| Homepage image | Settings → Website → Appearance → Setup → Homepage Image | 2000×900 px, JPG/WebP < 400 KB | Pilih foto dengan area terang di sisi kiri bila memakai posisi *behind* |
+| Issue cover | Issue → Cover Image | 600×800 px (3:4), JPG/PNG | Satu desain per nomor, perbedaan warna per tahun |
+| Journal thumbnail | Settings → Website → Appearance → Setup | 300×400 px | Tampil pada daftar jurnal situs |
+| Partner logos | Plugin Partner Logos | SVG atau PNG tinggi 80–120 px, latar transparan | Maksimal 6 logo agar grid rapi |
+| Favicon | Settings → Website → Appearance → Setup | 32×32 dan 180×180 px | PNG |
+
+Aturan kontras untuk homepage image posisi *behind header*: pastikan area di belakang teks judul
+dan menu punya luminance cukup gelap atau terang. Uji dengan teks putih dan hitam sebelum
+menyimpan.
+
+### 10.4 Teks per blok beranda
+
+Masukkan nilai berikut pada opsi tema. Judul blok memakai huruf kapital awal, tanpa titik.
+
+**Announcement** (pengaturan OJS: Settings → Website → Setup → Announcements)
+
+| Judul | Isi | Tanggal |
+|---|---|---|
+| Peluncuran Jurnal Ekonomi dan Bisnis JRDC | Jurnal Ekonomi dan Bisnis JRDC membuka penerimaan naskah untuk nomor perdana. Naskah bidang ekonomi dan bisnis dapat dikirim melalui situs jurnal. Tidak ada biaya publikasi. | `2026-01-05` |
+| Pemanggilan Mitra Bestari | Kami membuka kesempatan bagi akademisi dan praktisi untuk bergabung sebagai mitra bestari. Kirim ringkasan keahlian ke `jurnal@jrdc.ac.id`. | `2026-01-05` |
+
+**About the Journal** (blok otomatis memakai field `about`; menu homepage dari area navigasi)
+
+Judul menu yang perlu dibuat: Fokus dan Ruang Lingkup, Pedoman Penulis, Proses Telaah,
+Frekuensi Terbit, Biaya, Etika Publikasi.
+
+**Current Issue (Summary)** — tanpa isian teks; muncul setelah nomor pertama terbit dan
+sampul diunggah. Judul nomor: `Vol. 1 No. 1 (2026): Edisi Perdana`.
+
+**How to Submit**
+
+| Opsi | Isi |
+|---|---|
+| How to Submit Title | Kirim Naskah |
+| How to Submit Text | Kirim naskah melalui situs jurnal setelah mendaftar akun. Siapkan berkas `.docx` tanpa identitas penulis, abstrak 150–250 kata dalam bahasa Indonesia dan Inggris, serta daftar pustaka APA edisi ke-7. Kesamaan teks maksimal 20%. Tidak ada biaya submission maupun publication. |
+| How to Submit Action | Mulai Pengiriman |
+
+**Latest Articles**
+
+| Opsi | Isi |
+|---|---|
+| Latest Articles Title | Artikel Terbaru |
+| Latest Articles Description | Artikel yang telah menyelesaikan telaah sejawat dan tayang lebih awal. |
+
+**Highlights** (OJS 3.5: fitur sorotan tingkat jurnal, isi 3–4 item dengan urutan)
+
+| Urutan | Judul | Deskripsi | URL |
+|---|---|---|---|
+| 1 | Akses terbuka penuh | Semua artikel dapat dibaca dan diunduh tanpa biaya, dengan lisensi CC BY 4.0. | `/open-access-policy` |
+| 2 | Telaah sejawat double-blind | Setiap naskah dinilai minimal dua mitra bestari tanpa saling mengetahui identitas. | `/peer-review-process` |
+| 3 | Tanpa biaya publikasi | Tidak ada biaya submission, telaah, maupun publication. | `/author-fees` |
+| 4 | DOI untuk setiap artikel | Artikel terdaftar di Crossref sehingga dapat disitasi secara permanen. | `/indexing-and-abstracting` |
+
+**Partners / Sponsors**
+
+| Opsi | Isi |
+|---|---|
+| Partners Title | Penerbit dan Mitra |
+| Partners Description | Jurnal ini diterbitkan oleh Yayasan Ratu Dirgantara Cendekiawan (JRDC) bersama mitra akademik dan praktisi. |
+
+**Browse by Category** (aktifkan hanya bila kategori artikel dibuat)
+
+| Opsi | Isi |
+|---|---|
+| Categories Title | Jelajahi berdasarkan Kategori |
+| Categories Description | Telusuri artikel menurut bidang kajian: manajemen, akuntansi, keuangan, pemasaran, kewirausahaan, dan ekonomi pembangunan. |
+
+### 10.5 Isi halaman article landing
+
+Sorotan metadata di atas judul artikel hanya tampil bila datanya ada. Kelengkapan yang harus
+diisi pada setiap artikel:
+
+| Metadata | Sumber | Catatan |
+|---|---|---|
+| DOI | Crossref plugin + DOI tersimpan | Format `10.xxxxx/jeb-jrdc.v1i1.xx` |
+| Keywords | Metadata artikel | 3–5 kata kunci, pisahkan dengan titik koma |
+| Date published | Publication → Schedule | Tanggal terbit nomor |
+| Published In | Issue + section | Nama nomor dan halaman |
+| How to Cite | Dibuat otomatis OJS | Pastikan nama penulis dan judul sudah benar |
+| Highlights | Fitur Highlights OJS 3.5 | 2–4 poin per artikel, maksimal satu baris per poin |
+
+Judul artikel 8–15 kata, abstrak 150–250 kata, dan setiap penulis memiliki afiliasi serta ORCID
+bila tersedia. Tanpa DOI dan kata kunci, dua dari lima sorotan akan kosong.
+
+### 10.6 Footer
+
+| Elemen | Isi |
+|---|---|
+| Footer Menu | Tentang Jurnal, Etika Publikasi, Indeksasi, Kontak, Kebijakan Privasi |
+| Page Footer (`pageFooter`) | Jurnal Ekonomi dan Bisnis JRDC · Yayasan Ratu Dirgantara Cendekiawan · `Jl. ..., Kota ..., Indonesia` · `jurnal@jrdc.ac.id` · Artikel berlisensi CC BY 4.0 |
+| Copyright | © 2026 Yayasan Ratu Dirgantara Cendekiawan |
+
+### 10.7 Warna dan tipografi
+
+Palet yang dipakai pada mode sederhana:
+
+| Peran | Hex | Pemakaian |
+|---|---|---|
+| Primary | `#143C5A` | Header, blok beranda, footer, tombol utama |
+| Secondary | `#B23A00` | Tautan dan aksen; kontras 4,6:1 pada putih |
+| Background | `#FFFFFF` | Halaman |
+| Text | `#111827` | Teks isi |
+
+Uji cepat: teks putih di atas `#143C5A` (kontras ±10:1) dan `#B23A00` di atas putih (4,6:1).
+Hindari warna sekunder terang seperti kuning atau lime karena teks tautan menjadi tidak terbaca.
+
+Google Fonts yang perlu ditambahkan ke plugin: Inter (400, 500, 600, 700) dan Source Serif 4
+(600, 700). Setelah keduanya aktif, pilih pada opsi Font dan Titles Font.
+
+### 10.8 Syarat galley HTML untuk Article HTML Full Text
+
+Fitur ini hanya membaca galley berlabel HTML. Berkas HTML harus memuat:
+
+- satu elemen `<article>` berisi isi utama, tanpa judul, penulis, dan abstrak;
+- satu elemen `<aside>` berisi daftar pustaka;
+- semua subjudul di dalam `<article>` memakai `<h3>` atau `<h4>` agar muncul di daftar isi.
+
+Kerangka minimum:
+
+```html
+<article>
+  <h3>Pendahuluan</h3>
+  <p>...</p>
+  <h3>Metode</h3>
+  <p>...</p>
+  <h3>Hasil dan Pembahasan</h3>
+  <p>...</p>
+  <h3>Simpulan</h3>
+  <p>...</p>
+  <aside>
+    <h3>Referensi</h3>
+    <p>...</p>
+  </aside>
+</article>
+```
+
+Bila galley HTML tidak mengikuti struktur ini, biarkan opsi **Article HTML Full Text** pada
+`hide`. Galley PDF tetap tampil normal.
+
+### 10.9 Arsip nomor
+
+Dengan opsi **Issue Archives: covers**, setiap nomor wajib punya sampul. Tanpa sampul, kartu
+arsip tampil kosong. Kebijakan desain:
+
+- rasio 3:4, teks judul nomor terbaca pada ukuran kartu ±300 px;
+- warna berbeda per volume, nomor ditulis besar;
+- nama jurnal, volume, nomor, dan tahun selalu muncul;
+- simpan berkas sumber agar nomor berikutnya konsisten.
+
+Bila sampul belum siap, pilih **no-covers** sementara.
+
+### 10.10 Checklist tema
+
+- [ ] Tema Individualize aktif untuk jurnal, bukan hanya terpasang.
+- [ ] `npm run build` sudah dijalankan pada folder tema (`dist/.vite/manifest.json` ada).
+- [ ] Logo, homepage image, favicon, dan sampul nomor sudah diunggah.
+- [ ] Tagline terisi dan tidak terpotong pada lebar 360 px.
+- [ ] Enam blok beranda aktif dengan urutan pada 10.2 dan judul pada 10.4.
+- [ ] Menu area `homepage` sudah ditugaskan sehingga blok About menampilkan tautan.
+- [ ] Google Fonts dan Partner Logos terpasang, opsi font muncul.
+- [ ] Warna primary/secondary lolos uji kontras.
+- [ ] Lima sorotan metadata artikel tampil pada satu artikel uji.
+- [ ] Highlights berisi 3–4 item dengan URL yang tidak 404.
+- [ ] Footer menu dan `pageFooter` terisi.
+- [ ] Artikel uji punya DOI, kata kunci, tanggal terbit, dan nomor.
+- [ ] Tampilan diuji pada 360 px, 768 px, dan 1440 px.
+
+## 11. Rujukan
 
 - PKP, *Learning OJS 3.5* — https://docs.pkp.sfu.ca/learning-ojs/3.5/en/
 - PKP, *OJS Administrator Guide* — https://docs.pkp.sfu.ca/admin-guide/3.5/en/
