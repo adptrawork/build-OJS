@@ -1,245 +1,78 @@
 ---
-name: JRDC Academic Publishing System
+name: Jurnal Ekonomi dan Bisnis JRDC - OJS Design System
 colors:
-  surface: '#f8f9ff'
-  surface-dim: '#cbdbf5'
-  surface-bright: '#f8f9ff'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#eff4ff'
-  surface-container: '#e5eeff'
-  surface-container-high: '#dce9ff'
-  surface-container-highest: '#d3e4fe'
-  on-surface: '#0b1c30'
-  on-surface-variant: '#45464d'
-  inverse-surface: '#213145'
-  inverse-on-surface: '#eaf1ff'
-  outline: '#76777d'
-  outline-variant: '#c6c6cd'
-  surface-tint: '#565e74'
-  primary: '#000000'
-  on-primary: '#ffffff'
-  primary-container: '#131b2e'
-  on-primary-container: '#7c839b'
-  inverse-primary: '#bec6e0'
-  secondary: '#4059aa'
-  on-secondary: '#ffffff'
-  secondary-container: '#8fa7fe'
-  on-secondary-container: '#1d3989'
-  tertiary: '#000000'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#2f1500'
-  on-tertiary-container: '#c76c00'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#dae2fd'
-  primary-fixed-dim: '#bec6e0'
-  on-primary-fixed: '#131b2e'
-  on-primary-fixed-variant: '#3f465c'
-  secondary-fixed: '#dce1ff'
-  secondary-fixed-dim: '#b6c4ff'
-  on-secondary-fixed: '#00164e'
-  on-secondary-fixed-variant: '#264191'
-  tertiary-fixed: '#ffdcc3'
-  tertiary-fixed-dim: '#ffb77d'
-  on-tertiary-fixed: '#2f1500'
-  on-tertiary-fixed-variant: '#6e3900'
-  background: '#f8f9ff'
-  on-background: '#0b1c30'
-  surface-variant: '#d3e4fe'
+  primary: '#c2410c'
+  primary-hover: '#9a3412'
+  navy-hero: '#0b2038'
+  navy-dark: '#071424'
+  background-light: '#f8fafc'
+  background-dark: '#090d16'
+  slate-50: '#f8fafc'
+  slate-100: '#f1f5f9'
+  slate-200: '#e2e8f0'
+  slate-300: '#cbd5e1'
+  slate-700: '#334155'
+  slate-800: '#1e293b'
+  slate-900: '#0f172a'
+  slate-950: '#020617'
 typography:
-  headline-xl:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 40px
-    fontWeight: '700'
-    lineHeight: 48px
-    letterSpacing: -0.025em
-  headline-xl-mobile:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 28px
-    fontWeight: '700'
-    lineHeight: 36px
-    letterSpacing: -0.02em
-  headline-lg:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 30px
-    fontWeight: '600'
-    lineHeight: 38px
-    letterSpacing: -0.02em
-  headline-lg-mobile:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 24px
-    fontWeight: '600'
-    lineHeight: 32px
-    letterSpacing: -0.015em
-  headline-md:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 22px
-    fontWeight: '600'
-    lineHeight: 30px
-    letterSpacing: -0.01em
-  headline-sm:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 18px
-    fontWeight: '600'
-    lineHeight: 26px
-    letterSpacing: 0em
-  body-lg:
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: '400'
-    lineHeight: 28px
-    letterSpacing: -0.011em
-  body-md:
-    fontFamily: Inter
-    fontSize: 14px
-    fontWeight: '400'
-    lineHeight: 24px
-    letterSpacing: -0.006em
-  body-sm:
-    fontFamily: Inter
-    fontSize: 12px
-    fontWeight: '400'
-    lineHeight: 18px
-    letterSpacing: 0em
-  label-lg:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 14px
-    fontWeight: '600'
-    lineHeight: 20px
-    letterSpacing: 0.01em
-  label-md:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 12px
-    fontWeight: '600'
-    lineHeight: 16px
-    letterSpacing: 0.02em
-  label-sm:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 11px
-    fontWeight: '700'
-    lineHeight: 14px
-    letterSpacing: 0.04em
+  fontFamily:
+    sans: "Geist, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+    serif: "Merriweather, serif"
+    display: "Cinzel, serif"
 rounded:
-  sm: 0.125rem
-  DEFAULT: 0.25rem
-  md: 0.375rem
-  lg: 0.5rem
-  xl: 0.75rem
-  full: 9999px
-spacing:
-  gutter: 1.5rem
-  gutter-mobile: 1rem
-  margin: 3rem
-  margin-mobile: 1rem
-  margin-tablet: 2rem
-  space-xs: 0.25rem
-  space-sm: 0.5rem
-  space-md: 1rem
-  space-lg: 1.5rem
-  space-xl: 2.5rem
+  DEFAULT: '0.5rem'
+  lg: '0.75rem'
+  xl: '1rem'
+  '2xl': '1.5rem'
+  full: '9999px'
 ---
 
-## Brand & Style
+## Brand & Style Guidelines
 
-This design system is tailored for scholarly rigor, intellectual authority, and high-trust academic dissemination. Rooted in the prestige of scholarly publication, the visual language merges classic editorial refinement with contemporary digital clarity.
+This design system governs the complete set of HTML prototypes for **Jurnal Ekonomi dan Bisnis JRDC** (Open Journal Systems / OJS). It establishes a modern, high-fidelity, accessible, and rigorous academic publishing interface tailored for researchers, reviewers, students, and academic librarians.
 
-The target audience encompasses researchers, peer reviewers, academic faculty, university students, and institutional librarians. The interface must communicate institutional integrity, meticulous review standards, and effortless content legibility.
+### Design Movement: Modern Academic Editorial
+Merging the prestige of traditional scholarly publishing with contemporary digital clarity. Key tenets include:
+- **High-contrast structural containment**: Crisp hairline borders (`border-slate-200 dark:border-slate-800`), clean card padding, and robust typographic hierarchy.
+- **Academic metadata transparency**: Prominent DOIs, publication dates, issue volumes, citation metrics, open access badges, and peer review status indicators.
+- **Seamless Dark Mode support**: Fully integrated dark mode (`dark:` classes) toggleable across every page with state persistence.
+- **Warm Burnt Orange & Deep Obsidian Navy palette**: Instills institutional authority while highlighting primary CTAs and active states.
 
-### Design Movement: Modern Editorial Neoclassicism
-A disciplined synthesis of high-contrast structure, pristine information architecture, and delicate typographic hierarchy. It avoids excessive decorative flourishes in favor of:
-- Deep tonal contrast with structural containment.
-- Thin, razor-sharp hairline borders that delineate peer-reviewed content.
-- Academic metadata visibility (DOIs, citation counts, indexing tiers, submission tracking).
-- Subtle, purposeful micro-accents of warm gold/amber to mark peer-reviewed status, open access markers, and primary calls-to-action.
+## Color Tokens
 
-## Colors
+### 1. Brand & Primary Palette
+- **Primary (`#c2410c` / `primary`):** Burnt Orange / Terracotta. Utilized for active states, key action buttons (e.g., "Kirim Naskah"), badge accents, and editorial highlights.
+- **Primary Hover (`#9a3412` / `primary-hover`):** Darker shade for interactive button feedback.
+- **Hero Navy (`#0b2038` / `navy-hero`):** Deep oceanic navy for major hero banners and institutional branding headers.
+- **Dark Navy (`#071424` / `navy-dark`):** Deepest background tone for dark mode hero accents.
 
-The palette establishes an authoritative tone through deep oceanic navies, slate structural surfaces, and calibrated warm gold accents.
-
-### Palette Hierarchy & Intent
-- **Primary (`#0f172a`, with tonal support `#1e293b`):** Deep Obsidian Navy. Reserved for global navigation, structural headers, high-level typography, and primary governance elements.
-- **Secondary (`#1e3a8a`):** Scholarly Royal Navy. Utilized for interactive hyperlinks, active navigation tabs, metadata link anchors, and secondary actions.
-- **Tertiary / Accent (`#d97706`, high-vibrancy `#f59e0b`):** Academic Gold / Amber. Represents peer-reviewed certifications, metrics badges, special issue indicators, focus rings, and primary action buttons (e.g., "Submit Manuscript").
-- **Neutral Surface Palette:**
-  - Base White (`#ffffff`): Paper-like reading canvas for abstracts, full articles, and main panels.
-  - Surface Tint (`#f8fafc`): Document background and primary canvas neutral.
-  - Surface Variant (`#f1f5f9`): Sidebar backgrounds, metadata drawers, and inactive card states.
-  - Border Slate (`#e2e8f0`): Hairline boundary lines between structural regions.
-  - Muted Text (`#64748b`): Citation details, author affiliations, and publication timestamps.
+### 2. Neutral Surfaces & Backgrounds
+- **Light Background (`#f8fafc` / `background-light`):** Clean, paper-like neutral canvas for optimal long-form reading.
+- **Dark Background (`#090d16` / `background-dark`):** Immersive dark mode canvas.
+- **Slate Borders & Dividers (`#e2e8f0` / `border-slate-200`):** Razor-sharp hairline borders separating content panels.
 
 ## Typography
 
-Typography balances academic legibility with sharp modern execution. 
+Built upon clean geometric and sans-serif foundations:
+- **Primary Sans (Geist):** Used for all headings, body text, metadata, navigation, and form controls to ensure razor-sharp legibility.
+- **Serif Accents (Merriweather / Cinzel):** Applied selectively to formal editorial notes, Latin terminology, and journal display typography.
 
-- **Display & Section Headers (Plus Jakarta Sans):** Selected for its crisp geometric architecture and contemporary presence. It instills an accessible yet distinguished posture across article titles, journal names, and editorial boards.
-- **Reading Body (Inter):** Highly legible, neutral workhorse engineered for long-form reading, dense abstract comprehension, reference citations, and data-dense table layouts.
-- **Micro-labels, Badges & Metadata (Plus Jakarta Sans):** Set in weights 600 and 700 with open letter-spacing for uppercase publication identifiers (e.g., `ISSN`, `DOI`, `PEER REVIEWED`, `SCOPUS`).
+## Layout & Containers
 
-## Layout & Spacing
+- **Fixed Maximum Container Width (`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`):** Uniformly applied across all headers, main content sections, breadcrumbs, grids, and footers.
+- **Grid Architecture:** 12-column responsive grid system where main articles/content consume 8 columns and sidebars/metadata consume 4 columns.
 
-The layout operates on an asymmetrical fixed-container grid system engineered specifically for scholarly publishing.
+## Components & Interactive Elements
 
-### Layout Architecture
-- **Desktop (1200px - 1440px max-width):** An asymmetrical 12-column grid.
-  - Main scholarly feed / article body: spans 8 columns.
-  - Editorial, indexation, indexing, and indexing sidebar: spans 4 columns.
-- **Tablet (768px - 1199px):** An 8-column layout. The metadata sidebar shifts beneath the primary article content or collapses into a docked drawer.
-- **Mobile (< 768px):** A single 4-column flow with tight outer margins (`1rem`) maximizing viewport area for readability.
+### 1. Navigation & Header
+- Sticky header featuring institutional logo, navigation links (Beranda, Arsip, Tentang, Pengumuman), search bar with instant query support, dark mode toggle, and authentication buttons ("Masuk").
 
-### Structural Spacing System
-Vertical cadence leverages an 8px base unit. Section separation prioritizes generous gaps (`2.5rem`) to maintain academic clarity and avoid visual clutter in data-dense tables, bibliography lists, and multi-author decks.
+### 2. Scholarly Cards & Tables of Contents
+- Two-tier container structure displaying volume/issue metadata, DOI links, author affiliations, view/download counters, and direct PDF download triggers.
 
-## Elevation & Depth
+### 3. Left Sidebar Navigation
+- Consistent 7-item navigation card across all internal pages (Tentang Jurnal, Dewan Redaksi, Kebijakan Etika & Peer Review, Pedoman Penulis & Reviewer, Kirim Naskah Online, Statistik Jurnal, Kontak Sekretariat) with active state highlighting.
 
-The design system minimizes soft lighting illusions in favor of architectural borders and tonal elevation layers to mirror physical journals and bound research.
-
-### Spatial Depth Principles
-- **Foundation Layer (Level 0):** Surface base canvas (`#f8fafc`). Completely flat with zero elevation.
-- **Scholarly Surface (Level 1):** Article cards, abstracts, search panels (`#ffffff`). Defined by a crisp 1px perimeter border (`#e2e8f0`) and an ambient, low-spread micro-shadow (`0 1px 3px rgba(15, 23, 42, 0.05)`).
-- **Interactive State (Hover / Active):** Cards translate 1px upward on hover, and their border transitions from `#e2e8f0` to `#cbd5e1`, paired with a delicate gold border accent indicator (`#d97706` left border line or accent glow `0 4px 12px rgba(15, 23, 42, 0.08)`).
-- **Overlays & Modals (Level 2):** PDF readers, citation export dialogues, and search command palettes use high contrast backing (`#ffffff`), reinforced by a solid slate border (`#94a3b8`) and structured drop (`0 10px 25px -5px rgba(15, 23, 42, 0.15)`).
-
-## Shapes
-
-To mirror the serious tone of an economics and business journal, the shape language uses low roundedness (`roundedness: 1` / `0.25rem` base, up to `0.5rem` for large containers). 
-
-- Rounding is subtle, preserving crisp rectangularity reminiscent of paper documents, legal publications, and financial print registers.
-- Buttons, input fields, and tags feature modest 4px corners (`0.25rem`).
-- Large cards and preview drawers max out at 8px (`0.5rem`).
-- Fully rounded pill shapes are strictly restricted to status indicator dots and micro-badges (such as "In Press" or "Open Access").
-
-## Components
-
-### 1. Buttons
-- **Primary (Manuscript Submission / Download PDF):** Deep navy `#0f172a` background, pure white text, 4px border radius. Hover introduces background `#1e293b` with a subtle amber bottom accent line.
-- **Secondary (Cite Article / View Metrics):** Crisp `#ffffff` surface with a 1px `#cbd5e1` border and `#1e293b` text. Hover shifts to `#f8fafc` with border `#1e3a8a`.
-- **Tertiary / Accent Action:** Solid `#d97706` background with white text for critical CTAs like "Call for Papers".
-
-### 2. Scholarly Cards (Article Index & Current Issue)
-- Constructed with `#ffffff` fill and a 1px continuous border (`#e2e8f0`).
-- Features a two-tiered hierarchy:
-  1. Top metadata strip containing Volume, Issue, Publication Date, and DOI link.
-  2. Bold article title (`headline-sm`) followed by author attribution list and concise abstract snippet.
-  3. Bottom operational footer featuring direct PDF download link, citation triggers, and view counter.
-
-### 3. Badge Tags
-- **Metadata Badges:** Subdued slate styling (`bg: #f1f5f9`, `text: #334155`, border: 1px `#e2e8f0`) for categories such as "Empirical Research", "Case Study", or JEL codes.
-- **Open Access Badge:** Gold-tinted pill badge (`bg: #fef3c7`, `text: #92400e`, border: 1px `#fde68a`).
-- **Peer-Reviewed Status Badge:** Deep Navy hairline badge (`bg: #eff6ff`, `text: #1e3a8a`, border: 1px `#bfdbfe`).
-
-### 4. Structured Sidebar (Journal Governance & Indexation)
-- **Container:** Enclosed in `#f8fafc` background with a right-hand or left-hand border of 1px `#e2e8f0`.
-- **Navigation Widgets:**
-  - Section headers set in `label-sm` with uppercase styling and gold decorative underline (`2px solid #d97706`).
-  - Menu links formatted as clean vertical stacked lists with hover indentation (+4px padding shift) and active indicator via vertical navy bar.
-  - Dedicated indexation badges (SINTA, Google Scholar, DOAJ) arrayed in a high-contrast structured grid.
-
-### 5. Form Elements (Search & Manuscript Submission)
-- Input fields use pure white canvas (`#ffffff`), 1px slate borders (`#cbd5e1`), and placeholder text in `#94a3b8`.
-- Focus state highlights border in `#1e3a8a` with a 2px amber glow (`rgba(217, 119, 6, 0.2)`).
-- Checkboxes and radio selectors are square (or circular) with high-contrast `#0f172a` selection marks.
-
-### 6. Citation & Reference Modules
-- Indented block cards with a 3px solid `#1e3a8a` left spine, monospaced or crisp sans text, accompanied by one-click "Copy APA", "Copy BibTeX", and "EndNote" quick-action utilities.
+### 4. Interactive Modals & Forms
+- Fully styled login (`login.html`), registration (`register.html`), manuscript submission checklist, and editorial dashboard (`dashboard.html`).
