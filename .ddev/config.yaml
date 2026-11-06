@@ -1,14 +1,14 @@
 name: jrdc-ojs
 type: php
 docroot: ojs-jrdc
-php_version: "8.3"
+php_version: "8.1"
 webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
 database:
     type: mariadb
-    version: "11.8"
+    version: "10.6"
 upload_dirs:
     - files
 use_dns_when_possible: true

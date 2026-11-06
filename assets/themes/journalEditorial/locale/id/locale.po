@@ -1,0 +1,375 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugins.themes.journalEditorial\n"
+"POT-Creation-Date: 2026-10-31\n"
+"PO-Revision-Date: 2026-10-31\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.themes.journalEditorial.name"
+msgstr "Tema Journal Editorial"
+
+msgid "plugins.themes.journalEditorial.description"
+msgstr "Tema beranda akademik bergaya JILP dengan Bootstrap 5 untuk OJS 3.5."
+
+msgid "plugins.themes.journalEditorial.toggleTheme"
+msgstr "Ganti Mode Gelap/Terang"
+
+msgid "plugins.themes.journalEditorial.toggleNav"
+msgstr "Buka menu navigasi"
+
+msgid "plugins.themes.journalEditorial.readMore"
+msgstr "Baca selengkapnya"
+
+msgid "plugins.themes.journalEditorial.hero.publisher"
+msgstr "Penerbit"
+
+msgid "plugins.themes.journalEditorial.hero.contact"
+msgstr "Kontak"
+
+msgid "plugins.themes.journalEditorial.hero.eyebrow"
+msgstr "Telaah sejawat  ·  Akses terbuka"
+
+msgid "plugins.themes.journalEditorial.hero.currentIssue"
+msgstr "Terbitan Terkini"
+
+msgid "plugins.themes.journalEditorial.hero.openAccess"
+msgstr "Akses Terbuka"
+
+msgid "plugins.themes.journalEditorial.hero.peerReviewed"
+msgstr "Ditelaah Sejawat"
+
+msgid "plugins.themes.journalEditorial.hero.readMore"
+msgstr "Baca selengkapnya"
+
+msgid "plugins.themes.journalEditorial.hero.aboutJournal"
+msgstr "Tentang jurnal"
+
+msgid "plugins.themes.journalEditorial.hero.fallbackDesc"
+msgstr "{$journalName} menerbitkan riset telaah sejawat di bidang Ekonomi dan Bisnis melalui model akses terbuka."
+
+msgid "plugins.themes.journalEditorial.hero.submit"
+msgstr "Kirimkan Riset Anda"
+
+msgid "plugins.themes.journalEditorial.hero.exploreIssue"
+msgstr "Jelajahi Terbitan Terkini"
+
+msgid "plugins.themes.journalEditorial.stats.articles"
+msgstr "Artikel Terbit"
+
+msgid "plugins.themes.journalEditorial.stats.authors"
+msgstr "Penulis Berkontribusi"
+
+msgid "plugins.themes.journalEditorial.stats.reviewers"
+msgstr "Penelaah Aktif"
+
+msgid "plugins.themes.journalEditorial.stats.issues"
+msgstr "Terbitan Diterbitkan"
+
+msgid "plugins.themes.journalEditorial.picks.title"
+msgstr "Pilihan Editor"
+
+msgid "plugins.themes.journalEditorial.picks.desc"
+msgstr "Riset terobosan dan publikasi berdampak tinggi pilihan Dewan Editor kami"
+
+msgid "plugins.themes.journalEditorial.picks.viewAll"
+msgstr "Lihat Semua Terbitan"
+
+msgid "plugins.themes.journalEditorial.picks.tag1"
+msgstr "# Pilihan Editor"
+
+msgid "plugins.themes.journalEditorial.picks.tag2"
+msgstr "# Artikel Unggulan"
+
+msgid "plugins.themes.journalEditorial.picks.tag3"
+msgstr "# Paling Disitasi"
+
+msgid "plugins.themes.journalEditorial.picks.tag4"
+msgstr "# Rekomendasi"
+
+msgid "plugins.themes.journalEditorial.article.category"
+msgstr "Artikel Penelitian"
+
+msgid "plugins.themes.journalEditorial.article.unknownAuthor"
+msgstr "Penulis tidak diketahui"
+
+msgid "plugins.themes.journalEditorial.article.pages"
+msgstr "hlm."
+
+msgid "plugins.themes.journalEditorial.issue.view"
+msgstr "Lihat Terbitan"
+
+msgid "plugins.themes.journalEditorial.tabs.latest"
+msgstr "Artikel Terbaru"
+
+msgid "plugins.themes.journalEditorial.tabs.viewed"
+msgstr "Paling Dibaca"
+
+msgid "plugins.themes.journalEditorial.tabs.cited"
+msgstr "Paling Disitasi"
+
+msgid "plugins.themes.journalEditorial.tabs.issues"
+msgstr "Terbitan Jurnal"
+
+msgid "plugins.themes.journalEditorial.tabs.announcements"
+msgstr "Pengumuman"
+
+msgid "plugins.themes.journalEditorial.tabs.about"
+msgstr "Tentang Jurnal"
+
+msgid "plugins.themes.journalEditorial.tabs.editorial"
+msgstr "Editorial &amp; Indeksasi"
+
+msgid "plugins.themes.journalEditorial.tabs.viewAllArticles"
+msgstr "Lihat Semua Artikel"
+
+msgid "plugins.themes.journalEditorial.tabs.fullArchive"
+msgstr "Arsip Lengkap"
+
+msgid "plugins.themes.journalEditorial.tabs.emptyArticles"
+msgstr "Belum ada artikel terbit. Riset baru akan tampil di sini setelah diterbitkan."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyViews"
+msgstr "Statistik baca akan muncul setelah artikel dibaca."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyCitations"
+msgstr "Metrik sitasi akan muncul ketika artikel disitasi."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyIssues"
+msgstr "Belum ada terbitan yang diterbitkan."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyAnnouncements"
+msgstr "Belum ada pengumuman."
+
+msgid "plugins.themes.journalEditorial.about.title"
+msgstr "Tentang Jurnal"
+
+msgid "plugins.themes.journalEditorial.about.empty"
+msgstr "Deskripsi jurnal belum ditambahkan."
+
+msgid "plugins.themes.journalEditorial.about.focusScope"
+msgstr "Fokus &amp; Ruang Lingkup"
+
+msgid "plugins.themes.journalEditorial.about.jrdcIdentityTitle"
+msgstr "Siapa Kami"
+
+msgid "plugins.themes.journalEditorial.about.jrdcIdentity"
+msgstr "Yayasan Ratu Dirgantara Cendikiawan (JRDC) adalah penerbit jurnal ilmiah yang berfokus pada bidang Ekonomi dan Bisnis. Kami mendukung pengembangan pendidikan, kemajuan ilmu pengetahuan, dan penyebarluasan hasil penelitian serta pemikiran akademik dengan menyediakan ruang publikasi yang kredibel bagi akademisi, peneliti, mahasiswa, dan praktisi."
+
+msgid "plugins.themes.journalEditorial.about.jrdcVisionTitle"
+msgstr "Visi"
+
+msgid "plugins.themes.journalEditorial.about.jrdcVision"
+msgstr "Menjadi penerbit jurnal ilmiah yang kredibel dan berorientasi pada pengembangan ilmu pengetahuan di bidang Ekonomi dan Bisnis melalui publikasi yang berkualitas, berintegritas, dan bermanfaat bagi masyarakat akademik maupun praktisi."
+
+msgid "plugins.themes.journalEditorial.about.jrdcMissionTitle"
+msgstr "Misi"
+
+msgid "plugins.themes.journalEditorial.about.jrdcMission"
+msgstr "<ol><li>Mendukung pengembangan ilmu pengetahuan di bidang Ekonomi dan Bisnis melalui penerbitan hasil penelitian dan kajian ilmiah.</li><li>Menyelenggarakan penerbitan jurnal yang mengutamakan mutu artikel, ketepatan proses editorial, dan standar publikasi ilmiah.</li><li>Mendorong budaya penelitian, penulisan, dan publikasi ilmiah di kalangan akademisi, peneliti, dan mahasiswa.</li><li>Memfasilitasi penyebarluasan hasil penelitian yang relevan bagi pengembangan teori, pengambilan keputusan, dan praktik ekonomi dan bisnis.</li><li>Menjunjung tinggi etika publikasi, integritas akademik, dan keterbukaan akses terhadap pengetahuan ilmiah.</li></ol>"
+
+msgid "plugins.themes.journalEditorial.about.jrdcScopeTitle"
+msgstr "Fokus &amp; Ruang Lingkup"
+
+msgid "plugins.themes.journalEditorial.about.jrdcScope"
+msgstr "Fokus awal penerbitan jurnal JRDC adalah bidang Ekonomi dan Bisnis. Ruang lingkup kajian mencakup manajemen, akuntansi, keuangan, pemasaran, kewirausahaan, dan ekonomi pembangunan. Kajian dapat berupa pengembangan teori, penelitian empiris, analisis kebijakan, studi kasus, serta penerapan konsep ekonomi dan bisnis dalam berbagai konteks. Pengembangan ruang lingkup diarahkan secara bertahap sesuai kebutuhan keilmuan, dengan tetap mempertahankan orientasi utama pada bidang Ekonomi dan Bisnis."
+
+msgid "plugins.themes.journalEditorial.about.jrdcCommitmentTitle"
+msgstr "Komitmen Editorial"
+
+msgid "plugins.themes.journalEditorial.about.jrdcCommitment"
+msgstr "JRDC berkomitmen mendukung penerbitan ilmiah yang bertanggung jawab melalui proses telaah sejawat, integritas akademik, dan akses terbuka. Telaah sejawat menjadi bagian penting dalam menjaga kualitas dan kelayakan ilmiah naskah yang diterbitkan. Integritas akademik dijunjung melalui penghormatan terhadap orisinalitas karya, ketepatan sitasi, transparansi, serta pencegahan praktik publikasi yang tidak etis. Sementara itu, akses terbuka diupayakan agar hasil penelitian dapat dimanfaatkan secara lebih luas oleh peneliti, mahasiswa, praktisi, dan masyarakat. Komitmen tersebut menjadi landasan dalam membangun kepercayaan penulis dan pembaca terhadap publikasi yang diterbitkan."
+
+msgid "plugins.themes.journalEditorial.identity.title"
+msgstr "Identitas Jurnal"
+
+msgid "plugins.themes.journalEditorial.identity.name"
+msgstr "Nama Jurnal"
+
+msgid "plugins.themes.journalEditorial.identity.contact"
+msgstr "Kontak"
+
+msgid "plugins.themes.journalEditorial.identity.email"
+msgstr "Email"
+
+msgid "plugins.themes.journalEditorial.editorial.title"
+msgstr "Pimpinan Redaksi"
+
+msgid "plugins.themes.journalEditorial.editorial.desc"
+msgstr "Kenali tim editorial di balik {$journalName}."
+
+msgid "plugins.themes.journalEditorial.editorial.viewTeam"
+msgstr "Lihat Tim Editorial"
+
+msgid "plugins.themes.journalEditorial.indexing.compactTitle"
+msgstr "Terindeks &amp; Terabstraksi di"
+
+msgid "plugins.themes.journalEditorial.indexing.title"
+msgstr "Terindeks dan Terabstraksi di"
+
+msgid "plugins.themes.journalEditorial.indexing.desc"
+msgstr "Publikasi kami dihimpun secara sistematis oleh basis data dan repositori ilmiah global."
+
+msgid "plugins.themes.journalEditorial.authors.title"
+msgstr "Untuk Penulis &amp; Peneliti"
+
+msgid "plugins.themes.journalEditorial.authors.desc"
+msgstr "Semua yang Anda butuhkan untuk menyiapkan, mengirim, dan menerbitkan riset."
+
+msgid "plugins.themes.journalEditorial.authors.submitTitle"
+msgstr "Kirimkan Riset Anda"
+
+msgid "plugins.themes.journalEditorial.authors.submitDesc"
+msgstr "Mulai pengiriman baru dan bergabung dengan komunitas akademik kami."
+
+msgid "plugins.themes.journalEditorial.authors.teamTitle"
+msgstr "Tim Editorial"
+
+msgid "plugins.themes.journalEditorial.authors.teamDesc"
+msgstr "Kenali editor dan penelaah yang mengawal jurnal."
+
+msgid "plugins.themes.journalEditorial.authors.guidelinesTitle"
+msgstr "Panduan Penulis"
+
+msgid "plugins.themes.journalEditorial.authors.guidelinesDesc"
+msgstr "Baca ketentuan format, ruang lingkup, dan pengiriman naskah."
+
+msgid "plugins.themes.journalEditorial.authors.searchTitle"
+msgstr "Cari Artikel"
+
+msgid "plugins.themes.journalEditorial.authors.searchDesc"
+msgstr "Temukan riset berdasarkan judul, penulis, kata kunci, atau DOI."
+
+msgid "plugins.themes.journalEditorial.authors.archiveTitle"
+msgstr "Jelajahi Arsip"
+
+msgid "plugins.themes.journalEditorial.authors.archiveDesc"
+msgstr "Telusuri seluruh terbitan dan artikel yang telah diterbitkan."
+
+msgid "plugins.themes.journalEditorial.authors.privacyTitle"
+msgstr "Pernyataan Privasi"
+
+msgid "plugins.themes.journalEditorial.authors.privacyDesc"
+msgstr "Pelajari bagaimana kami melindungi data penulis dan pembaca."
+
+msgid "plugins.themes.journalEditorial.why.title"
+msgstr "Mengapa Menerbitkan di Sini"
+
+msgid "plugins.themes.journalEditorial.why.desc"
+msgstr "Pengalaman penerbitan yang ketat, terbuka, dan ramah penulis di bidang Ekonomi dan Bisnis."
+
+msgid "plugins.themes.journalEditorial.why.oaTitle"
+msgstr "Akses Terbuka"
+
+msgid "plugins.themes.journalEditorial.why.oaDesc"
+msgstr "Artikel Anda bebas dibaca dan diunduh oleh peneliti, mahasiswa, dan praktisi di seluruh dunia."
+
+msgid "plugins.themes.journalEditorial.why.refereedTitle"
+msgstr "Telaah Sejawat Double-Blind"
+
+msgid "plugins.themes.journalEditorial.why.refereedDesc"
+msgstr "Setiap naskah dievaluasi melalui proses telaah sejawat yang ketat oleh ahli di bidangnya."
+
+msgid "plugins.themes.journalEditorial.why.indexedTitle"
+msgstr "Terindeks &amp; Terlihat"
+
+msgid "plugins.themes.journalEditorial.why.indexedDesc"
+msgstr "Publikasi dihimpun secara sistematis oleh basis data dan repositori ilmiah untuk keterjangkauan yang luas."
+
+msgid "plugins.themes.journalEditorial.why.fastTitle"
+msgstr "Proses Tepat Waktu"
+
+msgid "plugins.themes.journalEditorial.why.fastDesc"
+msgstr "Penanganan editorial yang efisien dan komunikasi yang jelas menjaga kelancaran dari pengiriman hingga penerbitan."
+
+msgid "plugins.themes.journalEditorial.footer.quickLinks"
+msgstr "Tautan Cepat"
+
+msgid "plugins.themes.journalEditorial.footer.about"
+msgstr "Tentang"
+
+msgid "plugins.themes.journalEditorial.footer.aboutJournal"
+msgstr "Tentang Jurnal"
+
+msgid "plugins.themes.journalEditorial.footer.focusScope"
+msgstr "Fokus dan Ruang Lingkup"
+
+msgid "plugins.themes.journalEditorial.footer.editorialTeam"
+msgstr "Tim Editorial"
+
+msgid "plugins.themes.journalEditorial.footer.indexing"
+msgstr "Pengindeksan"
+
+msgid "plugins.themes.journalEditorial.footer.announcements"
+msgstr "Pengumuman"
+
+msgid "plugins.themes.journalEditorial.footer.currentIssue"
+msgstr "Terbitan Terkini"
+
+msgid "plugins.themes.journalEditorial.footer.archives"
+msgstr "Arsip"
+
+msgid "plugins.themes.journalEditorial.footer.privacy"
+msgstr "Pernyataan Privasi"
+
+msgid "plugins.themes.journalEditorial.footer.contact"
+msgstr "Kontak"
+
+msgid "plugins.themes.journalEditorial.footer.forAuthors"
+msgstr "Untuk Penulis"
+
+msgid "plugins.themes.journalEditorial.footer.guidelines"
+msgstr "Panduan Penulis"
+
+msgid "plugins.themes.journalEditorial.footer.submit"
+msgstr "Kirim Naskah"
+
+msgid "plugins.themes.journalEditorial.footer.ethics"
+msgstr "Etika Publikasi"
+
+msgid "plugins.themes.journalEditorial.footer.openAccess"
+msgstr "Akses Terbuka"
+
+msgid "plugins.themes.journalEditorial.footer.contactOffice"
+msgstr "Kontak &amp; Kantor Redaksi"
+
+msgid "plugins.themes.journalEditorial.footer.support"
+msgstr "Dukungan"
+
+msgid "plugins.themes.journalEditorial.footer.readMore"
+msgstr "Selengkapnya"
+
+msgid "plugins.themes.journalEditorial.footer.jrdcDesc"
+msgstr "Yayasan Ratu Dirgantara Cendikiawan (JRDC) menerbitkan jurnal ilmiah akses terbuka yang berfokus pada bidang Ekonomi dan Bisnis."
+
+msgid "plugins.themes.journalEditorial.footer.rights"
+msgstr "Seluruh hak cipta dilindungi. Ditenagai Open Journal Systems."
+
+msgid "plugins.themes.journalEditorial.footer.theme"
+msgstr "Tema"
+
+msgid "plugins.themes.journalEditorial.auth.tagline"
+msgstr "Jurnal akses terbuka telaah sejawat untuk riset Ekonomi dan Bisnis."
+
+msgid "plugins.themes.journalEditorial.pdf.title"
+msgstr "PDF"
+
+msgid "plugins.themes.journalEditorial.pdf.noEmbed"
+msgstr "Browser Anda tidak mendukung pratinjau PDF langsung."
+
+msgid "plugins.themes.journalEditorial.pdf.download"
+msgstr "Unduh atau lihat PDF"
+
+msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
+msgstr "Terbitan Terkini"
+
+msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
+msgstr "Lihat Terbitan"
+
+msgid "plugins.themes.journalEditorial.currentIssue.archive"
+msgstr "Jelajahi Arsip"
+
+msgid "plugins.themes.journalEditorial.currentIssue.uploadCover"
+msgstr "Unggah gambar sampul di pengaturan terbitan"

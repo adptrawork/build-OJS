@@ -115,6 +115,33 @@ Kalau **Information Block** dimatikan, footer menyisakan 4 blok: 3 blok custom +
 
 ---
 
+## Sidebar di halaman artikel
+
+Blok yang sama bisa tampil sebagai kolom kanan di halaman artikel, bukan hanya di footer.
+Butuh dua hal:
+
+### 1. Edit tema (sudah diterapkan di repo ini)
+
+| File | Perubahan |
+|---|---|
+| `plugins/themes/individualizeTheme/templates/frontend/layout.tpl` | Hook `Templates::Common::Sidebar` tidak dipanggil di footer saat `page=article` |
+| `plugins/themes/individualizeTheme/templates/frontend/pages/article.tpl` | Menambah `<aside class="article-sidebar">` berisi hook sidebar |
+
+Akibatnya di halaman artikel blok pindah ke kolom kanan (tidak dobel), halaman lain tetap footer.
+Kalau tema di-update dari upstream, dua baris di atas harus diterapkan ulang
+(sumber asli: `docs/individualizeTheme-main.zip`).
+
+### 2. Upload CSS
+
+Buka **Settings → Website → Appearance → Advanced → Journal Stylesheet**
+(`https://jrdc-ojs.ddev.site:8443/index.php/jrdc/management/settings/website#appearance/advanced`),
+upload `article-sidebar.css`, lalu **Save**.
+
+Tanpa langkah ini blok tetap muncul di kolom kanan, tetapi tanpa jarak antarblok dan
+tanpa posisi *sticky*. Di layar < 1024 px sidebar otomatis turun ke bawah artikel.
+
+---
+
 ## Catatan teknis
 
 - Isi blok disimpan di tabel `plugin_settings` dengan nama plugin = judul dalam kebab-case

@@ -1,0 +1,63 @@
+/* Sidebar blok di halaman artikel — JRDC OJS (tema Individualize)
+ * Dipasang lewat: Settings -> Website -> Appearance -> Advanced -> Journal Stylesheet
+ */
+
+.article-with-sidebar {
+  display: grid;
+  gap: 3rem;
+}
+
+.article-sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.article-sidebar .pkp_block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.article-sidebar .pkp_block .title {
+  font-family: var(--font-titles);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.article-sidebar .pkp_block ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  margin: 0;
+  padding-inline-start: 1.1em;
+}
+
+.article-sidebar a {
+  color: var(--color-page-links);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.article-sidebar a:hover {
+  color: var(--color-page-text);
+}
+
+.article-sidebar a:focus-visible {
+  outline: 2px solid;
+  outline-offset: 2px;
+}
+
+@media (min-width: 1024px) {
+  .article-with-sidebar {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .article-sidebar-inner {
+    position: sticky;
+    top: 6rem;
+  }
+}

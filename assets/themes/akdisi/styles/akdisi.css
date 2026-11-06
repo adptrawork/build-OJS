@@ -1,0 +1,589 @@
+/* JRDC theme — design tokens dan layout beranda. */
+
+/* Guard font dasar — tanpa ini body jatuh ke serif Times bila parent belum termuat. */
+body {
+  font-family: var(--akdisi-font-body);
+  color: var(--akdisi-colour-ink);
+}
+
+/* Batasi ukuran logo agar tidak membesar penuh layar. */
+.pkp_site_name .is_img img,
+.navbar-header .navbar-brand img {
+  max-height: 3rem;
+  width: auto;
+}
+
+:root {
+  /* Warna: satu aksen maroon/burgundy, netral absolut. */
+  --akdisi-colour-ink: #1a0f12;
+  --akdisi-colour-ink-soft: #6b555c;
+  --akdisi-colour-accent: #af2e4d;
+  --akdisi-colour-accent-soft: #fce7eb;
+  --akdisi-colour-surface: #ffffff;
+  --akdisi-colour-surface-alt: #faf7f8;
+  --akdisi-colour-border: #e7dde0;
+
+  /* Tipografi: Gunakan system-ui agar tidak berpura-pura memakai Geist tanpa @font-face. */
+  --akdisi-font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --akdisi-font-heading: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --akdisi-space-1: 0.25rem;
+  --akdisi-space-2: 0.5rem;
+  --akdisi-space-3: 0.75rem;
+  --akdisi-space-4: 1rem;
+  --akdisi-space-6: 1.5rem;
+  --akdisi-space-8: 2rem;
+  --akdisi-space-12: 3rem;
+  --akdisi-space-16: 4rem;
+
+  --akdisi-radius: 4px;
+  --akdisi-radius-lg: 12px;
+  --akdisi-measure: 68ch;
+
+  --akdisi-container: 1200px;
+}
+
+/* Slot debug: aktif hanya dengan ?slots=1. */
+body.akdisi-slots [data-slot] {
+  outline: 1px dashed var(--akdisi-colour-accent);
+  outline-offset: 2px;
+  position: relative;
+}
+
+body.akdisi-slots [data-slot]::before {
+  content: attr(data-slot);
+  position: absolute;
+  top: -0.65rem;
+  left: 0;
+  font: 600 10px/1 var(--akdisi-font-body);
+  background: var(--akdisi-colour-accent);
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 2px;
+  z-index: 20;
+}
+
+/* --- Layout homepage --- */
+.akdisi-home {
+  max-width: var(--akdisi-container);
+  margin: 0 auto;
+  padding: var(--akdisi-space-6) var(--akdisi-space-4);
+}
+
+/* --- Hero (S-HOME-02/03/04) --- */
+.akdisi-hero {
+  margin-bottom: var(--akdisi-space-12);
+}
+
+.akdisi-hero__content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--akdisi-space-8);
+  align-items: center;
+  min-height: 60dvh;
+}
+
+.akdisi-hero__title {
+  font-family: var(--akdisi-font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--akdisi-space-3);
+  color: var(--akdisi-colour-ink);
+}
+
+.akdisi-hero__tagline {
+  font-family: var(--akdisi-font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--akdisi-colour-ink-soft);
+  max-width: var(--akdisi-measure);
+  margin: 0 0 var(--akdisi-space-6);
+}
+
+.akdisi-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--akdisi-space-2);
+  margin-bottom: var(--akdisi-space-6);
+}
+
+.akdisi-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--akdisi-space-1) var(--akdisi-space-3);
+  background: var(--akdisi-colour-accent-soft);
+  color: var(--akdisi-colour-accent);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.akdisi-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--akdisi-space-3);
+}
+
+.akdisi-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--akdisi-space-3) var(--akdisi-space-6);
+  border: 1px solid var(--akdisi-colour-border);
+  border-radius: var(--akdisi-radius);
+  background: var(--akdisi-colour-surface);
+  color: var(--akdisi-colour-ink);
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.akdisi-btn:hover {
+  border-color: var(--akdisi-colour-accent);
+}
+
+.akdisi-btn:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.akdisi-btn--primary {
+  background: var(--akdisi-colour-accent);
+  color: #fff;
+  border-color: var(--akdisi-colour-accent);
+}
+
+.akdisi-btn--ghost {
+  background: transparent;
+}
+
+.akdisi-btn--small {
+  padding: var(--akdisi-space-2) var(--akdisi-space-4);
+  font-size: 0.875rem;
+}
+
+/* --- Hero visual / current issue cover --- */
+.akdisi-hero__visual {
+  display: flex;
+  justify-content: center;
+}
+
+.akdisi-hero__issue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--akdisi-space-3);
+  max-width: 280px;
+  width: 100%;
+}
+
+.akdisi-hero__cover {
+  width: 100%;
+  height: auto;
+  border-radius: var(--akdisi-radius-lg);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.12);
+  background: var(--akdisi-colour-surface-alt);
+}
+
+.akdisi-hero__issue-meta {
+  text-align: center;
+}
+
+.akdisi-hero__issue-id {
+  display: block;
+  font-size: 1.125rem;
+  color: var(--akdisi-colour-ink);
+}
+
+.akdisi-hero__issue--empty {
+  padding: var(--akdisi-space-8) var(--akdisi-space-4);
+  border: 1px dashed var(--akdisi-colour-border);
+  border-radius: var(--akdisi-radius-lg);
+  text-align: center;
+  color: var(--akdisi-colour-ink-soft);
+}
+
+/* --- Stats strip (S-HOME-12) --- */
+.akdisi-stats {
+  margin-bottom: var(--akdisi-space-12);
+  padding: var(--akdisi-space-6) var(--akdisi-space-4);
+  background: var(--akdisi-colour-surface-alt);
+  border-radius: var(--akdisi-radius-lg);
+}
+
+.akdisi-stats__inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--akdisi-space-6);
+  text-align: center;
+}
+
+.akdisi-stat__value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--akdisi-colour-ink);
+  line-height: 1;
+}
+
+.akdisi-stat__label {
+  display: block;
+  margin-top: var(--akdisi-space-2);
+  font-size: 0.875rem;
+  color: var(--akdisi-colour-ink-soft);
+}
+
+/* --- About journal (S-HOME-05) --- */
+.akdisi-about {
+  margin-bottom: var(--akdisi-space-12);
+}
+
+.akdisi-about__inner {
+  max-width: var(--akdisi-measure);
+}
+
+.akdisi-about h2,
+.akdisi-latest h2,
+.akdisi-current-issue h2,
+.akdisi-indexers h2 {
+  font-family: var(--akdisi-font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 var(--akdisi-space-4);
+  color: var(--akdisi-colour-ink);
+}
+
+.akdisi-about__body {
+  color: var(--akdisi-colour-ink-soft);
+  line-height: 1.7;
+  margin-bottom: var(--akdisi-space-3);
+}
+
+.akdisi-link {
+  color: var(--akdisi-colour-accent);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.akdisi-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Indexers strip (S-HOME-06) --- */
+.akdisi-indexers {
+  margin-bottom: var(--akdisi-space-12);
+}
+
+.akdisi-indexers__title {
+  text-align: center;
+  margin-bottom: var(--akdisi-space-6);
+}
+
+.akdisi-indexers__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--akdisi-space-8);
+}
+
+.akdisi-indexers__list a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--akdisi-space-2) var(--akdisi-space-4);
+  border: 1px solid var(--akdisi-colour-border);
+  border-radius: var(--akdisi-radius);
+  color: var(--akdisi-colour-ink-soft);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.akdisi-indexers__list a:hover {
+  border-color: var(--akdisi-colour-accent);
+  color: var(--akdisi-colour-accent);
+}
+
+/* --- Latest articles (S-HOME-07) --- */
+.akdisi-latest {
+  margin-bottom: var(--akdisi-space-12);
+}
+
+.akdisi-latest__inner {
+  max-width: var(--akdisi-container);
+}
+
+.akdisi-latest__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--akdisi-space-4);
+  margin-bottom: var(--akdisi-space-6);
+}
+
+.akdisi-latest__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--akdisi-space-4);
+}
+
+.akdisi-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--akdisi-space-2);
+  padding: var(--akdisi-space-4);
+  border: 1px solid var(--akdisi-colour-border);
+  border-radius: var(--akdisi-radius-lg);
+  background: var(--akdisi-colour-surface);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.akdisi-card:hover {
+  border-color: var(--akdisi-colour-accent);
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.08);
+}
+
+.akdisi-card__section {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--akdisi-colour-accent);
+}
+
+.akdisi-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.akdisi-card__title a {
+  color: var(--akdisi-colour-ink);
+  text-decoration: none;
+}
+
+.akdisi-card__title a:hover {
+  color: var(--akdisi-colour-accent);
+}
+
+.akdisi-card__authors,
+.akdisi-card__date {
+  font-size: 0.875rem;
+  color: var(--akdisi-colour-ink-soft);
+  margin: 0;
+}
+
+/* --- Current issue (S-HOME-08) --- */
+.akdisi-current-issue {
+  margin-bottom: var(--akdisi-space-12);
+}
+
+.akdisi-current-issue__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--akdisi-space-4);
+  margin-bottom: var(--akdisi-space-6);
+}
+
+/* --- Publication timeline (S-HOME-13) --- */
+.akdisi-timeline {
+  margin-bottom: var(--akdisi-space-12);
+}
+
+.akdisi-timeline__inner {
+  max-width: var(--akdisi-container);
+}
+
+.akdisi-timeline h2 {
+  font-family: var(--akdisi-font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 var(--akdisi-space-6);
+  color: var(--akdisi-colour-ink);
+}
+
+.akdisi-timeline__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--akdisi-space-4);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: timeline;
+}
+
+.akdisi-timeline__step {
+  display: flex;
+  gap: var(--akdisi-space-3);
+  padding: var(--akdisi-space-4);
+  border: 1px solid var(--akdisi-colour-border);
+  border-radius: var(--akdisi-radius-lg);
+  background: var(--akdisi-colour-surface);
+  transition: border-color 0.15s ease;
+}
+
+.akdisi-timeline__step:hover {
+  border-color: var(--akdisi-colour-accent);
+}
+
+.akdisi-timeline__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--akdisi-colour-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.akdisi-timeline__body h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 var(--akdisi-space-1);
+  color: var(--akdisi-colour-ink);
+}
+
+.akdisi-timeline__body p {
+  font-size: 0.875rem;
+  color: var(--akdisi-colour-ink-soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Sidebar (S-HOME-09/10/11) --- */
+.akdisi-sidebar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--akdisi-space-6);
+  margin-bottom: var(--akdisi-space-12);
+  padding-top: var(--akdisi-space-8);
+  border-top: 1px solid var(--akdisi-colour-border);
+}
+
+.akdisi-sidebar__block h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 var(--akdisi-space-3);
+  color: var(--akdisi-colour-ink);
+}
+
+.akdisi-sidebar__body {
+  font-size: 0.9375rem;
+  color: var(--akdisi-colour-ink-soft);
+  line-height: 1.6;
+}
+
+/* --- Back to top --- */
+.akdisi-back-to-top {
+  position: fixed;
+  right: var(--akdisi-space-4);
+  bottom: var(--akdisi-space-4);
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--akdisi-colour-border);
+  border-radius: 50%;
+  background: var(--akdisi-colour-surface);
+  color: var(--akdisi-colour-ink);
+  cursor: pointer;
+  box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.akdisi-back-to-top:hover {
+  border-color: var(--akdisi-colour-accent);
+}
+
+.akdisi-back-to-top:active {
+  transform: scale(0.95);
+}
+
+/* --- Footer --- */
+.akdisi-footer {
+  position: relative;
+  border-top: 1px solid var(--akdisi-colour-border);
+  background: var(--akdisi-colour-surface-alt);
+  padding: var(--akdisi-space-8) var(--akdisi-space-4);
+}
+
+/* --- Typewriter effect --- */
+.akdisi-typewriter {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.akdisi-typewriter__text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--akdisi-colour-accent);
+  animation:
+    akdisi-typewriter 3s steps(60, end) 1s 1 normal both,
+    akdisi-caret 0.75s step-end infinite;
+}
+
+@keyframes akdisi-typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes akdisi-caret {
+  50% { border-color: transparent; }
+}
+
+@media (max-width: 760px) {
+  .akdisi-typewriter__text {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+  }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .akdisi-btn,
+  .akdisi-card {
+    transition: none;
+  }
+  .akdisi-btn:active {
+    transform: none;
+  }
+}
+
+/* --- Mobile collapse --- */
+@media (max-width: 760px) {
+  .akdisi-hero__content {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .akdisi-hero__visual {
+    order: -1;
+  }
+
+  .akdisi-hero__issue {
+    max-width: 200px;
+  }
+
+  .akdisi-latest__header,
+  .akdisi-current-issue__header {
+    flex-direction: column;
+    gap: var(--akdisi-space-2);
+  }
+
+  .akdisi-stats__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

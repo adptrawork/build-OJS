@@ -1,0 +1,387 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plugins.themes.journalEditorial\n"
+"POT-Creation-Date: 2026-10-31\n"
+"PO-Revision-Date: 2026-10-31\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.themes.journalEditorial.name"
+msgstr "Journal Editorial Theme"
+
+msgid "plugins.themes.journalEditorial.description"
+msgstr "JILP-style Bootstrap 5 academic homepage theme for OJS 3.5."
+
+msgid "plugins.themes.journalEditorial.toggleTheme"
+msgstr "Toggle Dark/Light Mode"
+
+msgid "plugins.themes.journalEditorial.toggleNav"
+msgstr "Toggle navigation"
+
+msgid "plugins.themes.journalEditorial.readMore"
+msgstr "Read more"
+
+msgid "plugins.themes.journalEditorial.hero.publisher"
+msgstr "Publisher"
+
+msgid "plugins.themes.journalEditorial.hero.contact"
+msgstr "Contact"
+
+msgid "plugins.themes.journalEditorial.hero.eyebrow"
+msgstr "Peer-reviewed  ·  Open access"
+
+msgid "plugins.themes.journalEditorial.hero.currentIssue"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.hero.openAccess"
+msgstr "Open Access"
+
+msgid "plugins.themes.journalEditorial.hero.peerReviewed"
+msgstr "Peer Reviewed"
+
+msgid "plugins.themes.journalEditorial.hero.readMore"
+msgstr "Read more"
+
+msgid "plugins.themes.journalEditorial.hero.aboutJournal"
+msgstr "About the journal"
+
+msgid "plugins.themes.journalEditorial.hero.fallbackDesc"
+msgstr "{$journalName} publishes peer-reviewed research in economics and business through an open-access model."
+
+msgid "plugins.themes.journalEditorial.hero.submit"
+msgstr "Submit Your Research"
+
+msgid "plugins.themes.journalEditorial.hero.exploreIssue"
+msgstr "Explore Current Issue"
+
+msgid "plugins.themes.journalEditorial.stats.articles"
+msgstr "Published Articles"
+
+msgid "plugins.themes.journalEditorial.stats.authors"
+msgstr "Contributing Authors"
+
+msgid "plugins.themes.journalEditorial.stats.reviewers"
+msgstr "Active Reviewers"
+
+msgid "plugins.themes.journalEditorial.stats.issues"
+msgstr "Published Issues"
+
+msgid "plugins.themes.journalEditorial.picks.title"
+msgstr "Editor's Pick"
+
+msgid "plugins.themes.journalEditorial.picks.desc"
+msgstr "Hand-picked groundbreaking research and high-impact publications curated by our Editorial Board"
+
+msgid "plugins.themes.journalEditorial.picks.viewAll"
+msgstr "View All Issues"
+
+msgid "plugins.themes.journalEditorial.picks.tag1"
+msgstr "# Editor's Choice"
+
+msgid "plugins.themes.journalEditorial.picks.tag2"
+msgstr "# Featured Article"
+
+msgid "plugins.themes.journalEditorial.picks.tag3"
+msgstr "# Top Cited"
+
+msgid "plugins.themes.journalEditorial.picks.tag4"
+msgstr "# Recommended"
+
+msgid "plugins.themes.journalEditorial.article.category"
+msgstr "Research Article"
+
+msgid "plugins.themes.journalEditorial.article.unknownAuthor"
+msgstr "Unknown author"
+
+msgid "plugins.themes.journalEditorial.article.pages"
+msgstr "pp."
+
+msgid "plugins.themes.journalEditorial.issue.view"
+msgstr "View Issue"
+
+msgid "plugins.themes.journalEditorial.tabs.latest"
+msgstr "Latest Articles"
+
+msgid "plugins.themes.journalEditorial.tabs.viewed"
+msgstr "Most Viewed"
+
+msgid "plugins.themes.journalEditorial.tabs.cited"
+msgstr "Most Cited"
+
+msgid "plugins.themes.journalEditorial.tabs.issues"
+msgstr "Journal Issues"
+
+msgid "plugins.themes.journalEditorial.tabs.announcements"
+msgstr "Announcements"
+
+msgid "plugins.themes.journalEditorial.tabs.about"
+msgstr "About Journal"
+
+msgid "plugins.themes.journalEditorial.tabs.editorial"
+msgstr "Editorial &amp; Indexing"
+
+msgid "plugins.themes.journalEditorial.tabs.viewAllArticles"
+msgstr "View All Articles"
+
+msgid "plugins.themes.journalEditorial.tabs.fullArchive"
+msgstr "Full Archive"
+
+msgid "plugins.themes.journalEditorial.tabs.emptyArticles"
+msgstr "No published articles yet. New research will appear here after publication."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyViews"
+msgstr "View statistics will appear once articles receive readers."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyCitations"
+msgstr "Citation metrics will appear as articles are cited."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyIssues"
+msgstr "No issues have been published yet."
+
+msgid "plugins.themes.journalEditorial.tabs.emptyAnnouncements"
+msgstr "No announcements have been posted yet."
+
+msgid "plugins.themes.journalEditorial.about.title"
+msgstr "About the Journal"
+
+msgid "plugins.themes.journalEditorial.about.empty"
+msgstr "Journal description has not been added yet."
+
+msgid "plugins.themes.journalEditorial.about.focusScope"
+msgstr "Focus &amp; Scope"
+
+msgid "plugins.themes.journalEditorial.about.jrdcIdentityTitle"
+msgstr "Who We Are"
+
+msgid "plugins.themes.journalEditorial.about.jrdcIdentity"
+msgstr "Yayasan Ratu Dirgantara Cendikiawan (JRDC) is a scientific journal publisher focused on Economics and Business. We support education, advance scientific knowledge, and disseminate research and academic thought by providing a credible publication space for academics, researchers, students, and practitioners."
+
+msgid "plugins.themes.journalEditorial.about.jrdcVisionTitle"
+msgstr "Vision"
+
+msgid "plugins.themes.journalEditorial.about.jrdcVision"
+msgstr "To become a credible scientific journal publisher that advances knowledge in Economics and Business through quality, integrity-driven, and beneficial publications for academic and professional communities."
+
+msgid "plugins.themes.journalEditorial.about.jrdcMissionTitle"
+msgstr "Mission"
+
+msgid "plugins.themes.journalEditorial.about.jrdcMission"
+msgstr "<ol><li>Advance knowledge in Economics and Business by publishing research and scientific studies.</li><li>Conduct journal publishing that prioritises article quality, editorial accuracy, and scientific publication standards.</li><li>Encourage a culture of research, writing, and scientific publication among academics, researchers, and students.</li><li>Facilitate the dissemination of research relevant to theory building, decision making, and economic and business practice.</li><li>Uphold publication ethics, academic integrity, and open access to scientific knowledge.</li></ol>"
+
+msgid "plugins.themes.journalEditorial.about.jrdcScopeTitle"
+msgstr "Focus &amp; Scope"
+
+msgid "plugins.themes.journalEditorial.about.jrdcScope"
+msgstr "JRDC's initial publishing focus is Economics and Business. The scope covers management, accounting, finance, marketing, entrepreneurship, and development economics. Studies may include theory building, empirical research, policy analysis, case studies, and the application of economic and business concepts in various contexts. The scope may expand gradually according to scholarly needs while maintaining Economics and Business as the core orientation."
+
+msgid "plugins.themes.journalEditorial.about.jrdcCommitmentTitle"
+msgstr "Editorial Commitment"
+
+msgid "plugins.themes.journalEditorial.about.jrdcCommitment"
+msgstr "JRDC is committed to responsible scholarly publishing through peer review, academic integrity, and open access. Peer review safeguards the quality and scientific merit of every published manuscript. Integrity is upheld through respect for originality, accurate citation, transparency, and the prevention of unethical publication practices. Open access ensures research findings can be used more broadly by researchers, students, practitioners, and the wider community. This commitment builds trust between authors and readers."
+
+msgid "plugins.themes.journalEditorial.identity.title"
+msgstr "Journal Identity"
+
+msgid "plugins.themes.journalEditorial.identity.name"
+msgstr "Journal Name"
+
+msgid "plugins.themes.journalEditorial.identity.contact"
+msgstr "Contact"
+
+msgid "plugins.themes.journalEditorial.identity.email"
+msgstr "Email"
+
+msgid "plugins.themes.journalEditorial.editorial.title"
+msgstr "Editorial Leadership"
+
+msgid "plugins.themes.journalEditorial.editorial.desc"
+msgstr "Meet the editorial team behind {$journalName}."
+
+msgid "plugins.themes.journalEditorial.editorial.viewTeam"
+msgstr "View Editorial Team"
+
+msgid "plugins.themes.journalEditorial.indexing.compactTitle"
+msgstr "Indexed &amp; Abstracted In"
+
+msgid "plugins.themes.journalEditorial.indexing.title"
+msgstr "Indexed and Abstracted In"
+
+msgid "plugins.themes.journalEditorial.indexing.desc"
+msgstr "Our publications are systematically harvested by global scientific databases and repositories."
+
+msgid "plugins.themes.journalEditorial.authors.title"
+msgstr "For Authors &amp; Researchers"
+
+msgid "plugins.themes.journalEditorial.authors.desc"
+msgstr "Everything you need to prepare, submit, and publish your research."
+
+msgid "plugins.themes.journalEditorial.authors.submitTitle"
+msgstr "Submit Your Research"
+
+msgid "plugins.themes.journalEditorial.authors.submitDesc"
+msgstr "Start a new submission and join our community of scholars."
+
+msgid "plugins.themes.journalEditorial.authors.teamTitle"
+msgstr "Editorial Team"
+
+msgid "plugins.themes.journalEditorial.authors.teamDesc"
+msgstr "Meet the editors and reviewers guiding the journal."
+
+msgid "plugins.themes.journalEditorial.authors.guidelinesTitle"
+msgstr "Author Guidelines"
+
+msgid "plugins.themes.journalEditorial.authors.guidelinesDesc"
+msgstr "Read the formatting, scope, and submission requirements."
+
+msgid "plugins.themes.journalEditorial.authors.searchTitle"
+msgstr "Search Articles"
+
+msgid "plugins.themes.journalEditorial.authors.searchDesc"
+msgstr "Find research by title, author, keyword, or DOI."
+
+msgid "plugins.themes.journalEditorial.authors.archiveTitle"
+msgstr "Explore Archives"
+
+msgid "plugins.themes.journalEditorial.authors.archiveDesc"
+msgstr "Browse every published issue and article."
+
+msgid "plugins.themes.journalEditorial.authors.privacyTitle"
+msgstr "Privacy Statement"
+
+msgid "plugins.themes.journalEditorial.authors.privacyDesc"
+msgstr "Learn how we protect author and reader data."
+
+msgid "plugins.themes.journalEditorial.why.title"
+msgstr "Why Publish With Us"
+
+msgid "plugins.themes.journalEditorial.why.desc"
+msgstr "A rigorous, open, and author-friendly publishing experience in Economics and Business."
+
+msgid "plugins.themes.journalEditorial.why.oaTitle"
+msgstr "Open Access"
+
+msgid "plugins.themes.journalEditorial.why.oaDesc"
+msgstr "Your article is free to read and download for researchers, students, and practitioners worldwide."
+
+msgid "plugins.themes.journalEditorial.why.refereedTitle"
+msgstr "Double-Blind Peer Review"
+
+msgid "plugins.themes.journalEditorial.why.refereedDesc"
+msgstr "Every manuscript is evaluated through a rigorous peer-review process by subject-matter experts."
+
+msgid "plugins.themes.journalEditorial.why.indexedTitle"
+msgstr "Indexed &amp; Visible"
+
+msgid "plugins.themes.journalEditorial.why.indexedDesc"
+msgstr "Publications are systematically harvested by scholarly databases and repositories for broad discoverability."
+
+msgid "plugins.themes.journalEditorial.why.fastTitle"
+msgstr "Timely Process"
+
+msgid "plugins.themes.journalEditorial.why.fastDesc"
+msgstr "Efficient editorial handling and clear communication keep the path from submission to publication on track."
+
+msgid "plugins.themes.journalEditorial.footer.quickLinks"
+msgstr "Quick Links"
+
+msgid "plugins.themes.journalEditorial.footer.about"
+msgstr "About"
+
+msgid "plugins.themes.journalEditorial.footer.aboutJournal"
+msgstr "About the Journal"
+
+msgid "plugins.themes.journalEditorial.footer.focusScope"
+msgstr "Focus and Scope"
+
+msgid "plugins.themes.journalEditorial.footer.editorialTeam"
+msgstr "Editorial Team"
+
+msgid "plugins.themes.journalEditorial.footer.indexing"
+msgstr "Indexing"
+
+msgid "plugins.themes.journalEditorial.footer.announcements"
+msgstr "Announcements"
+
+msgid "plugins.themes.journalEditorial.footer.currentIssue"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.footer.archives"
+msgstr "Archives"
+
+msgid "plugins.themes.journalEditorial.footer.privacy"
+msgstr "Privacy Statement"
+
+msgid "plugins.themes.journalEditorial.footer.contact"
+msgstr "Contact"
+
+msgid "plugins.themes.journalEditorial.footer.forAuthors"
+msgstr "For Authors"
+
+msgid "plugins.themes.journalEditorial.footer.guidelines"
+msgstr "Author Guidelines"
+
+msgid "plugins.themes.journalEditorial.footer.submit"
+msgstr "Submit Manuscript"
+
+msgid "plugins.themes.journalEditorial.footer.ethics"
+msgstr "Publication Ethics"
+
+msgid "plugins.themes.journalEditorial.footer.openAccess"
+msgstr "Open Access"
+
+msgid "plugins.themes.journalEditorial.footer.contactOffice"
+msgstr "Contact &amp; Editorial Office"
+
+msgid "plugins.themes.journalEditorial.footer.support"
+msgstr "Support"
+
+msgid "plugins.themes.journalEditorial.footer.readMore"
+msgstr "Read More"
+
+msgid "plugins.themes.journalEditorial.footer.jrdcDesc"
+msgstr "Yayasan Ratu Dirgantara Cendikiawan (JRDC) publishes peer-reviewed open-access journals focused on Economics and Business."
+
+msgid "plugins.themes.journalEditorial.footer.rights"
+msgstr "All rights reserved. Powered by Open Journal Systems."
+
+msgid "plugins.themes.journalEditorial.footer.theme"
+msgstr "Theme"
+
+msgid "plugins.themes.journalEditorial.auth.tagline"
+msgstr "A peer-reviewed open-access journal for research in Economics and Business."
+
+msgid "plugins.themes.journalEditorial.pdf.title"
+msgstr "PDF"
+
+msgid "plugins.themes.journalEditorial.pdf.noEmbed"
+msgstr "Your browser does not support embedded PDFs."
+
+msgid "plugins.themes.journalEditorial.pdf.download"
+msgstr "Download or view the PDF"
+
+msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.uploadCover"
+msgstr "Upload a cover image in issue settings"
+
+msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
+msgstr "View Current Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.archive"
+msgstr "Browse Archives"
+
+msgid "plugins.themes.journalEditorial.currentIssue.eyebrow"
+msgstr "Current Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.viewIssue"
+msgstr "View Issue"
+
+msgid "plugins.themes.journalEditorial.currentIssue.archive"
+msgstr "Browse Archive"
+
+msgid "plugins.themes.journalEditorial.currentIssue.uploadCover"
+msgstr "Upload cover image in the issue settings"

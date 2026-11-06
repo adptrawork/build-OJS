@@ -1,6 +1,18 @@
 {
   "version": 1,
   "skills": {
+    "modern-css": {
+      "source": "moderncss/skills",
+      "sourceType": "github",
+      "skillPath": "skills/modern-css/SKILL.md",
+      "computedHash": "8c7b2be15b61aeb4657cf4f61a6d8879a4ffdaaf13bb381b67d8675891b806f6"
+    },
+    "modern-web-guidance": {
+      "source": "GoogleChrome/modern-web-guidance",
+      "sourceType": "github",
+      "skillPath": "skills/modern-web-guidance/SKILL.md",
+      "computedHash": "c614730bccf763448d84ed2b5c71164b0ad7410a0823da3639e62e9d9bf2b641"
+    },
     "ojs-expert": {
       "source": "global-prog/ojs-claude-skill",
       "sourceType": "github",
