@@ -32,6 +32,9 @@
 	--jrdc-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
 	--jrdc-max-width: 80rem; /* 7xl */
 	--jrdc-base-font-size: 16px;
+	--jrdc-font-sans: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	--jrdc-font-serif: 'Merriweather', serif;
+	--jrdc-font-display: 'Cinzel', serif;
 }
 
 html.dark {
@@ -311,7 +314,8 @@ html.dark .jrdc-dropdown-menu {
 }
 
 .jrdc-dropdown:hover .jrdc-dropdown-menu,
-.jrdc-dropdown:focus-within .jrdc-dropdown-menu {
+.jrdc-dropdown:focus-within .jrdc-dropdown-menu,
+.jrdc-dropdown.is-open .jrdc-dropdown-menu {
 	display: block;
 }
 
@@ -494,6 +498,7 @@ html.dark .jrdc-mobile-nav {
 .jrdc-mobile-nav a {
 	display: block;
 	padding: 0.75rem 0.5rem;
+	min-height: 44px;
 	color: var(--jrdc-slate-700);
 	font-weight: 500;
 	border-bottom: 1px solid var(--jrdc-slate-100);
@@ -1309,4 +1314,12 @@ html.dark .jrdc-side-col .pkp_block.block_language select {
 	background: var(--jrdc-slate-800);
 	border-color: var(--jrdc-slate-700);
 	color: #fff;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
 }

@@ -8,6 +8,8 @@
  */
 
 import('lib.pkp.classes.plugins.ThemePlugin');
+import('lib.pkp.classes.plugins.HookRegistry');
+import('lib.pkp.classes.core.Registry');
 
 class PrototypeThemePlugin extends ThemePlugin {
 
@@ -19,6 +21,9 @@ class PrototypeThemePlugin extends ThemePlugin {
 	public function init() {
 		// Inherit base templates/behaviour from OJS default theme
 		$this->setParent('defaultthemeplugin');
+
+		// Assign current issue to index template (OJS does not by default)
+		HookRegistry::register('TemplateManager::display', array($this, 'assignCurrentIssue'));
 
 		// ---- Theme Options (Admin Panel) ----
 		$this->addOption('primaryColour', 'colour', array(
@@ -141,6 +146,27 @@ class PrototypeThemePlugin extends ThemePlugin {
 		if ($this->getOption('useGoogleFonts') !== '0') {
 			$this->addStyle('prototype-google-fonts', 'https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap', array('baseUrl' => ''));
 		}
+	}
+
+	/**
+	 * Assign the current issue to the index journal template so the
+	 * hero cover, issue identification and article list render.
+	 */
+	public function assignCurrentIssue($hookName, $args) {
+		$templateMgr =& $args[0];
+		$template =& $args[1];
+		if ($template !== 'frontend/pages/indexJournal.tpl') return false;
+		$request = Registry::get('request');
+		$journal = $request->getJournal();
+		if (!$journal) return false;
+		$issueDao = DAORegistry::getDAO('IssueDAO');
+		$issue = $issueDao->getCurrent($journal->getId(), true);
+		if ($issue) {
+			import('pages.issue.IssueHandler');
+			IssueHandler::_setupIssueTemplate($request, $issue);
+			$templateMgr->assign('currentIssue', $issue);
+		}
+		return false;
 	}
 
 	public function getDisplayName() {

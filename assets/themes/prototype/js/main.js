@@ -1,6 +1,6 @@
 /**
  * Prototype Theme — Frontend scripts
- * Dark mode persistence + mobile nav (robust: works whether DOM ready or not)
+ * Dark mode persistence + mobile nav + dropdown (parity with prototype script.js)
  */
 (function () {
 	'use strict';
@@ -35,16 +35,29 @@
 		});
 	}
 
-	// Apply early
 	applyMode(getPreferred());
 
 	function init() {
-		// Event delegation for dark mode toggle (robust against late render)
+		// Dark mode toggle (delegation)
 		document.addEventListener('click', function (e) {
 			var btn = e.target && e.target.closest ? e.target.closest('[data-jrdc-theme-toggle]') : null;
-			if (!btn) return;
-			var isDark = document.documentElement.classList.contains('dark');
-			applyMode(isDark ? 'light' : 'dark');
+			if (btn) {
+				var isDark = document.documentElement.classList.contains('dark');
+				applyMode(isDark ? 'light' : 'dark');
+				return;
+			}
+			// Dropdown toggle
+			var toggle = e.target && e.target.closest ? e.target.closest('.jrdc-dropdown-toggle') : null;
+			if (toggle) {
+				e.preventDefault();
+				var dd = toggle.closest('.jrdc-dropdown');
+				if (dd) dd.classList.toggle('is-open');
+				return;
+			}
+			// close open dropdowns when clicking outside
+			document.querySelectorAll('.jrdc-dropdown.is-open').forEach(function (d) {
+				if (!d.contains(e.target)) d.classList.remove('is-open');
+			});
 		});
 
 		// Mobile nav
@@ -56,6 +69,20 @@
 				navToggle.setAttribute('aria-expanded', mobileNav.classList.contains('is-open') ? 'true' : 'false');
 			});
 		}
+
+		// Escape close
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') {
+				document.querySelectorAll('.jrdc-dropdown.is-open').forEach(function (d) { d.classList.remove('is-open'); });
+				var mn = document.querySelector('[data-jrdc-mobile-nav]');
+				if (mn && mn.classList.contains('is-open')) {
+					mn.classList.remove('is-open');
+					var nt = document.querySelector('[data-jrdc-nav-toggle]');
+					if (nt) nt.setAttribute('aria-expanded', 'false');
+				}
+			}
+		});
+
 		updateToggleIcons();
 	}
 

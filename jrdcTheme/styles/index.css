@@ -1,0 +1,112 @@
+:root {
+    --primary-color: #c2410c;
+    --hero-color: #0b2038;
+    --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Merriweather', serif;
+    --border-radius: 0.75rem;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: #f8fafc;
+    color: #334155;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+a:hover {
+    color: #9a3412;
+}
+
+.jrdc-hero {
+    background-color: var(--hero-color);
+    color: white;
+    padding: 4rem 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.jrdc-hero h1 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.jrdc-hero p {
+    font-size: 1.125rem;
+    max-width: 60ch;
+    color: #cbd5e1;
+}
+
+.article-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.article-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.article-card h3 {
+    margin-top: 0;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.article-card h3 a {
+    color: #1e293b;
+}
+.article-card h3 a:hover {
+    color: var(--primary-color);
+}
+
+.article-meta {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.article-abstract {
+    color: #475569;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 0.75em;
+    font-weight: 700;
+    border-radius: 9999px;
+    margin-right: 0.5rem;
+}
+
+.badge-doi { background-color: #dbeafe; color: #1e40af; }
+.badge-open-access { background-color: #dcfce7; color: #166534; }
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #9a3412;
+    color: white;
+}
