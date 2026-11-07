@@ -1,0 +1,118 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Prototype Theme\n"
+"Language: id_ID\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.themes.prototype.name"
+msgstr "Tema JRDC"
+
+msgid "plugins.themes.prototype.description"
+msgstr "Tema Modern Academic Editorial untuk OJS 3.3. Terinspirasi dari desain Jurnal Ekonomi dan Bisnis JRDC — warna burnt orange, hero navy dalam, dark mode, dan semua komponen dapat dikonfigurasi dari panel admin."
+
+msgid "plugins.themes.prototype.option.primaryColour.label"
+msgstr "Warna Primer"
+
+msgid "plugins.themes.prototype.option.primaryColour.description"
+msgstr "Warna merek utama untuk tombol, status aktif, badge, dan highlight (default: Burnt Orange #c2410c)."
+
+msgid "plugins.themes.prototype.option.primaryHoverColour.label"
+msgstr "Warna Hover Primer"
+
+msgid "plugins.themes.prototype.option.primaryHoverColour.description"
+msgstr "Warna lebih gelap saat hover tombol primer."
+
+msgid "plugins.themes.prototype.option.navyHeroColour.label"
+msgstr "Warna Navy Hero"
+
+msgid "plugins.themes.prototype.option.navyHeroColour.description"
+msgstr "Navy dalam untuk latar hero di beranda."
+
+msgid "plugins.themes.prototype.option.navyDarkColour.label"
+msgstr "Navy Mode Gelap"
+
+msgid "plugins.themes.prototype.option.navyDarkColour.description"
+msgstr "Navy terdalam untuk mode gelap."
+
+msgid "plugins.themes.prototype.option.enableDarkMode.label"
+msgstr "Toggle Mode Gelap"
+
+msgid "plugins.themes.prototype.option.enableDarkMode.description"
+msgstr "Tampilkan saklar mode gelap/terang di header."
+
+msgid "plugins.themes.prototype.option.enableDarkMode.enable"
+msgstr "Aktifkan"
+
+msgid "plugins.themes.prototype.option.enableDarkMode.disable"
+msgstr "Nonaktifkan"
+
+msgid "plugins.themes.prototype.option.showHeroCover.label"
+msgstr "Tampilkan Cover di Hero"
+
+msgid "plugins.themes.prototype.option.showHeroCover.description"
+msgstr "Tampilkan gambar cover issue terkini di dalam hero beranda."
+
+msgid "plugins.themes.prototype.option.heroEyebrow.label"
+msgstr "Teks Eyebrow Hero"
+
+msgid "plugins.themes.prototype.option.heroEyebrow.description"
+msgstr "Label kecil huruf besar di atas judul jurnal pada hero."
+
+msgid "plugins.themes.prototype.option.showIssueCoverOnHomepage.label"
+msgstr "Tampilkan Cover Issue"
+
+msgid "plugins.themes.prototype.option.showIssueCoverOnHomepage.description"
+msgstr "Tampilkan cover issue terkini di beranda."
+
+msgid "plugins.themes.prototype.option.showJournalDescription.label"
+msgstr "Tampilkan Deskripsi Jurnal"
+
+msgid "plugins.themes.prototype.option.showJournalDescription.description"
+msgstr "Tampilkan blok deskripsi/tentang jurnal di beranda."
+
+msgid "plugins.themes.prototype.option.showAnnouncementsOnHomepage.label"
+msgstr "Tampilkan Pengumuman di Beranda"
+
+msgid "plugins.themes.prototype.option.showAnnouncementsOnHomepage.description"
+msgstr "Tampilkan pengumuman terbaru di beranda."
+
+msgid "plugins.themes.prototype.option.announcementsHomepageCount.label"
+msgstr "Jumlah Pengumuman"
+
+msgid "plugins.themes.prototype.option.announcementsHomepageCount.description"
+msgstr "Berapa banyak pengumuman yang ditampilkan di beranda (default: 3)."
+
+msgid "plugins.themes.prototype.option.showCurrentIssueArticles.label"
+msgstr "Tampilkan Artikel Issue Terkini"
+
+msgid "plugins.themes.prototype.option.showCurrentIssueArticles.description"
+msgstr "Daftar artikel dari issue terkini di beranda."
+
+msgid "plugins.themes.prototype.option.sidebarPosition.label"
+msgstr "Posisi Sidebar"
+
+msgid "plugins.themes.prototype.option.sidebarPosition.description"
+msgstr "Letak blok sidebar."
+
+msgid "plugins.themes.prototype.option.sidebarPosition.right"
+msgstr "Kanan"
+
+msgid "plugins.themes.prototype.option.sidebarPosition.left"
+msgstr "Kiri"
+
+msgid "plugins.themes.prototype.option.sidebarPosition.none"
+msgstr "Sembunyikan Sidebar"
+
+msgid "plugins.themes.prototype.option.baseFontSize.label"
+msgstr "Ukuran Font Dasar (px)"
+
+msgid "plugins.themes.prototype.option.baseFontSize.description"
+msgstr "Ukuran font root dalam pixel (disarankan 15–17)."
+
+msgid "plugins.themes.prototype.option.useGoogleFonts.label"
+msgstr "Muat Google Fonts"
+
+msgid "plugins.themes.prototype.option.useGoogleFonts.description"
+msgstr "Muat Inter + Merriweather dari Google Fonts. Nonaktifkan jika ingin system font atau self-host."
