@@ -1,0 +1,118 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JRDC Theme\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "plugins.themes.jrdc.name"
+msgstr "JRDC Theme"
+
+msgid "plugins.themes.jrdc.description"
+msgstr "Modern Academic Editorial theme for OJS 3.3. Inspired by Jurnal Ekonomi dan Bisnis JRDC design system — warm burnt orange, deep navy hero, dark mode, and fully configurable components from the admin panel."
+
+msgid "plugins.themes.jrdc.option.primaryColour.label"
+msgstr "Primary Colour"
+
+msgid "plugins.themes.jrdc.option.primaryColour.description"
+msgstr "Main brand colour used for buttons, active states, badges and highlights (default: Burnt Orange #c2410c)."
+
+msgid "plugins.themes.jrdc.option.primaryHoverColour.label"
+msgstr "Primary Hover Colour"
+
+msgid "plugins.themes.jrdc.option.primaryHoverColour.description"
+msgstr "Darker shade used when hovering primary buttons."
+
+msgid "plugins.themes.jrdc.option.navyHeroColour.label"
+msgstr "Hero Navy Colour"
+
+msgid "plugins.themes.jrdc.option.navyHeroColour.description"
+msgstr "Deep navy used for the homepage hero banner background."
+
+msgid "plugins.themes.jrdc.option.navyDarkColour.label"
+msgstr "Dark Mode Navy"
+
+msgid "plugins.themes.jrdc.option.navyDarkColour.description"
+msgstr "Deepest navy used in dark mode hero and accents."
+
+msgid "plugins.themes.jrdc.option.enableDarkMode.label"
+msgstr "Dark Mode Toggle"
+
+msgid "plugins.themes.jrdc.option.enableDarkMode.description"
+msgstr "Show a dark/light mode switcher in the header."
+
+msgid "plugins.themes.jrdc.option.enableDarkMode.enable"
+msgstr "Enable"
+
+msgid "plugins.themes.jrdc.option.enableDarkMode.disable"
+msgstr "Disable"
+
+msgid "plugins.themes.jrdc.option.showHeroCover.label"
+msgstr "Show Issue Cover in Hero"
+
+msgid "plugins.themes.jrdc.option.showHeroCover.description"
+msgstr "Display the current issue cover image inside the homepage hero section."
+
+msgid "plugins.themes.jrdc.option.heroEyebrow.label"
+msgstr "Hero Eyebrow Text"
+
+msgid "plugins.themes.jrdc.option.heroEyebrow.description"
+msgstr "Small uppercase label shown above the journal title in the hero (e.g. “JURNAL ILMIAH • EKONOMI DAN BISNIS”)."
+
+msgid "plugins.themes.jrdc.option.showIssueCoverOnHomepage.label"
+msgstr "Show Current Issue Cover"
+
+msgid "plugins.themes.jrdc.option.showIssueCoverOnHomepage.description"
+msgstr "Display the current issue cover on the homepage."
+
+msgid "plugins.themes.jrdc.option.showJournalDescription.label"
+msgstr "Show Journal Description"
+
+msgid "plugins.themes.jrdc.option.showJournalDescription.description"
+msgstr "Show the journal description / about block on the homepage."
+
+msgid "plugins.themes.jrdc.option.showAnnouncementsOnHomepage.label"
+msgstr "Show Announcements on Homepage"
+
+msgid "plugins.themes.jrdc.option.showAnnouncementsOnHomepage.description"
+msgstr "Display recent announcements on the homepage."
+
+msgid "plugins.themes.jrdc.option.announcementsHomepageCount.label"
+msgstr "Number of Announcements"
+
+msgid "plugins.themes.jrdc.option.announcementsHomepageCount.description"
+msgstr "How many announcements to show on the homepage (default: 3)."
+
+msgid "plugins.themes.jrdc.option.showCurrentIssueArticles.label"
+msgstr "Show Current Issue Articles"
+
+msgid "plugins.themes.jrdc.option.showCurrentIssueArticles.description"
+msgstr "List articles from the current issue on the homepage."
+
+msgid "plugins.themes.jrdc.option.sidebarPosition.label"
+msgstr "Sidebar Position"
+
+msgid "plugins.themes.jrdc.option.sidebarPosition.description"
+msgstr "Where to place the sidebar blocks."
+
+msgid "plugins.themes.jrdc.option.sidebarPosition.right"
+msgstr "Right"
+
+msgid "plugins.themes.jrdc.option.sidebarPosition.left"
+msgstr "Left"
+
+msgid "plugins.themes.jrdc.option.sidebarPosition.none"
+msgstr "Hide Sidebar"
+
+msgid "plugins.themes.jrdc.option.baseFontSize.label"
+msgstr "Base Font Size (px)"
+
+msgid "plugins.themes.jrdc.option.baseFontSize.description"
+msgstr "Root font size in pixels (recommended 15–17)."
+
+msgid "plugins.themes.jrdc.option.useGoogleFonts.label"
+msgstr "Load Google Fonts"
+
+msgid "plugins.themes.jrdc.option.useGoogleFonts.description"
+msgstr "Load Inter + Merriweather from Google Fonts. Disable if you prefer system fonts or self-hosting."
