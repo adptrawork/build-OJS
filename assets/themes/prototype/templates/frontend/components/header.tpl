@@ -1,22 +1,17 @@
 {**
  * templates/frontend/components/header.tpl
- * Prototype (Bootstrap-based) theme — Site header
- * Maps prototype header (logo + nav + search + dark-mode toggle) to OJS 3.3 header.
- * Bootstrap 5 grid/utilities + custom CSS for exact prototype parity.
  *}
 {strip}
-	{* Determine active page for nav highlighting *}
 	{assign var="currentPage" value=$requestedPage|default:"index"}
 {/strip}
 
 <!DOCTYPE html>
-<html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}" class="{if $activeTheme->getOption('enableDarkMode') != '0'}jrdc-has-darkmode{/if}">
+<html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}" class="jrdc-html">
 <head>
 	<meta charset="{$defaultCharset|escape}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
 		{$pageTitleTranslated|strip_tags}
-		{* Add journal name *}
 		{if $requestedPage|escape|default:"index" != 'index' && $currentContext && $currentContext->getLocalizedName()}
 			| {$currentContext->getLocalizedName()}
 		{/if}
@@ -26,100 +21,102 @@
 	{load_stylesheet context="frontend"}
 	{load_script context="frontend"}
 
-	{* Early dark-mode to prevent flash *}
 	<script>
-		(function(){ldelim}
-			try {ldelim}
+		(function(){
+			try {
 				var m = localStorage.getItem('jrdc-theme-mode');
-				if (m === 'dark' || (!m && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {ldelim}
+				if (m === 'dark' || (!m && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
 					document.documentElement.classList.add('dark');
-				{rdelim}
-			{rdelim} catch(e) {ldelim}{rdelim}
-		{rdelim})();
+				}
+			} catch(e) {}
+		})();
 	</script>
 </head>
-<body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"} jrdc-body">
+<body class="jrdc-body">
 
 	<a class="jrdc-skip-link" href="#jrdc-main">{translate key="navigation.skip.main"}</a>
 
-	<header class="jrdc-header" role="banner">
-		<div class="jrdc-container">
-			<div class="jrdc-header-inner">
-				{* Brand *}
-				<a class="jrdc-brand" href="{url page="index"}">
-					{if $displayPageHeaderLogo}
-						<span class="jrdc-brand-logo">
-							<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" {if $displayPageHeaderLogo.altText}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{$currentContext->getLocalizedName()|escape}"{/if}>
-						</span>
-					{elseif $displayPageHeaderTitle}
-						<span class="jrdc-brand-logo" aria-hidden="true">
-							<svg viewBox="0 0 64 64" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect x="4" y="4" width="56" height="56" rx="12" fill="#0F284E" stroke="#D4AF37" stroke-width="2"/>
-								<path d="M18 42C23 39.5 28.5 39.8 32 42.5C35.5 39.8 41 39.5 46 42V26C41 23.5 35.5 23.8 32 26.5C28.5 23.8 23 23.5 18 26V42Z" fill="none" stroke="#FFFFFF" stroke-width="1.8"/>
-								<line x1="32" y1="26.5" x2="32" y2="42.5" stroke="#FFFFFF" stroke-width="1.8"/>
-							</svg>
-						</span>
-					{/if}
-					<span class="jrdc-brand-text">
-						<span class="jrdc-brand-title">
-							{if $displayPageHeaderTitle && !$displayPageHeaderTitle && is_string($displayPageHeaderTitle)}
-								{$displayPageHeaderTitle|escape}
-							{elseif $currentContext}
-								{$currentContext->getLocalizedName()|escape}
-							{else}
-								{$siteTitle|escape}
-							{/if}
-						</span>
-						{if $currentContext}
-							<span class="jrdc-brand-subtitle">{$currentContext->getData('publisherInstitution')|escape|default:""}</span>
-						{/if}
-					</span>
-				</a>
-
-				{* Desktop Navigation *}
-				<nav class="jrdc-nav" aria-label="{translate key="common.navigation.site"}">
-					{load_menu name="primary" id="jrdcPrimaryNav" ulClass="" liClass=""}
-				</nav>
-
-				{* Actions *}
-				<div class="jrdc-header-actions">
-					{* Search *}
-					<form class="jrdc-search" action="{url page="search" op="search"}" method="post" role="search">
-						{csrf}
-						<input type="text" name="query" value="{$searchQuery|escape}" placeholder="{translate key="common.search"}..." aria-label="{translate key="common.search"}">
-						<button type="submit" aria-label="{translate key="common.search"}">
-							<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-						</button>
-					</form>
-
-					{* Login / User *}
-					{if $isUserLoggedIn}
-						<a class="jrdc-btn jrdc-btn-dark" href="{url page="submissions"}">{translate key="navigation.dashboard"}</a>
-					{else}
-						<a class="jrdc-btn jrdc-btn-dark" href="{url page="login"}">{translate key="user.login"}</a>
-					{/if}
-
-					{* Dark mode *}
-					{if $activeTheme->getOption('enableDarkMode') != '0'}
-						<button type="button" class="jrdc-btn jrdc-btn-icon" data-jrdc-theme-toggle title="Toggle dark mode" aria-label="Toggle dark mode">
-							<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-								<path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-							</svg>
-						</button>
-					{/if}
-
-					{* Mobile toggle *}
-					<button type="button" class="jrdc-nav-toggle" data-jrdc-nav-toggle aria-expanded="false" aria-controls="jrdcMobileNav" aria-label="{translate key="common.menu"}">
-						<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-							<path d="M4 6h16M4 12h16M4 18h16"/>
-						</svg>
-					</button>
+	<header class="jrdc-header">
+		<div class="jrdc-container jrdc-header-inner">
+			<a class="jrdc-brand" href="{url page="index"}">
+				<div class="jrdc-brand-logo-box">
+					<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<defs>
+							<linearGradient id="navHeaderBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+								<stop offset="0%" stop-color="#0F284E"></stop>
+								<stop offset="100%" stop-color="#0A192F"></stop>
+							</linearGradient>
+							<linearGradient id="navHeaderGold" x1="0%" y1="0%" x2="100%" y2="100%">
+								<stop offset="0%" stop-color="#F6D365"></stop>
+								<stop offset="100%" stop-color="#D4AF37"></stop>
+							</linearGradient>
+						</defs>
+						<rect x="4" y="4" width="56" height="56" rx="12" fill="url(#navHeaderBlue)" stroke="url(#navHeaderGold)" stroke-width="2"></rect>
+						<path d="M18 42C23 39.5 28.5 39.8 32 42.5C35.5 39.8 41 39.5 46 42V26C41 23.5 35.5 23.8 32 26.5C28.5 23.8 23 23.5 18 26V42Z" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"></path>
+						<line x1="32" y1="26.5" x2="32" y2="42.5" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity="0.9"></line>
+						<path d="M20 35L27 29L33 32L43 20" fill="none" stroke="url(#navHeaderGold)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+						<path d="M38 20H43V25" fill="none" stroke="url(#navHeaderGold)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+						<circle cx="32" cy="17" r="1.8" fill="url(#navHeaderGold)"></circle>
+					</svg>
 				</div>
-			</div>
+				<div class="jrdc-brand-text">
+					<span class="jrdc-brand-title">Jurnal Ratu Dirgantara</span>
+					<span class="jrdc-brand-subtitle">Cendekiawan</span>
+				</div>
+			</a>
 
-			{* Mobile Navigation *}
-			<nav id="jrdcMobileNav" class="jrdc-mobile-nav" data-jrdc-mobile-nav aria-label="{translate key="common.navigation.site"}">
-				{load_menu name="primary" id="jrdcMobilePrimary" ulClass="" liClass=""}
+			<nav class="jrdc-nav desktop-only">
+				<a href="{url page="index"}" class="jrdc-nav-link {if $currentPage == 'index'}active{/if}">Beranda</a>
+				<a href="{url page="issue" op="archive"}" class="jrdc-nav-link {if $currentPage == 'issue' && $requestedOp == 'archive'}active{/if}">Arsip</a>
+
+				<div class="jrdc-dropdown">
+					<button class="jrdc-nav-link jrdc-dropdown-btn">
+						Tentang
+						<svg class="jrdc-dropdown-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+					</button>
+					<div class="jrdc-dropdown-menu">
+						<a href="{url page="about"}">Tentang Jurnal</a>
+						<a href="{url page="about" op="editorialTeam"}">Dewan Redaksi</a>
+						<a href="{url page="about"}">Kebijakan Etika</a>
+						<a href="{url page="about" op="contact"}">Kontak</a>
+					</div>
+				</div>
+
+				<a href="{url page="announcement"}" class="jrdc-nav-link {if $currentPage == 'announcement'}active{/if}">Pengumuman</a>
 			</nav>
+
+			<div class="jrdc-header-actions">
+				<form class="jrdc-search desktop-only" action="{url page="search" op="search"}" method="post">
+					{csrf}
+					<input type="text" name="query" placeholder="Cari artikel..." value="{$searchQuery|escape}">
+					<button type="submit">
+						<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path></svg>
+					</button>
+				</form>
+
+				{if $isUserLoggedIn}
+					<a class="jrdc-btn-dark" href="{url page="submissions"}">Dashboard</a>
+				{else}
+					<a class="jrdc-btn-dark" href="{url page="login"}">Masuk</a>
+				{/if}
+
+				<button class="jrdc-btn-icon desktop-only" onclick="document.documentElement.classList.toggle('dark')">
+					<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+				</button>
+
+				<button class="jrdc-mobile-toggle mobile-only" id="jrdc-mobile-btn">
+					<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+				</button>
+			</div>
 		</div>
 	</header>
+
+	<div id="jrdc-mobile-nav" class="jrdc-mobile-nav">
+		<a href="{url page="index"}">Beranda</a>
+		<a href="{url page="issue" op="archive"}">Arsip</a>
+		<a href="{url page="about"}">Tentang Jurnal</a>
+		<a href="{url page="about" op="editorialTeam"}">Dewan Redaksi</a>
+		<a href="{url page="announcement"}">Pengumuman</a>
+	</div>
+
+	<main id="jrdc-main" class="jrdc-main">
