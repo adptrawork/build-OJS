@@ -35,7 +35,7 @@
 						<dl class="jrdc-hero-meta">
 							{if $currentContext->getData('publishingMode') || $currentIssue}
 								<div>
-									<dt>{translate key="issue.issues"}</dt>
+									<dt>TERBITAN</dt>
 									<dd>
 										{if $currentIssue}
 											{$currentIssue->getIssueIdentification()|escape}
@@ -47,7 +47,7 @@
 							{/if}
 							{if $currentContext->getData('publisherInstitution')}
 								<div>
-									<dt>{translate key="context.context"} / Publisher</dt>
+									<dt>PUBLISHER</dt>
 									<dd>{$currentContext->getData('publisherInstitution')|escape}</dd>
 								</div>
 							{/if}
@@ -92,24 +92,18 @@
 						</div>
 
 						{* Quick info cards from custom blocks or static *}
-						<div class="jrdc-info-grid">
-							{if $currentContext->getLocalizedData('focusScopeDesc')}
-								<div class="jrdc-info-card">
-									<h3>{translate key="about.focusAndScope"}</h3>
-									<p>{$currentContext->getLocalizedData('focusScopeDesc')|strip_tags|truncate:120}</p>
-								</div>
-							{/if}
+						<div class="jrdc-info-grid" style="grid-template-columns: repeat(3, 1fr);">
 							<a href="{url page="about" op="editorialTeam"}" class="jrdc-info-card">
-								<h3>{translate key="about.editorialTeam"}</h3>
-								<p>{translate key="about.editorialTeam"}</p>
+								<h3>Dewan Editor</h3>
+								<p>Tim editor dan reviewer jurnal.</p>
 							</a>
 							<a href="{url page="about" op="submissions"}" class="jrdc-info-card">
-								<h3>{translate key="about.authorGuidelines"}</h3>
-								<p>{translate key="about.authorGuidelines"}</p>
+								<h3>Panduan Penulis</h3>
+								<p>Pedoman penulisan dan pengiriman naskah.</p>
 							</a>
 							<a href="{url page="about"}" class="jrdc-info-card">
-								<h3>{translate key="about.aboutContext"}</h3>
-								<p>{translate key="about.contact"}</p>
+								<h3>Tentang Jurnal</h3>
+								<p>Profil dan informasi jurnal.</p>
 							</a>
 						</div>
 					</section>
@@ -174,8 +168,8 @@
 						{/foreach}
 
 						{if !$publishedSubmissions}
-							<div class="jrdc-empty">
-								<p>{translate key="issue.noArticles"}</p>
+							<div class="jrdc-empty" style="border:2px dashed var(--jrdc-slate-300);border-radius:0.75rem;padding:2rem;text-align:center;color:var(--jrdc-slate-500);">
+								<p>Belum ada artikel</p>
 							</div>
 						{/if}
 					</section>
