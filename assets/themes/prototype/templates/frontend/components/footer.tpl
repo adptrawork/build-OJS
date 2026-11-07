@@ -30,24 +30,24 @@
 				<div class="jrdc-footer-col">
 					<h4 class="jrdc-footer-heading">Untuk Penulis</h4>
 					<ul class="jrdc-footer-links">
-						<li><a href="{url page="about" op="submissions"}">› Pedoman Penulis</a></li>
-						<li><a href="{url page="about"}">› Fokus &amp; Ruang Lingkup</a></li>
-						<li><a href="{url page="about"}">› Etika Publikasi</a></li>
-						<li><a href="{url page="about"}">› Proses Peer Review</a></li>
-						<li><a href="{url page="about" op="submissions"}">› Templat Naskah (.docx)</a></li>
-						<li><a href="{url page="submission" op="wizard"}">› Kirim Naskah Online</a></li>
+						<li><a href="{url page="about" op="submissions"}">Pedoman Penulis</a></li>
+						<li><a href="{url page="about"}">Fokus &amp; Ruang Lingkup</a></li>
+						<li><a href="{url page="about"}">Etika Publikasi</a></li>
+						<li><a href="{url page="about"}">Proses Peer Review</a></li>
+						<li><a href="{url page="about" op="submissions"}">Templat Naskah (.docx)</a></li>
+						<li><a href="{url page="submission" op="wizard"}">Kirim Naskah Online</a></li>
 					</ul>
 				</div>
 
 				<div class="jrdc-footer-col">
 					<h4 class="jrdc-footer-heading">Navigasi &amp; Arsip</h4>
 					<ul class="jrdc-footer-links">
-						<li><a href="{url page="index"}">› Beranda</a></li>
-						<li><a href="{url page="issue" op="current"}">› Edisi Terbaru</a></li>
-						<li><a href="{url page="issue" op="archive"}">› Arsip Terbitan</a></li>
-						<li><a href="{url page="about" op="editorialTeam"}">› Dewan Redaksi</a></li>
-						<li><a href="{url page="announcement"}">› Pengumuman</a></li>
-						<li><a href="{url page="about"}">› Indeksasi &amp; Abstrak</a></li>
+						<li><a href="{url page="index"}">Beranda</a></li>
+						<li><a href="{url page="issue" op="current"}">Edisi Terbaru</a></li>
+						<li><a href="{url page="issue" op="archive"}">Arsip Terbitan</a></li>
+						<li><a href="{url page="about" op="editorialTeam"}">Dewan Redaksi</a></li>
+						<li><a href="{url page="announcement"}">Pengumuman</a></li>
+						<li><a href="{url page="about"}">Indeksasi &amp; Abstrak</a></li>
 					</ul>
 				</div>
 
