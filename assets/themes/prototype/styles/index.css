@@ -3150,3 +3150,95 @@ html.dark .jrdc-side-col .pkp_block.block_language select {
 .login-footer p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
 .login-footer a { color: var(--primary-color); font-weight: 600; text-decoration: none; }
 .login-footer a:hover { text-decoration: underline; }
+
+/* =========================================================
+   Register page (appended)
+   ========================================================= */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+@media (max-width: 576px) {
+    .form-row { grid-template-columns: 1fr; }
+}
+.checkbox-group { margin-top: 0.5rem; }
+.check-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    cursor: pointer;
+}
+.check-label input[type="checkbox"] {
+    margin-top: 0.2rem;
+    accent-color: var(--primary-color);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   Announcement detail page (appended)
+   ========================================================= */
+.announcement-page { padding-top: 2rem; padding-bottom: 4rem; }
+
+.announcement-detail-wrapper { max-width: 860px; margin: 0 auto; }
+
+.announcement-detail-header { margin-bottom: 1.5rem; }
+.announcement-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.announcement-date { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+.announcement-detail-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.3;
+    margin: 0;
+}
+.detail-divider { border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0 2rem 0; }
+
+.announcement-content-body { font-size: 1rem; line-height: 1.8; color: #334155; }
+.announcement-content-body p { margin-top: 0; margin-bottom: 1.25rem; }
+.announcement-content-body h2 { font-family: var(--font-serif); font-size: 1.4rem; color: #0f172a; margin-top: 2rem; margin-bottom: 1rem; }
+.announcement-content-body h3 { font-family: var(--font-serif); font-size: 1.2rem; color: #0f172a; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.announcement-content-body ul, .announcement-content-body ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+.announcement-content-body li { margin-bottom: 0.5rem; }
+.announcement-content-body blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    margin: 1.5rem 0;
+    background: #f8fafc;
+    color: #475569;
+    font-style: italic;
+    border-radius: 0 8px 8px 0;
+}
+.announcement-content-body img { max-width: 100%; height: auto; border-radius: 8px; margin: 1.5rem 0; }
+.announcement-content-body a { color: var(--primary-color); text-decoration: underline; font-weight: 500; }
+
+.announcement-detail-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.announcement-share { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+.share-label { font-weight: 600; }
+.share-link {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background: #f1f5f9;
+    color: #334155;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.share-link:hover { background: var(--primary-color); color: #ffffff; }
