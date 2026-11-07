@@ -10,7 +10,7 @@
     }
 </style>
 
-<main class="container announcements-page">
+<div class="container announcements-page">
 
     <!-- Breadcrumbs -->
     <nav class="breadcrumbs">
@@ -72,6 +72,6 @@
         {/if}
     </div>
 
-</main>
+</div>
 
 {include file="frontend/components/footer.tpl"}

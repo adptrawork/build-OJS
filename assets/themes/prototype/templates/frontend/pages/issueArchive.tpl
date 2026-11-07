@@ -10,7 +10,7 @@
     }
 </style>
 
-<main class="container archive-page">
+<div class="container archive-page">
 
     <!-- Breadcrumbs -->
     <nav class="breadcrumbs">
@@ -119,7 +119,7 @@
             </div>
         {/if}
     </div>
-</main>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

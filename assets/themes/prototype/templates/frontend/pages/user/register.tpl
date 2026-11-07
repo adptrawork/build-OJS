@@ -10,7 +10,7 @@
     }
 </style>
 
-<main class="login-page">
+<div class="login-page">
     <div class="login-container" style="max-width: 540px;">
         <div class="content-card login-card">
 
@@ -85,6 +85,6 @@
 
         </div>
     </div>
-</main>
+</div>
 
 {include file="frontend/components/footer.tpl"}

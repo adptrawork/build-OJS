@@ -10,7 +10,7 @@
     }
 </style>
 
-<main class="container about-page">
+<div class="container about-page">
 
     <!-- Breadcrumbs -->
     <nav class="breadcrumbs">
@@ -127,6 +127,6 @@
 
         </div>
     </div>
-</main>
+</div>
 
 {include file="frontend/components/footer.tpl"}

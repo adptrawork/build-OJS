@@ -4,7 +4,7 @@
  *}
 {include file="frontend/components/header.tpl"}
 
-<main class="container announcement-page">
+<div class="container announcement-page">
 
     <!-- Breadcrumbs -->
     <nav class="breadcrumbs">
@@ -64,6 +64,6 @@
 
         </div>
     </div>
-</main>
+</div>
 
 {include file="frontend/components/footer.tpl"}

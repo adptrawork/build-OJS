@@ -10,14 +10,7 @@
     }
 </style>
 
-<main class="container about-page">
-
-    <!-- Breadcrumbs -->
-    <nav class="breadcrumbs">
-        <a href="{url page="index"}">Beranda</a>
-        <span>/</span>
-        <span class="current">Tentang Jurnal</span>
-    </nav>
+<div class="container about-page">
 
     <div class="about-layout">
         <!-- Sidebar Navigation (Kiri) -->
@@ -46,6 +39,11 @@
 
         <!-- Main Content (Kanan) -->
         <div class="about-content">
+            <nav class="breadcrumbs" style="margin-bottom:1rem;">
+                <a href="{url page="index"}">Beranda</a>
+                <span>/</span>
+                <span class="current">Tentang Jurnal</span>
+            </nav>
             <div class="content-card">
 
                 <h1 class="content-title">Tentang {$currentJournal->getLocalizedName()|escape}</h1>
@@ -107,6 +105,6 @@
             </div>
         </div>
     </div>
-</main>
+</div>
 
 {include file="frontend/components/footer.tpl"}
