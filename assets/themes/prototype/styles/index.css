@@ -1199,3 +1199,114 @@ html.dark .jrdc-form-group textarea {
 html.dark .jrdc-empty {
 	border-color: var(--jrdc-slate-700);
 }
+
+/* =========================================================
+   OJS Block Manager sidebar blocks — prototype card parity
+   ========================================================= */
+.jrdc-side-col .pkp_block {
+	background: #fff;
+	border: 1px solid var(--jrdc-slate-200);
+	border-radius: var(--jrdc-radius-xl);
+	padding: 1.25rem;
+	margin-bottom: 1.25rem;
+}
+
+html.dark .jrdc-side-col .pkp_block {
+	background: var(--jrdc-slate-900);
+	border-color: var(--jrdc-slate-800);
+}
+
+.jrdc-side-col .pkp_block .title,
+.jrdc-side-col .pkp_block h2 {
+	font-size: 0.9375rem;
+	font-weight: 700;
+	margin: 0 0 0.75rem;
+	padding-bottom: 0.75rem;
+	border-bottom: 2px solid var(--jrdc-primary);
+	color: var(--jrdc-slate-900);
+}
+
+html.dark .jrdc-side-col .pkp_block .title,
+html.dark .jrdc-side-col .pkp_block h2 {
+	color: #fff;
+}
+
+/* Hide screen-reader-only titles visually but keep accessible */
+.jrdc-side-col .pkp_block .pkp_screen_reader {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+}
+
+.jrdc-side-col .pkp_block .content {
+	font-size: 0.875rem;
+	color: var(--jrdc-slate-700);
+}
+
+html.dark .jrdc-side-col .pkp_block .content {
+	color: var(--jrdc-slate-300);
+}
+
+.jrdc-side-col .pkp_block .content ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.jrdc-side-col .pkp_block .content ul li {
+	margin: 0.375rem 0;
+}
+
+.jrdc-side-col .pkp_block .content ul li a {
+	color: var(--jrdc-slate-700);
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	transition: color 0.15s ease;
+}
+
+html.dark .jrdc-side-col .pkp_block .content ul li a {
+	color: var(--jrdc-slate-300);
+}
+
+.jrdc-side-col .pkp_block .content ul li a:hover {
+	color: var(--jrdc-primary);
+}
+
+.jrdc-side-col .pkp_block .content .block_make_submission_link {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	padding: 0.625rem 1rem;
+	background: var(--jrdc-primary);
+	color: #fff;
+	border-radius: var(--jrdc-radius);
+	font-weight: 600;
+	font-size: 0.875rem;
+	text-decoration: none;
+	transition: background 0.15s ease;
+}
+
+.jrdc-side-col .pkp_block .content .block_make_submission_link:hover {
+	background: var(--jrdc-primary-hover);
+	color: #fff;
+}
+
+.jrdc-side-col .pkp_block.block_language select {
+	width: 100%;
+	padding: 0.5rem;
+	border: 1px solid var(--jrdc-slate-200);
+	border-radius: var(--jrdc-radius);
+	background: #fff;
+	color: var(--jrdc-slate-800);
+	font-size: 0.875rem;
+}
+
+html.dark .jrdc-side-col .pkp_block.block_language select {
+	background: var(--jrdc-slate-800);
+	border-color: var(--jrdc-slate-700);
+	color: #fff;
+}
