@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - **Issue Card (homepage):** 3px → 1px translucent border + `--bs-box-shadow-sm`; footer padding aligned to header (`1rem 1.5rem`, tertiary bg, border-top); eyebrow demoted to 11px/700 uppercase secondary label; "Aktif" badge as green subtle pill; issue title colored `var(--bs-primary)` (= theme accent). DevTools-audit findings.
+- **TOC Sections Unboxed:** removed the `div.section.jrdc-toc-section` wrapper from `issue_toc.tpl` (header + article list are now flat children of `.sections.jrdc-toc-sections`) and deleted its box rule in `issue.less` (padding/bg/border/shadow). The wrapper double-boxed the content since `issue_toc.tpl` is only ever included inside a card (homepage issue card + issue page card) — the prototype has no section box inside a card (homepage proto: flat list; issue proto: section cards only at top level). Section separation now rides on the header's `margin-block: 2rem 1.5rem` with a `:first-child` reset, safe for multi-section journals. Affects both homepage and `/issue/view/N` identically.
 - **Article Cards (TOC/homepage):** title 1rem → 1.125rem/1.4; authors .75rem → .875rem (stale `.obj_article_summary .authors` rule deleted — it beat the card rule on specificity and stacked a stray .5rem margin over the grid gap); hover now lifts with `--jrdc-shadow-hover` (transition extended to box-shadow).
 - **Accent Default:** `#0b2038` → `#c2410c` (burnt orange).
 - **Primary Locale:** `journal` → `id_ID`.

@@ -33,36 +33,23 @@
 	font-weight: 500;
 }
 
-/* Table of contents sections (prototype issue.html: white card per
-   section, hairline header with title + article-count chip). */
-.jrdc-toc-sections {
-	display: grid;
-	gap: 2rem;
-}
-
-.jrdc-toc-section {
-	padding: 1.5rem;
-	background: var(--jrdc-surface);
-	border: 1px solid var(--jrdc-border);
-	border-radius: var(--jrdc-radius-lg);
-	box-shadow: var(--jrdc-shadow-sm);
-}
-
-@media (min-width: 640px) {
-	.jrdc-toc-section {
-		padding: 2rem;
-	}
-}
-
+/* Table of contents sections — flat inside the issue card (prototype:
+   hairline header + article list, no boxed wrapper; the enclosing card
+   already provides the surface). Section separation rides on the
+   header's top margin. */
 .jrdc-toc-section__header {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 	gap: .5rem 1rem;
-	margin-block-end: 1.5rem;
+	margin-block: 2rem 1.5rem;
 	padding-block-end: 1rem;
 	border-block-end: 1px solid var(--jrdc-border);
+}
+
+.jrdc-toc-sections > .jrdc-toc-section__header:first-child {
+	margin-block-start: 0;
 }
 
 .jrdc-toc-section__title {

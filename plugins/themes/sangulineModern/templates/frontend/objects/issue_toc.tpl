@@ -47,29 +47,28 @@
 		</div>
 	{/if}
 
-	{* Articles *}
+	{* Articles — flat inside the issue card: section header + list, no
+	   boxed wrapper (prototype: card > hairline section header > list). *}
 	<div class="sections jrdc-toc-sections">
 	{foreach name=sections from=$publishedSubmissions item=section}
 		{if $section.articles}
-		<div class="section jrdc-toc-section">
-			<div class="jrdc-toc-section__header">
-				{if $section.title}
-					<{$heading} class="jrdc-toc-section__title">
-						{$section.title|escape}
-					</{$heading}>
-				{/if}
-				<span class="jrdc-count-chip">
-					{$section.articles|@count} Artikel
-				</span>
-			</div>
-			<ul class="cmp_article_list articles jrdc-toc-section__list">
-				{foreach from=$section.articles item=article}
-					<li>
-						{include file="frontend/objects/article_summary.tpl" heading=$articleHeading}
-					</li>
-				{/foreach}
-			</ul>
+		<div class="jrdc-toc-section__header">
+			{if $section.title}
+				<{$heading} class="jrdc-toc-section__title">
+					{$section.title|escape}
+				</{$heading}>
+			{/if}
+			<span class="jrdc-count-chip">
+				{$section.articles|@count} Artikel
+			</span>
 		</div>
+		<ul class="cmp_article_list articles jrdc-toc-section__list">
+			{foreach from=$section.articles item=article}
+				<li>
+					{include file="frontend/objects/article_summary.tpl" heading=$articleHeading}
+				</li>
+			{/foreach}
+		</ul>
 		{/if}
 	{/foreach}
 	</div><!-- .sections -->
