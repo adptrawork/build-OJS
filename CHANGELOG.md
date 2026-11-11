@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.15] - 2026-11-12
+
+### Changed
+- **"Artikel Serupa" moved from main column into the sidebar:** the recommendBySimilarity plugin renders through the `Templates::Article::Footer::PageFooter` hook, which the core page template emits once after the article object (full-width below the grid). Theme override `templates/frontend/pages/article.tpl` drops the hook there, and the object template re-emits it inside `.jrdc-article__sidebar` (top of the entry_details column), so the block renders as the last sidebar card. No plugin edits; recommended articles now sit in the sidebar as in the prototype.
+- `#articlesBySimilarityList` restyled as a sidebar card (`.75rem` uppercase eyebrow heading "Artikel Serupa", divided list items, surface bg + radius + shadow, states inherited from the sidebar stack).
+
 ## [1.6.14] - 2026-11-12
 
 ### Changed

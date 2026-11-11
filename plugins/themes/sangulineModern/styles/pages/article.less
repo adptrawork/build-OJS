@@ -736,10 +736,11 @@
 }
 
 /* -------------------------------------------------------------------------
- * "Artikel Serupa" block appended by recommendBySimilarity (footer hook)
+ * "Artikel Serupa" block appended by recommendBySimilarity — rendered
+ * inside the sidebar (the PageFooter hook is emitted there); styled as a
+ * sidebar card with the same side-title eyebrow as the other sidebar cards.
  * ---------------------------------------------------------------------- */
 #articlesBySimilarityList {
-	margin-block-start: 1.5rem;
 	padding: 1.25rem;
 	background: var(--jrdc-surface);
 	border: 1px solid var(--jrdc-border);
@@ -770,12 +771,19 @@
 	list-style: none;
 	display: grid;
 	gap: .5rem;
-	font-size: .875rem;
+	font-size: .8125rem;
 	line-height: 1.5;
 }
 
 #articlesBySimilarityList li {
+	padding-block-start: .5rem;
+	border-block-start: 1px solid var(--jrdc-border);
 	color: var(--jrdc-text-muted);
+}
+
+#articlesBySimilarityList li:first-child {
+	padding-block-start: 0;
+	border-block-start: 0;
 }
 
 #articlesBySimilarityList li a {

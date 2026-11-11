@@ -536,6 +536,10 @@
 			{/if}
 
 			{call_hook name="Templates::Article::Details"}
+
+			{* Article recommendations — rendered via the same PageFooter hook,
+			   moved inside the sidebar so the block sits in the right column *}
+			{call_hook name="Templates::Article::Footer::PageFooter"}
 		</div><!-- .jrdc-article__sidebar -->
 
 	</div><!-- .jrdc-article__row -->
