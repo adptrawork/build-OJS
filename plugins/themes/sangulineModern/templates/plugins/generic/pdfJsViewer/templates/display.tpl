@@ -2,11 +2,9 @@
  * SangulineModern theme override of plugins/generic/pdfJsViewer/templates/display.tpl
  * (parent: pdfJsViewer)
  *
- * Header restyled as a compact icon-only bar matching the JRDC design system:
- * back arrow (return to article) on the left, truncated article title in the
- * middle, download icon on the right. Accessibility: icon-only controls keep
- * localized screen-reader text + aria-label. jQuery iframe src bootstrap kept
- * verbatim from the plugin (it is required for the embedded viewer to load).
+ * Compact chrome-free viewer: the PDF fills the whole page; the surrounding
+ * article page already provides return/download/chrome. The plugin's jQuery
+ * iframe src bootstrap is kept verbatim (the embedded viewer depends on it).
  *}
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
@@ -20,33 +18,6 @@
 	{load_script context="frontend" scripts=$scripts}
 </head>
 <body class="pkp_page_{$requestedPage|escape} pkp_op_{$requestedOp|escape}">
-
-	{* Header wrapper *}
-	<header class="header_view">
-
-		<a href="{$parentUrl}" class="return" aria-label="{translate|escape key="article.return"}">
-			<i class="bi bi-arrow-left" aria-hidden="true"></i>
-			<span class="pkp_screen_reader">
-				{if $parent instanceOf Issue}
-					{translate key="issue.return"}
-				{else}
-					{translate key="article.return"}
-				{/if}
-			</span>
-		</a>
-
-		<a href="{$parentUrl}" class="title">
-			{$title|escape}
-		</a>
-
-		<a href="{$pdfUrl}" class="download" download aria-label="{translate|escape key="common.downloadPdf"}">
-			<i class="bi bi-download" aria-hidden="true"></i>
-			<span class="pkp_screen_reader">
-				{translate key="common.downloadPdf"}
-			</span>
-		</a>
-
-	</header>
 
 	<script type="text/javascript">
 		// Creating iframe's src in JS instead of Smarty so that EZProxy-using sites can find our domain in $pdfUrl and do their rewrites on it.

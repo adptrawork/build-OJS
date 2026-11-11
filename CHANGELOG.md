@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.13] - 2026-11-12
+
+### Changed
+- **PDF viewer chrome removed entirely:** the pdfJsViewer galley page (`/article/view/N/G`) no longer renders a `.header_view` bar — the PDF fills the page (the surrounding article page already provides return/download/chrome, and the header duplicated itself inside the embedded iframe on the article page). `viewPdf.less` trimmed to the full-height iframe layout + outdated-version notice. Plugin JS iframe bootstrap kept verbatim.
+
 ## [1.6.12] - 2026-11-12
 
 ### Changed

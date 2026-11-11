@@ -1,77 +1,13 @@
 /**
- * PDF galley viewer header (pdfJsViewer embedded page).
- * Compact icon-only bar matching the JRDC design system. The viewer page
- * renders without the journal theme chrome, so these styles live here.
+ * PDF galley viewer page (pdfJsViewer embedded view).
+ * Chrome-free full-height layout; the surrounding page provides its own
+ * header/download affordances.
  */
-@header-h: 56px;
-
 .pkp_op_view {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
 	overflow: hidden;
-}
-
-.header_view {
-	display: flex;
-	align-items: center;
-	gap: .5rem;
-	flex: 0 0 @header-h;
-	height: @header-h;
-	padding-inline: .625rem;
-	background: var(--jrdc-surface);
-	border-block-end: 1px solid var(--jrdc-border);
-	z-index: 2;
-
-	.bi {
-		font-size: 1.125rem;
-		line-height: 1;
-	}
-}
-
-.header_view .return,
-.header_view .download {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	flex: 0 0 auto;
-	inline-size: 40px;
-	block-size: 40px;
-	border-radius: var(--jrdc-radius-sm);
-	color: var(--jrdc-text);
-	text-decoration: none;
-
-	&:hover,
-	&:focus-visible {
-		color: var(--jrdc-primary);
-		background: var(--jrdc-primary-soft);
-		text-decoration: none;
-		outline: 2px solid transparent;
-	}
-
-	&:focus-visible {
-		outline: 2px solid var(--jrdc-primary);
-		outline-offset: 2px;
-	}
-}
-
-.header_view .title {
-	flex: 1 1 auto;
-	min-inline-size: 0;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	color: var(--jrdc-text);
-	font-size: .875rem;
-	font-weight: 600;
-	line-height: 1.4;
-	text-decoration: none;
-
-	&:hover,
-	&:focus-visible {
-		color: var(--jrdc-primary);
-		text-decoration: none;
-	}
 }
 
 .galley_view {
