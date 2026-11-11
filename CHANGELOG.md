@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.8] - 2026-11-11
+
+### Changed
+- **Info grid → auto-fit:** `.jrdc-article__info` now uses `repeat(auto-fit, minmax(150px, 1fr))` (per post-DevTools audit) instead of hardcoded 4-col + mobile 2-col media query — columns reflow automatically at any width without `!important`.
+
+### Rejected from the same DevTools export (with reasons)
+- "Title/authors margin-bottom 0 → text stacked": stale — the detail card body is `display:grid; gap:20px`; all blocks measure 20px apart (verified live: badges 168-191 / title 211-338 / authors 358-424 / info 444-536).
+- "PDF iframe fails due to X-Frame-Options": wrong cause — was missing jQuery in the child theme (see 1.6.7), verified fixed.
+- "LoA card with VERIFIED badge + `LOA/2026/JRDC/{id}` verification number": rejected — fabricates an official "verified" administrative document status and invents verification numbers. LoA stays an honest sample with real journal/issue data and no verification claims.
+- "badge/info contrast fixes": dark button is #0f172a on white (~15:1, exceeds WCAG AA); badge uses success-tinted token — both already pass.
+
 ## [1.6.7] - 2026-11-11
 
 ### Fixed

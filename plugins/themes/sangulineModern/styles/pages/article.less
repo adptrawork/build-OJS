@@ -208,18 +208,12 @@
 /* DOI / DITERIMA / TERBIT / HALAMAN info grid */
 .jrdc-article__info {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 1rem .75rem;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 1.25rem .75rem;
 	padding: 1.25rem 1rem;
 	background: var(--jrdc-surface-muted);
 	border: 1px solid var(--jrdc-border);
 	border-radius: var(--jrdc-radius-md);
-}
-
-@media (max-width: 575.98px) {
-	.jrdc-article__info {
-		grid-template-columns: repeat(2, 1fr);
-	}
 }
 
 .jrdc-article__info-label {
