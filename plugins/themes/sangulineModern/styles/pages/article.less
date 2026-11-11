@@ -770,15 +770,16 @@
 	padding: 0;
 	list-style: none;
 	display: grid;
-	gap: .5rem;
+	gap: .875rem;
 	font-size: .8125rem;
-	line-height: 1.5;
+	line-height: 1.45;
 }
 
 #articlesBySimilarityList li {
-	padding-block-start: .5rem;
+	display: grid;
+	gap: .125rem;
+	padding-block-start: .75rem;
 	border-block-start: 1px solid var(--jrdc-border);
-	color: var(--jrdc-text-muted);
 }
 
 #articlesBySimilarityList li:first-child {
@@ -786,15 +787,22 @@
 	border-block-start: 0;
 }
 
-#articlesBySimilarityList li a {
+.jrdc-similar__title {
 	color: var(--jrdc-text);
 	font-weight: 600;
+	line-height: 1.45;
 	text-decoration: none;
 }
 
-#articlesBySimilarityList li a:hover {
+.jrdc-similar__title:hover {
 	color: var(--jrdc-primary);
 	text-decoration: underline;
+}
+
+.jrdc-similar__author {
+	color: var(--jrdc-text-muted);
+	font-size: .6875rem;
+	line-height: 1.5;
 }
 
 #articlesBySimilaritySearch,

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.17] - 2026-11-12
+
+### Changed
+- **Similar articles item format:** recommendBySimilarity's `articleFooter.tpl` overridden in the theme so each item renders as `{title}` on one line + `{author(s)}` on the next line (was: "Authors, Title, Journal: Issue" all on one line). Title = bold link, authors = 11px muted. Issue link dropped (redundant). Pagination/search blocks kept (still hidden). No plugin edits.
+
 ## [1.6.16] - 2026-11-12
 
 ### Fixed
