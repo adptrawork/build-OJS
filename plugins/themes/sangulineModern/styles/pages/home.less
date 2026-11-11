@@ -245,7 +245,17 @@
 	line-height: 1.6;
 }
 
-/* Latest issue header */
+/* Latest issue card */
+.page_index_journal .jrdc-card-section.jrdc-issue {
+	border: 1px solid var(--bs-border-color-translucent);
+	box-shadow: var(--bs-box-shadow-sm);
+}
+
+.jrdc-issue .jrdc-card-header {
+	padding: 1.25rem 1.5rem;
+	border-block-end: 1px solid var(--bs-border-color-translucent);
+}
+
 .jrdc-issue__header {
 	align-items: flex-start;
 }
@@ -259,32 +269,32 @@
 }
 
 .jrdc-issue__eyebrow-label {
-	color: var(--jrdc-primary);
+	color: var(--bs-secondary-color);
 	font-size: .6875rem;
-	font-weight: 600;
+	font-weight: 700;
 	letter-spacing: .08em;
 	text-transform: uppercase;
 }
 
 .jrdc-issue__status {
-	padding: .15rem .5rem;
-	color: var(--jrdc-success);
-	background: #f0fdf4;
-	border: 1px solid #bbf7d0;
+	padding: .125rem .5rem;
+	background: var(--bs-success-bg-subtle);
+	color: var(--bs-success-text-emphasis);
 	border-radius: var(--jrdc-radius-pill);
-	font-size: .625rem;
-	font-weight: 600;
+	font-size: .6875rem;
+	font-weight: 700;
 	text-transform: uppercase;
-}
-
-html.dark .jrdc-issue__status {
-	background: #052e16;
-	border-color: #166534;
+	letter-spacing: .04em;
+	border: none;
 }
 
 .jrdc-issue__date {
 	color: var(--jrdc-text-muted);
 	font-size: .8125rem;
+}
+
+.jrdc-issue__toc {
+	padding: 1.5rem;
 }
 
 .jrdc-issue__footer {
@@ -293,9 +303,10 @@ html.dark .jrdc-issue__status {
 	align-items: center;
 	justify-content: space-between;
 	gap: .75rem;
-	margin-block-start: 1.25rem;
-	padding-block-start: 1.25rem;
-	border-block-start: 1px solid var(--jrdc-border);
+	margin-block-start: 0;
+	padding: 1rem 1.5rem;
+	background: var(--bs-tertiary-bg);
+	border-block-start: 1px solid var(--bs-border-color-translucent);
 }
 
 .jrdc-issue__footer-text {
