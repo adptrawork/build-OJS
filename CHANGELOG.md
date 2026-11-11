@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.18] - 2026-11-12
+
+### Added
+- **Two theme options (editable in Settings → Website → Appearance → Theme, next to modernAccent):** `publishFrequency` (text, default "April & Oktober") shown in the homepage hero FREKUENSI card, and `heroBadge` (text) shown in the hero badge — both real journal inputs instead of template constants.
+
+### Changed
+- **Everything that can read OJS data now does; nothing fake remains templated:**
+  - Header brand text = `$currentContext->getLocalizedData('name')` (falls back to site title), not the hardcoded "Jurnal Ratu Dirgantara" line.
+  - Issue acronym (`"JRDC"`) drives the cover placeholder title instead of the literal `JRDC`.
+  - Hero publisher is `publisherInstitution` and is now a hyperlink to `publisherUrl` when set (e.g. https://akdisi.my.id/).
+  - Contact rows: editorial email and office address are hidden entirely when absent (were falling back to `jurnal@jrdc.ac.id` / "Gedung Ratu Dirgantara Cendekiawan").
+  - `og:image` now picks the homepageImage for the current locale (`homepageImage_{locale}.png`); falls back to en_US.
+- **New locale keys** (both id + en): `header.navToggle`, `header.darkMode`, `header.lightMode` (theme toggle), `issueSummary.articleCount` (new `{$count} Artikel Ilmiah`/`Research Articles`), `issueSummary.viewIssue`, `articleSummary.abstract` (the article-card abstract toggle button).
+- Theme toggle aria-label/title updated from `documentElement.style.colorScheme`-aware `data-dark-label`/`data-light-label` attributes; no hardcoded Indonesian left in jrdc.js.
+- Issue archive cards read "N Artikel Ilmiah"/"N Research Articles" and "Lihat Edisi"/"View Issue" from locale.
+
+### Removed
+- Fake fallbacks: `jurnal@jrdc.ac.id` (replaced by editorial email row, hidden when absent), "Gedung Ratu Dirgantara Cendekiawan" (address row, hidden when absent), hardcoded "April & Oktober", hardcoded "Jurnal Ratu Dirgantara"/"Cendekiawan" (header), hardcoded JRDC (cover placeholder), literal `Abstrak` (now translated).
+- Hardcoded og:image `homepageImage_en_US.png` regardless of locale.
+
 ## [1.6.17] - 2026-11-12
 
 ### Changed

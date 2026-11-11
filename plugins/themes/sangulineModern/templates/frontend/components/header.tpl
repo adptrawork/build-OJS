@@ -67,8 +67,7 @@
 										</svg>
 									</span>
 									<span class="jrdc-brand__text">
-										<span class="jrdc-brand__name">Jurnal Ratu Dirgantara</span>
-										<span class="jrdc-brand__sub">Cendekiawan</span>
+										{if $currentContext}<span class="jrdc-brand__name">{$currentContext->getLocalizedData('name')|escape}</span>{else}<span class="jrdc-brand__name">{$siteTitle|escape}</span>{/if}
 									</span>
 								</a>
 							{/if}
@@ -136,11 +135,11 @@
 							{load_menu name="user" id="navigationUser" path="frontend/components/navigationMenuBootstrap.tpl" ulClass="navbar-nav pkp_navigation_user"}
 						</div>
 
-						<button class="navbar-toggler jrdc-nav-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#jrdcSiteNav" aria-controls="jrdcSiteNav" aria-label="Buka navigasi">
+						<button class="navbar-toggler jrdc-nav-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#jrdcSiteNav" aria-controls="jrdcSiteNav" aria-label="{translate|escape key="plugins.themes.sangulineModern.header.navToggle"}">
 							<span class="navbar-toggler-icon"></span>
 						</button>
 
-						<button type="button" class="btn btn-outline-secondary jrdc-theme-toggle" data-jrdc-theme-toggle aria-pressed="false" title="Ganti mode gelap" aria-label="Ganti mode gelap">
+						<button type="button" class="btn btn-outline-secondary jrdc-theme-toggle" data-jrdc-theme-toggle aria-pressed="false" data-dark-label="{translate|escape key="plugins.themes.sangulineModern.header.darkMode"}" data-light-label="{translate|escape key="plugins.themes.sangulineModern.header.lightMode"}" title="{translate|escape key="plugins.themes.sangulineModern.header.darkMode"}" aria-label="{translate|escape key="plugins.themes.sangulineModern.header.darkMode"}">
 							<svg class="jrdc-theme-toggle__icon jrdc-theme-toggle__icon--moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
 								<path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
 							</svg>

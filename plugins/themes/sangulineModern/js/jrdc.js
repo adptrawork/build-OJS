@@ -15,9 +15,10 @@
 			localStorage.setItem('jrdc-theme', dark ? 'dark' : 'light');
 		} catch (e) { /* localStorage unavailable */ }
 		document.querySelectorAll('[data-jrdc-theme-toggle]').forEach(function (btn) {
+			var label = dark ? (btn.getAttribute('data-light-label') || 'Switch to light mode') : (btn.getAttribute('data-dark-label') || 'Switch to dark mode');
 			btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
-			btn.setAttribute('aria-label', dark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
-			btn.setAttribute('title', dark ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
+			btn.setAttribute('aria-label', label);
+			btn.setAttribute('title', label);
 		});
 	}
 

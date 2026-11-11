@@ -36,7 +36,7 @@
 					</a>
 				</h2>
 				<span class="count jrdc-issue-card__count">
-					{$issue->getNumArticles()} Artikel Ilmiah
+					{translate key="plugins.themes.sangulineModern.issueSummary.articleCount" count=$issue->getNumArticles()}
 				</span>
 			</div>
 		</div>
@@ -49,6 +49,6 @@
 		{if $currentJournal && $currentJournal->getData('onlineIssn')}
 			<span class="issn">ISSN: {$currentJournal->getData('onlineIssn')|escape}</span>
 		{/if}
-		<a class="jrdc-btn-dark" href="{$issueUrl}">Lihat Edisi</a>
+		<a class="jrdc-btn-dark" href="{$issueUrl}">{translate key="plugins.themes.sangulineModern.issueSummary.viewIssue"}</a>
 	</div>
 </div><!-- .obj_issue_summary -->

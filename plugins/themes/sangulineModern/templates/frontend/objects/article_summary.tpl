@@ -154,7 +154,7 @@
 			<div class="jrdc-article-card__cta">
 				{if $articleAbstract}
 					<button type="button" class="abstract_toggle jrdc-chip-quiet" aria-expanded="false" aria-controls="abstract-{$article->getId()}" data-toggle-target="abstract-{$article->getId()}">
-						<span class="toggle_label">Abstrak</span>
+						<span class="toggle_label">{translate key="plugins.themes.sangulineModern.articleSummary.abstract"}</span>
 					</button>
 				{/if}
 

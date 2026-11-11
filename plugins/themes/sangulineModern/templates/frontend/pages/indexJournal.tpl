@@ -26,7 +26,7 @@
 		<section class="jrdc-hero-container" aria-label="{translate|escape key="about.aboutContext"}">
 			<div class="jrdc-hero__content">
 				<div class="jrdc-hero__badge">
-					{translate key="plugins.themes.sangulineModern.hero.badge"}
+					{if $activeTheme && $activeTheme->getOption('heroBadge')}{$activeTheme->getOption('heroBadge')|escape}{else}{translate key="plugins.themes.sangulineModern.hero.badge"}{/if}
 				</div>
 				<h1 class="jrdc-hero__title">
 					{$currentJournal->getLocalizedName()|escape}
@@ -41,15 +41,16 @@
 				<div class="jrdc-hero__meta">
 					<div class="jrdc-hero__meta-card">
 						<span class="meta-label">{translate key="plugins.themes.sangulineModern.hero.frequency"}</span>
-						<span class="meta-value">April &amp; Oktober</span>
+						<span class="meta-value">{if $activeTheme && $activeTheme->getOption('publishFrequency')}{$activeTheme->getOption('publishFrequency')|escape}{else}—{/if}</span>
 					</div>
 					<div class="jrdc-hero__meta-card">
 						<span class="meta-label">{translate key="plugins.themes.sangulineModern.hero.publisher"}</span>
 						<span class="meta-value">
 							{if $currentContext->getData('publisherInstitution')}
-								{$currentContext->getData('publisherInstitution')|escape}
-							{else}
-								Yayasan Ratu Dirgantara Cendekiawan (JRDC)
+								{assign var="publisherUrl" value=$currentContext->getData('publisherUrl')}
+								{if $publisherUrl}<a href="{$publisherUrl|escape}" class="jrdc-hero__publisher-link">{$currentContext->getData('publisherInstitution')|escape}</a>{else}{$currentContext->getData('publisherInstitution')|escape}{/if}
+							{elseif $currentContext}
+								{$currentContext->getLocalizedData('name')|escape}
 							{/if}
 						</span>
 					</div>
@@ -65,7 +66,7 @@
 				{else}
 					<div class="jrdc-hero__cover-placeholder">
 						<span class="jrdc-hero__cover-kicker">{translate key="plugins.themes.sangulineModern.hero.coverKicker"}</span>
-						<span class="jrdc-hero__cover-title">JRDC</span>
+						<span class="jrdc-hero__cover-title">{$currentContext->getLocalizedData('acronym')|escape}</span>
 						<span class="jrdc-hero__cover-bar"></span>
 					</div>
 				{/if}

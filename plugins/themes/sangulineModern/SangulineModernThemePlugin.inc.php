@@ -74,6 +74,18 @@ class SangulineModernThemePlugin extends ThemePlugin {
 			'default' => '#c2410c',
 		]);
 
+		$this->addOption('publishFrequency', 'FieldText', [
+			'label' => 'Publication frequency',
+			'description' => 'How often the journal is published (shown in the homepage hero, e.g. "April & Oktober").',
+			'default' => 'April & Oktober',
+		]);
+
+		$this->addOption('heroBadge', 'FieldText', [
+			'label' => 'Hero badge',
+			'description' => 'Small text badge above the journal name on the homepage hero (e.g. "SCHOLARLY JOURNAL • ECONOMICS AND BUSINESS").',
+			'default' => 'SCHOLARLY JOURNAL • ECONOMICS AND BUSINESS',
+		]);
+
 		// Bootstrap 5.3.3, vendored locally. Absolute URL avoids Windows backslashes.
 		$this->addStyle(
 			'bootstrap',

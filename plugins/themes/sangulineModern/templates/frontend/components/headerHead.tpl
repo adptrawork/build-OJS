@@ -71,7 +71,14 @@
 	<link rel="canonical" href="{$canonicalUrl|escape}">
 
 	{* --- Open Graph + Twitter Card --- *}
-	{assign var="ogImageUrl" value=$baseUrl|cat:"/public/journals/1/homepageImage_en_US.png"}
+	{if $currentContext}
+		{assign var="ogImage" value=$currentContext->getLocalizedData('homepageImage')}
+	{/if}
+	{if $ogImage}
+		{assign var="ogImageUrl" value="{$baseUrl}/public/journals/{$currentContext->getId()}/{$ogImage.uploadName|escape:'url'}"}
+	{else}
+		{assign var="ogImageUrl" value=$baseUrl|cat:"/public/journals/1/homepageImage_en_US.png"}
+	{/if}
 	<meta property="og:site_name" content="{$currentContext->getLocalizedData('name')|escape}">
 	<meta property="og:type" content="{if $publication}article{else}website{/if}">
 	<meta property="og:title" content="{$pageTitleTranslated|strip_tags|escape}">

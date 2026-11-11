@@ -356,3 +356,23 @@ msgstr "Naskah Lengkap"
 msgid "plugins.themes.sangulineModern.article.loaTitle"
 msgstr "SURAT PENERIMAAN (LOA)"
 
+
+# --- 1.6.17: nav/dark-mode/issueSummary keys ---
+msgid "plugins.themes.sangulineModern.header.navToggle"
+msgstr "Alihkan navigasi"
+
+msgid "plugins.themes.sangulineModern.header.darkMode"
+msgstr "Aktifkan mode gelap"
+
+msgid "plugins.themes.sangulineModern.header.lightMode"
+msgstr "Aktifkan mode terang"
+
+msgid "plugins.themes.sangulineModern.issueSummary.articleCount"
+msgstr "{$count} Artikel Ilmiah"
+
+msgid "plugins.themes.sangulineModern.issueSummary.viewIssue"
+msgstr "Lihat Edisi"
+
+msgid "plugins.themes.sangulineModern.articleSummary.abstract"
+msgstr "Abstrak"
+

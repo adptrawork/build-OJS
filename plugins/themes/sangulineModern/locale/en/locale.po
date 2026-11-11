@@ -375,3 +375,23 @@ msgstr "Full Manuscript"
 msgid "plugins.themes.sangulineModern.article.loaTitle"
 msgstr "LETTER OF ACCEPTANCE (LOA)"
 
+
+# --- 1.6.17: nav/dark-mode/issueSummary keys ---
+msgid "plugins.themes.sangulineModern.header.navToggle"
+msgstr "Toggle navigation"
+
+msgid "plugins.themes.sangulineModern.header.darkMode"
+msgstr "Switch to dark mode"
+
+msgid "plugins.themes.sangulineModern.header.lightMode"
+msgstr "Switch to light mode"
+
+msgid "plugins.themes.sangulineModern.issueSummary.articleCount"
+msgstr "{$count} Research Articles"
+
+msgid "plugins.themes.sangulineModern.issueSummary.viewIssue"
+msgstr "View Issue"
+
+msgid "plugins.themes.sangulineModern.articleSummary.abstract"
+msgstr "Abstract"
+

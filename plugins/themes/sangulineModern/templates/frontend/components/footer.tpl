@@ -80,8 +80,6 @@
 									<span class="footer-contact__label">{translate key="plugins.themes.sangulineModern.footer.editorialEmail"}</span>
 									{if $currentContext && $currentContext->getData('contactEmail')}
 										<a href="mailto:{$currentContext->getData('contactEmail')|escape}" class="footer-contact__value">{$currentContext->getData('contactEmail')|escape}</a>
-									{else}
-										<a href="mailto:jurnal@jrdc.ac.id" class="footer-contact__value">jurnal@jrdc.ac.id</a>
 									{/if}
 								</div>
 								<div>
@@ -89,8 +87,6 @@
 									<span class="footer-contact__value">
 										{if $currentContext && $currentContext->getData('mailingAddress')}
 											{$currentContext->getData('mailingAddress')|escape}
-										{else}
-											{translate key="plugins.themes.sangulineModern.footer.addressFallback"}
 										{/if}
 									</span>
 								</div>
