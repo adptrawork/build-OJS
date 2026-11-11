@@ -314,13 +314,7 @@
 								<a class="jrdc-article__issue-cover-link" href="{url page="issue" op="view" path=$issue->getBestIssueId()}" tabindex="-1" aria-hidden="true">
 									<img class="jrdc-article__issue-cover-img" src="{$issue->getLocalizedCoverImageUrl()|escape}" alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}" loading="lazy">
 								</a>
-							{else}
-								<span class="jrdc-article__issue-cover" aria-hidden="true">
-									<span class="jrdc-article__issue-cover-title">JRDC</span>
-									<span class="jrdc-article__issue-cover-vol">Vol. 1 No. 1</span>
-									<span class="jrdc-article__issue-cover-year">2026</span>
-								</span>
-							{/if}
+						{/if}
 							<span class="jrdc-article__issue-meta">
 								<span class="jrdc-article__side-eyebrow">{translate key="plugins.themes.sangulineModern.article.issueEyebrow"}</span>
 								<a class="jrdc-article__issue-title" href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
