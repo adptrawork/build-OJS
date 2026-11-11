@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.1] - 2026-11-11
+
+### Fixed
+- **Dead Links to Laragon Domain (DB data, not git):** menu items, journal settings, and announcement content still pointed at `http://ojs-3.3.0-24.test`, so static pages looked "missing" (they existed all along — 8 paths in `static_pages` with full en_US content, all HTTP 200). Snapshot `before-domain-fix` taken for rollback. Fixes applied via `REPLACE()` in the ddev `db` database:
+  - `navigation_menu_item_settings.remoteUrl` (7 rows) → **relative** paths (`/index.php/jrdc/{path}`) — `PKPNavigationMenuService` renders remoteUrl raw into `href`, so relative survives domain moves.
+  - `journal_settings` (5 rows: emailSignature, authorInformation×2, readerInformation×2) → **absolute** `https://ojs-boostrap.ddev.site:8443` (email signature needs absolute).
+  - `announcement_settings` (2 rows: announcement 1 description + descriptionShort) → **absolute** (announcement content feeds the Web Feed RSS/Atom plugin).
+- Sweep of all `db.*settings` tables confirms 0 remaining occurrences of the old domain; homepage, static pages, and announcement detail all verified clean and rendering (200).
+
+### Notes
+- Search returns 0 results for any query because the search index is empty after the DB restore — rebuild it from the admin (Settings → search rebuild), unrelated to styling.
+- DB data changes are not covered by git; this changelog entry is the record. Re-apply the same `REPLACE()` if the DB is restored from an older dump.
+
 ## [1.6.0] - 2026-11-11
 
 ### Added
