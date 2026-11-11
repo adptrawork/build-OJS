@@ -1,0 +1,197 @@
+{**
+ * SangulineModern child theme - journal index override
+ * High-fidelity layout matching Tailwind prototype:
+ * 1. Full-width Hero Banner (spanning 12 columns above the grid)
+ * 2. 2-Column Grid (Main 8 columns + Sidebar 4 columns)
+ * 3. Enclosing White Cards for "Tentang Jurnal" and "Terbitan Jurnal Terbaru"
+ *
+ * @uses $currentJournal Journal This journal
+ * @uses $journalDescription string Journal description
+ * @uses $homepageImage object Image to be displayed on the homepage
+ * @uses $additionalHomeContent string Arbitrary input from HTML text editor
+ * @uses $announcements array List of announcements
+ * @uses $numAnnouncementsHomepage int Number of announcements to display
+ * @uses $issue Issue Current issue
+ *}
+{include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName() suppressContentWrapper=true}
+
+<div class="page_index_journal jrdc-home">
+
+	{call_hook name="Templates::Index::journal"}
+
+	{* =========================================================================
+	   1. FULL-WIDTH HOMEPAGE HERO CONTAINER (NAVY #0b2038, MAX-W-7XL)
+	   ========================================================================= *}
+	<div class="jrdc-hero-wrapper">
+		<section class="jrdc-hero-container" aria-label="{translate|escape key="about.aboutContext"}">
+			<div class="jrdc-hero__content">
+				<div class="jrdc-hero__badge">
+					JURNAL ILMIAH &bull; EKONOMI DAN BISNIS
+				</div>
+				<h1 class="jrdc-hero__title">
+					{$currentJournal->getLocalizedName()|escape}
+				</h1>
+				<div class="jrdc-hero__desc">
+					{if $currentContext->getLocalizedData('description')}
+						{$currentContext->getLocalizedData('description')|strip_tags|truncate:260}
+					{else}
+						Jurnal ilmiah akses terbuka yang menerbitkan penelitian dan kajian bidang ekonomi dan bisnis dengan telaah sejawat double-blind. Terbit dua kali setahun, pada April dan Oktober.
+					{/if}
+				</div>
+				<div class="jrdc-hero__meta">
+					<div class="jrdc-hero__meta-card">
+						<span class="meta-label">FREKUENSI</span>
+						<span class="meta-value">April &amp; Oktober</span>
+					</div>
+					<div class="jrdc-hero__meta-card">
+						<span class="meta-label">PENERBIT</span>
+						<span class="meta-value">
+							{if $currentContext->getData('publisherInstitution')}
+								{$currentContext->getData('publisherInstitution')|escape}
+							{else}
+								Yayasan Ratu Dirgantara Cendekiawan (JRDC)
+							{/if}
+						</span>
+					</div>
+				</div>
+			</div>
+
+			{* Cover image right side *}
+			<div class="jrdc-hero__cover">
+				{if $homepageImage}
+					<img src="{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}" alt="{$currentJournal->getLocalizedName()|escape}" width="{$homepageImage.width|default:220|escape}" height="{$homepageImage.height|default:290|escape}" loading="eager">
+				{elseif $issue && $issue->getLocalizedCoverImageUrl()}
+					<img src="{$issue->getLocalizedCoverImageUrl()|escape}" alt="{$issue->getIssueIdentification()|escape}" loading="eager">
+				{else}
+					<div class="jrdc-hero__cover-placeholder">
+						<span class="jrdc-hero__cover-kicker">COVER JURNAL</span>
+						<span class="jrdc-hero__cover-title">JRDC</span>
+						<span class="jrdc-hero__cover-bar"></span>
+					</div>
+				{/if}
+			</div>
+
+			<div class="jrdc-hero__actions">
+				{if $issue}
+					<a href="{url router=$smarty.const.ROUTE_PAGE page="issue" op="view" path=$issue->getBestIssueId()}" class="btn btn-primary jrdc-button jrdc-button--primary jrdc-hero__cta">Lihat Edisi Terbaru</a>
+				{/if}
+				<a href="{url page="about" op="submissions"}" class="btn btn-outline-light jrdc-button jrdc-button--outline jrdc-hero__cta">Panduan Penulis</a>
+			</div>
+		</section>
+	</div>
+
+	{* Sidebar column is rendered by footer.tpl from its single
+	   Templates::Common::Sidebar hook call (Block Manager plugin).
+	   Do not call the hook here: it would run plugins twice. *}
+	<div class="container-fluid jrdc-content">
+		<div class="row g-4">
+			<div id="pkp_content_main" class="col-12 col-xl-8 pkp_structure_main jrdc-main" role="main">
+
+			{* Card A: Tentang Jurnal *}
+			<section class="card jrdc-card-section" aria-labelledby="homepageAboutTitle">
+				<div class="card-header jrdc-card-header">
+					<h2 id="homepageAboutTitle" class="jrdc-card-title">Tentang Jurnal</h2>
+				</div>
+				<div class="card-body jrdc-card-body">
+					<div class="jrdc-prose jrdc-prose--lead">
+						{if $currentContext->getLocalizedData('description')}
+							{$currentContext->getLocalizedData('description')}
+						{else}
+							Yayasan Ratu Dirgantara Cendekiawan (JRDC) merupakan lembaga yang berfokus pada penerbitan jurnal ilmiah, khususnya dalam bidang Ekonomi dan Bisnis. Melalui kegiatan penerbitan, JRDC berkomitmen mendukung pengembangan pendidikan, kemajuan ilmu pengetahuan, serta penyebarluasan hasil penelitian dan pemikiran akademik.
+						{/if}
+					</div>
+
+					{* 4 Info Cards (2x2 Grid, Bootstrap) *}
+					<div class="jrdc-overview-grid row row-cols-1 row-cols-md-2 g-3">
+						<div class="col">
+							<a href="{url page="about"}" class="card h-100 jrdc-info-card">
+								<h3 class="jrdc-info-card__title">Fokus dan Ruang Lingkup</h3>
+								<p class="jrdc-info-card__desc">Manajemen, akuntansi, keuangan, pemasaran, kewirausahaan, dan ekonomi pembangunan.</p>
+							</a>
+						</div>
+						<div class="col">
+							<a href="{url page="about" op="editorialTeam"}" class="card h-100 jrdc-info-card">
+								<h3 class="jrdc-info-card__title">Dewan Redaksi</h3>
+								<p class="jrdc-info-card__desc">Editor dan mitra bestari yang memandu proses telaah sejawat.</p>
+							</a>
+						</div>
+						<div class="col">
+							<a href="{url page="about" op="submissions"}" class="card h-100 jrdc-info-card">
+								<h3 class="jrdc-info-card__title">Pedoman Penulis</h3>
+								<p class="jrdc-info-card__desc">Persyaratan naskah dan cara menyiapkan berkas pengiriman.</p>
+							</a>
+						</div>
+						<div class="col">
+							<a href="{url page="about" op="submissions" anchor="copyrightNotice"}" class="card h-100 jrdc-info-card">
+								<h3 class="jrdc-info-card__title">Etika Publikasi</h3>
+								<p class="jrdc-info-card__desc">Standar etika publikasi yang berlaku bagi penulis, editor, dan penelaah.</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{* Card B: Terbitan Jurnal Terbaru *}
+			{if $issue}
+				<section class="card jrdc-card-section jrdc-issue" aria-labelledby="homepageIssueTitle">
+					<a id="homepageIssue"></a>
+					<div class="card-header jrdc-card-header jrdc-issue__header">
+						<div>
+							<div class="jrdc-issue__eyebrow">
+								<span class="jrdc-issue__eyebrow-label">
+									Terbitan Jurnal Terbaru
+								</span>
+								<span class="badge jrdc-issue__status">
+									Aktif
+								</span>
+							</div>
+							<h2 id="homepageIssueTitle" class="jrdc-card-title">
+								{$issue->getIssueIdentification()|strip_unsafe_html}
+							</h2>
+						</div>
+						{if $issue->getDatePublished()}
+							<div class="jrdc-issue__date">
+								{$issue->getDatePublished()|date_format:$dateFormatLong}
+							</div>
+						{/if}
+					</div>
+
+					<div class="jrdc-issue__toc">
+							{include file="frontend/objects/issue_toc.tpl" heading="h3"}
+						</div>
+
+						<div class="jrdc-issue__footer">
+							<span class="jrdc-issue__footer-text">Mencari publikasi edisi lampau atau tematik?</span>
+							<a href="{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive"}" class="btn btn-secondary jrdc-button jrdc-button--secondary">
+								Lihat Semua Edisi &amp; Arsip Lengkap
+							</a>
+						</div>
+					</div>
+				</section>
+			{/if}
+
+			{* Card C: Announcements (if enabled) *}
+			{if $announcements && $numAnnouncementsHomepage}
+				<section class="card jrdc-card-section jrdc-announcements" aria-label="{translate|escape key="announcement.announcements"}">
+					<div class="card-header jrdc-card-header">
+						<h2 class="jrdc-card-title">{translate key="announcement.announcements"}</h2>
+					</div>
+					<div class="card-body jrdc-card-body">
+						{include file="frontend/objects/announcements_list.tpl" numAnnouncements=$numAnnouncementsHomepage}
+					</div>
+				</section>
+			{/if}
+
+			{* Additional Content (if any) *}
+			{if $additionalHomeContent}
+				<section class="card jrdc-card-section jrdc-additional">
+					<div class="card-body jrdc-card-body">
+						<div class="jrdc-prose">
+							{$additionalHomeContent}
+						</div>
+					</div>
+				</section>
+			{/if}
+
+{* Note: pkp_structure_main, sidebar, and pkp_structure_content are closed by footer.tpl *}
+{include file="frontend/components/footer.tpl"}

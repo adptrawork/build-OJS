@@ -1,55 +1,101 @@
-# Changelog
+# Changelog - JRDC OJS 3.3 Modernization (SangulineModern Theme)
 
-## 2026-11-07 — Pure CSS theme, prototype parity
+All notable changes to this project will be documented in this file.
 
-- Replaced compiled Tailwind `plugins/themes/jrdcTheme/styles/jrdc.css` (~28 KB) with hand-written CSS: CSS variables, Grid, Flexbox, `clamp()` fluid type, `.dark` overrides. No build step, no `@apply`, no utility classes.
-- Added core-object styling: `.obj_issue_toc`, `.obj_article_summary`, `.obj_issue_summary`, `.issues_archive`, `.galleys_links`, `.cmp_breadcrumbs`, `.cmp_notification`, `.pkp_block`, `.search_results`, forms, tables, pagination.
-- Tokens: prototype-matching `#c2410c` primary, `#fbbf24` accent, Geist font, `#0b2038` hero.
-- Brand: `brandMark.tpl` (reusable SVG), `brandTagline` option.
-- Footer: 4-column layout with brand tile, links, contact, social icons (`socialIcon.tpl`), amber headings, `jrdc-footer__brand-name/__tagline`.
-- Sidebar: option-gated cards with new icon markup (`.jrdc-sidecard__icon`).
-- Announcements: date badge (`.jrdc-announcements__date/__day/__month`) beside title + teaser.
-- Hero: optional cover image, CSS-drawn fallback (`.jrdc-cover`) when no upload; `heroFacts` and `homeFeatures` via `getPairs()`.
-- `getPairs()` added to parse free-text options (hero facts, features, stats) that don't require URL schemes.
-- Deleted `assets/themes/jrdcPure/` — 3.3 duplicate that cannot load here.
-- DB: seeded theme options (hero, footer, sidebar links, social channels).
-- Verified: `php -l` clean; 12 routes 200; `jrdcTheme-ojs35.zip` (30 KB, 30 files).
+## [1.5.1] - 2026-11-11
 
-## 2026-11-07 — Seed DB prototype data + fix locale conflict
-- Populated DB with prototype data: journal settings (description, aims/scope, contact, ISSN, open access, privacy), 1 section (Artikel Penelitian), 1 published current issue (Vol. 1 No. 1, Apr 2026), 3 published articles with authors, 3 announcements, author user group.
-- Theme options populated via plugin_settings: hero, about card, features, footer, sidebar (about/links/stats/share), stats items.
-- Fixed 500 caused by conflicting `privacyStatement` rows (locale '' vs 'en_US' for a multilingual setting): removed the empty-locale row, kept en_US. Also set `enableAnnouncements=1` and `numAnnouncementsHomepage=3`.
-- Verified: homepage now renders hero/about/latest-issue/announcements/sidebar/footer; issue view and article view render with content; no 500; no overflow at 1440/1024/768/375.
-- DB backup: `ojs-jrdc/cache/db-post-seed-2026-11-07.sql` (pre-seed backup retained at `db-pre-seed-2026-11-06.sql`).
+### Fixed
+- **ddev Site 500 / Redirect Loop (P0):** `config.inc.php` still carried Laragon/Windows values (`host=localhost`, `files_dir=D:/...`, `base_url=http://ojs-3.3.0-24.test`). Rewired for ddev: `host=db`, `username=db`, `password=db`, `name=db`, `files_dir=/var/www/html/ojsData`, `base_url=https://ojs-boostrap.ddev.site:8443`, `allowed_hosts=["ojs-boostrap.ddev.site"]`.
+- **Database Restored:** ddev MariaDB volume was empty (DB version switch 10.6 → 11.8 had wiped it). Dumped the real `ojs-3.3.0-24` schema (114 tables) from the Laragon MySQL 8.0.30 datadir on `/mnt/DiskD/laragon/data/mysql-8` via a throwaway `mysql:8.0.30` container and imported into ddev's `db` database (CREATE DATABASE line re-collated `utf8mb4_0900_ai_ci` → `utf8mb4_general_ci` for MariaDB). Snapshot kept: `ddev snapshot restore ojs-restored-from-laragon`.
+- **PHP 8.4 Deprecation Wall:** All "Implicitly marking parameter as nullable" notices came from running OJS 3.3 (patched upstream only through PHP 8.1/8.2) on PHP 8.4. `php_version` reverted to `8.2` in `.ddev/config.yaml` (the value the previously working jrdc-ojs project used).
+- **PATH_INFO Redirect Loop:** ddev's default `location ~ \.php$` doesn't match `/index.php/jrdc`, so OJS lost PATH_INFO and looped `→ /index.php/jrdc`. Restored the deleted `.ddev/nginx/ojs.conf` from git history (prefix `location /index.php` with `fastcgi_split_path_info` + `PATH_INFO`, plus sitemap rewrite). Note: `.ddev/nginx_full/nginx-site.conf` cannot be hand-edited — ddev regenerates it on every start; use `.ddev/nginx/*.conf` instead.
 
-## 2026-11-06 — Theme `jrdc` (OJS 3.3) dari prototipe
+### Verified
+- Homepage and article/archive/search/login/about/about-submissions routes all HTTP 200; zero deprecation output; JRDC journal + SangulineModern theme render from restored data.
 
-- New theme `ojs-jrdc/plugins/themes/jrdc/` (OJS 3.3 non-namespaced style, `JrdcThemePlugin.inc.php` + `index.php`), 22 theme options via `ThemePlugin::addOption` (colours, hero, nav, homepage about, footer, 6 sidebar toggles, sidebar links/tools/stats/share, static text). Tailwind compiled to `styles/jrdc.css`; `js/jrdc.js` for dark mode, mobile nav, copy link.
-- Templates: header/footer act as the page shell (`<main>` opened in header, closed in footer) so issue/article/search/about/login/etc. inherit it. Only `frontend/pages/indexJournal.tpl` and the staticPages `content.tpl` are overridden; everything else is styled through semantic classes (`.jrdc-card`, `.jrdc-prose`, `.obj_article_summary`, `.obj_issue_toc`, `.cmp_form`, …).
-- Colours are CSS variables injected per request, so Tailwind utilities follow the admin choice without a rebuild. Nav uses `{load_menu}` with a fallback menu (Home/About/Archives/Submissions/Contact, Login/Register or Dashboard/Logout) because the fresh journal has no navigation menus.
-- Link textareas are `Label | URL [| Note]`, filtered in PHP: unknown schemes (`javascript:` etc.) are dropped.
-- Activation in this install: `versions` row (`plugins.themes` / `jrdc` / `JrdcThemePlugin`, `current=1`) + `plugin_settings` `jrdcthemeplugin-1-enabled=1` + `journal_settings.themePluginPath='jrdc'`. Without the plugin_settings row the theme is not loaded and `$activeTheme` is null (fatal in templates).
-- Verified with agent-browser at 1440/1024/834/768/375/360 px on index/about/issue-archive/search/login: no horizontal overflow, nav collapses at <1024 px, mobile menu and dark mode (persisted) work; option changes (colour, hero title, sidebar links) render correctly. Issue/article pages are inherited core templates but not visually verified — this journal has 0 sections/issues/articles.
-- Note: `lib/pkp/tools/installPluginVersion.php` fatals on this PHP build (`xml_parser_create(): Argument #1 ($encoding) is not a supported source encoding`), so the version row was inserted directly.
+## [1.5.0] - 2026-11-10
 
-## 2026-11-06 — Responsif prototipe + hapus label sampul
-- Hapus “Vol. 1 No. 1 · 2026 / Edisi Perdana” dari kartu sampul hero (termasuk caption duplikatnya).
-- Responsif: breakpoint menu hamburger dinaikkan 768→1024px (header tablet 834px sebelumnya pecah 3 baris); target sentuh menu ponsel ≥44px; meta hero ditumpuk di ≤768px; sampul ≤260px di ponsel; padding kartu & jarak konten dikurangi di ponsel. Terverifikasi via agent-browser di 1440/1024/834/768/375/360px — tanpa overflow horizontal, menu & dropdown ponsel berfungsi.
+### Added
+- **Full Bootstrap 5.3.3 Rebuild:**
+  - Vendored local Bootstrap 5.3.3 CSS and JS bundle in child theme.
+  - Responsive Bootstrap `navbar` with `offcanvas` menu for mobile views.
+  - Dedicated `navigationMenuBootstrap.tpl` rendering nested Bootstrap dropdowns.
+  - Rebuilt Homepage (`indexJournal.tpl`) with Bootstrap cards, badges, and responsive action groups.
+  - Rebuilt Article Details & Summary (`article_details.tpl`, `article_summary.tpl`) with 2-column Bootstrap grid (`col-lg-8` / `col-lg-4`), metadata cards, and list groups.
+  - Rebuilt Issue Table of Contents (`issue_toc.tpl`) with Bootstrap cards, badges, and galley CTA buttons.
+  - Rebuilt Issue Archive (`issueArchive.tpl`, `issue_summary.tpl`) with responsive multi-column grid (`row-cols-1 row-cols-md-2 row-cols-lg-3`).
+  - Styled Search, Static Pages, Submissions, and Auth/Login pages to harmonize with Bootstrap styling.
+  - Enhanced Custom Block Manager sidebar widgets, UsageStats graphs, and PDF/HTML galley viewers in `plugins.less`.
 
-## 2026-11-06 — Prototype beranda JRDC direvisi (design-taste-frontend)
-- `docs/prototype/index.html` + `styles.css` + `script.js` direvisi dari panduan UI:
-  satu bahasa (Indonesia), satu menu utama (chip hero & duplikasi Latest/Current dihapus),
-  klaim indeks diganti status "dalam proses", statistik manual/"Dibaca" dihapus,
-  ISSN/DOI/alamat/telepon placeholder diganti status jujur, sampul CSS tanpa gambar eksternal,
-  palet #143C5A/#B23A00, font Manrope+Lora, GSAP/Lenis diganti CSS+vanilla JS, menu ponsel.
-- Backup: `/mnt/DiskD/Workspace/Backups/ojs-prototype/`.
+### Fixed
+- Fixed skip-to-content target anchor (`#siteNav`) in header offcanvas.
+- Synchronized `aria-expanded` on mobile hamburger toggle with Bootstrap offcanvas events.
+- Added full viewport dimensions and styling for HTML article galley iframes.
+- Fixed LESS variable evaluation for `calc()` expressions across sub-pages.
+- Removed dead `modern.less` legacy stylesheet.
+- Preserved full OJS 3.3 Smarty hooks, localized URLs, and Custom Block Manager architecture.
 
-## 2026-11-06 — Downgrade to OJS 3.3.0-24 + port themes
+## [1.4.1] - 2026-11-10
 
-- Deleted OJS 3.5 install; installed OJS 3.3.0-24 (PHP 8.1, MariaDB 10.6).
-- Ported `journalEditorial` and `akdisi` themes from OJS 3.5 APIs to OJS 3.3:
-  - Removed namespaces/`use`; `Hook::add` → `HookRegistry::register`; `Locale::getLocale` → `AppLocale::getLocale`; `Repo::*` → DAOs (`SubmissionDAO::getExportable`, `IssueDAO`, `SectionDAO`, `JournalSettingsDAO`); `DB::table` → `JournalSettingsDAO::getSettings`; `Illuminate\DB` removed.
-  - `index.php` wrappers updated to 3.3 style.
-  - Templates: `router=PKP\core\PKPApplication::ROUTE_PAGE` removed; `editorialMasthead` links/overrides renamed to `editorialTeam`; `->count()` → `|@count`/`getId()`/`getDatePosted()`; announcements assigned as array.
-- Backups: `/mnt/DiskD/Workspace/Backups/ojs-jrdc/2026-11-06-pre-3.3/` (db-ojs35.sql.gz, ojs-jrdc-3.5.tar.gz).
-- Verified: both themes render homepage + about/search/issue archive/login without fatal.
+### Changed
+- **Header Search Position:** Search box moved from the center to the right-hand action group, matching the prototype (brand → nav → search → user → dark toggle).
+- **Issue Intro Heading:** `.obj_issue_toc .heading` no longer renders the oversized padded box (91px → 31px) when only the "Published" chip is present; padding/background/margins compacted.
+
+## [1.4.0] - 2026-11-10
+
+### Fixed
+- **Article Page Grid Collapse (P0):** Parent `.row` clearfix `::before/::after` became CSS Grid items and parent `.main_entry` kept `float:left; width:calc(100% - 305px)`, collapsing the main column to 0px and the abstract to 60px. Pseudo-elements are now hidden inside `.jrdc-article__row` and both grid children reset to `float:none; width:auto; min-width:0`. Verified at 1440/1280/1024/768/390/320: main 467px, abstract 467px, sidebar 234px at 1440.
+- **Giant ✕ on Mobile Panel (P1):** Parent `.pkp_site_nav_toggle--transform > span::before/::after` rotated 100%-wide bars by ±405° across the header. Parent pseudo-elements are now disabled; the three child bars animate into a tidy X instead.
+- **Duplicate Search at 768/1024 (P1):** `.jrdc-nav__search { display:flex !important }` (later in cascade) beat `.jrdc-header__search { display:none !important }` at equal specificity. Header search is now hidden ≤1199px with `.pkp_head_wrapper.jrdc-header__inner` specificity. Exactly one visible search form when the panel is open.
+- **Mobile Panel 7px Gap:** `#jrdcSiteNav` used hardcoded `top:80px` while the mobile header is 73px. Changed to `top:calc(100% + 1px)`; measured gap is now 0.
+- **Search Page Button:** Parent `button.submit::before/::after` icon overlay covered the "Search" label. Both pseudo-elements are now disabled.
+- **Dark Toggle Double Border:** Global `.jrdc-theme-toggle` border overrode the mobile rule. Border is now `none` inside the bordered controls box ≤1199px.
+- **Toggle aria-expanded:** Parent handler toggles classes but never sets `aria-expanded`; child now mirrors the state on the next tick so screen readers stay in sync.
+- **Header Search Button Pseudo:** `.jrdc-search__button::before/::after` (parent default icon) are now disabled for consistency, matching the search-page fix.
+- **Duplicate PDF CTA:** The primary galley block in the article sidebar is hidden because the same download is already shown above the fold in the main column; supplementary galleys remain visible.
+
+### Changed
+- **Sidebar Blocks Cleaned:** Removed `sinta`, `in-collaboration-with`, and `template` from the Custom Block Manager list (duplicate "Sejarah Jurnal" link, partner placeholders, missing template URL). `journal-profile` now shows only verified data (name, abbreviation, publisher); dummy "Visitor counter" label and mailing-address bracket placeholders removed. The core Web Feed block (misleadingly titled "Current Issue", showing only Atom/RSS icons) is hidden from the sidebar; feeds remain in `<head>`.
+- **CHANGELOG/Version Sync:** Entries ordered newest-first; `version.xml` release updated to `1.4.0.0`.
+
+## [1.3.0] - 2026-11-09
+
+### Changed
+- **Mobile Header Layout:** First row on screens ≤1199px now contains only brand (left) and bordered toggle box (hamburger + light/dark, right). Search form, navigation, and user/admin menu (Daftar/Masuk) moved into the dropdown panel (`#jrdcSiteNav`) so the first row stays clean and overflow-free.
+- **Desktop Header Order:** `brand → search (flexible, 170px basis; 240px basis ≥1360px, shrinks to fit) → primary nav → actions`. Brand text hidden ≤1360px (logo only) to fit the 1280px container without overflow; nav link padding tightened to 0.65rem.
+
+### Fixed
+- **Hamburger Position:** Parent Sanguline sets `.pkp_site_nav_toggle { position: absolute }` which threw the toggle out of the controls box on mobile — neutralized with `position: static !important`.
+- **User Menu Visibility:** Mobile hide rule for `.jrdc-nav__user` moved after the base rule with higher specificity so Daftar/Masuk no longer shows in the first row on phones.
+- **Panel Block Cascade:** Mobile search/user blocks inside the nav panel now override the desktop `display: none` via EOF media rule, so the panel actually shows Search → Navigation → Daftar/Masuk.
+
+### Added
+- **Mobile Panel Blocks:** Second search form (`#jrdc-search-query-mobile`) and second user menu (`#navigationUserMobile`) inside `#jrdcSiteNav` for mobile only; desktop keeps the original header search/user menu. All Smarty `{load_menu}`, `{url}`, and `{translate}` logic preserved; no core/parent files modified.
+
+## [1.2.0] - 2026-11-09
+
+### Added
+- **Page-level Styling (CSS-only, no template overrides):** `.page_about` (editorial sections), `.page_issue` / `.obj_issue_toc` (cover + section headings), `.page_announcement` / `.obj_announcement`, and `.page_login` / `.page_register` (minimal modern forms) in `modern.less`.
+- **QA (Tahap 7):** All 9 public routes return 200; desktop 1440px and mobile 390px show no horizontal overflow.
+
+### Notes
+- About/issue/archive/search/announcement/login/register templates remain core OJS (verified by sub-agent audit: hooks, routing, galley/TOC/pagination includes intact). They are styled via the shared `.pkp_structure_main > .page` card + new page sections, so OJS workflow and plugins are untouched.
+
+## [1.1.0] - 2026-11-09
+
+### Added
+- **Design System Tokens:** CSS custom properties (`:root` --jrdc-*) in `modern.less` alongside LESS variables for runtime theming and dark mode.
+- **Child JS Bundle:** `js/jrdc.js` (hamburger sync + Escape/click-outside, dark-mode localStorage persistence, DOI copy button, abstract-toggle fallback, article reading-progress bar) registered via `addScript()` with forward-slash URL.
+- **Homepage Hero CTAs:** "Lihat Edisi Terbaru" and "Panduan Penulis" buttons; larger cover (260px) with accessible placeholder.
+- **Article Improvements:** DOI copy button, prominent PDF download area above the fold in `article_details.tpl`, reading-progress bar, primary/secondary button hierarchy.
+- **Zero Inline Styles:** Removed all `style="..."` from theme templates (header, footer, homepage, article cards) — presentation now fully in `modern.less`.
+
+### Fixed
+- **Sidebar Hook Duplication:** Removed `Templates::Common::Sidebar` hook call from `indexJournal.tpl`; `footer.tpl` is now the single renderer so Block Manager plugins run once.
+- **Open-Access Badge:** `article_summary.tpl` now shows "Akses Terbuka" only when `publishingMode` or article `accessStatus` is open; removed static "Peer-Reviewed" badge.
+- **Announcement Slider A11y:** Prev/next buttons use localized labels; dots use concise `Slide N` labels.
+- **Script URL Backslash:** Child `jrdc.js` also registered with `$base` absolute URL to avoid Windows `DIRECTORY_SEPARATOR` 404.
+
+### Changed
+- **Article Summary Hierarchy:** PDF primary, Detail secondary, Abstract ghost; title uses `clamp()` for fluid type.
+- **Announcement Slider:** Renders as vertical list on ≤640px; `prefers-reduced-motion` disables smooth scroll and reading-progress bar.

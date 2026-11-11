@@ -1,5 +1,0 @@
-/* JRDC Theme — Font stack (Inter as Geist alternative + Merriweather) */
-:root {
-	--jrdc-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-	--jrdc-font-serif: "Merriweather", Georgia, "Times New Roman", serif;
-}
