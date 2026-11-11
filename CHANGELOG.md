@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - **Issue Card (homepage):** 3px → 1px translucent border + `--bs-box-shadow-sm`; footer padding aligned to header (`1rem 1.5rem`, tertiary bg, border-top); eyebrow demoted to 11px/700 uppercase secondary label; "Aktif" badge as green subtle pill; issue title colored `var(--bs-primary)` (= theme accent). DevTools-audit findings.
+- **Article Cards (TOC/homepage):** title 1rem → 1.125rem/1.4; authors .75rem → .875rem (stale `.obj_article_summary .authors` rule deleted — it beat the card rule on specificity and stacked a stray .5rem margin over the grid gap); hover now lifts with `--jrdc-shadow-hover` (transition extended to box-shadow).
 - **Accent Default:** `#0b2038` → `#c2410c` (burnt orange).
 - **Primary Locale:** `journal` → `id_ID`.
 - **Galley Chip:** uses stored label (PDF) with full label in `title` attr.
