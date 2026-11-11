@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.12] - 2026-11-12
+
+### Changed
+- **PDF viewer chrome → icon-only compact bar:** pdfJsViewer `display.tpl` overridden in the child theme (via the `TemplateResource::getFilename` hook, same mechanism as staticPages). Header now renders as a 56px bar with BS5 icons only: `bi-arrow-left` (return to article/issue, left) + truncated article title (link) + `bi-download` (right). Screen-reader spans + `aria-label` kept for accessibility; plugin's jQuery iframe bootstrap kept verbatim (the embedded viewer depends on it). Note: the parent theme's `viewPdf.less` never loaded in this child (parent visual layer dropped), so `.header_view` was previously completely unstyled (raw text links). New `styles/pages/viewPdf.less` styles the bar/iframe layout.
+
 ## [1.6.11] - 2026-11-12
 
 ### Fixed
