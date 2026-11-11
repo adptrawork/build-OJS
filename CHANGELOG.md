@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - **Archive Card Rewrite:** 3:4 cover, Diterbitkan, Artikel Ilmiah, ISSN-conditional footer, Lihat Edisi button.
 
 ### Changed
+- **Issue Card (homepage):** 3px → 1px translucent border + `--bs-box-shadow-sm`; footer padding aligned to header (`1rem 1.5rem`, tertiary bg, border-top); eyebrow demoted to 11px/700 uppercase secondary label; "Aktif" badge as green subtle pill; issue title colored `var(--bs-primary)` (= theme accent). DevTools-audit findings.
 - **Accent Default:** `#0b2038` → `#c2410c` (burnt orange).
 - **Primary Locale:** `journal` → `id_ID`.
 - **Galley Chip:** uses stored label (PDF) with full label in `title` attr.
