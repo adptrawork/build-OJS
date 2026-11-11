@@ -144,14 +144,25 @@
 	margin: 0 0 1rem;
 }
 
-.page ul,
-.page ol {
+/* :where() zeroes specificity so theme component rules (article-card
+ * galleys, TOC lists, breadcrumbs, pagination) always beat this prose
+ * reset for plugin/editor content instead of losing on cascade order. */
+:where(.page) ul,
+:where(.page) ol {
 	margin: 0 0 1rem;
 	padding-inline-start: 1.5rem;
 }
 
-.page li + li {
+:where(.page) li + li {
 	margin-block-start: .35rem;
+}
+
+/* Same rhythm must not stagger flex/grid items of theme chrome lists. */
+.cmp_breadcrumbs li,
+.cmp_pagination li,
+.obj_article_summary li,
+.obj_issue_toc li {
+	margin: 0;
 }
 
 .page table {
