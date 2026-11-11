@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [1.6.0] - 2026-11-11
 
 ### Added
+- **Issue Page Card:** child `issue.tpl` override wraps the issue TOC in the same `section.card.jrdc-card-section.jrdc-issue` markup as the homepage card (header with h1 `.jrdc-card-title` + `.jrdc-issue__toc`), so `/issue/view/N` renders identical to the homepage "Terbitan Jurnal Terbaru" card. Shared card skin in `home.less` unscoped from `.page_index_journal` to cover both pages.
 - **Bootstrap 5.3.3 TOC Sections:** `.jrdc-toc-section` with hairline header and article-count chip.
 - **Article Card Rewrite:** ids row (DOI/pages), lucide SVG stats, Abstrak chip, PDF chip.
 - **Archive Card Rewrite:** 3:4 cover, Diterbitkan, Artikel Ilmiah, ISSN-conditional footer, Lihat Edisi button.
