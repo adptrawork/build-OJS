@@ -26,7 +26,7 @@
 		<section class="jrdc-hero-container" aria-label="{translate|escape key="about.aboutContext"}">
 			<div class="jrdc-hero__content">
 				<div class="jrdc-hero__badge">
-					JURNAL ILMIAH &bull; EKONOMI DAN BISNIS
+					{translate key="plugins.themes.sangulineModern.hero.badge"}
 				</div>
 				<h1 class="jrdc-hero__title">
 					{$currentJournal->getLocalizedName()|escape}
@@ -35,16 +35,16 @@
 					{if $currentContext->getLocalizedData('description')}
 						{$currentContext->getLocalizedData('description')|strip_tags|truncate:260}
 					{else}
-						Jurnal ilmiah akses terbuka yang menerbitkan penelitian dan kajian bidang ekonomi dan bisnis dengan telaah sejawat double-blind. Terbit dua kali setahun, pada April dan Oktober.
+						{translate key="plugins.themes.sangulineModern.hero.fallbackDescription"}
 					{/if}
 				</div>
 				<div class="jrdc-hero__meta">
 					<div class="jrdc-hero__meta-card">
-						<span class="meta-label">FREKUENSI</span>
+						<span class="meta-label">{translate key="plugins.themes.sangulineModern.hero.frequency"}</span>
 						<span class="meta-value">April &amp; Oktober</span>
 					</div>
 					<div class="jrdc-hero__meta-card">
-						<span class="meta-label">PENERBIT</span>
+						<span class="meta-label">{translate key="plugins.themes.sangulineModern.hero.publisher"}</span>
 						<span class="meta-value">
 							{if $currentContext->getData('publisherInstitution')}
 								{$currentContext->getData('publisherInstitution')|escape}
@@ -64,7 +64,7 @@
 					<img src="{$issue->getLocalizedCoverImageUrl()|escape}" alt="{$issue->getIssueIdentification()|escape}" loading="eager">
 				{else}
 					<div class="jrdc-hero__cover-placeholder">
-						<span class="jrdc-hero__cover-kicker">COVER JURNAL</span>
+						<span class="jrdc-hero__cover-kicker">{translate key="plugins.themes.sangulineModern.hero.coverKicker"}</span>
 						<span class="jrdc-hero__cover-title">JRDC</span>
 						<span class="jrdc-hero__cover-bar"></span>
 					</div>
@@ -73,9 +73,9 @@
 
 			<div class="jrdc-hero__actions">
 				{if $issue}
-					<a href="{url router=$smarty.const.ROUTE_PAGE page="issue" op="view" path=$issue->getBestIssueId()}" class="btn btn-primary jrdc-button jrdc-button--primary jrdc-hero__cta">Lihat Edisi Terbaru</a>
+					<a href="{url router=$smarty.const.ROUTE_PAGE page="issue" op="view" path=$issue->getBestIssueId()}" class="btn btn-primary jrdc-button jrdc-button--primary jrdc-hero__cta">{translate key="plugins.themes.sangulineModern.hero.ctaLatest"}</a>
 				{/if}
-				<a href="{url page="about" op="submissions"}" class="btn btn-outline-light jrdc-button jrdc-button--outline jrdc-hero__cta">Panduan Penulis</a>
+				<a href="{url page="about" op="submissions"}" class="btn btn-outline-light jrdc-button jrdc-button--outline jrdc-hero__cta">{translate key="plugins.themes.sangulineModern.hero.ctaGuidelines"}</a>
 			</div>
 		</section>
 	</div>
@@ -90,14 +90,14 @@
 			{* Card A: Tentang Jurnal *}
 			<section class="card jrdc-card-section" aria-labelledby="homepageAboutTitle">
 				<div class="card-header jrdc-card-header">
-					<h2 id="homepageAboutTitle" class="jrdc-card-title">Tentang Jurnal</h2>
+					<h2 id="homepageAboutTitle" class="jrdc-card-title">{translate key="plugins.themes.sangulineModern.about.title"}</h2>
 				</div>
 				<div class="card-body jrdc-card-body">
 					<div class="jrdc-prose jrdc-prose--lead">
 						{if $currentContext->getLocalizedData('description')}
 							{$currentContext->getLocalizedData('description')}
 						{else}
-							Yayasan Ratu Dirgantara Cendekiawan (JRDC) merupakan lembaga yang berfokus pada penerbitan jurnal ilmiah, khususnya dalam bidang Ekonomi dan Bisnis. Melalui kegiatan penerbitan, JRDC berkomitmen mendukung pengembangan pendidikan, kemajuan ilmu pengetahuan, serta penyebarluasan hasil penelitian dan pemikiran akademik.
+							{translate key="plugins.themes.sangulineModern.about.fallbackDescription"}
 						{/if}
 					</div>
 
@@ -105,26 +105,26 @@
 					<div class="jrdc-overview-grid row row-cols-1 row-cols-md-2 g-3">
 						<div class="col">
 							<a href="{url page="about"}" class="card h-100 jrdc-info-card">
-								<h3 class="jrdc-info-card__title">Fokus dan Ruang Lingkup</h3>
-								<p class="jrdc-info-card__desc">Manajemen, akuntansi, keuangan, pemasaran, kewirausahaan, dan ekonomi pembangunan.</p>
+								<h3 class="jrdc-info-card__title">{translate key="plugins.themes.sangulineModern.about.focusScope"}</h3>
+								<p class="jrdc-info-card__desc">{translate key="plugins.themes.sangulineModern.about.focusScopeDesc"}</p>
 							</a>
 						</div>
 						<div class="col">
 							<a href="{url page="about" op="editorialTeam"}" class="card h-100 jrdc-info-card">
-								<h3 class="jrdc-info-card__title">Dewan Redaksi</h3>
-								<p class="jrdc-info-card__desc">Editor dan mitra bestari yang memandu proses telaah sejawat.</p>
+								<h3 class="jrdc-info-card__title">{translate key="plugins.themes.sangulineModern.about.editorialBoard"}</h3>
+								<p class="jrdc-info-card__desc">{translate key="plugins.themes.sangulineModern.about.editorialBoardDesc"}</p>
 							</a>
 						</div>
 						<div class="col">
 							<a href="{url page="about" op="submissions"}" class="card h-100 jrdc-info-card">
-								<h3 class="jrdc-info-card__title">Pedoman Penulis</h3>
-								<p class="jrdc-info-card__desc">Persyaratan naskah dan cara menyiapkan berkas pengiriman.</p>
+								<h3 class="jrdc-info-card__title">{translate key="plugins.themes.sangulineModern.about.authorGuidelines"}</h3>
+								<p class="jrdc-info-card__desc">{translate key="plugins.themes.sangulineModern.about.authorGuidelinesDesc"}</p>
 							</a>
 						</div>
 						<div class="col">
 							<a href="{url page="about" op="submissions" anchor="copyrightNotice"}" class="card h-100 jrdc-info-card">
-								<h3 class="jrdc-info-card__title">Etika Publikasi</h3>
-								<p class="jrdc-info-card__desc">Standar etika publikasi yang berlaku bagi penulis, editor, dan penelaah.</p>
+								<h3 class="jrdc-info-card__title">{translate key="plugins.themes.sangulineModern.about.publicationEthics"}</h3>
+								<p class="jrdc-info-card__desc">{translate key="plugins.themes.sangulineModern.about.publicationEthicsDesc"}</p>
 							</a>
 						</div>
 					</div>
@@ -139,10 +139,10 @@
 						<div>
 							<div class="jrdc-issue__eyebrow">
 								<span class="jrdc-issue__eyebrow-label">
-									Terbitan Jurnal Terbaru
+									{translate key="plugins.themes.sangulineModern.issue.eyebrow"}
 								</span>
 								<span class="badge jrdc-issue__status">
-									Aktif
+									{translate key="plugins.themes.sangulineModern.issue.active"}
 								</span>
 							</div>
 							<h2 id="homepageIssueTitle" class="jrdc-card-title">
@@ -161,9 +161,9 @@
 						</div>
 
 						<div class="jrdc-issue__footer">
-							<span class="jrdc-issue__footer-text">Mencari publikasi edisi lampau atau tematik?</span>
+							<span class="jrdc-issue__footer-text">{translate key="plugins.themes.sangulineModern.issue.archiveText"}</span>
 							<a href="{url router=$smarty.const.ROUTE_PAGE page="issue" op="archive"}" class="btn btn-secondary jrdc-button jrdc-button--secondary">
-								Lihat Semua Edisi &amp; Arsip Lengkap
+								{translate key="plugins.themes.sangulineModern.issue.archiveCta"}
 							</a>
 						</div>
 				</section>
@@ -173,7 +173,7 @@
 			{if $announcements && $numAnnouncementsHomepage}
 				<section class="card jrdc-card-section jrdc-announcements" aria-label="{translate|escape key="announcement.announcements"}">
 					<div class="card-header jrdc-card-header">
-						<h2 class="jrdc-card-title">Pengumuman</h2>
+						<h2 class="jrdc-card-title">{translate key="plugins.themes.sangulineModern.announcements.title"}</h2>
 					</div>
 					<div class="card-body jrdc-card-body">
 						{include file="frontend/objects/announcements_list.tpl" numAnnouncements=$numAnnouncementsHomepage}

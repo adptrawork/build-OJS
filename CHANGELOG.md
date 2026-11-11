@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.5] - 2026-11-11
+
+### Fixed
+- **EN mode parity (language toggle):** clicking "English" switched `<html lang>` but the UI stayed Indonesian. Root causes fixed:
+  - All hardcoded Indonesian strings in theme templates (homepage hero/cards/issue/announcement labels, article page badges/info grid/download/share/license/references, footer columns/contact, header search placeholder) moved to theme locale keys (`plugins.themes.sangulineModern.*`, 67 keys in `locale/id/locale.po` + `locale/en/locale.po`).
+  - **DB titles translated to English in en_US** (not in git): navigation menu items (Register/Login/Current Issue/Archives/Announcements/About/About the Journal/Author Guidelines/Editorial Board/Privacy Statement/Contact/Editorial Team/Reviewer Board/Focus and Scope/Publication Ethics/Publication Fees/Plagiarism Policy/Copyright and License/Retraction and Withdrawal/Open Access Statement); section titles (Research Article/Literature Review/Case Study + id_ID row restored for section 1); sidebar custom blocks `journal-information`, `information-for-author`, `ai-usage-policy` (merged localized JSON — written via PDO prepared statements after discovering MySQL consumes `\"` inside single-quoted strings, corrupting hand-escaped JSON).
+- Verified: EN mode renders fully English chrome (nav, hero, cards, article page, footer, sidebar blocks, breadcrumbs); ID mode unchanged (Indonesian chrome + content).
+
+### Notes
+- Article/announcement/section *content* (titles, abstracts, announcements) remains Indonesian — that is editorial content, not chrome. Section titles live in `section_settings` (id_ID/en_US rows both present).
+- `recommendBySimilarity` locale strings come from the plugin's own locale files — both locales ship in core.
+
 ## [1.6.4] - 2026-11-11
 
 ### Changed

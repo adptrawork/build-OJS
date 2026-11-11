@@ -93,7 +93,7 @@
 								<form action="{url page="search" op="search"}" method="get" class="d-xl-none jrdc-mobile-search mb-3" role="search">
 									<label class="visually-hidden" for="jrdc-search-query-mobile">{translate key="common.search"}</label>
 									<div class="input-group">
-										<input id="jrdc-search-query-mobile" type="search" name="query" placeholder="Cari artikel..." class="form-control" autocomplete="off" />
+										<input id="jrdc-search-query-mobile" type="search" name="query" placeholder="{translate key="plugins.themes.sangulineModern.header.searchPlaceholder"}" class="form-control" autocomplete="off" />
 										<button type="submit" class="btn btn-primary" aria-label="{translate|escape key="common.search"}">
 											<svg class="jrdc-search__icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path></svg>
 										</button>
@@ -124,7 +124,7 @@
 							<form action="{url page="search" op="search"}" method="get" class="d-none d-xl-block jrdc-header__search" role="search">
 								<label class="visually-hidden" for="jrdc-search-query">{translate key="common.search"}</label>
 								<div class="input-group">
-									<input id="jrdc-search-query" type="search" name="query" placeholder="Cari artikel..." class="form-control" autocomplete="off" />
+									<input id="jrdc-search-query" type="search" name="query" placeholder="{translate key="plugins.themes.sangulineModern.header.searchPlaceholder"}" class="form-control" autocomplete="off" />
 									<button type="submit" class="btn btn-primary" aria-label="{translate|escape key="common.search"}">
 										<svg class="jrdc-search__icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path></svg>
 									</button>

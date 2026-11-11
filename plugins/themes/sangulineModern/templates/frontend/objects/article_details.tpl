@@ -53,11 +53,11 @@
 							</span>
 						{/if}
 						{if $isOpenAccess}
-							<span class="jrdc-article__badge jrdc-article__badge--open">Akses Terbuka</span>
+							<span class="jrdc-article__badge jrdc-article__badge--open">{translate key="plugins.themes.sangulineModern.article.openAccess"}</span>
 						{/if}
 						{if $publication->getLocalizedData('pages')}
 							<span class="jrdc-article__badge jrdc-article__badge--pages">
-								Hal. {$publication->getLocalizedData('pages')|escape}
+								{translate key="plugins.themes.sangulineModern.article.pagesBadge"}{$publication->getLocalizedData('pages')|escape}
 							</span>
 						{/if}
 					</div>
@@ -134,7 +134,7 @@
 							{/foreach}
 							{if $doi}
 								<a class="jrdc-article__info-value jrdc-article__doi-link" href="{$doiUrl}">{$doi|escape}</a>
-								<button type="button" class="jrdc-doi-copy jrdc-article__doi-copy" data-doi="{$doiUrl}" aria-label="Salin DOI" title="Salin DOI">
+								<button type="button" class="jrdc-doi-copy jrdc-article__doi-copy" data-doi="{$doiUrl}" aria-label="{translate key="plugins.themes.sangulineModern.article.copyDoi"}" title="{translate key="plugins.themes.sangulineModern.article.copyDoi"}">
 									<span class="bi bi-copy" aria-hidden="true"></span>
 								</button>
 							{else}
@@ -142,15 +142,15 @@
 							{/if}
 						</div>
 						<div>
-							<span class="jrdc-article__info-label">DITERIMA</span>
+							<span class="jrdc-article__info-label">{translate key="plugins.themes.sangulineModern.article.received"}</span>
 							<span class="jrdc-article__info-value">{$article->getData('dateSubmitted')|date_format:$dateFormatShort}</span>
 						</div>
 						<div>
-							<span class="jrdc-article__info-label">TERBIT</span>
+							<span class="jrdc-article__info-label">{translate key="plugins.themes.sangulineModern.article.published"}</span>
 							<span class="jrdc-article__info-value">{$publication->getData('datePublished')|date_format:$dateFormatShort}</span>
 						</div>
 						<div>
-							<span class="jrdc-article__info-label">HALAMAN</span>
+							<span class="jrdc-article__info-label">{translate key="plugins.themes.sangulineModern.article.pagesInfoLabel"}</span>
 							<span class="jrdc-article__info-value">{$publication->getLocalizedData('pages')|escape|default:'—'}</span>
 						</div>
 					</div>
@@ -166,7 +166,7 @@
 
 					{if !empty($publication->getLocalizedData('keywords'))}
 						<div class="jrdc-article__keywords">
-							<span class="jrdc-article__keywords-label">Keywords:</span>
+							<span class="jrdc-article__keywords-label">{translate key="plugins.themes.sangulineModern.article.keywords"}</span>
 							<span class="jrdc-article__keyword-list">
 								{foreach name="keywords" from=$publication->getLocalizedData('keywords') item="keyword"}
 									<span class="jrdc-article__keyword">{$keyword|escape}</span>
@@ -192,14 +192,14 @@
 				<section class="card jrdc-article__card jrdc-article__pdf">
 					<div class="card-header jrdc-article__card-header jrdc-article__pdf-header">
 						<div class="jrdc-article__pdf-heading">
-							<h2 class="jrdc-article__section-title">Unduh Naskah Lengkap</h2>
+							<h2 class="jrdc-article__section-title">{translate key="plugins.themes.sangulineModern.article.pdfCardTitle"}</h2>
 							<p class="jrdc-article__pdf-subtitle">
 								{$firstGalley->getLabel()|escape}
-								{if $publication->getLocalizedData('pages')} · Hal. {$publication->getLocalizedData('pages')|escape}{/if}
+								{if $publication->getLocalizedData('pages')} · {translate key="plugins.themes.sangulineModern.article.pagesBadge"}{$publication->getLocalizedData('pages')|escape}{/if}
 							</p>
 						</div>
 						<a class="btn btn-primary jrdc-button jrdc-article__pdf-cta" href="{$galleyUrl}">
-							<span class="bi bi-download" aria-hidden="true"></span> Unduh PDF
+							<span class="bi bi-download" aria-hidden="true"></span> {translate key="plugins.themes.sangulineModern.article.downloadCta"}
 						</a>
 					</div>
 					<div class="card-body jrdc-article__pdf-body">
@@ -241,7 +241,7 @@
 									</ol>
 								</div>
 								<button type="button" class="btn jrdc-article__references-toggle" data-bs-toggle="collapse" data-bs-target="#extraReferences" aria-expanded="false" aria-controls="extraReferences">
-									Lihat Daftar Pustaka Lainnya
+									{translate key="plugins.themes.sangulineModern.article.referencesMore"}
 								</button>
 							{/if}
 						{/if}
@@ -312,7 +312,7 @@
 								<span class="jrdc-article__issue-cover-year">2026</span>
 							</span>
 							<span class="jrdc-article__issue-meta">
-								<span class="jrdc-article__side-eyebrow">EDISI TERBITAN</span>
+								<span class="jrdc-article__side-eyebrow">{translate key="plugins.themes.sangulineModern.article.issueEyebrow"}</span>
 								<a class="jrdc-article__issue-title" href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
 									{$issue->getIssueIdentification()|escape}
 								</a>
@@ -320,7 +320,7 @@
 							</span>
 						</div>
 						<a class="jrdc-article__issue-link" href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-							Lihat Semua Artikel Edisi Ini
+							{translate key="plugins.themes.sangulineModern.article.issueAllCta"}
 							<span class="bi bi-arrow-right" aria-hidden="true"></span>
 						</a>
 					</div>
@@ -330,12 +330,12 @@
 			{* ---------- Download box ---------- *}
 			<div class="card jrdc-article__card jrdc-article__download">
 				<div class="card-header jrdc-article__card-header jrdc-article__download-header">
-					<h2 class="jrdc-article__side-title">UNDUH {if $primaryGalleys}{$primaryGalleys[0]->getLabel()|upper|escape}{else}PDF{/if}</h2>
-					{if $isOpenAccess}<span class="jrdc-article__badge jrdc-article__badge--open">Akses Terbuka</span>{/if}
+					<h2 class="jrdc-article__side-title">{translate key="plugins.themes.sangulineModern.article.downloadBoxTitle" galley=$primaryGalleys[0]->getLabel()|upper|escape}</h2>
+					{if $isOpenAccess}<span class="jrdc-article__badge jrdc-article__badge--open">{translate key="plugins.themes.sangulineModern.article.openAccess"}</span>{/if}
 				</div>
 				<div class="card-body">
 					<div class="jrdc-article__download-row">
-						<span>Halaman</span>
+						<span>{translate key="plugins.themes.sangulineModern.article.pagesRow"}</span>
 						<span class="jrdc-article__download-value">{$publication->getLocalizedData('pages')|escape|default:'—'}</span>
 					</div>
 					{if $primaryGalleys}
@@ -347,7 +347,7 @@
 								{/if}
 								<a class="btn jrdc-article__download-button" href="{url page="article" op="view" path=$galleyPath}">
 									<span class="bi bi-download" aria-hidden="true"></span>
-									Unduh {$galley->getLabel()|escape}
+									{translate key="plugins.themes.sangulineModern.article.downloadButton" label=$galley->getLabel()|escape}
 								</a>
 							{/foreach}
 						</div>
@@ -362,7 +362,7 @@
 								<li>
 									<a class="jrdc-article__supplementary-link" href="{url page="article" op="view" path=$suppPath}">
 										<span class="bi bi-file-earmark-pdf" aria-hidden="true"></span>
-										Unduh Dokumen {$galley->getLabel()|escape} (PDF)
+										{translate key="plugins.themes.sangulineModern.article.loaButton" label=$galley->getLabel()|escape}
 									</a>
 								</li>
 							{/foreach}
@@ -395,30 +395,30 @@
 			{assign var="shareUrl" value=$articleUrl|escape:'url'}
 			<div class="card jrdc-article__card jrdc-article__share">
 				<div class="card-header jrdc-article__card-header">
-					<h2 class="jrdc-article__side-title">BAGIKAN ARTIKEL</h2>
+					<h2 class="jrdc-article__side-title">{translate key="plugins.themes.sangulineModern.article.shareTitle"}</h2>
 				</div>
 				<div class="card-body">
 					<div class="jrdc-article__share-grid">
-						<a class="jrdc-article__share-btn jrdc-article__share-btn--wa" href="https://wa.me/?text={$shareTitle}%20{$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke WhatsApp" aria-label="Bagikan ke WhatsApp">
+						<a class="jrdc-article__share-btn jrdc-article__share-btn--wa" href="https://wa.me/?text={$shareTitle}%20{$shareUrl}" target="_blank" rel="noopener" title="{translate key="plugins.themes.sangulineModern.article.shareWhatsapp"}" aria-label="{translate key="plugins.themes.sangulineModern.article.shareWhatsapp"}">
 							<span class="bi bi-whatsapp" aria-hidden="true"></span>
 							<span class="jrdc-article__share-label">WA</span>
 						</a>
-						<a class="jrdc-article__share-btn jrdc-article__share-btn--x" href="https://twitter.com/intent/tweet?text={$shareTitle}&url={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke X / Twitter" aria-label="Bagikan ke X / Twitter">
+						<a class="jrdc-article__share-btn jrdc-article__share-btn--x" href="https://twitter.com/intent/tweet?text={$shareTitle}&url={$shareUrl}" target="_blank" rel="noopener" title="{translate key="plugins.themes.sangulineModern.article.shareX"}" aria-label="{translate key="plugins.themes.sangulineModern.article.shareX"}">
 							<span class="bi bi-twitter-x" aria-hidden="true"></span>
 							<span class="jrdc-article__share-label">X</span>
 						</a>
-						<a class="jrdc-article__share-btn jrdc-article__share-btn--fb" href="https://www.facebook.com/sharer/sharer.php?u={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke Facebook" aria-label="Bagikan ke Facebook">
+						<a class="jrdc-article__share-btn jrdc-article__share-btn--fb" href="https://www.facebook.com/sharer/sharer.php?u={$shareUrl}" target="_blank" rel="noopener" title="{translate key="plugins.themes.sangulineModern.article.shareFacebook"}" aria-label="{translate key="plugins.themes.sangulineModern.article.shareFacebook"}">
 							<span class="bi bi-facebook" aria-hidden="true"></span>
 							<span class="jrdc-article__share-label">FB</span>
 						</a>
-						<a class="jrdc-article__share-btn jrdc-article__share-btn--in" href="https://www.linkedin.com/sharing/share-offsite/?url={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke LinkedIn" aria-label="Bagikan ke LinkedIn">
+						<a class="jrdc-article__share-btn jrdc-article__share-btn--in" href="https://www.linkedin.com/sharing/share-offsite/?url={$shareUrl}" target="_blank" rel="noopener" title="{translate key="plugins.themes.sangulineModern.article.shareLinkedIn"}" aria-label="{translate key="plugins.themes.sangulineModern.article.shareLinkedIn"}">
 							<span class="bi bi-linkedin" aria-hidden="true"></span>
 							<span class="jrdc-article__share-label">In</span>
 						</a>
 					</div>
-					<button type="button" class="jrdc-doi-copy jrdc-article__copy-link" data-doi="{$articleUrl|escape}" aria-label="Salin tautan artikel">
+					<button type="button" class="jrdc-doi-copy jrdc-article__copy-link" data-doi="{$articleUrl|escape}" aria-label="{translate key="plugins.themes.sangulineModern.article.copyLink"}">
 						<span class="bi bi-link-45deg" aria-hidden="true"></span>
-						Salin Tautan Artikel
+						{translate key="plugins.themes.sangulineModern.article.copyLink"}
 					</button>
 				</div>
 			</div>
@@ -427,7 +427,7 @@
 			{if $currentContext->getLocalizedData('licenseTerms') || $publication->getData('licenseUrl')}
 				<div class="card jrdc-article__card jrdc-article__license">
 					<div class="card-header jrdc-article__card-header">
-						<h2 class="jrdc-article__side-title">LISENSI &amp; HAK CIPTA</h2>
+						<h2 class="jrdc-article__side-title">{translate key="plugins.themes.sangulineModern.article.licenseTitle"}</h2>
 					</div>
 					<div class="card-body jrdc-article__license-body">
 						{if $publication->getData('licenseUrl') && $ccLicenseBadge}{$ccLicenseBadge}{/if}

@@ -146,3 +146,207 @@ msgstr "Tampilkan Abstrak"
 
 msgid "plugins.themes.sanguline.article.pages"
 msgstr "Halaman"
+
+
+# --- Bilingual UI strings (EN mode parity) ---
+msgid "plugins.themes.sangulineModern.hero.badge"
+msgstr "JURNAL ILMIAH • EKONOMI DAN BISNIS"
+
+msgid "plugins.themes.sangulineModern.hero.frequency"
+msgstr "FREKUENSI"
+
+msgid "plugins.themes.sangulineModern.hero.publisher"
+msgstr "PENERBIT"
+
+msgid "plugins.themes.sangulineModern.hero.coverKicker"
+msgstr "COVER JURNAL"
+
+msgid "plugins.themes.sangulineModern.hero.ctaLatest"
+msgstr "Lihat Edisi Terbaru"
+
+msgid "plugins.themes.sangulineModern.hero.ctaGuidelines"
+msgstr "Panduan Penulis"
+
+msgid "plugins.themes.sangulineModern.about.title"
+msgstr "Tentang Jurnal"
+
+msgid "plugins.themes.sangulineModern.about.focusScope"
+msgstr "Fokus dan Ruang Lingkup"
+
+msgid "plugins.themes.sangulineModern.about.focusScopeDesc"
+msgstr "Manajemen, akuntansi, keuangan, pemasaran, kewirausahaan, dan ekonomi pembangunan."
+
+msgid "plugins.themes.sangulineModern.about.editorialBoard"
+msgstr "Dewan Redaksi"
+
+msgid "plugins.themes.sangulineModern.about.editorialBoardDesc"
+msgstr "Editor dan mitra bestari yang memandu proses telaah sejawat."
+
+msgid "plugins.themes.sangulineModern.about.authorGuidelines"
+msgstr "Pedoman Penulis"
+
+msgid "plugins.themes.sangulineModern.about.authorGuidelinesDesc"
+msgstr "Persyaratan naskah dan cara menyiapkan berkas pengiriman."
+
+msgid "plugins.themes.sangulineModern.about.publicationEthics"
+msgstr "Etika Publikasi"
+
+msgid "plugins.themes.sangulineModern.about.publicationEthicsDesc"
+msgstr "Standar etika publikasi yang berlaku bagi penulis, editor, dan penelaah."
+
+msgid "plugins.themes.sangulineModern.issue.eyebrow"
+msgstr "Terbitan Jurnal Terbaru"
+
+msgid "plugins.themes.sangulineModern.issue.active"
+msgstr "Aktif"
+
+msgid "plugins.themes.sangulineModern.issue.archiveText"
+msgstr "Mencari publikasi edisi lampau atau tematik?"
+
+msgid "plugins.themes.sangulineModern.issue.archiveCta"
+msgstr "Lihat Semua Edisi & Arsip Lengkap"
+
+msgid "plugins.themes.sangulineModern.announcements.title"
+msgstr "Pengumuman"
+
+msgid "plugins.themes.sangulineModern.about.fallbackDescription"
+msgstr "Yayasan Ratu Dirgantara Cendekiawan (JRDC) merupakan lembaga yang berfokus pada penerbitan jurnal ilmiah, khususnya dalam bidang Ekonomi dan Bisnis. Melalui kegiatan penerbitan, JRDC berkomitmen mendukung pengembangan pendidikan, kemajuan ilmu pengetahuan, serta penyebarluasan hasil penelitian dan pemikiran akademik."
+
+msgid "plugins.themes.sangulineModern.hero.fallbackDescription"
+msgstr "Jurnal ilmiah akses terbuka yang menerbitkan penelitian dan kajian bidang ekonomi dan bisnis dengan telaah sejawat double-blind. Terbit dua kali setahun, pada April dan Oktober."
+
+msgid "plugins.themes.sangulineModern.article.openAccess"
+msgstr "Akses Terbuka"
+
+msgid "plugins.themes.sangulineModern.article.pagesInfoLabel"
+msgstr "HALAMAN"
+
+msgid "plugins.themes.sangulineModern.article.received"
+msgstr "DITERIMA"
+
+msgid "plugins.themes.sangulineModern.article.published"
+msgstr "TERBIT"
+
+msgid "plugins.themes.sangulineModern.article.pagesBadge"
+msgstr "Hal. "
+
+msgid "plugins.themes.sangulineModern.article.pdfCardTitle"
+msgstr "Unduh Naskah Lengkap"
+
+msgid "plugins.themes.sangulineModern.article.downloadCta"
+msgstr "Unduh PDF"
+
+msgid "plugins.themes.sangulineModern.article.downloadBoxTitle"
+msgstr "UNDUH {$galley}"
+
+msgid "plugins.themes.sangulineModern.article.downloadButton"
+msgstr "Unduh {$label}"
+
+msgid "plugins.themes.sangulineModern.article.loaButton"
+msgstr "Unduh Dokumen {$label} (PDF)"
+
+msgid "plugins.themes.sangulineModern.article.pagesRow"
+msgstr "Halaman"
+
+msgid "plugins.themes.sangulineModern.article.referencesMore"
+msgstr "Lihat Daftar Pustaka Lainnya"
+
+msgid "plugins.themes.sangulineModern.article.issueEyebrow"
+msgstr "EDISI TERBITAN"
+
+msgid "plugins.themes.sangulineModern.article.issueAllCta"
+msgstr "Lihat Semua Artikel Edisi Ini"
+
+msgid "plugins.themes.sangulineModern.article.shareTitle"
+msgstr "BAGIKAN ARTIKEL"
+
+msgid "plugins.themes.sangulineModern.article.copyLink"
+msgstr "Salin Tautan Artikel"
+
+msgid "plugins.themes.sangulineModern.article.copyDoi"
+msgstr "Salin DOI"
+
+msgid "plugins.themes.sangulineModern.article.licenseTitle"
+msgstr "LISENSI & HAK CIPTA"
+
+msgid "plugins.themes.sangulineModern.article.shareWhatsapp"
+msgstr "Bagikan ke WhatsApp"
+
+msgid "plugins.themes.sangulineModern.article.shareX"
+msgstr "Bagikan ke X / Twitter"
+
+msgid "plugins.themes.sangulineModern.article.shareFacebook"
+msgstr "Bagikan ke Facebook"
+
+msgid "plugins.themes.sangulineModern.article.shareLinkedIn"
+msgstr "Bagikan ke LinkedIn"
+
+msgid "plugins.themes.sangulineModern.article.keywords"
+msgstr "Keywords:"
+
+msgid "plugins.themes.sangulineModern.footer.publisherDesc"
+msgstr "Diterbitkan oleh <strong>Yayasan Ratu Dirgantara Cendekiawan (JRDC)</strong> sebagai wadah diseminasi riset ilmiah dan publikasi kajian bidang ekonomi & bisnis."
+
+msgid "plugins.themes.sangulineModern.footer.note"
+msgstr "Terbit berkala 2 kali setahun (April & Oktober) • Akses Terbuka Peer-Reviewed."
+
+msgid "plugins.themes.sangulineModern.footer.forAuthors"
+msgstr "Untuk Penulis"
+
+msgid "plugins.themes.sangulineModern.footer.peerReview"
+msgstr "Proses Peer Review"
+
+msgid "plugins.themes.sangulineModern.footer.manuscriptTemplate"
+msgstr "Templat Naskah (.docx)"
+
+msgid "plugins.themes.sangulineModern.footer.submitOnline"
+msgstr "Kirim Naskah Online"
+
+msgid "plugins.themes.sangulineModern.footer.navArchive"
+msgstr "Navigasi & Arsip"
+
+msgid "plugins.themes.sangulineModern.footer.home"
+msgstr "Beranda"
+
+msgid "plugins.themes.sangulineModern.footer.latestIssue"
+msgstr "Edisi Terbaru"
+
+msgid "plugins.themes.sangulineModern.footer.issueArchive"
+msgstr "Arsip Terbitan"
+
+msgid "plugins.themes.sangulineModern.footer.indexing"
+msgstr "Indeksasi & Abstrak"
+
+msgid "plugins.themes.sangulineModern.footer.contactTitle"
+msgstr "Kontak & Sekretariat"
+
+msgid "plugins.themes.sangulineModern.footer.editorialEmail"
+msgstr "Surel Redaksi"
+
+msgid "plugins.themes.sangulineModern.footer.officeAddress"
+msgstr "Alamat Kantor"
+
+msgid "plugins.themes.sangulineModern.footer.officeHours"
+msgstr "Jam Layanan"
+
+msgid "plugins.themes.sangulineModern.footer.officeHoursValue"
+msgstr "Senin – Jumat: 08.00 – 16.00 WIB"
+
+msgid "plugins.themes.sangulineModern.footer.addressFallback"
+msgstr "Gedung Ratu Dirgantara Cendekiawan, Jakarta, Indonesia"
+
+msgid "plugins.themes.sangulineModern.footer.copyrightLine"
+msgstr "Yayasan Ratu Dirgantara Cendekiawan (JRDC) — Powered by Open Journal Systems"
+
+msgid "plugins.themes.sangulineModern.footer.privacyPolicy"
+msgstr "Kebijakan Privasi"
+
+msgid "plugins.themes.sangulineModern.footer.copyrightNotice"
+msgstr "Pemberitahuan Hak Cipta"
+
+msgid "plugins.themes.sangulineModern.footer.openAccessStmt"
+msgstr "Pernyataan Akses Terbuka"
+
+msgid "plugins.themes.sangulineModern.header.searchPlaceholder"
+msgstr "Cari artikel..."
+

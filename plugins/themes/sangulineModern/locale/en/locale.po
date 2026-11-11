@@ -166,3 +166,206 @@ msgstr "Show Abstract"
 msgid "plugins.themes.sanguline.article.pages"
 msgstr "Pages"
 
+
+# --- Bilingual UI strings (EN mode parity) ---
+msgid "plugins.themes.sangulineModern.hero.badge"
+msgstr "SCHOLARLY JOURNAL • ECONOMICS AND BUSINESS"
+
+msgid "plugins.themes.sangulineModern.hero.frequency"
+msgstr "FREQUENCY"
+
+msgid "plugins.themes.sangulineModern.hero.publisher"
+msgstr "PUBLISHER"
+
+msgid "plugins.themes.sangulineModern.hero.coverKicker"
+msgstr "JOURNAL COVER"
+
+msgid "plugins.themes.sangulineModern.hero.ctaLatest"
+msgstr "View Latest Issue"
+
+msgid "plugins.themes.sangulineModern.hero.ctaGuidelines"
+msgstr "Author Guidelines"
+
+msgid "plugins.themes.sangulineModern.about.title"
+msgstr "About the Journal"
+
+msgid "plugins.themes.sangulineModern.about.focusScope"
+msgstr "Focus and Scope"
+
+msgid "plugins.themes.sangulineModern.about.focusScopeDesc"
+msgstr "Management, accounting, finance, marketing, entrepreneurship, and development economics."
+
+msgid "plugins.themes.sangulineModern.about.editorialBoard"
+msgstr "Editorial Board"
+
+msgid "plugins.themes.sangulineModern.about.editorialBoardDesc"
+msgstr "Editors and reviewers guiding the peer review process."
+
+msgid "plugins.themes.sangulineModern.about.authorGuidelines"
+msgstr "Author Guidelines"
+
+msgid "plugins.themes.sangulineModern.about.authorGuidelinesDesc"
+msgstr "Manuscript requirements and how to prepare your submission."
+
+msgid "plugins.themes.sangulineModern.about.publicationEthics"
+msgstr "Publication Ethics"
+
+msgid "plugins.themes.sangulineModern.about.publicationEthicsDesc"
+msgstr "Publication ethics standards for authors, editors and reviewers."
+
+msgid "plugins.themes.sangulineModern.issue.eyebrow"
+msgstr "Latest Issue"
+
+msgid "plugins.themes.sangulineModern.issue.active"
+msgstr "Active"
+
+msgid "plugins.themes.sangulineModern.issue.archiveText"
+msgstr "Looking for a past or thematic issue?"
+
+msgid "plugins.themes.sangulineModern.issue.archiveCta"
+msgstr "Browse All Issues & Archives"
+
+msgid "plugins.themes.sangulineModern.announcements.title"
+msgstr "Announcements"
+
+msgid "plugins.themes.sangulineModern.about.fallbackDescription"
+msgstr "Yayasan Ratu Dirgantara Cendekiawan (JRDC) is an institution focused on publishing scholarly journals, particularly in economics and business. Through its publications, JRDC is committed to advancing education, scholarship, and the dissemination of research and academic thought."
+
+msgid "plugins.themes.sangulineModern.hero.fallbackDescription"
+msgstr "An open access scholarly journal publishing research and studies in economics and business with double-blind peer review. Published twice a year, in April and October."
+
+msgid "plugins.themes.sangulineModern.article.openAccess"
+msgstr "Open Access"
+
+msgid "plugins.themes.sangulineModern.article.pagesInfoLabel"
+msgstr "PAGES"
+
+msgid "plugins.themes.sangulineModern.article.received"
+msgstr "RECEIVED"
+
+msgid "plugins.themes.sangulineModern.article.published"
+msgstr "PUBLISHED"
+
+msgid "plugins.themes.sangulineModern.article.pagesBadge"
+msgstr "pp. "
+
+msgid "plugins.themes.sangulineModern.article.pdfCardTitle"
+msgstr "Download Full Manuscript"
+
+msgid "plugins.themes.sangulineModern.article.downloadCta"
+msgstr "Download PDF"
+
+msgid "plugins.themes.sangulineModern.article.downloadBoxTitle"
+msgstr "DOWNLOAD {$galley}"
+
+msgid "plugins.themes.sangulineModern.article.downloadButton"
+msgstr "Download {$label}"
+
+msgid "plugins.themes.sangulineModern.article.loaButton"
+msgstr "Download {$label} Document (PDF)"
+
+msgid "plugins.themes.sangulineModern.article.pagesRow"
+msgstr "Pages"
+
+msgid "plugins.themes.sangulineModern.article.referencesMore"
+msgstr "View More References"
+
+msgid "plugins.themes.sangulineModern.article.issueEyebrow"
+msgstr "ISSUE"
+
+msgid "plugins.themes.sangulineModern.article.issueAllCta"
+msgstr "View All Articles in This Issue"
+
+msgid "plugins.themes.sangulineModern.article.shareTitle"
+msgstr "SHARE THIS ARTICLE"
+
+msgid "plugins.themes.sangulineModern.article.copyLink"
+msgstr "Copy Article Link"
+
+msgid "plugins.themes.sangulineModern.article.copyDoi"
+msgstr "Copy DOI"
+
+msgid "plugins.themes.sangulineModern.article.licenseTitle"
+msgstr "LICENSE & COPYRIGHT"
+
+msgid "plugins.themes.sangulineModern.article.shareWhatsapp"
+msgstr "Share via WhatsApp"
+
+msgid "plugins.themes.sangulineModern.article.shareX"
+msgstr "Share via X / Twitter"
+
+msgid "plugins.themes.sangulineModern.article.shareFacebook"
+msgstr "Share via Facebook"
+
+msgid "plugins.themes.sangulineModern.article.shareLinkedIn"
+msgstr "Share via LinkedIn"
+
+msgid "plugins.themes.sangulineModern.article.keywords"
+msgstr "Keywords:"
+
+msgid "plugins.themes.sangulineModern.footer.publisherDesc"
+msgstr "Published by <strong>Yayasan Ratu Dirgantara Cendekiawan (JRDC)</strong> as a venue for disseminating scientific research and scholarly publications in econonomics & business."
+
+msgid "plugins.themes.sangulineModern.footer.note"
+msgstr "Published twice a year (April & October) • Open Access Peer-Reviewed."
+
+msgid "plugins.themes.sangulineModern.footer.forAuthors"
+msgstr "For Authors"
+
+msgid "plugins.themes.sangulineModern.footer.peerReview"
+msgstr "Peer Review Process"
+
+msgid "plugins.themes.sangulineModern.footer.manuscriptTemplate"
+msgstr "Manuscript Template (.docx)"
+
+msgid "plugins.themes.sangulineModern.footer.submitOnline"
+msgstr "Submit Manuscript Online"
+
+msgid "plugins.themes.sangulineModern.footer.navArchive"
+msgstr "Navigation & Archives"
+
+msgid "plugins.themes.sangulineModern.footer.home"
+msgstr "Home"
+
+msgid "plugins.themes.sangulineModern.footer.latestIssue"
+msgstr "Current Issue"
+
+msgid "plugins.themes.sangulineModern.footer.issueArchive"
+msgstr "Issue Archive"
+
+msgid "plugins.themes.sangulineModern.footer.indexing"
+msgstr "Abstracting & Indexing"
+
+msgid "plugins.themes.sangulineModern.footer.contactTitle"
+msgstr "Contact & Secretariat"
+
+msgid "plugins.themes.sangulineModern.footer.editorialEmail"
+msgstr "Editorial Email"
+
+msgid "plugins.themes.sangulineModern.footer.officeAddress"
+msgstr "Office Address"
+
+msgid "plugins.themes.sangulineModern.footer.officeHours"
+msgstr "Service Hours"
+
+msgid "plugins.themes.sangulineModern.footer.officeHoursValue"
+msgstr "Monday – Friday: 08:00 – 16:00 WIB"
+
+msgid "plugins.themes.sangulineModern.footer.addressFallback"
+msgstr "Ratu Dirgantara Cendekiawan Building, Jakarta, Indonesia"
+
+msgid "plugins.themes.sangulineModern.footer.copyrightLine"
+msgstr "Yayasan Ratu Dirgantara Cendekiawan (JRDC) — Powered by Open Journal Systems"
+
+msgid "plugins.themes.sangulineModern.footer.privacyPolicy"
+msgstr "Privacy Policy"
+
+msgid "plugins.themes.sangulineModern.footer.copyrightNotice"
+msgstr "Copyright Notice"
+
+msgid "plugins.themes.sangulineModern.footer.openAccessStmt"
+msgstr "Open Access Statement"
+
+msgid "plugins.themes.sangulineModern.header.searchPlaceholder"
+msgstr "Search articles..."
+
