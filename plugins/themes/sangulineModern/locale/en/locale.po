@@ -372,3 +372,6 @@ msgstr "Search articles..."
 msgid "plugins.themes.sangulineModern.article.fullManuscript"
 msgstr "Full Manuscript"
 
+msgid "plugins.themes.sangulineModern.article.loaTitle"
+msgstr "LETTER OF ACCEPTANCE (LOA)"
+

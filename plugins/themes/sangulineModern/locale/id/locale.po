@@ -353,3 +353,6 @@ msgstr "Cari artikel..."
 msgid "plugins.themes.sangulineModern.article.fullManuscript"
 msgstr "Naskah Lengkap"
 
+msgid "plugins.themes.sangulineModern.article.loaTitle"
+msgstr "SURAT PENERIMAAN (LOA)"
+

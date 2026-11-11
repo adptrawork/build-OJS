@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.14] - 2026-11-12
+
+### Changed
+- **Sidebar download card → LoA card:** the main download button no longer duplicates the body's PDF section. When supplementary galleys exist (every article ships an LoA galley), the sidebar card renders as "SURAT PENERIMAAN (LOA)" / "LETTER OF ACCEPTANCE (LOA)" with one full-width dark button — "Unduh Dokumen LoA (PDF)" / "Download LoA Document (PDF)" — pointing at the supplementary galley. The body's PDF viewer card remains the place to download the article PDF. Articles without a supplementary galley fall back to the previous card (UNDUH PDF + primary galley button).
+- New locale keys: `article.loaTitle` (id/en). `.jrdc-article__loa-body` grid for stacked buttons.
+
 ## [1.6.13] - 2026-11-12
 
 ### Changed

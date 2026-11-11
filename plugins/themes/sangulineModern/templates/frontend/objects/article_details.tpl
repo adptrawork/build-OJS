@@ -332,6 +332,25 @@
 			{/if}
 
 			{* ---------- Download box ---------- *}
+			{if $supplementaryGalleys}
+				<div class="card jrdc-article__card jrdc-article__download jrdc-article__loa">
+					<div class="card-header jrdc-article__card-header">
+						<h2 class="jrdc-article__side-title">{translate key="plugins.themes.sangulineModern.article.loaTitle"}</h2>
+					</div>
+					<div class="card-body jrdc-article__loa-body">
+						{foreach from=$supplementaryGalleys item=galley}
+							{assign var="loaPath" value=$article->getBestId()|to_array:$galley->getBestGalleyId()}
+							{if $publication && $publication->getId() !== $article->getData('currentPublicationId')}
+								{assign var="loaPath" value=$article->getBestId()|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
+							{/if}
+							<a class="btn jrdc-article__download-button" href="{url page="article" op="view" path=$loaPath}">
+								<span class="bi bi-file-earmark-pdf" aria-hidden="true"></span>
+								{translate key="plugins.themes.sangulineModern.article.loaButton" label=$galley->getLabel()|escape}
+							</a>
+						{/foreach}
+					</div>
+				</div>
+			{else}
 			<div class="card jrdc-article__card jrdc-article__download">
 				<div class="card-header jrdc-article__card-header jrdc-article__download-header">
 					<h2 class="jrdc-article__side-title">{translate key="plugins.themes.sangulineModern.article.downloadBoxTitle" galley=$primaryGalleys[0]->getLabel()|upper|escape}</h2>
@@ -374,6 +393,7 @@
 					{/if}
 				</div>
 			</div>
+			{/if}
 
 			{* ---------- Usage statistics ---------- *}
 			{if $activeTheme && $activeTheme->getOption('displayStats') != 'none' && $activeTheme->supportsUsageStats()}
