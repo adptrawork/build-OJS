@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.16] - 2026-11-12
+
+### Fixed
+- **Article page could not be scrolled:** `.pkp_op_view { display:flex; height:100vh; overflow:hidden }` from 1.6.13's viewPdf.less leaked onto the article page (same body classes as the galley viewer: `pkp_page_article pkp_op_view`), clipping content beyond the viewport. All viewer rules rescoped to `.galley_view` only; viewer page keeps full-height iframe layout and notice rendering. Verified: article page body 2745px vs viewport 577px, scrollable; viewer page 100vh iframe intact.
+
 ## [1.6.15] - 2026-11-12
 
 ### Changed
