@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0] - 2026-11-11
+
+### Added
+- **Bootstrap 5.3.3 TOC Sections:** `.jrdc-toc-section` with hairline header and article-count chip.
+- **Article Card Rewrite:** ids row (DOI/pages), lucide SVG stats, Abstrak chip, PDF chip.
+- **Archive Card Rewrite:** 3:4 cover, Diterbitkan, Artikel Ilmiah, ISSN-conditional footer, Lihat Edisi button.
+
+### Changed
+- **Accent Default:** `#0b2038` → `#c2410c` (burnt orange).
+- **Primary Locale:** `journal` → `id_ID`.
+- **Galley Chip:** uses stored label (PDF) with full label in `title` attr.
+- **Tokens:** soft/border/hover derived via `color-mix` from primary (dark mode auto-derives).
+
+### Fixed
+- **Locale Loading:** id_ID now renders "Dilihat"/"Diunduh" (getLocaleFilename candidate fallback + registration order).
+- **Duplicate Search/User Menu:** removed from desktop first row.
+- **TOC Cards:** removed badges/Detail Naskah/DOI-copy per prototype.
+
+### Removed
+- Badges, Detail Naskah button, DOI-copy button, Font Awesome icons from TOC cards.
+- Dead LESS rules.
+
 ## [1.5.1] - 2026-11-11
 
 ### Fixed

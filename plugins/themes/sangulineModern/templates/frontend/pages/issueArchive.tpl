@@ -33,11 +33,9 @@
 
 	{* List issues in Bootstrap responsive grid *}
 	{else}
-		<div class="issues_archive row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4">
+		<div class="issues_archive">
 			{foreach from=$issues item="issue"}
-				<div class="col">
-					{include file="frontend/objects/issue_summary.tpl"}
-				</div>
+				{include file="frontend/objects/issue_summary.tpl"}
 			{/foreach}
 		</div>
 

@@ -31,6 +31,12 @@ class SangulineModernThemePlugin extends ThemePlugin {
 	public function init() {
 		$this->setParent('sangulinethemeplugin');
 
+		// Load locale data for the active request locale (parent only loads
+		// its default locale at registration time, so id_ID keys fall back
+		// to en_US). getLocaleFilename() below resolves id_ID -> id.
+		AppLocale::requireComponents(LOCALE_COMPONENT_PKP_MANAGER, LOCALE_COMPONENT_APP_MANAGER);
+		$this->addLocaleData(AppLocale::getLocale());
+
 		// Drop the parent visual layer. The parent JS stays because it powers
 		// dropdowns, the abstract toggle, registration toggles and the slider.
 		$this->removeStyle('stylesheet');
@@ -64,8 +70,8 @@ class SangulineModernThemePlugin extends ThemePlugin {
 
 		$this->addOption('modernAccent', 'FieldColor', [
 			'label' => 'Modern accent color',
-			'description' => 'Optional accent color for Sanguline Modern highlights (hex, e.g. #0b2038). Default is institutional navy.',
-			'default' => '#0b2038',
+			'description' => 'Optional accent color for Sanguline Modern highlights (hex, e.g. #c2410c). Default is burnt orange (prototype).',
+			'default' => '#c2410c',
 		]);
 
 		// Bootstrap 5.3.3, vendored locally. Absolute URL avoids Windows backslashes.
@@ -80,7 +86,7 @@ class SangulineModernThemePlugin extends ThemePlugin {
 
 		$accent = $this->getOption('modernAccent');
 		if (!$accent || !preg_match('/^#[0-9a-fA-F]{3,6}$/', $accent)) {
-			$accent = '#0b2038';
+			$accent = '#c2410c';
 		}
 		$this->modifyStyle('stylesheetModern', [
 			'addLessVariables' => "@modern-primary: {$accent};\n@modern-navy: #0b2038;\n",
@@ -124,6 +130,61 @@ class SangulineModernThemePlugin extends ThemePlugin {
 	 */
 	public function supportsUsageStats() {
 		return false;
+	}
+
+	/**
+	 * Map OJS 3.3 locale keys to the locale folders bundled with this theme.
+	 * Mirrors the parent Sanguline implementation so id_ID resolves to the
+	 * bundled `id` locale (instead of the missing `id_ID` folder).
+	 *
+	 * @param string $locale
+	 * @return array
+	 */
+	public function getLocaleFilename($locale) {
+		$localeFiles = [];
+
+		foreach ($this->getLocaleCandidates(MASTER_LOCALE) as $candidate) {
+			$localePath = $this->getPluginPath() . '/locale/' . $candidate . '/locale.po';
+			if (file_exists($localePath)) {
+				$localeFiles[] = $localePath;
+				break;
+			}
+		}
+
+		foreach ($this->getLocaleCandidates($locale) as $candidate) {
+			$localePath = $this->getPluginPath() . '/locale/' . $candidate . '/locale.po';
+			if (file_exists($localePath)) {
+				$localeFiles[] = $localePath;
+				break;
+			}
+		}
+
+		return array_values(array_unique($localeFiles));
+	}
+
+	/**
+	 * Build locale candidates for OJS 3.3 locale keys.
+	 *
+	 * @param string $locale
+	 * @return array
+	 */
+	protected function getLocaleCandidates($locale) {
+		$aliases = [
+			'en_US' => 'en',
+			'id_ID' => 'id',
+		];
+
+		$candidates = [$locale];
+
+		if (isset($aliases[$locale])) {
+			$candidates[] = $aliases[$locale];
+		}
+
+		if (strpos($locale, '_') !== false) {
+			$candidates[] = substr($locale, 0, strpos($locale, '_'));
+		}
+
+		return array_values(array_unique(array_filter($candidates)));
 	}
 
 	/**

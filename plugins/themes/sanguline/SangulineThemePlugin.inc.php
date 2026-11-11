@@ -316,7 +316,7 @@ if (!class_exists('SangulineThemePlugin')) {
 		public function getLocaleFilename($locale) {
 			$localeFiles = [];
 
-			foreach ($this->getLocaleCandidates($locale) as $candidate) {
+			foreach ($this->getLocaleCandidates(MASTER_LOCALE) as $candidate) {
 				$localePath = $this->getPluginPath() . '/locale/' . $candidate . '/locale.po';
 				if (file_exists($localePath)) {
 					$localeFiles[] = $localePath;
@@ -324,7 +324,7 @@ if (!class_exists('SangulineThemePlugin')) {
 				}
 			}
 
-			foreach ($this->getLocaleCandidates(MASTER_LOCALE) as $candidate) {
+			foreach ($this->getLocaleCandidates($locale) as $candidate) {
 				$localePath = $this->getPluginPath() . '/locale/' . $candidate . '/locale.po';
 				if (file_exists($localePath)) {
 					$localeFiles[] = $localePath;

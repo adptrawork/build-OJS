@@ -106,24 +106,29 @@
 	{/if}
 
 	{* Articles *}
-	<div class="sections">
+	<div class="sections jrdc-toc-sections">
 	{foreach name=sections from=$publishedSubmissions item=section}
-		<div class="section card mb-4">
 		{if $section.articles}
-			{if $section.title}
-				<{$heading} class="card-header h6 mb-0">
-					{$section.title|escape}
-				</{$heading}>
-			{/if}
-			<ul class="cmp_article_list articles list-group list-group-flush">
+		<div class="section jrdc-toc-section">
+			<div class="jrdc-toc-section__header">
+				{if $section.title}
+					<{$heading} class="jrdc-toc-section__title">
+						{$section.title|escape}
+					</{$heading}>
+				{/if}
+				<span class="jrdc-count-chip">
+					{$section.articles|@count} Artikel
+				</span>
+			</div>
+			<ul class="cmp_article_list articles jrdc-toc-section__list">
 				{foreach from=$section.articles item=article}
-					<li class="list-group-item">
+					<li>
 						{include file="frontend/objects/article_summary.tpl" heading=$articleHeading}
 					</li>
 				{/foreach}
 			</ul>
-		{/if}
 		</div>
+		{/if}
 	{/foreach}
 	</div><!-- .sections -->
 </div>

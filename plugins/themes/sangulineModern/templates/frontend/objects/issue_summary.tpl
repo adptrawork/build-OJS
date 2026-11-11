@@ -1,7 +1,10 @@
 {**
  * templates/frontend/objects/issue_summary.tpl
  *
- * Child theme override: Issue card with Bootstrap 5.3.3.
+ * Child theme override: Issue archive card matching the prototype
+ * (archive.html) - compact 3:4 cover row, published date + article count,
+ * clamped description, footer with ISSN (when set) and a solid dark
+ * "Lihat Edisi" button.
  *
  * @uses $issue Issue The issue
  *}
@@ -10,48 +13,47 @@
 {/if}
 {assign var=issueSeries value=$issue->getIssueSeries()}
 {assign var=issueCover value=$issue->getLocalizedCoverImageUrl()}
+{capture assign="issueUrl"}{url page="issue" op="view" path=$issue->getBestIssueId()}{/capture}
 
-<div class="card h-100 obj_issue_summary shadow-sm">
-	{if $issueCover}
-		<a class="cover d-block" href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-			<img class="card-img-top" src="{$issueCover|escape}" alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}">
-		</a>
-	{/if}
-
-	<div class="card-body d-flex flex-column">
-		<h2 class="card-title h5 mb-2">
-			<a class="title text-decoration-none" href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-				{if $issueTitle}
-					{$issueTitle|escape}
-				{else}
-					{$issueSeries|escape}
+<div class="obj_issue_summary jrdc-issue-card">
+	<div class="jrdc-issue-card__main">
+		<div class="jrdc-issue-card__row">
+			{if $issueCover}
+				<a class="cover jrdc-issue-card__cover" href="{$issueUrl}" tabindex="-1" aria-hidden="true">
+					<img src="{$issueCover|escape}" alt="{$issue->getLocalizedCoverImageAltText()|escape|default:''}" loading="lazy">
+				</a>
+			{else}
+				<div class="cover jrdc-issue-card__cover" aria-hidden="true"></div>
+			{/if}
+			<div class="jrdc-issue-card__info">
+				<h2 class="title jrdc-issue-card__title">
+					<a href="{$issueUrl}">
+						{if $issueTitle}
+							{$issueTitle|escape}
+						{else}
+							{$issueSeries|escape}
+						{/if}
+					</a>
+				</h2>
+				{if $issue->getDatePublished()}
+					<span class="published jrdc-issue-card__published">
+						Diterbitkan: {$issue->getDatePublished()|date_format:$dateFormatShort}
+					</span>
 				{/if}
-			</a>
-		</h2>
-
-		{if $issueTitle && $issueSeries}
-			<div class="series text-muted small mb-2">
-				{$issueSeries|escape}
+				<span class="count jrdc-issue-card__count">
+					{$issue->getNumArticles()} Artikel Ilmiah
+				</span>
 			</div>
-		{/if}
-
-		{if $issue->getDatePublished()}
-			<div class="text-muted small mb-3">
-				<span class="label">{translate key="submissions.published"}:</span>
-				<span class="value">{$issue->getDatePublished()|date_format:$dateFormatShort}</span>
-			</div>
-		{/if}
-
-		{if $issue->getLocalizedDescription()}
-			<div class="description text-muted small mb-3 flex-grow-1">
-				{$issue->getLocalizedDescription()|strip_tags|truncate:180}
-			</div>
-		{/if}
-
-		<div class="mt-auto pt-2 border-top">
-			<a class="btn btn-sm btn-outline-primary w-100" href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
-				Lihat Edisi Lengkap &rarr;
-			</a>
 		</div>
+		{assign var=issueDescription value=$issue->getLocalizedDescription()}
+		{if $issueDescription}
+			<p class="description jrdc-issue-card__description">{$issueDescription|strip_unsafe_html}</p>
+		{/if}
+	</div>
+	<div class="jrdc-issue-card__footer">
+		{if $currentJournal && $currentJournal->getData('onlineIssn')}
+			<span class="issn">ISSN: {$currentJournal->getData('onlineIssn')|escape}</span>
+		{/if}
+		<a class="jrdc-btn-dark" href="{$issueUrl}">Lihat Edisi</a>
 	</div>
 </div><!-- .obj_issue_summary -->
