@@ -265,12 +265,13 @@
 	background: var(--jrdc-surface-muted);
 	border: 1px solid var(--jrdc-border);
 	border-radius: var(--jrdc-radius-md);
-	transition: border-color .15s ease;
+	transition: border-color .15s ease, box-shadow .15s ease;
 }
 
 .obj_article_summary.jrdc-article-card:hover,
 .obj_article_summary.jrdc-article-card:focus-within {
 	border-color: color-mix(in srgb, var(--jrdc-primary) 40%, transparent);
+	box-shadow: var(--jrdc-shadow-hover);
 }
 
 .jrdc-article-card__cover {
@@ -314,9 +315,9 @@
 
 .obj_article_summary.jrdc-article-card .title.jrdc-article-card__title {
 	margin: 0;
-	font-size: 1rem;
+	font-size: 1.125rem;
 	font-weight: 600;
-	line-height: 1.5;
+	line-height: 1.4;
 }
 
 .jrdc-article-card__subtitle {
@@ -331,7 +332,7 @@
 .jrdc-article-card__authors {
 	margin: 0;
 	color: var(--jrdc-text-muted);
-	font-size: .75rem;
+	font-size: .875rem;
 	font-weight: 500;
 	line-height: 1.6;
 }
