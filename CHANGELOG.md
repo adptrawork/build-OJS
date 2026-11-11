@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file.
 - **Tokens:** soft/border/hover derived via `color-mix` from primary (dark mode auto-derives).
 
 ### Fixed
+- **Sidebar Grid (P0):** extra `</div>` in `indexJournal.tpl` (after `.jrdc-issue__footer`) closed `.jrdc-main` early, shifting footer.tpl's closes up one level and pushing the `aside` out of `.row` — sidebar stacked full-width below the main column. Removing the stray close restores `aside` as a direct child of `.row` (verified: main col 837px = 66%, aside top-aligned beside it). The stray close was previously masked by an unclosed div in the old TOC heading row removed in 1.6.0.
 - **Locale Loading:** id_ID now renders "Dilihat"/"Diunduh" (getLocaleFilename candidate fallback + registration order).
 - **Duplicate Search/User Menu:** removed from desktop first row.
 - **TOC Cards:** removed badges/Detail Naskah/DOI-copy per prototype.

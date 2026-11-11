@@ -166,7 +166,6 @@
 								Lihat Semua Edisi &amp; Arsip Lengkap
 							</a>
 						</div>
-					</div>
 				</section>
 			{/if}
 
