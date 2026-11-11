@@ -35,11 +35,6 @@
 						{/if}
 					</a>
 				</h2>
-				{if $issue->getDatePublished()}
-					<span class="published jrdc-issue-card__published">
-						Diterbitkan: {$issue->getDatePublished()|date_format:$dateFormatShort}
-					</span>
-				{/if}
 				<span class="count jrdc-issue-card__count">
 					{$issue->getNumArticles()} Artikel Ilmiah
 				</span>
