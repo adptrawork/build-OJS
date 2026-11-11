@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.2] - 2026-11-11
+
+### Fixed
+- **Breadcrumb/Title Parity Across All Content Pages:** three page types rendered three different chromes — core about pages (breadcrumb inside `.page` card + `h1`), static pages plugin (no breadcrumb at all + `h2`), custom nav menu pages (breadcrumb outside the card + `h1`). Now every page renders `Beranda / {Title}` inside the card + `h1.page_title`, matching about.tpl:
+  - New theme override `templates/plugins/generic/staticPages/templates/content.tpl` (via the `TemplateResource::getFilename` hook mechanism) adds breadcrumb + H1 to the 8 static pages.
+  - New theme override `templates/frontend/pages/navigationMenuItemViewContent.tpl` moves the breadcrumb inside the card for custom nav menu pages (Dewan Mitra Bestari).
+  - Static page titles translated to Indonesian in DB (`static_page_settings.title`) to match menu labels: Hak Cipta dan Lisensi, Fokus dan Ruang Lingkup, Etika Publikasi, Biaya Publikasi, Retraksi dan Penarikan, Pernyataan Akses Terbuka, Kebijakan Plagiarisme, Panduan Penulis (author-guidelines, kept distinct from the Pedoman Penulis menu item).
+  - Locale renames in `locale/id_ID/locale.po` so page titles match menu labels: `about.aboutContext` "Tentang Jurnal Ini" → "Tentang Jurnal", `about.submissions` "Penyerahan Naskah" → "Pedoman Penulis" (keys only used by page titles + core fallback nav, which this journal doesn't render).
+- Existing `.page .cmp_breadcrumbs + h1` rule in static.less finally has a matching template (was dead CSS for plugin pages).
+
+### Notes
+- Menu "Dewan Redaksi" (Tentang dropdown) and "Dewan Editor" (Redaksi dropdown) both point to `/about/editorialTeam`, titled "Dewan Editor" — relabel or remove the duplicate in Navigation Menus if desired.
+
 ## [1.6.1] - 2026-11-11
 
 ### Fixed

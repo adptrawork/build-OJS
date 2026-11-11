@@ -1616,7 +1616,7 @@ msgid "about.contact"
 msgstr "Kontak"
 
 msgid "about.aboutContext"
-msgstr "Tentang Jurnal Ini"
+msgstr "Tentang Jurnal"
 
 msgid "about.history"
 msgstr "Sejarah Jurnal"
@@ -1637,7 +1637,7 @@ msgid "about.sectionPolicies"
 msgstr "Kebijakan Bagian"
 
 msgid "about.submissions"
-msgstr "Penyerahan Naskah"
+msgstr "Pedoman Penulis"
 
 msgid "about.onlineSubmissions.login"
 msgstr "Login"
