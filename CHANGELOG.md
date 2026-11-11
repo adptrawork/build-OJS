@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.11] - 2026-11-12
+
+### Fixed
+- **Appearance Setup sidebar warnings — "The {sinta,template,in-collaboration-with,informationblockplugin} block can not be found":** the journal `sidebar` setting (journal_settings, journal 1) referenced block plugins that are not registered. No plugin code installed or fabricated; stale references purged per the 1.4.0 project rule (placeholder blocks).
+
+### Changed (DB changes, not in git)
+- `journal_settings.sidebar` (journal 1): `sinta`, `template`, `in-collaboration-with` removed; remaining order preserved (`journal-information` … `makesubmissionblockplugin`, 13 entries).
+- `plugin_settings` ctx 1: orphaned placeholder CustomBlockPlugin rows deleted — `sinta` (blockTitle/blockContent/enabled), `template` (blockTitle/blockContent/enabled/showName; blockContent carried an unresolved `[URL_FILE_TEMPLATE_DOCX]` placeholder), `in-collaboration-with` (blockTitle/blockContent/enabled/showName; "[Nama Mitra 1]" partner placeholders). None were registered by the CustomBlockManager `blocks` list, so they produced the warnings.
+- `informationblockplugin` (core PKP block, `plugins/blocks/information/InformationBlockPlugin.inc.php`) was legitimate but disabled (`enabled=0`, ctx 1) → enabled=1. It now renders on the frontend sidebar with the journal's real reader/author/librarian information (journal_settings, id_ID/en_US). Theme/template files untouched.
+
+### Verified
+- Same resolution path as the Appearance Setup form + `PKPContextService` validator (`PluginRegistry::loadCategory('generic', true, 1)` then `loadCategory('blocks', true, 1)`): all 13 sidebar entries register, 0 unresolved (was 4). Frontend HTTP 200; Information block renders real content; no placeholder text. OJS caches cleared.
+- Rollback: `ddev snapshot restore before-appearance-fix` (snapshot taken before any DB change).
+
 ## [1.6.8] - 2026-11-11
 
 ### Changed
