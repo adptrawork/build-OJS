@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.3] - 2026-11-11
+
+### Added
+- **Article Details Page — Prototype Rebuild (article.html):** main column now carries one "Detail Artikel" card (section + Akses Terbuka + Hal badges, H1, authors with superscript affiliation refs + affiliation footnotes + ORCID rows, DOI/DITERIMA/TERBIT/HALAMAN info grid with DOI copy button, abstract, keyword chips) + an embedded PDF viewer card (pdfJsViewer iframe, 700px) + a References card with an expand toggle (Bootstrap collapse, >5 refs split into `#extraReferences`) + biographies; sidebar carries the Edisi card (CSS cover, "Lihat Semua Artikel Edisi Ini"), the Unduh box (Halaman row, dark download button + supplementary galleys incl. LoA), the usageStats chart, a Bagikan Artikel card (WA/X/FB/LinkedIn + Salin Tautan) and the Lisensi & Hak Cipta card (CC badge + journal licenseTerms).
+- "Artikel Serupa" (recommendBySimilarity) renders below the grid; styled in `article.less` — its output is unchanged (hook fixed at page footer).
+- **DB data filled (not in git):** controlled-vocab keywords for pubs 6–10 (id_ID+en_US, incl. a shared "manajemen" keyword so similarity has a hit); `citationsRaw` for pubs 6–10 (single-locale rows — schema type is string, NOT localized); author biographies; journal `licenseTerms` (id_ID+en_US); `accessStatus=1` per publication (journal is open access; badge renders); DOI display-ready settings (`pub-id::doi`); `doipubidplugin` enabled; search index rebuilt via `tools/rebuildSearchIndex.php` (5 articles) — search page works again.
+- **LoA sample documents:** one-page PDF per article (`ojsData/journals/1/articles/*/loa-*.pdf`, gitignored) registered as *supplementary* galleys (genre OTHER, label "LoA") — the page now renders "Unduh Dokumen LoA (PDF)".
+
+### Fixed
+- Article grid columns: `main_entry`/`entry_details` legacy float-grid classes dropped from the markup — the parent's `float:left; width:calc(100%-305px)` overrode Bootstrap `col-lg-8/4`, stacking the columns full-width (1256px each). Bootstrap columns render untouched (837/419px at 1440).
+- Share URLs and "Salin Tautan Artikel": `{url}` is already absolute in OJS — `$baseUrl|cat:` double-prepended the host; article URL is now taken directly.
+
+### Notes
+- **DOI prefix `10.1000` is the Crossref example prefix — placeholders.** Replace with real journal DOIs and deposit via the DOI plugin (Settings → DOI) before any production use.
+- **LoA PDFs are SAMPLE documents** (marked "Dokumen contoh") for UI completeness — replace with real Letters of Acceptance per article.
+- Schema caveat learned: `publication_settings` rows with `locale` on a non-localized schema property (e.g. citationsRaw) make `getData()` return an array — broke explode() with a 500. Keep non-localized props at `locale=''`.
+- DevTools audit items superseded by the rebuild: title is now `clamp(1.5rem, 3vw, 2.25rem)`; button radii unified on tokens (8px); icon/action spacing via flex gaps. Eyebrow labels kept at 10px/700/uppercase (prototype), not the audit's 12px.
+
 ## [1.6.2] - 2026-11-11
 
 ### Fixed
