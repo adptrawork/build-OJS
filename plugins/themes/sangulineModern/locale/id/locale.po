@@ -350,3 +350,6 @@ msgstr "Pernyataan Akses Terbuka"
 msgid "plugins.themes.sangulineModern.header.searchPlaceholder"
 msgstr "Cari artikel..."
 
+msgid "plugins.themes.sangulineModern.article.fullManuscript"
+msgstr "Naskah Lengkap"
+

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.7] - 2026-11-11
+
+### Fixed
+- **PDF tidak render di iframe (root cause):** parent Sanguline's `init()` never runs for the child theme, so every parent script silently disappeared — including jQuery. The pdfJsViewer galley page fills the viewer iframe's `src` inside `$(document).ready(...)`; with jQuery missing the inline script threw `ReferenceError: $ is not defined` and the iframe stayed empty — the embedded PDF never rendered. Fixed by registering `jQuery` (vendored `lib/pkp/lib/vendor/components/jquery/jquery.min.js`) in the child init, as the parent originally intended. Verified: `#pdfCanvasContainer iframe` now points to `pdfJsViewer/pdf.js/web/viewer.html?file=...article/download/6/1/1` and loads the PDF. (Not an X-Frame-Options/mixed-content issue as speculated in the DevTools export.)
+- **PDF card header — too much text:** replaced verbose "Unduh Naskah Lengkap / Download Full Manuscript" + solid dark button with a BS5-icon-first layout: `bi-file-earmark-pdf` (danger) + short title (`Naskah Lengkap` / `Full Manuscript`, new locale keys id/en) + "PDF · Hal. 1-12" subline + outline pill CTA with `bi-download`. ~40% less text, same tokens/radius system.
+
 ## [1.6.6] - 2026-11-11
 
 ### Removed

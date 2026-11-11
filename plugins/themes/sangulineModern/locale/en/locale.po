@@ -369,3 +369,6 @@ msgstr "Open Access Statement"
 msgid "plugins.themes.sangulineModern.header.searchPlaceholder"
 msgstr "Search articles..."
 
+msgid "plugins.themes.sangulineModern.article.fullManuscript"
+msgstr "Full Manuscript"
+

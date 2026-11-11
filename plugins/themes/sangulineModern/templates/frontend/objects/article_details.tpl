@@ -191,15 +191,19 @@
 				{capture assign="galleyUrl"}{url page="article" op="view" path=$galleyPath}{/capture}
 				<section class="card jrdc-article__card jrdc-article__pdf">
 					<div class="card-header jrdc-article__card-header jrdc-article__pdf-header">
-						<div class="jrdc-article__pdf-heading">
-							<h2 class="jrdc-article__section-title">{translate key="plugins.themes.sangulineModern.article.pdfCardTitle"}</h2>
-							<p class="jrdc-article__pdf-subtitle">
-								{$firstGalley->getLabel()|escape}
-								{if $publication->getLocalizedData('pages')} · {translate key="plugins.themes.sangulineModern.article.pagesBadge"}{$publication->getLocalizedData('pages')|escape}{/if}
-							</p>
+						<div class="jrdc-article__pdf-meta">
+							<i class="bi bi-file-earmark-pdf jrdc-article__pdf-icon" aria-hidden="true"></i>
+							<div class="jrdc-article__pdf-heading">
+								<h2 class="jrdc-article__pdf-title">{translate key="plugins.themes.sangulineModern.article.fullManuscript"}</h2>
+								<p class="jrdc-article__pdf-subtitle">
+									{$firstGalley->getLabel()|escape}
+									{if $publication->getLocalizedData('pages')} · {translate key="plugins.themes.sangulineModern.article.pagesBadge"}{$publication->getLocalizedData('pages')|escape}{/if}
+								</p>
+							</div>
 						</div>
-						<a class="btn btn-primary jrdc-button jrdc-article__pdf-cta" href="{$galleyUrl}">
-							<span class="bi bi-download" aria-hidden="true"></span> {translate key="plugins.themes.sangulineModern.article.downloadCta"}
+						<a class="btn btn-outline-primary btn-sm jrdc-article__pdf-cta" href="{$galleyUrl}">
+							<i class="bi bi-download" aria-hidden="true"></i>
+							<span class="d-none d-sm-inline">{translate key="plugins.themes.sangulineModern.article.downloadCta"}</span>
 						</a>
 					</div>
 					<div class="card-body jrdc-article__pdf-body">

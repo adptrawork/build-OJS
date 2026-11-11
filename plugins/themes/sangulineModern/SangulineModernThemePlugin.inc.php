@@ -81,6 +81,16 @@ class SangulineModernThemePlugin extends ThemePlugin {
 			['baseUrl' => '']
 		);
 
+		// The parent's init() never runs for a child theme, so its scripts
+		// (including jQuery) silently never load — this broke the pdfJsViewer
+		// galley page (its inline script fills the iframe src with $(document).ready).
+		// Register jQuery (parent expected it to stay too).
+		$this->addScript(
+			'jQuery',
+			$base . '/lib/pkp/lib/vendor/components/jquery/jquery.min.js',
+			['baseUrl' => '']
+		);
+
 		// Bootstrap Icons via CDN (replaced the parent's dropped Font Awesome
 		// layer; fa-* icons never rendered in this child).
 		$this->addStyle(

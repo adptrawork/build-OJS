@@ -325,21 +325,42 @@
  * ---------------------------------------------------------------------- */
 .jrdc-article__pdf-header {
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	gap: 1rem;
+	gap: .75rem 1rem;
+}
+
+.jrdc-article__pdf-meta {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	min-inline-size: 0;
+}
+
+.jrdc-article__pdf-icon {
+	font-size: 1.75rem;
+	color: var(--bs-danger);
+	line-height: 1;
+}
+
+.jrdc-article__pdf-title {
+	margin: 0;
+	font-size: .9375rem;
+	font-weight: 700;
+	line-height: 1.3;
 }
 
 .jrdc-article__pdf-subtitle {
-	margin: .25rem 0 0;
+	margin: .125rem 0 0;
 	color: var(--jrdc-text-muted);
-	font-size: .75rem;
+	font-size: .6875rem;
 	line-height: 1.5;
 }
 
 .jrdc-article__pdf-cta {
-	gap: .4rem;
+	border-radius: var(--jrdc-radius-pill);
+	font-size: .8125rem;
+	white-space: nowrap;
 }
 
 .jrdc-article__pdf-body {
