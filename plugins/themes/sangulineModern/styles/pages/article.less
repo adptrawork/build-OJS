@@ -1036,3 +1036,20 @@
 		max-inline-size: 100%;
 	}
 }
+
+/* Issue cover image (uploaded via Issue Settings) */
+.jrdc-article__issue-cover-link {
+	display: block;
+	flex: 0 0 auto;
+	border-radius: var(--jrdc-radius-sm);
+	overflow: hidden;
+}
+
+.jrdc-article__issue-cover-img {
+	display: block;
+	width: 64px;
+	aspect-ratio: 3/4;
+	object-fit: cover;
+	border-radius: var(--jrdc-radius-sm);
+	box-shadow: var(--jrdc-shadow-card);
+}

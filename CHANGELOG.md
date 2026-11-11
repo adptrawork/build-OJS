@@ -19,6 +19,11 @@ All notable changes to this project will be documented in this file.
 - **PDF tidak render di iframe (root cause):** parent Sanguline's `init()` never runs for the child theme, so every parent script silently disappeared — including jQuery. The pdfJsViewer galley page fills the viewer iframe's `src` inside `$(document).ready(...)`; with jQuery missing the inline script threw `ReferenceError: $ is not defined` and the iframe stayed empty — the embedded PDF never rendered. Fixed by registering `jQuery` (vendored `lib/pkp/lib/vendor/components/jquery/jquery.min.js`) in the child init, as the parent originally intended. Verified: `#pdfCanvasContainer iframe` now points to `pdfJsViewer/pdf.js/web/viewer.html?file=...article/download/6/1/1` and loads the PDF. (Not an X-Frame-Options/mixed-content issue as speculated in the DevTools export.)
 - **PDF card header — too much text:** replaced verbose "Unduh Naskah Lengkap / Download Full Manuscript" + solid dark button with a BS5-icon-first layout: `bi-file-earmark-pdf` (danger) + short title (`Naskah Lengkap` / `Full Manuscript`, new locale keys id/en) + "PDF · Hal. 1-12" subline + outline pill CTA with `bi-download`. ~40% less text, same tokens/radius system.
 
+## [1.6.9] - 2026-11-12
+
+### Fixed
+- **Issue cover rendered as hardcoded text:** the article-page Edisi card always showed a CSS placeholder ("JRDC / Vol. 1 No. 1 / 2026") even for journals with an uploaded issue cover. Now uses `$issue->getLocalizedCoverImage()` when set (matches issue_summary.tpl archive behavior) — `<img>` linked to the issue, alt from the issue cover alt text, `loading="lazy"`. CSS placeholder only as fallback when no cover is uploaded. (Issue 2, currently the only published issue, has no cover uploaded — this is not a regression.)
+
 ## [1.6.6] - 2026-11-11
 
 ### Removed
