@@ -135,7 +135,7 @@
 							{if $doi}
 								<a class="jrdc-article__info-value jrdc-article__doi-link" href="{$doiUrl}">{$doi|escape}</a>
 								<button type="button" class="jrdc-doi-copy jrdc-article__doi-copy" data-doi="{$doiUrl}" aria-label="Salin DOI" title="Salin DOI">
-									<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+									<span class="bi bi-copy" aria-hidden="true"></span>
 								</button>
 							{else}
 								<span class="jrdc-article__info-value">—</span>
@@ -199,7 +199,7 @@
 							</p>
 						</div>
 						<a class="btn btn-primary jrdc-button jrdc-article__pdf-cta" href="{$galleyUrl}">
-							<span class="fa fa-download" aria-hidden="true"></span> Unduh PDF
+							<span class="bi bi-download" aria-hidden="true"></span> Unduh PDF
 						</a>
 					</div>
 					<div class="card-body jrdc-article__pdf-body">
@@ -321,7 +321,7 @@
 						</div>
 						<a class="jrdc-article__issue-link" href="{url page="issue" op="view" path=$issue->getBestIssueId()}">
 							Lihat Semua Artikel Edisi Ini
-							<span class="fa fa-arrow-right" aria-hidden="true"></span>
+							<span class="bi bi-arrow-right" aria-hidden="true"></span>
 						</a>
 					</div>
 				</div>
@@ -346,7 +346,7 @@
 									{assign var="galleyPath" value=$article->getBestId()|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
 								{/if}
 								<a class="btn jrdc-article__download-button" href="{url page="article" op="view" path=$galleyPath}">
-									<span class="fa fa-download" aria-hidden="true"></span>
+									<span class="bi bi-download" aria-hidden="true"></span>
 									Unduh {$galley->getLabel()|escape}
 								</a>
 							{/foreach}
@@ -361,7 +361,7 @@
 								{/if}
 								<li>
 									<a class="jrdc-article__supplementary-link" href="{url page="article" op="view" path=$suppPath}">
-										<span class="fa fa-file-pdf-o" aria-hidden="true"></span>
+										<span class="bi bi-file-earmark-pdf" aria-hidden="true"></span>
 										Unduh Dokumen {$galley->getLabel()|escape} (PDF)
 									</a>
 								</li>
@@ -399,13 +399,25 @@
 				</div>
 				<div class="card-body">
 					<div class="jrdc-article__share-grid">
-						<a class="jrdc-article__share-btn jrdc-article__share-btn--wa" href="https://wa.me/?text={$shareTitle}%20{$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke WhatsApp" aria-label="Bagikan ke WhatsApp">WA</a>
-						<a class="jrdc-article__share-btn jrdc-article__share-btn--x" href="https://twitter.com/intent/tweet?text={$shareTitle}&url={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke X / Twitter" aria-label="Bagikan ke X / Twitter">X</a>
-						<a class="jrdc-article__share-btn jrdc-article__share-btn--fb" href="https://www.facebook.com/sharer/sharer.php?u={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke Facebook" aria-label="Bagikan ke Facebook">FB</a>
-						<a class="jrdc-article__share-btn jrdc-article__share-btn--in" href="https://www.linkedin.com/sharing/share-offsite/?url={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke LinkedIn" aria-label="Bagikan ke LinkedIn">In</a>
+						<a class="jrdc-article__share-btn jrdc-article__share-btn--wa" href="https://wa.me/?text={$shareTitle}%20{$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke WhatsApp" aria-label="Bagikan ke WhatsApp">
+							<span class="bi bi-whatsapp" aria-hidden="true"></span>
+							<span class="jrdc-article__share-label">WA</span>
+						</a>
+						<a class="jrdc-article__share-btn jrdc-article__share-btn--x" href="https://twitter.com/intent/tweet?text={$shareTitle}&url={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke X / Twitter" aria-label="Bagikan ke X / Twitter">
+							<span class="bi bi-twitter-x" aria-hidden="true"></span>
+							<span class="jrdc-article__share-label">X</span>
+						</a>
+						<a class="jrdc-article__share-btn jrdc-article__share-btn--fb" href="https://www.facebook.com/sharer/sharer.php?u={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke Facebook" aria-label="Bagikan ke Facebook">
+							<span class="bi bi-facebook" aria-hidden="true"></span>
+							<span class="jrdc-article__share-label">FB</span>
+						</a>
+						<a class="jrdc-article__share-btn jrdc-article__share-btn--in" href="https://www.linkedin.com/sharing/share-offsite/?url={$shareUrl}" target="_blank" rel="noopener" title="Bagikan ke LinkedIn" aria-label="Bagikan ke LinkedIn">
+							<span class="bi bi-linkedin" aria-hidden="true"></span>
+							<span class="jrdc-article__share-label">In</span>
+						</a>
 					</div>
 					<button type="button" class="jrdc-doi-copy jrdc-article__copy-link" data-doi="{$articleUrl|escape}" aria-label="Salin tautan artikel">
-						<span class="fa fa-link" aria-hidden="true"></span>
+						<span class="bi bi-link-45deg" aria-hidden="true"></span>
 						Salin Tautan Artikel
 					</button>
 				</div>

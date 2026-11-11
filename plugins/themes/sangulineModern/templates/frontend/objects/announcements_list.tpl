@@ -38,7 +38,7 @@
 							</div>
 							<a href="{url router=$smarty.const.ROUTE_PAGE page="announcement" op="view" path=$announcement->getId()}" class="announcement_read_more">
 								{translate key="common.readMore"}
-								<span class="fa fa-arrow-right" aria-hidden="true"></span>
+								<span class="bi bi-arrow-right" aria-hidden="true"></span>
 							</a>
 						</div>
 					</article>

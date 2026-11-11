@@ -505,7 +505,7 @@
 	background: var(--jrdc-primary-soft);
 }
 
-.jrdc-article__issue-link .fa {
+.jrdc-article__issue-link .bi {
 	margin-inline-start: auto;
 }
 
@@ -590,7 +590,7 @@
 	text-decoration: none;
 }
 
-.jrdc-article__supplementary-link .fa-file-pdf-o {
+.jrdc-article__supplementary-link .bi-file-earmark-pdf {
 	color: var(--jrdc-primary);
 }
 
@@ -610,16 +610,30 @@
 
 .jrdc-article__share-btn {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	gap: .3rem;
 	padding: .55rem .25rem;
 	border: 1px solid transparent;
 	border-radius: var(--jrdc-radius-sm);
-	font-size: .75rem;
+	font-size: .6875rem;
 	font-weight: 700;
-	letter-spacing: .05em;
+	letter-spacing: .04em;
 	text-decoration: none;
 	transition: background .15s ease, color .15s ease;
+}
+
+.jrdc-article__share-btn .bi {
+	font-size: 1.125rem;
+	line-height: 1;
+}
+
+.jrdc-article__share-label {
+	font-size: .625rem;
+	font-weight: 700;
+	letter-spacing: .06em;
+	line-height: 1;
 }
 
 .jrdc-article__share-btn--wa {

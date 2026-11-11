@@ -81,6 +81,14 @@ class SangulineModernThemePlugin extends ThemePlugin {
 			['baseUrl' => '']
 		);
 
+		// Bootstrap Icons via CDN (replaced the parent's dropped Font Awesome
+		// layer; fa-* icons never rendered in this child).
+		$this->addStyle(
+			'bootstrapIcons',
+			'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css',
+			['baseUrl' => '']
+		);
+
 		// Font Awesome is already loaded by core frontend CSS.
 		$this->addStyle('stylesheetModern', 'styles/index.less');
 

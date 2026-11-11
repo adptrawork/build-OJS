@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.4] - 2026-11-11
+
+### Changed
+- **Icons → Bootstrap Icons (CDN):** the child theme dropped the parent's visual layer but never re-registered Font Awesome, so every `fa fa-*` icon rendered as `width:0` (invisible) across the theme. Now uses `bootstrap-icons@1.13.1` from jsdelivr (registered in child init `addStyle('bootstrapIcons')`, user-requested) — no icon fonts vendored, no FA anywhere:
+  - `share` buttons render real brand glyphs: `bi-whatsapp`, `bi-twitter-x`, `bi-facebook`, `bi-linkedin` (+ `bi-link-45deg` for Salin Tautan), icon stacked over 10px label per prototype.
+  - All theme templates swapped `fa fa-*` → `bi bi-*` (article_details download/PDF/issue/share/copy, announcements list arrow); inline copy SVG replaced with `bi-copy`.
+  - Core `submissions.tpl` checklist bullet (`fa fa-check`) — new theme override `templates/frontend/pages/submissions.tpl` with `bi bi-check-circle-fill`.
+  - `static.less` checklist `.fa` → `.bi`; share button LESS rewritten for stacked icon+label.
+- Note: `bi-twitter-x` used for the X network (link is still `twitter.com/intent/tweet`). Core/parent templates still reference `fa fa-*` but are not rendered in this theme (child overrides or dropped visual layer).
+
 ## [1.6.3] - 2026-11-11
 
 ### Added
