@@ -110,8 +110,8 @@ class CustomBlockPlugin extends BlockPlugin {
 		$divCustomBlockId = 'customblock-'.preg_replace('/\W+/', '-', $this->getName());
 		$templateMgr->assign('customBlockId', $divCustomBlockId);
 
-		$title = $customBlockTitle[$currentLocale] ? $customBlockTitle[$currentLocale] : $customBlockTitle[$contextPrimaryLocale];
-		$content = $customBlockContent[$currentLocale] ? $customBlockContent[$currentLocale] : $customBlockContent[$contextPrimaryLocale];
+		$title = $customBlockTitle[$currentLocale] ?? $customBlockTitle['en_US'] ?? $customBlockTitle[$contextPrimaryLocale] ?? '';
+		$content = $customBlockContent[$currentLocale] ?? $customBlockContent['en_US'] ?? $customBlockContent[$contextPrimaryLocale] ?? '';
 
 		$templateMgr->assign('customBlockTitle', $title);
 		$templateMgr->assign('customBlockContent', $content);
