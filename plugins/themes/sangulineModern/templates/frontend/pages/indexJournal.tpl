@@ -174,7 +174,7 @@
 			{if $announcements && $numAnnouncementsHomepage}
 				<section class="card jrdc-card-section jrdc-announcements" aria-label="{translate|escape key="announcement.announcements"}">
 					<div class="card-header jrdc-card-header">
-						<h2 class="jrdc-card-title">{translate key="announcement.announcements"}</h2>
+						<h2 class="jrdc-card-title">Pengumuman</h2>
 					</div>
 					<div class="card-body jrdc-card-body">
 						{include file="frontend/objects/announcements_list.tpl" numAnnouncements=$numAnnouncementsHomepage}
