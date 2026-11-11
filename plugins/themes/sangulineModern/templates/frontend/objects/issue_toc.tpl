@@ -29,65 +29,7 @@
 		{include file="frontend/components/notification.tpl" type="warning" messageKey="editor.issues.preview"}
 	{/if}
 
-	{* Issue introduction area above articles *}
-	<div class="heading row g-4 align-items-start">
-
-		<div class="col-12 col-md-8">
-			{* Description *}
-			{if $issue->hasDescription()}
-				<div class="description jrdc-prose">
-					{$issue->getLocalizedDescription()|strip_unsafe_html}
-				</div>
-			{/if}
-
-			{* PUb IDs (eg - DOI) *}
-			{foreach from=$pubIdPlugins item=pubIdPlugin}
-				{assign var=pubId value=$issue->getStoredPubId($pubIdPlugin->getPubIdType())}
-				{if $pubId}
-					{assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
-					<div class="pub_id {$pubIdPlugin->getPubIdType()|escape} mb-2">
-						<span class="type badge text-bg-light border me-1">
-							{$pubIdPlugin->getPubIdDisplayType()|escape}
-						</span>
-						<span class="id">
-							{if $doiUrl}
-								<a href="{$doiUrl|escape}">
-									{$doiUrl}
-								</a>
-							{else}
-								{$pubId}
-							{/if}
-						</span>
-					</div>
-				{/if}
-			{/foreach}
-
-			{* Published date *}
-			{if $issue->getDatePublished()}
-				<div class="published text-muted small mt-2">
-					<span class="label">
-						{translate key="submissions.published"}:
-					</span>
-					<span class="value">
-						{$issue->getDatePublished()|date_format:$dateFormatShort}
-					</span>
-				</div>
-			{/if}
-		</div>
-
-		<div class="col-12 col-md-4">
-			{* Issue cover image *}
-			{assign var=issueCover value=$issue->getLocalizedCoverImageUrl()}
-			{if $issueCover}
-				<a class="cover d-inline-block" href="{url op="view" page="issue" path=$issue->getBestIssueId()}">
-					{capture assign="defaultAltText"}
-						{translate key="issue.viewIssueIdentification" identification=$issue->getIssueIdentification()|escape}
-					{/capture}
-					<img class="img-fluid rounded" src="{$issueCover|escape}" alt="{$issue->getLocalizedCoverImageAltText()|escape|default:$defaultAltText}">
-				</a>
-			{/if}
-		</div>
-	</div>
+	{* Issue introduction area above articles — removed heading row per prototype *}
 
 	{* Full-issue galleys *}
 	{if $issueGalleys}
