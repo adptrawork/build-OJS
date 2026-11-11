@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.6] - 2026-11-11
+
+### Removed
+- **Dummy DOIs:** the 5 placeholder `pub-id::doi` values (`10.1000/jrdc.2026.v1n1.*`, created for UI demo) are deleted — no real DOI exists anywhere in the journal (verified: publication_settings, tombstone settings, DOI plugin prefix unconfigured). The article page shows "—" until a real DOI is registered via Admin → Settings → DOI (template and plugin are DOI-ready).
+
+### Changed
+- **LoA PDFs rebuilt with real data** (`ojsData/journals/1/articles/loa-*.pdf`, gitignored): e-ISSN/p-ISSN 2049-3630, Volume 1 No. 1 (2026), publisher Yayasan Ratu Dirgantara Cendekiawan, real article title/author/pages/datePublished. Fake verification numbers and invented ISSN removed. Honest sample-document marker kept (no official LoA exists in the system).
+- SEO via headerHead.tpl override (no core edits, no new plugins):
+  - `<meta name="description">` everywhere (article → abstract stripped ≤158 chars; else journal description; else journal name)
+  - `<link rel="canonical">` self-referencing per page (article/issue paths resolved; galley views canonicalize to the article; `/index` segment dropped for op=index routes)
+  - Open Graph + Twitter Card (og:type=article on articles, og:image = homepageImage_en_US.png, summary_large_image)
+  - JSON-LD structured data: `ScholarlyArticle` on article pages (headline, authors, dates, pages, keywords as array, isPartOf Periodical{ISSN 2049-3630}, publisher org) + `WebSite` + `Organization` on every page
+  - JSON-LD braces escaped with Smarty `{ldelim}`/`{rdelim}` (literal `{` breaks the Smarty compiler otherwise)
+- Verified: all 9 page types render description/canonical/OG/JSON-LD (article canonical clean, subpage canonicals drop bogus `/index` suffix).
+- Gallery/pdfJsViewer pages intentionally carry no theme header (plugin-owned template) — out of scope; note as possible future override for noindex if desired.
+
 ## [1.6.5] - 2026-11-11
 
 ### Fixed
