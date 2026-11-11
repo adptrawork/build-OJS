@@ -12,23 +12,6 @@
 <section class="cmp_announcements highlight_first sanguline_announcement_slider">
 	<a id="homepageAnnouncements"></a>
 	
-	<div class="slider_header">
-		<h2 class="slider_title">
-			<span class="fa fa-bullhorn" aria-hidden="true"></span>
-			{translate key="announcement.announcements"}
-		</h2>
-		{if $announcements|@count > 1}
-		<div class="slider_controls">
-			<button type="button" class="btn btn-outline-secondary slider_prev" aria-label="{translate key="common.previous"}" data-jrdc-slide-prev>
-				<span class="fa fa-chevron-left" aria-hidden="true"></span>
-			</button>
-			<button type="button" class="btn btn-outline-secondary slider_next" aria-label="{translate key="common.next"}" data-jrdc-slide-next>
-				<span class="fa fa-chevron-right" aria-hidden="true"></span>
-			</button>
-		</div>
-		{/if}
-	</div>
-	
 	<div class="slider_container">
 		<div class="slider_track">
 			{assign var="slideIndex" value=0}
