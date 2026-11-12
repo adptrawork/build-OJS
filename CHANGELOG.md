@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.21] - 2026-11-12
+
+### Added
+- **Sidebar rebuilt to match prototype** (`docs/SIDEBAR-REDESIGN.md` §1–§7):
+  7 blocks, 100% real data, zero 3rd-party widgets. Sidebar now renders:
+  Informasi Jurnal → Untuk Penulis → Templat → Kata Kunci Populer → Pengindeksan → Rekomendasi Tools → Arsip.
+  Every link resolves; all 7 render in id_ID and en_US.
+- **Templat block is live** with 3 real downloadable .docx templates generated in-repo:
+  `Templat_Naskah_JRDC.docx` (title/abstract/keywords/sections + guidelines),
+  `Formulir_Laporan_Revisi_JRDC.docx` (round table + author statement),
+  `Pernyataan_Orisinalitas_JRDC.docx` (5-item originality checklist).
+  Served at `/public/journals/1/templates/…`.
+- **New static page** `/index.php/jrdc/indexing` — "Indeksasi & Abstrak" (id/en), lists the journal's claimed indexes (Google Scholar, Scopus, Dimensions, Garuda, Crossref) with descriptive blurbs. Content journal-claims only.
+- **Real keyword counts** in the "Kata Kunci Populer" block: manajemen ×5 (only >1 across 5 published articles), others ×1; note "Berdasarkan 5 artikel" shown so visitors know it's not lifetime stats.
+- **Scoped sidebar CSS** (`.jrdc-sb-*`) — `.jrdc-card` prefix reused from existing theme; scoped under `.jrdc-sidebar` to avoid leaking into the homepage card rules. Includes `:focus-visible` rings on all interactive elements.
+
+### Removed
+- `web-statistics` (Histats.com 3rd-party widget, 0 usage-stats rows — anything displayed would be fake)
+- `journal-profile` (duplicate of footer/about)
+- `information-for-reviewer` (covered at `/reviewer-board` in Redaksi nav)
+- Legacy 13-entry sidebar setting replaced by the 7 approved blocks
+
+### Notes
+- `docs/SIDEBAR-REDESIGN.md` updated: implementation status, ordering, constraints, static page, real template inventory.
+- 7 blocks is the maximum honest count with current DB state; the prototype's 8th block (Statistik Artikel) needs usage-stats rows and/or a proper native block — deferred.
+
 ## [1.6.20] - 2026-11-12
 
 ### Added

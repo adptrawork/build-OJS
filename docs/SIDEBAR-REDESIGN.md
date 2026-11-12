@@ -1,3 +1,34 @@
+# Sidebar Blocks — Implementation Notes
+
+**Status (1.6.21): APPLIED.** Live sidebar now renders exactly 7 blocks, real data only, no fake counters, no 3rd-party widgets.
+
+### Obsoleted / retired
+- `web-statistics` (3rd-party Histats.com tracker) removed — the journal has zero usage-statistics rows, so no honest aggregate exists.
+- `journal-profile` removed (duplicate of footer/about data).
+- `information-for-reviewer` removed (covered at `/reviewer-board` in the Redaksi nav dropdown).
+
+### Live sidebar (order)
+1. Informasi Jurnal — 5 links (Sejarah Jurnal, Dewan Redaksi, Fokus & Ruang Lingkup, Indeksasi & Abstrak, Kontak) + SVG icons
+2. Untuk Penulis — 6 links (Pedoman Penulis, Proses Telaah Sejawat, Etika Publikasi, Hak Cipta & Lisensi, Akses Terbuka, Kirim Naskah) + SVG icons
+3. Templat — 3 real downloadable .docx templates (Google Docs format: `Templat_Naskah_JRDC.docx`, `Formulir_Laporan_Revisi_JRDC.docx`, `Pernyataan_Orisinalitas_JRDC.docx`), served at `/public/journals/1/templates/`
+4. Kata Kunci Populer — real counts: `manajemen` ×5, `UMKM`/`literasi keuangan`/`tata kelola`/`kepemimpinan` ×1 each; UI note "Berdasarkan 5 artikel" shown
+5. Pengindeksan — real index links (Google Scholar / Scopus / Dimensions / Garuda / Crossref) with brand SVG marks; Scopus URL is a search URL, not a fabricated source id
+6. Rekomendasi Tools — Mendeley, Zotero, Turnitin, Grammarly, VOSviewer (all `target=_blank` + `rel="noopener"`)
+7. Arsip — "2026 · 2 Edisi", real: issue 2 (Vol. 1 No. 1) + issue 3 (Edisi Khusus Ekonomi Digital), both published 2026-11
+
+### New static page
+- `/index.php/jrdc/indexing` — "Indeksasi & Abstrak" (en/id), listing the five indexes with `rel="noopener noreferrer"` external links; content is journal-claims only (no invented SINTA/DOAJ membership).
+
+### Constraints verified
+- Both locales (id_ID/en_US) render completely, including block titles.
+- Usage-statistics seed existed nowhere → monthly chart/18,420 views never shipped.
+- Keywords stored via controlled vocabulary; counts are exact.
+- `.jrdc-card` prefix avoided — all sidebar classes are scoped under `.jrdc-sb-*` to avoid colliding with the existing homepage `.jrdc-card` rules.
+
+Historical design/audit below kept for reference.
+
+---
+
 # Sidebar Blocks — Audit & Redesign to Prototype
 
 **Goal** (from request): sidebar must match the prototype (`archive.html` / `index.html` — "bg-white border … rounded-2xl" cards with icon rows, exact block order) and every block must be backed by data/verified links — no dummies, no fake counters. Blocks must be editable by the editor in the journal UI (Settings → Appearance → Sidebar or Custom Block Manager), not hardcoded in the theme.
