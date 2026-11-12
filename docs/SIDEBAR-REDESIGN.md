@@ -9,31 +9,31 @@
 
 ## 0. URL Strategy — why links look the way they do
 
-The internal links in this document are written **root-relative** — e.g. `/index.php/jrdc/about`, not `https://ojs-boostrap.ddev.site:8443/index.php/jrdc/about`. This is deliberate and is what makes the whole sidebar portable when the site is moved to another domain/server.
+Internal links in this document are written with the **`[baseUrl]` token** — e.g. `[baseUrl]/index.php/jrdc/about`, not `https://ojs-boostrap.ddev.site:8443/index.php/jrdc/about`. This is deliberate: the theme override of the custom-block template resolves the token at render time, so the whole sidebar stays portable when the site moves to another domain/server.
 
-### Option A — root-relative (in use)
+### Option A — root-relative (valid but not used)
 
 ```html
 <a href="/index.php/jrdc/about">Sejarah Jurnal</a>
 ```
 
-- In the browser the link resolves to `https://<any-host>/index.php/jrdc/about`.
-- Migrating from staging to production requires zero edits to the block content.
-- **Caveat**: depends on the front controller (`index.php`) and journal path (`jrdc`) staying the same. If `disable_path_info = Off` + rewrite rules are enabled (pretty URLs), the links stay valid because the browser just follows them.
+- In the browser the link resolves to `https://<any-host>/index.php/jrdc/about` — also portable across domains.
+- Chosen against, in favor of Option B: the host never appears in the content at all, and Option A is still valid if the theme override is ever removed (untokenized links pass through unchanged).
+- **Caveat**: depends on the front controller (`index.php`) and journal path (`jrdc`) staying the same.
 
-### Option B — `[baseUrl]` token via theme override of the custom-block template
+### Option B — `[baseUrl]` token via theme override of the custom-block template (adopted)
 
-`block.tpl` override in the child theme:
+Theme override in place: `templates/plugins/generic/customBlockManager/templates/block.tpl`:
 
 ```smarty
 {assign var="customBlockContent" value=$customBlockContent|replace:'[baseUrl]':$baseUrl}
 ```
 
-Content then written as `<a href="[baseUrl]/index.php/jrdc/about">…</a>`, rendered as `https://ojs-boostrap.ddev.site:8443/index.php/jrdc/about`.
+Content is written as `<a href="[baseUrl]/index.php/jrdc/about">…</a>`, rendered as `https://ojs-boostrap.ddev.site:8443/index.php/jrdc/about`.
 
 - Same portability as A, with the added discipline of never typing the host.
 - Still depends on the path prefix `/index.php/jrdc/…` remaining unchanged.
-- Only useful if the theme already has an override for every custom-block render (we have for PDF viewer and static pages, not for the sidebar block) — skip unless we actually adopt it.
+- No custom-block content is re-parsed by Smarty — the one-line `replace` in the theme override is all that is required.
 
 ### Option C — native OJS Navigation Menu (`{load_menu}`, `NMI_TYPE_*`)
 
@@ -47,7 +47,7 @@ OJS renders nav-menu links at request time via `Router->{url}` — fully dynamic
 - Custom static pages (e.g. `/focus-and-scope`) must be `remote_url` items — same root-relative form as Option A.
 - Overhead: management via Settings → Navigation Menus for every link; the icon-row layout this document targets cannot be authored through the nav-menu admin UI without a theme override anyway.
 
-**Chosen: Option A** for every internal link in this document and in the DB block content. External links (Google Scholar, Scholar.org, DOIs …) keep absolute URLs by design. For a production domain change: adjust `base_url` and `allowed_hosts` in `config.inc.php`, clear OJS caches — nothing else needs editing.
+**Chosen (adopted): Option B** — the theme override `templates/plugins/generic/customBlockManager/templates/block.tpl` replaces the `[baseUrl]` token with the request-time base URL (`$baseUrl`), so every internal link in the sidebar block content is written `[baseUrl]/index.php/jrdc/about` and resolves automatically after any domain/host migration. External links (Google Scholar, DOIs …) stay absolute, as always. Option A (plain root-relative) also remains valid — untokenized links without `[baseUrl]` pass through unchanged — but new content must use the token. For a production domain change: adjust `base_url` and `allowed_hosts` in `config.inc.php`, clear OJS caches — nothing else needs editing.
 
 ---
 
@@ -57,10 +57,10 @@ OJS renders nav-menu links at request time via `Router->{url}` — fully dynamic
 
 **DB value**
 ```html
-<ul><li><a href="/index.php/jrdc/about">Sejarah Jurnal</a></li>
-<li><a href="/index.php/jrdc/about/editorialTeam">Dewan Redaksi</a></li>
-<li><a href="/index.php/jrdc/focus-and-scope">Fokus &amp; Ruang Lingkup</a></li>
-<li><a href="/index.php/jrdc/about/contact">Kontak</a></li></ul>
+<ul><li><a href="[baseUrl]/index.php/jrdc/about">Sejarah Jurnal</a></li>
+<li><a href="[baseUrl]/index.php/jrdc/about/editorialTeam">Dewan Redaksi</a></li>
+<li><a href="[baseUrl]/index.php/jrdc/focus-and-scope">Fokus &amp; Ruang Lingkup</a></li>
+<li><a href="[baseUrl]/index.php/jrdc/about/contact">Kontak</a></li></ul>
 ```
 
 Issues:
@@ -72,10 +72,10 @@ Issues:
 
 **DB value**
 ```html
-<ul><li><a href="/index.php/jrdc/about/submissions">Pedoman Penulis</a></li>
-<li><a href="/index.php/jrdc/about/submissions#privacyStatement">Etika Publikasi</a></li>
-<li><a href="/index.php/jrdc/article-processing-charges">Biaya Publikasi</a></li>
-<li><a href="/index.php/jrdc/copyright-and-license">Hak Cipta &amp; Lisensi</a></li></ul>
+<ul><li><a href="[baseUrl]/index.php/jrdc/about/submissions">Pedoman Penulis</a></li>
+<li><a href="[baseUrl]/index.php/jrdc/about/submissions#privacyStatement">Etika Publikasi</a></li>
+<li><a href="[baseUrl]/index.php/jrdc/article-processing-charges">Biaya Publikasi</a></li>
+<li><a href="[baseUrl]/index.php/jrdc/copyright-and-license">Hak Cipta &amp; Lisensi</a></li></ul>
 ```
 
 Issues:
@@ -409,16 +409,16 @@ The sidebar currently renders blocks as small padded `.pkp_block` cards with pla
 **Content** (id_ID):
 ```html
 <ul class="jrdc-side-list">
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/about">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/about">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v4l3 2"></path><circle cx="12" cy="12" r="10"></circle></svg>
     Sejarah Jurnal</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/about/editorialTeam">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/about/editorialTeam">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
     Dewan Redaksi</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/focus-and-scope">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/focus-and-scope">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20 2 2 0 0 1 0 20 2 2 0 0 1 0-20"></path></svg>
     Fokus &amp; Ruang Lingkup</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/about/contact">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/about/contact">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
     Kontak</a></li>
 </ul>
@@ -435,22 +435,22 @@ Why: prototype layout — icon gasoline links. All 4 links are real journal URLs
 **Content** (id_ID):
 ```html
 <ul class="jrdc-side-list">
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/about/submissions">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/about/submissions">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
     Pedoman Penulis</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/publication-ethics">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/publication-ethics">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 0 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="M9 14l2 2 4-4"></path></svg>
     Proses Telaah Sejawat</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/publication-ethics">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/publication-ethics">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
     Etika Publikasi</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/copyright-and-license">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/copyright-and-license">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M14.83 14.83a4 4 0 1 1 0-5.66"></path></svg>
     Hak Cipta &amp; Lisensi</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/open-access-statement">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/open-access-statement">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
     Pernyataan Akses Terbuka</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/submission/wizard">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/submission/wizard">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
     Kirim Naskah</a></li>
 </ul>
@@ -466,13 +466,13 @@ Issues fixed: the broken `/about/submissions#privacyStatement` link replaced by 
 **Content** (id_ID):
 ```html
 <ul class="jrdc-side-list">
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/author-guidelines">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/author-guidelines">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><polyline points="9 15 12 18 15 15"></polyline></svg>
     Templat Naskah</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/author-guidelines">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/author-guidelines">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
     Formulir Laporan Revisi</a></li>
-  <li><a class="jrdc-side-link" href="/index.php/jrdc/author-guidelines">
+  <li><a class="jrdc-side-link" href="[baseUrl]/index.php/jrdc/author-guidelines">
     <svg class="jrdc-side-link__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M9 15l2 2 4-4"></path></svg>
     Pernyataan Orisinalitas</a></li>
 </ul>
@@ -493,11 +493,11 @@ Issues fixed: the broken `/about/submissions#privacyStatement` link replaced by 
 ```html
 <p class="jrdc-side-intro">Berdasarkan 5 artikel yang diterbitkan.</p>
 <div class="jrdc-side-chips">
-  <a class="jrdc-side-chip" href="/index.php/jrdc/search/search?query=manajemen">manajemen <span class="jrdc-side-chip__count">5</span></a>
-  <a class="jrdc-side-chip" href="/index.php/jrdc/search/search?query=UMKM">UMKM <span class="jrdc-side-chip__count">1</span></a>
-  <a class="jrdc-side-chip" href="/index.php/jrdc/search/search?query=fintech">fintech <span class="jrdc-side-chip__count">1</span></a>
-  <a class="jrdc-side-chip" href="/index.php/jrdc/search/search?query=kepemimpinan">kepemimpinan <span class="jrdc-side-chip__count">1</span></a>
-  <a class="jrdc-side-chip" href="/index.php/jrdc/search/search?query=tata+kelola">tata kelola <span class="jrdc-side-chip__count">1</span></a>
+  <a class="jrdc-side-chip" href="[baseUrl]/index.php/jrdc/search/search?query=manajemen">manajemen <span class="jrdc-side-chip__count">5</span></a>
+  <a class="jrdc-side-chip" href="[baseUrl]/index.php/jrdc/search/search?query=UMKM">UMKM <span class="jrdc-side-chip__count">1</span></a>
+  <a class="jrdc-side-chip" href="[baseUrl]/index.php/jrdc/search/search?query=fintech">fintech <span class="jrdc-side-chip__count">1</span></a>
+  <a class="jrdc-side-chip" href="[baseUrl]/index.php/jrdc/search/search?query=kepemimpinan">kepemimpinan <span class="jrdc-side-chip__count">1</span></a>
+  <a class="jrdc-side-chip" href="[baseUrl]/index.php/jrdc/search/search?query=tata+kelola">tata kelola <span class="jrdc-side-chip__count">1</span></a>
 </div>
 ```
 **Content** (en_US): same with English labels (`manajemen → management (5)`, `UMKM`, `fintech`, `kepemimpinan → leadership`, `tata kelola → governance`).
@@ -577,7 +577,7 @@ Search URL pattern: `/index.php/jrdc/search/search?query={tag}` — correct rout
 
 **Content** (id_ID):
 ```html
-<a class="jrdc-side-archive" href="/index.php/jrdc/issue/archive">
+<a class="jrdc-side-archive" href="[baseUrl]/index.php/jrdc/issue/archive">
   <span class="jrdc-side-archive__year">2026</span>
   <span class="jrdc-side-archive__count">2 Edisi</span>
 </a>
@@ -627,5 +627,6 @@ Real: issue 2 (Vol. 1 No. 1 (2026): Articles) and issue 3 (Edisi Khusus Ekonomi 
 
 1. Activate the `customblockmanager` plugin (container: it is a site-wide generic plugin, id 1).
 2. Go to **Settings → Website → Plugins → Custom Block Manager → Manage → Add Block**: choose name (`e.g. "abouts-sidebar"`), fill `Block Title`, `Block Content`, save.
-3. Reorder in **Settings → Website → Sidebar** via the up/down arrows (or in the `blocks` setting).
+3. Order blocks in **Settings → Website → Sidebar** via the up/down arrows (or in the `blocks` setting).
 4. Blocks survive export/import through standard config export; the custom `blockTitle`/`blockContent` values are translated per locale (id_ID/en_US) — both locales must be filled or the untranslated locale falls back to en_US.
+5. **Internal links must use the `[baseUrl]` token** (e.g. `[baseUrl]/index.php/jrdc/about`) — the child theme override resolves it at request time. Never type the host; never edit for a domain move.

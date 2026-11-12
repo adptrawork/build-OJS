@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.20] - 2026-11-12
+
+### Added
+- **Option B adopted for custom block internal links:** theme override `templates/plugins/generic/customBlockManager/templates/block.tpl` (via the `TemplateResource::getFilename` hook) replaces `[baseUrl]` in block content with the request-time `$baseUrl`. Sidebar block content is now authored as `[baseUrl]/index.php/jrdc/about` — resolves automatically after any domain/host migration without editing stored HTML.
+- `docs/SIDEBAR-REDESIGN.md` rewritten: section 0 documents Options A/B/C with examples (why Smarty does not re-parse block content, why `{url}` cannot be written inline, what to change on a production domain move). Internal links in the doc converted to the `[baseUrl]` token convention (34 occurrences).
+- Editor checklist updated: production migration = adjust `base_url` + `allowed_hosts` + clear cache only.
+
+### Notes
+- Untokenized absolute-path links (`/index.php/jrdc/about`) remain valid and pass through the override unchanged; only tokenized links are transformed. Existing DB blocks (currently live) do not need to re-write; new content must use `[baseUrl]`.
+
 ## [1.6.19] - 2026-11-12
 
 ### Added
