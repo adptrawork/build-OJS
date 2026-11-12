@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.19] - 2026-11-12
+
+### Added
+- **URL Strategy section in `docs/SIDEBAR-REDESIGN.md`:** documents the three ways to keep internal links portable when the site moves domain/server — Option A (root-relative `/index.php/jrdc/about`), Option B (`[baseUrl]` token via theme override of `customBlockManager/templates/block.tpl`), Option C (native Navigation Menu with `{load_menu}`/`NMI_TYPE_*`). States clearly that custom-block content is not re-parsed by Smarty, why `{url}`/`{baseUrl}` cannot be written inline in block content, and why Option A is in use. Documents exactly what to change on a production move (`base_url` + `allowed_hosts` only).
+
 ## [1.6.18] - 2026-11-12
 
 ### Added
