@@ -356,3 +356,22 @@ Terakhir diverifikasi berjalan tanpa error (`ReviewReminder`, `UsageStatsLoader`
 | Review Guidelines | terisi id_ID + en_US |
 | Competing Interests | terisi id_ID + en_US |
 | Review Forms | 1 form, 6 field naratif |
+
+### 9.6 Email template (override di database)
+
+15 template inti di-override di `email_templates` + `email_templates_settings` (context 1, id_ID + en_US) dengan wording profesional. Semua enabled; hanya memakai placeholder yang benar-benar di-assign OJS (verifikasi end-to-end lewat Mailpit).
+
+| Key | Kapan terkirim |
+|---|---|
+| SUBMISSION_ACK | penulis mengirim naskah |
+| REVIEW_REQUEST (+ ONECLICK + SUBSEQUENT) | editor mengundang reviewer (ONECLICK dipakai karena `reviewerAccessKeysEnabled = 1`) |
+| REVIEW_CONFIRM | reviewer menerima undangan |
+| REVIEW_REMIND_AUTO (+ ONECLICK) | pengingat otomatis setelah tenggat |
+| EDITOR_DECISION_REVISIONS / ACCEPT / DECLINE | editor memutuskan naskah |
+| COPYEDIT_REQUEST | penugasan copyeditor |
+| LAYOUT_REQUEST | penugasan layout editor |
+| PUBLISH_NOTIFY | edisi baru diterbitkan |
+| USER_REGISTER | pendaftaran akun |
+| PASSWORD_RESET_CONFIRM | permintaan reset kata sandi |
+
+Yang tidak di-override (default OJS) tetap tersedia dan dipakai bila fiturnya aktif. Template yang tidak pernah terkirim di jurnal ini (SUBSCRIPTION_*, LOCKSS_*, ORCID_*, USER_VALIDATE) tidak bisa di-disable lewat UI (`can_disable = 0`) dan tidak pernah terpicu karena plugin/fiturnya mati.

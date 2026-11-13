@@ -9,6 +9,20 @@ All notable changes to this project will be documented in this file.
 - **Mail transport is now testable:** `config.inc.php` `[email]` points at ddev's Mailpit (`smtp = On`, `localhost:1025`). A test message was sent through OJS's own Mailer and arrived at https://ojs-boostrap.ddev.site:8026. Previously `mail()` was used, which silently discarded everything.
 - **Review settings completed:** `restrictReviewerFileAccess = 1`, `reviewerAccessKeysEnabled = 1`, reminders 3 days after the response/review due date (these two fields only exist when `scheduled_tasks = On`).
 - **`ScheduledTasks` verified running** — `ReviewReminder`, `UsageStatsLoader`, `Crossref/DataCite/DOAJ InfoSender`, `StatisticsReport` complete without error.
+- **Professional email templates (15 keys, id_ID + en_US)** added to the DB:
+  `SUBMISSION_ACK`, `REVIEW_REQUEST` (+ `ONECLICK` + `SUBSEQUENT`),
+  `REVIEW_CONFIRM`, `REVIEW_REMIND_AUTO` (+ `ONECLICK`), `EDITOR_DECISION_REVISIONS`,
+  `EDITOR_DECISION_ACCEPT`, `EDITOR_DECISION_DECLINE`, `COPYEDIT_REQUEST`,
+  `LAYOUT_REQUEST`, `PUBLISH_NOTIFY`, `USER_REGISTER`, `PASSWORD_RESET_CONFIRM`.
+  All are enabled and only use placeholders OJS actually assigns, so no
+  `{$...}` stays unfilled. The plain `REVIEW_REQUEST`/`REVIEW_REMIND_AUTO` are
+  kept for the case access keys are ever turned off. Verified end-to-end: a
+  password-reset request sent to Mailpit rendered the custom Indonesian
+  subject/body and the now-populated `{$siteTitle}`.
+- **Site settings corrected:** `site_settings.title` (id/en) set to the journal
+  name; `contactName`/`contactEmail` changed from "Open Journal Systems" /
+  `admin@admin.com` to `Redaksi JRDC` / `editor@jrdc.test`, so `{$siteTitle}`
+  in emails no longer renders empty.
 
 ### Changed
 - **Placeholder identity data removed** — `redaksi@contoh-jrdc.ac.id`, `support@contoh-jrdc.ac.id` and phone `+62 812-0000-000x` deleted; `contactEmail`/`supportEmail` now point at `editor@jrdc.test`, phone rows dropped.

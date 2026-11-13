@@ -56,6 +56,9 @@ Semua status di bawah diverifikasi dari database, kode sumber, dan HTTP check �
 - [x] **Scheduled tasks dijalankan** tanpa error (`ReviewReminder`, `UsageStatsLoader`, `Crossref/DataCite/DOAJ InfoSender`, `StatisticsReport`)
 - [x] **Data placeholder dibersihkan** — `redaksi@contoh-jrdc.ac.id`, `support@contoh-jrdc.ac.id`, nomor `+62 812-0000-0000` dihapus; halaman Dewan Redaksi diisi dari akun nyata (tanpa `[Nama Lengkap]` / `[0000-0000-0000-0000]`)
 - [x] **0 sisa placeholder** — `SELECT ... LIKE '%contoh%'` di `journal_settings` = 0
+- [x] **15 email template profesional (id_ID + en_US)** — `SUBMISSION_ACK`, `REVIEW_REQUEST` (+ `ONECLICK` + `SUBSEQUENT`), `REVIEW_CONFIRM`, `REVIEW_REMIND_AUTO` (+ `ONECLICK`), `EDITOR_DECISION_REVISIONS`/`ACCEPT`/`DECLINE`, `COPYEDIT_REQUEST`, `LAYOUT_REQUEST`, `PUBLISH_NOTIFY`, `USER_REGISTER`, `PASSWORD_RESET_CONFIRM`. Semua enabled; hanya memakai placeholder yang benar-benar di-assign OJS (verifikasi via Mailpit: reset password menampilkan subject/body kustom dan `{$siteTitle}` terisi)
+- [x] **Site settings diperbaiki** — `site_settings.title` = nama jurnal (id/en), `contactName` = Redaksi JRDC, `contactEmail` = `editor@jrdc.test` (sebelumnya default "Open Journal Systems" / `admin@admin.com`)
+- [x] **Enable/disable email:** 15 template yang dipakai jurnal ini semuanya enabled. Yang tak pernah terkirim (SUBSCRIPTION_*, LOCKSS_*, ORCID_*, USER_VALIDATE) tidak bisa di-disable lewat UI (can_disable=0) dan tidak pernah terpicu karena plugin/fiturnya mati
 
 ### B3. Navigasi mobile (fix akar masalah, 1.6.24)
 - [x] **Root cause ditemukan** — `backdrop-filter: blur(12px)` di `.jrdc-header` menjadikan header *containing block* untuk offcanvas `position: fixed`; panel terkunci setinggi header (104px dari 844px viewport). Dua baris dihapus
