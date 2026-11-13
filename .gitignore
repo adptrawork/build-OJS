@@ -21,7 +21,7 @@
 # (covered by /ojsData/ but kept explicit)
 
 # --- Local downloads / extracted archives (dev artifacts) ---
-/downloads/extracted/
+/downloads/
 
 # --- OS / editor / IDE ---
 .DS_Store
