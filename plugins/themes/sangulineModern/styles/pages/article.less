@@ -538,7 +538,7 @@
 	gap: .5rem;
 	width: 100%;
 	padding: .6rem 1rem;
-	color: var(--jrdc-bg);
+	color: #fff;
 	background: var(--jrdc-text);
 	border: 0;
 	border-radius: var(--jrdc-radius-sm);
@@ -553,6 +553,17 @@
 .jrdc-article__download-button:hover {
 	color: #fff;
 	background: var(--jrdc-primary);
+}
+
+html.dark .jrdc-article__download-button,
+[data-bs-theme="dark"] .jrdc-article__download-button {
+	color: #fff;
+	background: var(--jrdc-primary);
+}
+
+html.dark .jrdc-article__download-button:hover,
+[data-bs-theme="dark"] .jrdc-article__download-button:hover {
+	background: var(--jrdc-primary-hover);
 }
 
 .jrdc-article__supplementary-list {
