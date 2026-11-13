@@ -556,14 +556,19 @@
 }
 
 html.dark .jrdc-article__download-button,
-[data-bs-theme="dark"] .jrdc-article__download-button {
-	color: #fff;
-	background: var(--jrdc-primary);
+[data-bs-theme="dark"] .jrdc-article__download-button,
+.dark .jrdc-article__download-button,
+body.dark .jrdc-article__download-button {
+	color: #fff !important;
+	background: var(--jrdc-primary) !important;
 }
 
 html.dark .jrdc-article__download-button:hover,
-[data-bs-theme="dark"] .jrdc-article__download-button:hover {
-	background: var(--jrdc-primary-hover);
+[data-bs-theme="dark"] .jrdc-article__download-button:hover,
+.dark .jrdc-article__download-button:hover,
+body.dark .jrdc-article__download-button:hover {
+	color: #fff !important;
+	background: var(--jrdc-primary-hover) !important;
 }
 
 .jrdc-article__supplementary-list {
