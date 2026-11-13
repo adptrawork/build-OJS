@@ -56,7 +56,7 @@ class SangulineModernThemePlugin extends ThemePlugin {
 		$base = $request->getBaseUrl();
 		$this->addScript('announcementSlider', $base . '/plugins/themes/sanguline/js/announcement-slider.js', ['baseUrl' => '']);
 		$this->addScript('bootstrap', $base . '/plugins/themes/sangulineModern/vendor/bootstrap/bootstrap.bundle.min.js', ['baseUrl' => '']);
-		$this->addScript('jrdc', $base . '/plugins/themes/sangulineModern/js/jrdc.js', ['baseUrl' => '']);
+		$this->addScript('jrdc', $base . '/plugins/themes/sangulineModern/js/jrdc.js?v=3.3.0.25', ['baseUrl' => '']);
 
 		// Explicitly register navigation menu areas
 		$this->addMenuArea(['primary', 'user', 'sidebar']);

@@ -140,5 +140,18 @@
 				toggleBtn.setAttribute('aria-expanded', 'false');
 			});
 		}
+
+		// Safety net: close the offcanvas when the backdrop is clicked
+		// (Bootstrap's own handler can miss it when the panel is inside
+		// a sticky header stacking context).
+		if (offcanvasEl) {
+			document.addEventListener('click', function (event) {
+				var backdrop = document.querySelector('.offcanvas-backdrop');
+				if (backdrop && event.target === backdrop) {
+					var inst = bootstrap.Offcanvas.getInstance(offcanvasEl);
+					if (inst) inst.hide();
+				}
+			}, true); // use capture phase
+		}
 	});
 })();

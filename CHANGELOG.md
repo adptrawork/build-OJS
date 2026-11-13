@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.22] - 2026-11-13
+
+### Fixed
+- **Mobile/tablet navigation toggle did not open the menu:** the vendored Bootstrap 5 `.offcanvas` base rule was modified to `position: static; visibility: visible !important; transform: none !important; height: auto !important` (for the desktop navbar). This leaked into the mobile case: the panel stayed in-flow, only ~40px tall, and the menu items were clipped. Restored standard overlay behaviour at `max-width: 1199.98px`:
+  - `.jrdc-nav.offcanvas` → `position: fixed; height: 100vh; transform: translateX(100%)` (slides in)
+  - `.jrdc-nav.offcanvas.show/.showing` → `transform: translateX(0)`
+  - `.jrdc-nav .offcanvas-body` → `flex: 1 1 auto; min-block-size: 0; overflow-y: auto` (scrollable, fills the panel)
+  - `.jrdc-nav .offcanvas-header` → `display: flex` (close button visible)
+  - header `z-index` 1030 → 1050 (so the offcanvas panel sits above the backdrop)
+- Backdrop click now closes the offcanvas (safety-net handler in jrdc.js, capture phase — Bootstrap's own handler misses it because the panel lives inside the sticky header's stacking context).
+- Cache-busting: jrdc.js URL bumped to `?v=3.3.0.25` so the new handler reaches browsers with stale caches.
+
+### Verified
+- Mobile simulation (injected CSS forcing the mobile media query): toggle opens a full-height panel, all menu items visible, close button visible and clickable, backdrop click closes the panel, Escape key closes.
+- Article page still scrolls (2745px vs 577px viewport).
+
 ## [1.6.21] - 2026-11-12
 
 ### Added
