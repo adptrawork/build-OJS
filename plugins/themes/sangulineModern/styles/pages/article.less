@@ -571,6 +571,20 @@ body.dark .jrdc-article__download-button:hover {
 	background: var(--jrdc-primary-hover) !important;
 }
 
+/* LoA button: monochrome (black/white) in both light and dark mode */
+.jrdc-article__loa .jrdc-article__download-button {
+	color: var(--jrdc-bg);
+	background: var(--jrdc-text);
+}
+
+html.dark .jrdc-article__loa .jrdc-article__download-button,
+[data-bs-theme="dark"] .jrdc-article__loa .jrdc-article__download-button,
+.dark .jrdc-article__loa .jrdc-article__download-button,
+body.dark .jrdc-article__loa .jrdc-article__download-button {
+	color: var(--jrdc-bg) !important;
+	background: var(--jrdc-text) !important;
+}
+
 .jrdc-article__supplementary-list {
 	margin: .75rem 0 0;
 	padding: .75rem 0 0;
