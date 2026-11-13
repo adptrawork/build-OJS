@@ -1,0 +1,54 @@
+name: Deploy to Production (Jagoan Hosting)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Trust host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy code (rsync)
+        run: |
+          rsync -avz --delete \
+            --exclude='config.inc.php' \
+            --exclude='ojsData/' \
+            --exclude='public/journals/' \
+            --exclude='public/site/' \
+            --exclude='cache/*' \
+            --exclude='downloads/' \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            -e "ssh -p ${{ secrets.SSH_PORT }}" \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}/
+
+      - name: Run DB upgrade + clear cache
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}
+            php tools/upgrade.php upgrade
+            rm -rf cache/t_compile/* cache/t_cache/* cache/_db/*
+            echo "Deploy done: $(date)"

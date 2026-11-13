@@ -375,3 +375,24 @@ Terakhir diverifikasi berjalan tanpa error (`ReviewReminder`, `UsageStatsLoader`
 | PASSWORD_RESET_CONFIRM | permintaan reset kata sandi |
 
 Yang tidak di-override (default OJS) tetap tersedia dan dipakai bila fiturnya aktif. Template yang tidak pernah terkirim di jurnal ini (SUBSCRIPTION_*, LOCKSS_*, ORCID_*, USER_VALIDATE) tidak bisa di-disable lewat UI (`can_disable = 0`) dan tidak pernah terpicu karena plugin/fiturnya mati.
+
+---
+
+## 10. Auto-deploy via GitHub Actions (SSH)
+
+File: `.github/workflows/deploy.yml` (trigger: push ke `main` atau manual `workflow_dispatch`).
+
+Secrets yang harus di-set di GitHub → Settings → Secrets and variables → Actions:
+| Secret | Nilai |
+|---|---|
+| `SSH_HOST` | `101.50.1.74` |
+| `SSH_PORT` | `45022` |
+| `SSH_USER` | `gadingga` |
+| `SSH_PRIVATE_KEY` | isi file `~/.ssh/jrdc_deploy_new` (seluruhnya, termasuk header/footer) |
+| `DEPLOY_PATH` | `/home/gadingga/inventive-mauve-porcupine.101-50-1-74.cpanel.site` |
+
+Catatan:
+- `config.inc.php`, `ojsData/`, `public/journals/`, `public/site/`, `cache/`, `downloads/` di-exclude — tidak akan ditimpa (data produksi aman).
+- Setiap deploy menjalankan `php tools/upgrade.php upgrade` + clear cache otomatis.
+- DB import tetap manual (tidak diotomatisasi demi keamanan).
+- Untuk memakai key baru: `ssh-keygen -t ed25519 -C "deploy-jrdc" -f ~/.ssh/jrdc_deploy_new -N ""`, lalu import public key ke panel hosting dan authorize.
