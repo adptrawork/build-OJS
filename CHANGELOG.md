@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.24.1] - 2026-11-13
+
+### Added (local environment — no theme code change, `version.xml` stays 1.6.24.0)
+- **Six staff accounts** with the correct roles (`editor` / Journal editor, `sectioneditor` / Section editor, `reviewer1`, `reviewer2` / Reviewer, `copyeditor` / Copyeditor, `layout` / Layout Editor) plus reviewer research interests in `user_interests`. Emails use `@jrdc.test` so they are obviously local and can never mail a real address; credentials in `docs/JOURNAL-SETUP-GUIDE.md` §9.1.
+- **Mail transport is now testable:** `config.inc.php` `[email]` points at ddev's Mailpit (`smtp = On`, `localhost:1025`). A test message was sent through OJS's own Mailer and arrived at https://ojs-boostrap.ddev.site:8026. Previously `mail()` was used, which silently discarded everything.
+- **Review settings completed:** `restrictReviewerFileAccess = 1`, `reviewerAccessKeysEnabled = 1`, reminders 3 days after the response/review due date (these two fields only exist when `scheduled_tasks = On`).
+- **`ScheduledTasks` verified running** — `ReviewReminder`, `UsageStatsLoader`, `Crossref/DataCite/DOAJ InfoSender`, `StatisticsReport` complete without error.
+
+### Changed
+- **Placeholder identity data removed** — `redaksi@contoh-jrdc.ac.id`, `support@contoh-jrdc.ac.id` and phone `+62 812-0000-000x` deleted; `contactEmail`/`supportEmail` now point at `editor@jrdc.test`, phone rows dropped.
+- **Editorial team page is real** — `/about/editorialTeam` renders the four editorial accounts (Editor in Chief, Section Editor, Copyeditor, Layout) with no `[Nama Lengkap, Gelar]` / `[0000-0000-0000-0000]` / invented institution. Reviewers are not listed: the journal is double-blind.
+- **`downloads/` untracked** (7 archives, 30 MB) and added to `.gitignore`; the files stay on disk, history is not rewritten.
+
+### Notes
+- No theme/template/CSS file changed in this release — the version number is deliberately not bumped so browsers keep their cached assets.
+- Remaining human-owned items moved to `docs/SETUP-TASKS.md` A1–A7 (real identities, real contact email, production SMTP, one full workflow run, Crossref prefix, real LoAs, cron).
+
 ## [1.6.24] - 2026-11-13
 
 ### Fixed

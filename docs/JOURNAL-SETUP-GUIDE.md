@@ -47,7 +47,7 @@
 1. Buat minimal: 1 Journal Manager/Editor, 1 Section Editor, 2–3 Reviewer, 1 Copyeditor, 1 Layout Editor.
 2. Isi profil reviewer: afiliasi, minat riset (dipakai fitur pemilihan reviewer otomatis), opsi "willing to review".
 3. **Site Access Options**: buka registrasi mandiri untuk penulis; tentukan apakah submission hanya untuk user terdaftar.
-   *Kondisi sekarang:* hanya ada 1 user (`admin`), belum ada reviewer/editor. `review_assignments = 0`.
+   *Kondisi sekarang:* 7 user — `admin` (site admin + journal manager) ditambah 6 akun staf lokal (`editor`, `sectioneditor`, `reviewer1`, `reviewer2`, `copyeditor`, `layout`, semuanya `@jrdc.test`; lihat §9). `review_assignments` = 0 karena siklus review belum pernah dijalankan.
 - Sumber: [Users and Roles](https://docs.pkp.sfu.ca/learning-ojs/3.3/en/users-and-roles) — *Managing Users*, *Permissions and Roles*, *Site Access Options* · [User Account Management](https://docs.pkp.sfu.ca/learning-ojs/3.3/en/user-accounts)
 
 ### Langkah 3 — Workflow Settings
@@ -64,14 +64,14 @@
 | Setting | Nilai sekarang | Anjuran |
 |---|---|---|
 | Default Review Mode | `2` = double-blind | pertahankan (lihat §4) |
-| Restrict File Access | belum diset | ON bila reviewer harus menerima undangan dulu |
-| One-click Reviewer Access | belum diset | ON (konsekuensi: editor tak bisa ubah email/CC/BCC undangan) |
-| numWeeksPerResponse | 4 | 1–2 minggu |
+| Restrict File Access | `1` (aktif) | pertahankan; reviewer harus menerima undangan sebelum bisa lihat file |
+| One-click Reviewer Access | `1` (aktif) | pertahankan (konsekuensi: editor tak bisa ubah email/CC/BCC undangan) |
+| numWeeksPerResponse | `2` | sesuai kebijakan tertulis (2 minggu) |
 | numWeeksPerReview | 4 | 3–4 minggu |
-| Automated Email Reminders | belum diset | ON (butuh email server + scheduled tasks) |
-| Review Guidelines | **kosong** | isi kriteria penilaian |
-| Competing Interests | **kosong** | isi kebijakan konflik kepentingan |
-| Review Forms | **0 form** | buat minimal 1 (skor + komentar + rekomendasi) |
+| Automated Email Reminders | **ON** (`scheduled_tasks = On`; field ini hanya muncul bila scheduled tasks aktif) | butuh email server + cron/ACRON |
+| Review Guidelines | terisi id_ID + en_US (double-blind, tenggat 2/4 minggu) | pertahankan, perbarui bila kebijakan berubah |
+| Competing Interests | terisi id_ID + en_US | pertahankan, perbarui bila kebijakan berubah |
+| Review Forms | **1 form** — "Formulir Tinjauan JRDC" (6 field naratif) | tambah field skor/rekomendasi bila perlu |
 
 - Sumber: [Workflow Settings](https://docs.pkp.sfu.ca/learning-ojs/3.3/en/settings-workflow) — *Submission*, *Review* (*Setup*, *Review Guidance*, *Review Forms*, *Emails*)
 
@@ -128,8 +128,8 @@
 Plugin **Import/Export** (`crossref`, `doaj`, `datacite`, `native`, `pubmed`, `users`) selalu tersedia di **Tools → Import/Export** — di 3.3 daftar itu dimuat dengan `PluginRegistry::loadCategory('importexport')` tanpa filter enabled.
 
 ### Catatan non-plugin yang sering dilupakan
-- `scheduled_tasks = Off` (kondisi sekarang) → agregasi statistik, pengingat reviewer, dan deposit DOI tidak pernah jalan sendiri. Produksi: `scheduled_tasks = On` + cron `tools/runScheduledTasks.php`, **atau** biarkan `acron` memicu lewat request.
-- Email: blok `[email]` di `config.inc.php` masih default (`smtp` dikomentari) → pengiriman memakai `mail()`. Untuk produksi gunakan SMTP.
+- `scheduled_tasks = On` (sudah aktif). Di lokal task dijalankan manual: `ddev exec php tools/runScheduledTasks.php`. Produksi: cron `*/5 * * * * php tools/runScheduledTasks.php`, **atau** biarkan `acron` memicu lewat request.
+- Email: lokal memakai SMTP ke Mailpit (`smtp_server = localhost`, `smtp_port = 1025`) — semua email OJS bisa dilihat di https://ojs-boostrap.ddev.site:8026, tidak ada yang keluar dari mesin. Produksi: ganti ke SMTP nyata + autentikasi (lihat §8.2).
 - REST API butuh `restful_urls = On` **dan** `api_key_secret` diset.
 
 ---
@@ -301,3 +301,58 @@ php tools/rebuildSearchIndex.php
 - [ ] Email uji terkirim (registrasi/notifikasi)
 - [ ] Statistik bertambah setelah ada kunjungan (`metrics`)
 
+
+---
+
+## 9. Lingkungan lokal (ddev) — akun & konfigurasi yang sudah terpasang
+
+Semua di bawah ini **sudah aktif** di instalasi lokal. Saat pindah ke produksi cukup diganti nilainya (lihat §8), strukturnya tidak perlu dibangun ulang.
+
+### 9.1 Akun staf
+
+| Username | Peran (user group) | Email | Password awal |
+|---|---|---|---|
+| `admin` | Site Admin + Journal manager | `admin@admin.com` | *(password lama, ganti sebelum produksi)* |
+| `editor` | Journal editor | `editor@jrdc.test` | `JrdcDev2026!` |
+| `sectioneditor` | Section editor | `sectioneditor@jrdc.test` | `JrdcDev2026!` |
+| `reviewer1` | Reviewer | `reviewer1@jrdc.test` | `JrdcDev2026!` |
+| `reviewer2` | Reviewer | `reviewer2@jrdc.test` | `JrdcDev2026!` |
+| `copyeditor` | Copyeditor | `copyeditor@jrdc.test` | `JrdcDev2026!` |
+| `layout` | Layout Editor | `layout@jrdc.test` | `JrdcDev2026!` |
+
+- Domain `@jrdc.test` dipakai supaya jelas akun uji lokal dan tidak mungkin mengirim email ke alamat nyata.
+- Minat riset reviewer sudah diisi (dipakai fitur pencarian reviewer): `reviewer1` = manajemen, ekonomi digital, studi kasus; `reviewer2` = manajemen, kebijakan publik, metode kualitatif.
+- **Ganti sebelum produksi:** email, nama asli, dan password tiap akun (Users & Roles). `contactEmail` + `supportEmail` jurnal saat ini menunjuk ke `editor@jrdc.test`, ikut diganti.
+
+### 9.2 Halaman Dewan Redaksi
+
+`/about/editorialTeam` diisi dari akun di atas (Ketua Penyunting, Penyunting Bagian, Penyunting Pelaksana, Tata Letak) — tanpa nama/institusi/ORCID fiktif. Nama mitra bestari tidak dicantumkan karena jurnal memakai double-blind. Perbarui teksnya di **Settings → Masthead → Editorial Team** bila susunan redaksi berubah.
+
+### 9.3 Email (Mailpit)
+
+- `config.inc.php` → `[email]`: `smtp = On`, `smtp_server = localhost`, `smtp_port = 1025`.
+- Semua email OJS (undangan reviewer, notifikasi, verifikasi) tertangkap di https://ojs-boostrap.ddev.site:8026 — tidak ada yang keluar dari mesin.
+- Uji cepat: kirim satu email dari OJS, cek Mailpit; inbox kosong berarti konfigurasi salah.
+
+### 9.4 Scheduled tasks
+
+`scheduled_tasks = On`. Di ddev tidak ada cron, jadi jalankan manual bila perlu:
+
+```bash
+ddev exec php tools/runScheduledTasks.php
+```
+
+Terakhir diverifikasi berjalan tanpa error (`ReviewReminder`, `UsageStatsLoader`, `Crossref/DataCite/DOAJ InfoSender`, `StatisticsReport`).
+
+### 9.5 Pengaturan review yang terpasang
+
+| Setting | Nilai |
+|---|---|
+| Default Review Mode | `2` (double-blind) |
+| Restrict File Access | `1` |
+| One-click Reviewer Access | `1` |
+| numWeeksPerResponse / numWeeksPerReview | `2` / `4` |
+| Review reminder (response / submit) | 3 hari setelah tenggat |
+| Review Guidelines | terisi id_ID + en_US |
+| Competing Interests | terisi id_ID + en_US |
+| Review Forms | 1 form, 6 field naratif |
