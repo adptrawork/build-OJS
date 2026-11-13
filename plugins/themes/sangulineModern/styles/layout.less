@@ -57,11 +57,11 @@
 .jrdc-header {
 	position: sticky;
 	inset-block-start: 0;
-	z-index: 1050;
+	z-index: 1030;
 	background: rgba(255, 255, 255, .96);
 	border-block-end: 1px solid var(--jrdc-border);
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
+	/* No backdrop-filter here: it makes the header the containing block for the
+	   position:fixed offcanvas, clamping the mobile menu to the header height. */
 }
 
 html.dark .jrdc-header {
@@ -305,7 +305,7 @@ html.dark .jrdc-theme-toggle__icon--sun {
 /* -------------------------------------------------------------------------
  * Offcanvas panel (< 1200px)
  * ---------------------------------------------------------------------- */
-@media (min-width: 0px) {
+@media (max-width: 1199.98px) {
 	.jrdc-header__inner {
 		gap: 1rem;
 	}
@@ -316,60 +316,13 @@ html.dark .jrdc-theme-toggle__icon--sun {
 		display: none;
 	}
 
-	/* The vendored Bootstrap 5 file was modified to render .offcanvas as a
-	   static in-flow element (for the desktop navbar). That override leaks
-	   into the mobile case: the panel never slides in and its body is
-	   clipped to ~40px. Restore the standard overlay behaviour at mobile
-	   widths so the toggle actually opens the full menu. */
-	.jrdc-nav.offcanvas {
-		position: fixed !important;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 1055;
-		width: var(--bs-offcanvas-width, 380px) !important;
-		height: 100vh !important;
-		max-height: 100vh !important;
-		visibility: visible !important;
-		background-color: var(--jrdc-surface) !important;
-		border-left: 1px solid var(--jrdc-border) !important;
-		display: flex !important;
-		flex-direction: column !important;
-		transform: translateX(100%);
-		transition: transform .3s ease-in-out;
-	}
-
-	.jrdc-nav.offcanvas.show,
-	.jrdc-nav.offcanvas.showing {
-		transform: translateX(0) !important;
-	}
-
-	.jrdc-nav .offcanvas-body {
-		flex: 1 1 auto !important;
-		min-block-size: 0;
-		overflow-y: auto;
-	}
-
 	.jrdc-nav {
 		--bs-offcanvas-padding-x: 1.25rem;
 		--bs-offcanvas-padding-y: 1.25rem;
 	}
 
 	.jrdc-nav .offcanvas-header {
-		display: flex !important;
-		align-items: center;
-		justify-content: space-between;
 		border-block-end: 1px solid var(--jrdc-border);
-	}
-	.jrdc-nav .offcanvas-header .btn-close {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		inline-size: 40px;
-		block-size: 40px;
-		margin: 0;
-		padding: 0;
-		opacity: 1;
 	}
 
 	.jrdc-nav .navbar-nav {

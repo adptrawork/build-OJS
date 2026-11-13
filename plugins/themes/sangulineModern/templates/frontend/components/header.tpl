@@ -78,48 +78,43 @@
 						{load_menu name="primary" id="navigationPrimary" path="frontend/components/navigationMenuBootstrap.tpl" ulClass="navbar-nav pkp_navigation_primary"}
 					{/capture}
 
-					</div>
-				</div>
-			</nav>
-		</header><!-- .pkp_structure_head -->
-
-		{* Offcanvas panel — outside the header so its backdrop (z-index 1040)
-		   sits below the panel (z-index 1055) in the root stacking context. *}
-		<div class="offcanvas offcanvas-end jrdc-nav" tabindex="-1" id="jrdcSiteNav" aria-labelledby="jrdcNavLabel">
-			<a id="siteNav"></a>
-			<div class="offcanvas-header">
-				<h2 class="offcanvas-title h5" id="jrdcNavLabel">{translate key="common.navigation.site"}</h2>
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="{translate|escape key="common.close"}"></button>
-			</div>
-			<div class="offcanvas-body jrdc-nav__body">
-				{* Mobile-only: search form inside the panel *}
-				{if $currentContext}
-					<form action="{url page="search" op="search"}" method="get" class="d-xl-none jrdc-mobile-search mb-3" role="search">
-						<label class="visually-hidden" for="jrdc-search-query-mobile">{translate key="common.search"}</label>
-						<div class="input-group">
-							<input id="jrdc-search-query-mobile" type="search" name="query" placeholder="{translate key="plugins.themes.sangulineModern.header.searchPlaceholder"}" class="form-control" autocomplete="off" />
-							<button type="submit" class="btn btn-primary" aria-label="{translate|escape key="common.search"}">
-								<svg class="jrdc-search__icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path></svg>
-							</button>
+					{* One responsive offcanvas: slide-in panel below xl, static navbar at xl+. *}
+					<div class="offcanvas offcanvas-end jrdc-nav" tabindex="-1" id="jrdcSiteNav" aria-labelledby="jrdcNavLabel">
+						<a id="siteNav"></a>
+						<div class="offcanvas-header">
+							<h2 class="offcanvas-title h5" id="jrdcNavLabel">{if $currentContext}{$currentContext->getLocalizedData('name')|escape}{else}{$siteTitle|escape}{/if}</h2>
+							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="{translate|escape key="common.close"}"></button>
 						</div>
-					</form>
-				{/if}
+						<div class="offcanvas-body jrdc-nav__body">
 
-				<ul class="navbar-nav jrdc-nav__home me-xl-2">
-					<li class="nav-item">
-						<a href="{$homeUrl}" class="nav-link{if !$requestedPage || $requestedPage === 'index'} active{/if}">
-							{translate key="navigation.home"}
-						</a>
-					</li>
-				</ul>
-				{$primaryMenu}
+							{* Mobile-only: search form inside the panel *}
+							{if $currentContext}
+								<form action="{url page="search" op="search"}" method="get" class="d-xl-none jrdc-mobile-search mb-3" role="search">
+									<label class="visually-hidden" for="jrdc-search-query-mobile">{translate key="common.search"}</label>
+									<div class="input-group">
+										<input id="jrdc-search-query-mobile" type="search" name="query" placeholder="{translate key="plugins.themes.sangulineModern.header.searchPlaceholder"}" class="form-control" autocomplete="off" />
+										<button type="submit" class="btn btn-primary" aria-label="{translate|escape key="common.search"}">
+											<svg class="jrdc-search__icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path></svg>
+										</button>
+									</div>
+								</form>
+							{/if}
 
-				{* Mobile-only: user/admin menu inside the panel *}
-				<div class="d-xl-none jrdc-nav__mobile-user mt-3 pt-3 border-top">
-					{load_menu name="user" id="navigationUserMobile" path="frontend/components/navigationMenuBootstrap.tpl" ulClass="navbar-nav pkp_navigation_user"}
-				</div>
-			</div>
-		</div>
+							<ul class="navbar-nav jrdc-nav__home me-xl-2">
+								<li class="nav-item">
+									<a href="{$homeUrl}" class="nav-link{if !$requestedPage || $requestedPage === 'index'} active{/if}">
+										{translate key="navigation.home"}
+									</a>
+								</li>
+							</ul>
+							{$primaryMenu}
+
+							{* Mobile-only: user/admin menu inside the panel *}
+							<div class="d-xl-none jrdc-nav__mobile-user mt-3 pt-3 border-top">
+								{load_menu name="user" id="navigationUserMobile" path="frontend/components/navigationMenuBootstrap.tpl" ulClass="navbar-nav pkp_navigation_user"}
+							</div>
+						</div>
+					</div>
 
 					{* Right: search + user menu + controls *}
 					<div class="jrdc-header__actions d-flex align-items-center gap-2 ms-auto">

@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.24] - 2026-11-13
+
+### Fixed
+- **Mobile navigation actually broken root cause found and fixed:** `.jrdc-header` had `backdrop-filter: blur(12px)`. A `backdrop-filter` (like `transform`/`filter`) makes the element a **containing block for `position: fixed` descendants**, so the offcanvas panel — which lives inside the header so it can be the inline navbar at ≥1200px — was clamped to the header box: `getBoundingClientRect().height = 104px` at a 844px viewport, with `top: 0; bottom: 0` resolving against the 104px header instead of the viewport. Every symptom (panel appearing "closed", items clipped, backdrop over the panel, close button unreachable) followed from that one rule. Removing the two `backdrop-filter` declarations restores the stock Bootstrap overlay: panel 844×380, `.offcanvas-body` scrollable (773px), close button visible, backdrop click and Escape close, zero horizontal overflow (verified 390×844 and 768×1024).
+- **Diagnoses in 1.6.22 and 1.6.23 were wrong and are reverted:**
+  - 1.6.22 claimed the vendored Bootstrap was modified. It is stock: the grep hit was the desktop rule `.navbar-expand-* .offcanvas` inside `@media (min-width: …)`, which only applies at ≥1200px.
+  - 1.6.23 claimed a stacking-context/backdrop-z-index problem and moved the offcanvas out of `<header>` into the root. That leaves the panel in flow at ≥1200px (the navbar is built from it) and left `header.tpl` structurally invalid (duplicated `</nav></header>`, orphan closing tag). `templates/frontend/components/header.tpl` is restored from `14c22695` (1.6.22 layout, single header/nav, offcanvas inside the navbar) and `styles/layout.less` from `583704c7` (no hand-rolled overlay CSS, no raised header z-index).
+  - The `jrdc.js` capture-phase backdrop handler added in 1.6.23 is removed — Bootstrap's own backdrop handler was never broken.
+  - The hardcoded `?v=3.3.0.25` cache-buster on `jrdc.js` is removed with it; a plain URL serves the same content browsers already have from 1.6.21 and earlier.
+
+### Changed
+- **Mobile panel title = journal name** instead of the generic "Site Navigation": `{$currentContext->getLocalizedData('name')}` with `$siteTitle` fallback, keeping `aria-labelledby="jrdcNavLabel"` valid. No new locale key, no hardcoded name.
+
+### Added (DB + config changes, not in git)
+- **Review guidance is no longer empty** — `journal_settings.reviewerGuidelines` and `.competingInterests` filled in id_ID and en_US (double-blind procedure, 2-week response / 4-week review deadline, conflict-of-interest rules, no-sharing rule).
+- **First review form created** — "Formulir Tinjauan JRDC" / "JRDC Review Form" with 6 narrative fields (contribution, originality, methods, clarity, scope fit, main revisions). `review_forms` was 0, so reviewers previously had only free-text boxes.
+- **Missing localization filled:** section 3 title `id_ID` = "Studi Kasus"; issue titles `id_ID` for issue 2 ("Vol. 1 No. 1 (2026): Artikel") and issue 3 ("Edisi Khusus Ekonomi Digital"). Both issues had empty `id_ID` titles, so Indonesian readers saw English issue titles.
+- **Issue 3 ("Edisi Khusus Ekonomi Digital") unpublished** — it was published with 0 articles and duplicated the Vol. 1 No. 1 numbering. Re-publish once it has content.
+- **`numWeeksPerResponse` 4 → 2** (review decision deadline; `numWeeksPerReview` stays 4) to match the documented policy above.
+- **`htmlArticleGalley` and `lensGalley` disabled** — every galley in this install is PDF (5 article PDFs + 5 LoA PDFs), so neither plugin had anything to render.
+- **`scheduled_tasks = On`** in `config.inc.php` (was `Off`): statistics aggregation, reviewer reminders and DOI deposits now run through ACRON/cron instead of never running.
+
+### Added (docs)
+- `docs/JOURNAL-SETUP-GUIDE.md` — setup and operating guide for OJS 3.3: configuration order, which plugins to enable/disable and why, manuscript workflow mapped to settings, peer-review model recommendation (double-blind), pre-launch checklist, and PKP/COPE sources per chapter.
+- `docs/SETUP-TASKS.md` — task ledger: what is already done (36 items, verified against DB/code) and what is still open, including the blockers that only humans can clear (real editor/reviewer accounts, SMTP credentials, Crossref prefix).
+
+### Notes
+- All numbers in the docs are read from this install (users = 1, `review_assignments` = 0, publications = 5, issues = 2, static pages = 9, sidebar blocks = 7, metrics rows = 17).
+- Rollback for the DB portion: `ddev snapshot restore before-publish-setup`.
+
 ## [1.6.23] - 2026-11-13
 
 ### Fixed

@@ -54,9 +54,9 @@ class SangulineModernThemePlugin extends ThemePlugin {
 		// parent script with a forward-slash URL.
 		$request = Application::get()->getRequest();
 		$base = $request->getBaseUrl();
-		$this->addScript('announcementSlider', $base . '/plugins/themes/sanguline/js/announcement-slider.js', ['baseUrl' => '']);
+		$this->addScript('announcementSlider', $base . '/plugins/themes/sangulineModern/js/announcement-slider.js', ['baseUrl' => '']);
 		$this->addScript('bootstrap', $base . '/plugins/themes/sangulineModern/vendor/bootstrap/bootstrap.bundle.min.js', ['baseUrl' => '']);
-		$this->addScript('jrdc', $base . '/plugins/themes/sangulineModern/js/jrdc.js?v=3.3.0.25', ['baseUrl' => '']);
+		$this->addScript('jrdc', $base . '/plugins/themes/sangulineModern/js/jrdc.js', ['baseUrl' => '']);
 
 		// Explicitly register navigation menu areas
 		$this->addMenuArea(['primary', 'user', 'sidebar']);
