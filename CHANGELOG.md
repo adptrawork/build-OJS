@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.23] - 2026-11-13
+
+### Fixed
+- **Mobile offcanvas still "closed" (z-index / stacking context):** the offcanvas panel and its backdrop were both rendered inside `<header class="jrdc-header">` (which creates a stacking context via `position: sticky; z-index: 1050`). Within that context, the offcanvas (z-index 1055) and backdrop (z-index 1040) were siblings — but the backdrop was appended AFTER the offcanvas in the DOM, and with equal effective z-index in the root context, the backdrop landed on top of the panel. The close button was also hidden (`display: none` from vendored BS5). Result: the panel appeared to be "behind" everything and the menu looked closed.
+  - **Offcanvas moved outside the header** in `templates/frontend/components/header.tpl` (after `</header>`) — now both the panel and backdrop live in the root stacking context, so z-index ordering works correctly.
+  - Combined with the 1.6.22 overlay CSS (position: fixed, 100vh, scrollable body, visible close button), the mobile menu now opens, fills the viewport, shows all items, and closes via backdrop click / close button / Escape.
+
+### Verified
+- Mobile simulation: toggle opens full-height panel (577px), body scrollable (496px), close button visible and clickable, backdrop click closes the panel.
+- Article page still scrolls (3334px vs 577px viewport).
+- No regressions on desktop (offcanvas is in-flow navbar at ≥1200px).
+
 ## [1.6.22] - 2026-11-13
 
 ### Fixed
