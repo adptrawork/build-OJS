@@ -52,3 +52,4 @@ desktop.ini
 # lib/, plugins/, templates/, locale/, pages/, classes/, api/, controllers/,
 # dbscripts/, docs/, registry/, schemas/, styles/, js/, tools/ (core tools),
 # index.php, composer.*, package.json, etc. are NOT ignored.
+docs/ACCOUNTS.md
