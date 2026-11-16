@@ -67,7 +67,7 @@
 										</svg>
 									</span>
 									<span class="jrdc-brand__text">
-										{if $currentContext}<span class="jrdc-brand__name">{$currentContext->getLocalizedData('name')|escape}</span>{else}<span class="jrdc-brand__name">{$siteTitle|escape}</span>{/if}
+										{if $currentContext}{assign var="brandName" value=$currentContext->getLocalizedData('name')|escape}{else}{assign var="brandName" value=$siteTitle|escape}{/if}<span class="jrdc-brand__name">{$brandName|replace:"Cendikiawan":"<br>Cendikiawan" nofilter}</span>
 									</span>
 								</a>
 							{/if}
